@@ -396,7 +396,98 @@ class Receptionist extends Controller{
         $result=$this->model->addPayment($data[0],$data[1],$reciptionistId);
         echo json_encode($result);
     }
-    
+
+    //student list details
+    function viewRow(){
+        $result = $this->model->getStudentDetails();
+        echo json_encode($result);
+    }
+    function viewM($id){
+        $result=$this->model->viewDetails($id);
+        echo json_encode($result);
+    }
+    function updateMe($id,$update){
+        $data = explode(",",$update);
+        $result=$this->model->updateMe($id,$data[0],$data[1],$data[2],$data[3],$data[4],$data[5],$data[6],$data[7],$data[8],$data[9],$data[10],$data[11],$data[12]);
+        echo json_encode($result);
+    }
+    function display_examPassed(){
+        $result=$this->model->display_examPassed();
+        echo json_encode($result);
+    }
+    function display_examFailed(){
+        $result=$this->model->display_examFailed();
+        echo json_encode($result);
+    }
+    function display_trialPassed(){
+        $result=$this->model->display_trialPassed();
+        echo json_encode($result);
+    }
+    // function TableRow(){
+    //     $this->view->render('Receptionist/studentList');
+    // }
+    //---------------------------------------------------------------------part 5 ---------------------------------------------------------------------------------------------------------------------
+    //whoAmI
+    function whoAmI($id){
+        $result=$this->model->whoAmI($id);
+        echo json_encode($result);
+    }
+     //reg
+    //  function testMe(){
+    //     $this->view->render('receptionist/registration');
+    // }
+    // function returnMe(){
+    //     $this->view->render('receptionist/listOfStudent');
+    // }
+    // function viewTableRow(){
+    //     $this->view->render('Receptionist/listOfStudent');
+    // }
+ 
+
+    function getAvailableSessions(){
+        $result=$this->model->getSessions();
+        echo json_encode($result);
+    }
+
+    function getAvailableExams(){
+        $result=$this->model->getExams();
+        echo json_encode($result);
+    }
+    function getExamDetails(){
+        $result=$this->model->getExamDetails($_SESSION['viewExamId']);
+        echo json_encode($result); 
+    }
+    function loadPreSelectedInstructors(){
+        $result=$this->model->loadPreSelectedInstructors($_SESSION['viewExamId']);
+        echo json_encode($result);
+    }
+    function loadPreSelectedVehicles(){
+        $result=$this->model->loadPreSelectedVehicles($_SESSION['viewExamId']);
+        echo json_encode($result);
+    }
+    function loadPreSelectedStudents(){
+        $result=$this->model->loadPreSelectedStudents($_SESSION['viewExamId']);
+        echo json_encode($result);
+    }
+    //---------------------------------------------------------------------------------part 6----------------------------------------------------------------------------------------------
+    //Sessions
+    function getSessionDetails(){
+        $result=$this->model->getSessionDetails($_SESSION['viewSessionId']);
+        echo json_encode($result); 
+    }
+    function loadPreSelectedInstructorsS(){
+        $result=$this->model->loadPreSelectedInstructorsS($_SESSION['viewSessionId']);
+        echo json_encode($result);
+    }
+    function loadPreSelectedVehiclesS(){
+        $result=$this->model->loadPreSelectedVehiclesS($_SESSION['viewSessionId']);
+        echo json_encode($result);
+    }
+    function loadPreSelectedStudentsS(){
+        $result=$this->model->loadPreSelectedStudentsS($_SESSION['viewSessionId']);
+        echo json_encode($result);
+    }
+
     
     
 }
