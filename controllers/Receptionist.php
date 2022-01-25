@@ -356,6 +356,47 @@ class Receptionist extends Controller{
             $result = $this->model->findStudent($findMe);
             echo json_encode($result);
         }
+
+            //addPayment
+    function payHere(){
+        if(isset($_SESSION['job_title'])){
+            if($_SESSION['job_title']=='Receptionist'){
+                $this->view->render('receptionist/payments');
+            }else{
+                $this->view->render('error');
+            }
+        }
+        else{
+            $this->view->render('error');
+        }
+    }
+    function payMe($id){
+        $result=$this->model->payMe($id);
+        echo json_encode($result);
+    }
+ 
+    // function paidMethod($id){
+    //     $result['cash'] =$this->model->payMe($id);
+    //     $result['online'] =$this->model->paidMe($id);
+    //     echo json_encode($result);
+    // }
+    //sum
+    function payed($id){
+        $result['sum_price']=$this->model->payed($id);
+        echo json_encode($result);
+    }
+    function remain($id){
+        $result=$this->model->remain($id);
+        echo json_encode($result);
+    }
+
+    function addPayment($pay){
+        $data = explode(",",$pay);
+        $reciptionistId=$_SESSION['employee_id'];
+        $result=$this->model->addPayment($data[0],$data[1],$reciptionistId);
+        echo json_encode($result);
+    }
+    
     
     
 }
