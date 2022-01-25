@@ -1,0 +1,51 @@
+
+/* Add new package title */
+.title-container{
+    width: 100%;
+    text-align: center;
+    border-radius: 13px;
+    /* background-color: tomato; */
+}
+
+/* Details are in this class */
+.details-container{
+    width: 100%;
+    /* background-color: seagreen; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.row{
+    width: 85%;
+    height: 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* background-color: aqua; */
+}
+.column-1{
+    width: 23%;
+    height: 90%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* background-color: blueviolet; */
+}
+.column-2{
+    width: 62%;
+    height: 90%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* background-color: chartreuse; */
+}
+
+.button-container{
+    width: 85%;
+    height: 70px;
+    display: flex;
+    justify-content: space-between;
+    
+    align-items: center;
+    /* background-color: cornflowerblue; */
+}

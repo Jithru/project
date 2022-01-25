@@ -1,0 +1,108 @@
+.title-container{
+    width: 100%;
+    text-align: center;
+    border-radius: 13px;
+    /* background-color: tomato; */
+}
+
+/* Details are in this class */
+.field-container{
+    width: 80%;
+    /* background-color: seagreen; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.input-container{
+    width: 100%;
+    height: 60px;
+    /* background-color: yellowgreen; */
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.input-container-edit{
+    width: 80%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* common styles for input fields */
+
+.package-name-edit, .vehicle-class-type-edit, .training-days-edit,.total-price-edit{
+    height: 40px;
+    border: none;
+    border-radius: 3px;
+    text-align: center;
+    padding-left: 10px;
+    padding-top: 10px;
+    color: #50505086;
+    font-weight: 700;
+    background-color: #f3f7f7;
+    box-shadow: 0px 0px 10px #dce0e094 inset;
+}
+/* common styles for input fields (focus)*/
+
+
+.package-name-edit{
+    width: 50%;
+}
+.vehicle-class-type-edit{
+    width: 50%;
+}
+.classes-check-outer-edit{
+    width: 100%;
+    height: 150px;
+    display: flex;
+    justify-content:space-around;
+    /* background-color: yellow; */
+}
+.classes-check-edit{
+    width: 80%;
+    height: 95%;
+    display: flex;
+    flex-direction: row-reverse;
+    /* background-color: springgreen; */
+    
+}
+.classes-check-edit-in{
+    width: 50%;
+    padding-top: 10px;
+    background-color: #f3f7f7;
+    box-shadow: 0px 0px 10px #dce0e094 inset;
+    border-radius: 3px;
+    /* background-color: yellow; */
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+.res{
+    width: 50px;
+}
+.chk-bx{
+    margin-left: 10%;
+    width: 50%;
+    color: #50505086;
+}
+
+.chk-bx > label{
+    margin-left: 5%;
+}
+
+.training-days-edit{
+    width: 20%;
+}
+.total-price-edit{
+    width: 30%;
+}
+
+/* buttons styling */
+.button-container{
+    width: 80%;
+    height: 70px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* background-color: violet; */
+}

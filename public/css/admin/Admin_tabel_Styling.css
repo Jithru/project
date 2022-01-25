@@ -1,0 +1,209 @@
+.table-heading-container{
+    width: 92%;
+    height: 60px;
+    min-height: 60px;
+    /* display: flex; */
+    border-radius: 3px; 
+    margin-top: 20px;
+    padding-top: 15px;
+    margin-bottom: 20px;
+    overflow-y: auto; 
+    background-color: #262b2f;
+    color: white;
+    /* justify-content: center; */
+}
+.table-heading-container::-webkit-scrollbar-track {
+    background: #262b2f;
+    border-radius: 5px;
+  }
+
+.heading-row{
+    width: 98%;
+    height: 20px;
+    max-height: 20px;
+    margin: auto;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    /*background-color: crimson;*/
+}
+
+
+
+.row-container{
+    width: 92%;
+    height: 70%;
+    padding-top: 20px;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    overflow-y: scroll; /* Show vertical scrollbar */
+    overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* background-color: rgb(128, 25, 25); */
+    
+}
+
+.row{
+    width: 98%;
+    height: fit-content;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    background-color: white;
+    box-shadow: 1px 1px 5px #b0b3b3;
+
+}
+
+.col-1, .col-2, .col-3, .col-4{
+    font-size: 1rem;
+    font-weight: 400;
+}
+
+.col-1{
+    width: 15%;
+    /* background-color: cornflowerblue; */
+    height: 57px;
+    display: flex;
+    align-items: center;
+}
+
+.col-2{
+    width: 30%;
+    /* background-color: crimson; */
+}
+
+.col-3{
+    width: 15%;
+    /* background-color: darkblue; */
+}
+
+.col-4{
+    width: 15%;
+    /* background-color: darkgoldenrod; */
+}
+
+.col-5{
+    width: 15%;
+    height: 50px;
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    /* background-color: darkgreen; */
+}
+
+.coll-1{
+    width: 10%;
+    /* background-color: rgb(17, 146, 146); */
+} 
+.coll-2{
+    width: 20%;
+    /* background-color: brown; */
+} 
+.coll-3{
+    width: 15%;
+    /* background-color: chartreuse; */
+} 
+.coll-4{
+    width: 15%;
+    /* background-color: chocolate; */
+} 
+.coll-5{
+    width: 20%;
+    /* background-color: cornflowerblue; */
+}
+.coll-6{
+    width: 10%;
+    height: 57px;
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+}
+
+
+.column-1, .column-2, .column-3{
+    font-size: 1rem;
+    font-weight: 400;
+}
+
+.column-1{
+    width: 12%;
+    /* background-color: cornflowerblue; */
+}
+
+.column-2{
+    width: 50%;
+    /* background-color: crimson; */
+}
+.column-3{
+    width: 15%;
+    /* background-color: darkgoldenrod; */
+}
+
+.column-4{
+    width: 15%;
+    height: 57px;
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    /* background-color: darkgreen; */
+}
+
+.bold-name,.bold-name-2, .bold{
+    display: none;
+}
+
+@media screen and (max-width: 992px) {
+    .table-heading-container{
+        visibility: hidden;
+        height: 0px;
+    }
+    .row-container{
+        margin-top: -20px;
+        padding-top: 2px;
+        padding-bottom: 2px;
+    }
+    .row{
+        width: 95%;
+        height: fit-content;
+        margin-bottom: 10px;
+        padding: 5px 0px;
+        border-radius: 5px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        align-items: center;
+        background-color: white;
+        box-shadow: 1px 1px 5px #b0b3b3;
+    
+    }
+    .col-1, .col-2, .col-3, .col-4, .column-1, .column-2, .column-3 , .coll-1, .coll-2, .coll-3, .coll-4, .coll-5{
+        width: 95%;
+        height: 30px;
+        display: flex;
+        align-items: center;
+    }
+    .col-5, .column-4, .coll-6{
+        width: 95%;
+        height: 40px;
+        display: flex;
+        flex-direction: row-reverse;
+        align-items: center;
+    }
+    .bold-name{
+        display: block;
+        width: 70px;
+    }
+    .bold-name-2{
+        display: block;
+        width: 130px;
+    }
+    .bold{
+        width: 10px;
+        display: block;
+    }
+  }

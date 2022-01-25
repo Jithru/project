@@ -1,0 +1,90 @@
+
+/* Add new package title */
+.title-container{
+    width: 100%;
+    text-align: center;
+    border-radius: 13px;
+    /* background-color: tomato; */
+}
+
+/* Details are in this class */
+.details-container{
+    width: 100%;
+    /* background-color: seagreen; */
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+.row{
+    width: 86%;
+    height: 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* background-color: aqua; */
+}
+.column-1{
+    width: 30%;
+    height: 90%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* background-color: blueviolet; */
+}
+.column-2{
+    width: 65%;
+    height: 90%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* background-color: chartreuse; */
+}
+
+.button-container{
+    width: 72.5%;
+    height: 70px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* background-color: violet; */
+}
+.save , .cancel , .delete{
+    height: 45px;
+    width: 100px;
+    border-radius: 3px;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.save{
+    border: none; 
+    color: #f3f7f7;
+    background-color: #13a067;
+    box-shadow: 5px 5px 10px #cfd7ed ;
+}
+.delete{
+    border: none; 
+    color: #f3f7f7;
+    background-color: #c2230e;
+    box-shadow: 5px 5px 10px #cfd7ed ;
+}
+.cancel{
+    color: #505050;
+    background-color: #bbbbbb;
+    border: solid 2px #757575;
+}
+.cancel:hover{
+    background-color:#d1d0d0;
+}
+
+.save:hover{
+    background-color:#07c075;
+}
+
+.delete:hover{
+    background-color: #f01d01;
+}
+
+.save:active , .cancel:active ,.delete:active{
+    margin-top: 5px;
+}

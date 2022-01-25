@@ -1,0 +1,111 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  width: calc(100% - 250px);
+  align-items: center;
+  justify-content: center;
+  /* background-color: darkblue; */
+}
+h1 {
+  align-self: flex-end;
+  font-size: 40px;
+  padding-right: 50px;
+  padding-top: 20px;
+  margin-bottom: 30px;
+  /* background-color: crimson; */
+}
+.body-container {
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+.income-expense-box {
+  display: flex;
+  margin-top: 30px;
+  justify-content: space-around;
+  width: 80%;
+  min-width: 600px;
+  height: 85%;
+  min-height: 400px;
+  font-size: 25px;
+  border-radius: 3px;
+
+  /* box-shadow: 1px 1px 10px #b0b3b3; */
+}
+.date-label {
+  font-size: 16px;
+  margin-right: 15px;
+  width: 100%;
+}
+.income-row {
+  height: 300px;
+  width: fit-content;
+  background-color: white;
+  padding-left: 100px;
+  padding-right: 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  box-shadow: 1px 1px 10px #b0b3b3;
+}
+.expense-row {
+  height: 300px;
+  width: fit-content;
+  background-color: white;
+  padding-left: 100px;
+  padding-right: 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  box-shadow: 1px 1px 10px #b0b3b3;
+}
+.profit-row {
+  height: 300px;
+  width: fit-content;
+  padding-left: 70px;
+  background-color: white;
+  padding-right: 70px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  box-shadow: 1px 1px 10px #b0b3b3;
+}
+.name-field {
+  width: 100%;
+  display: flex;
+  font-weight: 600;
+  justify-content: center;
+  /* background-color: rgb(187, 187, 187); */
+}
+.value-field {
+  width: 40%;
+  /* background-color: darkcyan; */
+}
+.view-more {
+  width: 100%;
+  /* background-color: darkblue; */
+}
+.view-more button {
+  width: fit-content;
+  min-width: 100px;
+  min-height: 40px;
+  height: 100%;
+  color: white;
+  font-size: 18px;
+  padding: 0px 20px;
+  border: 2px solid #0892d0;
+  background-color: #0892d0;
+  border-radius: 3px;
+  font-weight: bold;
+  box-shadow: 1px 1px 10px #b0b3b3;
+  /* background-color: darkblue; */
+}
+.view-more button:hover {
+  background-color: white;
+  color: #0892d0;
+  border: 2px solid #0892d0;
+  box-shadow: 1px 1px 10px #b0b3b3;
+}

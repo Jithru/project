@@ -1,0 +1,40 @@
+.tab-container {
+  width: 90.16%;
+  height: 50px;
+  display: flex;
+  align-items: flex-start;
+  /* background-color: violet; */
+}
+
+.tab-1,
+.tab-2 {
+  width: fit-content;
+  color: #292d42;
+  /* background-color: tomato; */
+}
+
+.tab-1:hover,
+.tab-2:hover {
+  color: #0892d0;
+}
+
+.tab-2 {
+  margin-left: 20px;
+}
+
+.tab-line {
+  margin-top: 3px;
+}
+
+a:link {
+  text-decoration: none;
+}
+
+.search-container {
+  width: 90.16%;
+  padding-right: 16px;
+  height: 30px;
+  display: flex;
+  flex-direction: row-reverse;
+  /* background-color: blueviolet; */
+}

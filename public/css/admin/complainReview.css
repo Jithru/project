@@ -1,0 +1,41 @@
+.msg-box-container{
+    width: 90%;
+    height: 100%;
+    margin-bottom: 30px;
+    display: flex;
+    flex-direction: column;
+    overflow-y: scroll;
+}
+
+.msg-box-row{
+    width: 99%;
+    height: fit-content;
+    padding: 0px 20px;
+    padding-bottom: 30px;
+    margin-top: 20px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 1px 1px 10px #b0b3b3;
+    
+}
+
+.msg-title{
+    /* background-color: aqua; */
+    margin-bottom: -35px;
+    color: #0892d0;
+}
+
+.msg-date{
+    width: 200px;
+    display: flex;
+    justify-content: space-between;
+    padding-left: 2px;
+    /* background-color: brown; */
+}
+
+.msg-btn{
+    width: 100%;
+    /* background-color: chartreuse; */
+    display: flex;
+    flex-direction: row-reverse;
+}

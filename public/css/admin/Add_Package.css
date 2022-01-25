@@ -1,0 +1,150 @@
+.title-container{
+    width: 100%;
+    text-align: center;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    /* background-color: tomato; */
+}
+
+/* Details are in this class */
+.field-container{
+    width: 80%;
+    /* background-color: seagreen; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.input-container{
+    width: 100%;
+    height: 60px;
+    /* background-color: yellowgreen; */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* common styles for input fields */
+
+.package-name, .vehicle-class-type, .training-days,.total-price{
+    height: 40px;
+    border: none;
+    border-radius: 3px;
+    padding-left: 10px;
+    background-color: #f3f7f7;
+    box-shadow: 0px 0px 10px #dce0e094 inset;
+}
+/* common styles for input fields (focus)*/
+.package-name[type=text]:focus,  .training-days[type=number]:focus,.total-price[type=number]:focus{
+    background-color: #e8f0fe;
+    outline: none;
+}
+
+.package-name{
+    width: 60%;
+}
+.vehicle-class-type{
+    width: 60%;
+}
+select.vehicle-class-type {
+    border:0px;
+    outline:0px;
+ }
+.classes-check-outer{
+    width: 100%;
+    height: 150px;
+    display: flex;
+    justify-content: right;
+    /* background-color: yellow; */
+}
+.classes-check{
+    width: 60%;
+    height: 95%;
+    padding-top: 10px;
+    background-color: #f3f7f7;
+    box-shadow: 0px 0px 10px #dce0e094 inset;
+    border-radius: 3px;
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    overflow-x: hidden;
+    overflow-y: auto;
+    /* background-color: tomato; */
+}
+
+.chk-bx{
+    margin-left: 10%;
+    width: 50%;
+    color: slategrey;
+}
+
+.chk-bx > label{
+    margin-left: 5%;
+}
+
+.training-days{
+    width: 30%;
+}
+/* .total-price{
+    
+} */
+
+/* buttons styling */
+.button-container{
+    width: 80%;
+    height: 70px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* background-color: violet; */
+}
+
+
+label{
+    font-size: 20px;
+    /* background-color: #07c075; */
+}
+
+
+@media screen and (max-width: 768px){
+    .title-container{
+        width: 100%;
+        background-color: #292d42;
+        border: 2px solid #292d42;
+        color: white;
+    }
+    .field-container{
+        width: 90%;
+        /* background-color: seagreen; */
+    }
+
+    .input-container{
+        height: 60px;
+        flex-direction: column;
+        justify-content: space-evenly;
+        align-items: flex-start;
+        margin-top: 20px;
+    }
+
+    #input-container{
+        height: 60px;
+        flex-direction: row;
+        justify-content: space-evenly;
+        align-items: center;
+        margin-top: 10px;
+    }
+    
+    .total-price, .package-name  {
+        width: 100%;
+        border: 2px solid #9e9ea0;
+        
+     }
+     select.Emp-type{
+        border: 2px solid #9e9ea0;
+        outline:0px;
+        width: 100%; 
+     }
+     .button-container{
+        width: 90%;
+        /* background-color: violet; */
+    }
+}

@@ -1,0 +1,239 @@
+.table {
+  overflow-y: auto;
+  height: 370px;
+  width: 80%;
+  background-color: whitesmoke;
+  border-radius: 5px;
+  position: relative;
+  align-self: center;
+  transition: 0.5s;
+  box-shadow: 1px 1px 10px #b0b3b3 inset;
+}
+.heading-row {
+  float: center;
+  margin: auto;
+  display: flex;
+  width: 50%;
+  height: 70px;
+}
+.topic-row {
+  display: flex;
+  width: 80%;
+  height: 70px;
+}
+.row {
+  font-size: 15px;
+  margin: 6px 5px;
+  padding: 8px 0px;
+  height: 50px;
+  text-shadow: 5px;
+  background: white;
+  border-radius: 3px;
+  box-shadow: 1px 1px 10px #b0b3b3;
+}
+.cell {
+  margin: auto;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+.heading-cell {
+  margin: auto;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+.topic-cell {
+  width: 100%;
+  display: flex;
+}
+.heading {
+  display: flex;
+  width: 80%;
+  border-radius: 5px;
+  margin-top: 20px;
+  align-self: center;
+  background-color: white;
+  color: #0892d0;
+  text-shadow: 5px;
+  font-weight: 600;
+  font-size: 15px;
+  border: solid #0892d0;
+  border-width: 4px;
+  box-shadow: 1px 1px 10px #b0b3b3;
+}
+.table-topic {
+  display: flex;
+  width: 80%;
+  border-radius: 5px;
+  align-self: center;
+  background-color: rgb(255, 255, 255);
+  text-shadow: 5px;
+  font-weight: 600;
+  font-size: 15px;
+}
+.information {
+  margin: 10px 30px;
+  display: flex;
+  width: 70%;
+  justify-content: space-around;
+}
+.topic-information {
+  color: #0892d0;
+  margin-top: 20px;
+  margin-left: 30px;
+  margin-right: 30px;
+  width: 70%;
+  display: flex;
+
+  width: 100%;
+}
+.one {
+  width: 30%;
+}
+.two {
+  width: 45%;
+}
+.three {
+  width: 25%;
+}
+.topic-one {
+  width: 30%;
+}
+.topic-two {
+  width: 45%;
+}
+.topic-three {
+  width: 25%;
+}
+.removeButton,
+.addButton {
+  margin: auto;
+  display: flex;
+  width: 20%;
+  justify-content: flex-start;
+}
+.Remove {
+  width: 80%;
+  height: 30px;
+  box-shadow: 1px 1px 10px #b0b3b3;
+  color: white;
+  background-color: #262b2f;
+  border: none;
+  font-weight: 600;
+  border-radius: 3px;
+}
+.Remove:hover {
+  color: #262b2f;
+  background-color: white;
+  border: 2px solid #262b2f;
+  border-radius: 3px;
+  box-shadow: 1px 1px 10px #b0b3b3;
+}
+.Add {
+  width: 80%;
+  height: 30px;
+  box-shadow: 1px 1px 10px #b0b3b3;
+  color: white;
+  font-weight: 600;
+  background-color: #0892d0;
+  border: none;
+  border-radius: 3px;
+}
+.Add:hover {
+  color: #0892d0;
+  background-color: white;
+  border: 2px solid #0892d0;
+  box-shadow: 1px 1px 10px #898a8a;
+}
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 5px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background-color: #0892d0;
+}
+@media screen and (max-width: 1330px) {
+  .topic-row {
+    display: none;
+  }
+  .row {
+    font-size: 15px;
+    margin: 6px 5px;
+    padding: 8px 5px;
+    height: fit-content;
+    text-shadow: 5px;
+    background-color: white;
+    border-radius: 2px;
+    box-shadow: 1px 1px 10px #b0b3b3;
+  }
+  .heading {
+    margin-bottom: 10px;
+  }
+  .heading-row {
+    width: 80%;
+    /* background-color: blueviolet; */
+  }
+  .cell {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .information {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    justify-content: space-around;
+    align-items: space-around;
+  }
+  .one,
+  .three,
+  .four,
+  .two {
+    display: flex;
+    width: 95%;
+    margin-bottom: 8px;
+    /* background-color: blueviolet; */
+  }
+  .table {
+    overflow-x: hidden;
+  }
+  .Remove {
+    width: 80px;
+    height: 30px;
+    box-shadow: 1px 1px 10px #b0b3b3;
+    color: white;
+    background-color: #262b2f;
+    border: none;
+    font-size: xx-small;
+    font-weight: normal;
+    border-radius: 3px;
+  }
+  .Add {
+    width: 80px;
+    height: 30px;
+    box-shadow: 1px 1px 10px #b0b3b3;
+    color: white;
+    font-size: xx-small;
+    font-weight: normal;
+    background-color: #0892d0;
+    border: none;
+    border-radius: 3px;
+  }
+  .removeButton,
+  .addButton {
+    margin: auto;
+    display: flex;
+    width: 90%;
+    justify-content: flex-start;
+  }
+}

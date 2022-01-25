@@ -1,0 +1,189 @@
+.table {
+  overflow-y: auto;
+  height: 400px;
+  width: 95%;
+  margin-top: 10px;
+  background-color: whitesmoke;
+  border-radius: 5px;
+  position: relative;
+  align-self: center;
+  transition: 0.5s;
+  box-shadow: 1px 1px 10px #b0b3b3 inset;
+}
+.heading-row {
+  /* background-color: tomato; */
+  font-size: 15px;
+  margin: 6px 5px;
+  padding: 8px 0px;
+  height: 30px;
+  text-shadow: 5px;
+  border-radius: 3px;
+}
+.heading-cell {
+  margin: auto;
+  /* background-color: #0892d0; */
+  width: 95%;
+  display: flex;
+}
+.row {
+  font-size: 15px;
+  margin: 6px 5px;
+  padding: 8px 0px;
+  height: 50px;
+  text-shadow: 5px;
+  background: white;
+  border-radius: 3px;
+  box-shadow: 1px 1px 10px #b0b3b3;
+  /* background-color: tomato; */
+}
+.cell {
+  width: 100%;
+  display: flex;
+  /* background-color: violet; */
+}
+.information {
+  margin: 10px 30px;
+  display: flex;
+  width: 70%;
+  justify-content: space-around;
+  /* background-color: yellow; */
+}
+#Add,
+.Add {
+  width: 100px;
+  height: 30px;
+  font-weight: 600;
+  box-shadow: 1px 1px 20px #b0b3b3;
+  color: white;
+  background-color: #0892d0;
+  border: none;
+  border-radius: 3px;
+  margin-right: 5px;
+}
+.Add-selected {
+  width: 100px;
+  height: 30px;
+  font-weight: 600;
+  box-shadow: 1px 1px 20px #b0b3b3;
+  color: white;
+  background-color: #262b2f;
+  border: none;
+  border-radius: 3px;
+}
+#Add:hover,
+.Add:hover {
+  background-color: white;
+  color: #0892d0;
+  border: 2px solid #0892d0;
+  box-shadow: 1px 1px 10px #898a8a;
+}
+.Add-selected:hover {
+  background-color: white;
+  color: #262b2f;
+  border: 2px solid #262b2f;
+  box-shadow: 1px 1px 10px #898a8a;
+}
+.addButton {
+  margin: auto;
+  display: flex;
+  width: 20%;
+  justify-content: flex-start;
+}
+.one {
+  width: 20%;
+}
+.two {
+  width: 35%;
+}
+.three {
+  width: 20%;
+}
+.four {
+  width: 25%;
+}
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 5px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background-color: #0892d0;
+}
+@media screen and (max-width: 1117px) {
+  .addInstructor-box {
+    margin-top: 60px;
+    display: flex;
+    flex-direction: column;
+    width: 98%;
+    max-width: 447px;
+    height: 85vh;
+    background-color: white;
+    box-shadow: 1px 1px 10px #b0b3b3;
+    border-radius: 4px;
+  }
+  .save {
+    width: 100px;
+    height: 40px;
+    font-size: xx-small;
+    font-weight: normal;
+  }
+  .row {
+    font-size: 15px;
+    margin: 6px 5px;
+    padding: 8px 5px;
+    height: fit-content;
+    text-shadow: 5px;
+    background-color: white;
+    border-radius: 2px;
+    box-shadow: 1px 1px 10px #b0b3b3;
+  }
+  .cell {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .information {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    justify-content: space-around;
+    align-items: space-around;
+  }
+  .one,
+  .three,
+  .four,
+  .two {
+    display: flex;
+    width: 95%;
+    margin-bottom: 8px;
+    /* background-color: blueviolet; */
+  }
+  .addButton {
+    margin: auto;
+    display: flex;
+    width: 90%;
+    justify-content: flex-start;
+    /* background-color: tomato; */
+  }
+  .table {
+    overflow-x: hidden;
+  }
+  .cancel {
+    font-size: xx-small;
+    font-weight: normal;
+  }
+  .Add,
+  .Add-selected {
+    font-size: xx-small;
+    font-weight: normal;
+    width: 80px;
+  }
+}

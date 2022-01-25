@@ -1,0 +1,134 @@
+.tableFixHead {
+  position: relative;
+  height: 400px;
+  overflow-y: auto;
+  width: 95%;
+  background-color: #f2f2f2;
+  border-radius: 5px;
+  margin-top: 12px;
+  /* transition: 0.5s; */
+  /* box-shadow: 1px 1px 10px #b0b3b3 inset; */
+}
+.heading {
+  width: 95%;
+  /* padding: 10px 10px; */
+  border-radius: 5px;
+  position: relative;
+  margin-top: 12px;
+  align-self: stretch;
+  background-color: #262b2f;
+  color: white;
+  text-shadow: 5px;
+  font-size: 15px;
+
+  box-shadow: 1px 1px 10px #b0b3b3;
+}
+.row {
+  font-size: 15px;
+  margin: 6px 5px;
+  padding: 8px 0px;
+  height: 50px;
+  text-shadow: 5px;
+  background-color: white;
+  border-radius: 2px;
+  box-shadow: 1px 1px 10px #b0b3b3;
+}
+.cell {
+  height: 100%;
+  padding: 10px 0px;
+  display: flex;
+  /* background-color: blueviolet; */
+}
+.View {
+  width: fit-content;
+  height: 28px;
+  font-size: 15px;
+  font-weight: bold;
+  padding: 0px 20px;
+  margin-right: 20px;
+  box-shadow: 1px 1px 10px #b0b3b3;
+  color: white;
+  background-color: #0892d0;
+  border: none;
+  border-radius: 2px;
+}
+.View:hover {
+  background-color: white;
+  color: #0892d0;
+  border: 2px solid #0892d0;
+  /* box-shadow: 2px 2px 10px #b0b3b3; */
+}
+.Join {
+  width: fit-content;
+  height: 28px;
+  font-size: 15px;
+  font-weight: bold;
+  padding: 0px 20px;
+  margin-right: 20px;
+  box-shadow: 1px 1px 10px #b0b3b3;
+  color: white;
+  background-color: #262b2f;
+  border: none;
+  border-radius: 2px;
+}
+.Join:hover {
+  background-color: white;
+  color: #262b2f;
+  border: 2px solid #262b2f;
+  /* box-shadow: 2px 2px 10px #b0b3b3; */
+}
+.information {
+  display: flex;
+  width: 70%;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.viewButton {
+  height: 100%;
+  display: flex;
+  width: 30%;
+  justify-content: center;
+  /* background-color: blue; */
+  align-items: center;
+}
+.headingDetails {
+  display: flex;
+  width: 70%;
+  color: white;
+  justify-content: space-around;
+}
+.heading-row {
+  font-size: 15px;
+  margin: 6px 5px;
+  padding: 8px 0px;
+  height: 50px;
+  text-shadow: 5px;
+  font-weight: 600;
+}
+.one {
+  width: 20%;
+}
+.three,
+.four {
+  width: 15%;
+}
+.two {
+  width: 30%;
+}
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 5px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #0892d0;
+}

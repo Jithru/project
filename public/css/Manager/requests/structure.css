@@ -1,0 +1,40 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  padding-left: 35px;
+  padding-right: 35px;
+  width: calc(100% - 250px);
+  /* background-color: yellow; */
+  height: 100%;
+}
+.topic {
+  display: flex;
+  width: 95%;
+
+  /* background-color: yellow; */
+  justify-content: flex-end;
+}
+.body-container {
+  display: flex;
+  width: 90%;
+  margin-top: 30px;
+}
+h3 {
+  font-size: 25px;
+  color: #0892d0;
+}
+.link-set {
+  display: flex;
+  /* background-color: aqua; */
+  cursor: pointer;
+  width: 150px;
+  font-size: 17px;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+.exam-link:hover {
+  color: #0892d0;
+}
+.session-link:hover {
+  color: #0892d0;
+}

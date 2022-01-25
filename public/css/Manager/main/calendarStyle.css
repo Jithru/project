@@ -1,0 +1,168 @@
+.calender {
+  margin-top: 50px;
+  width: 19.5rem;
+  height: 21.16rem;
+  background-color: white;
+  border-radius: 2px;
+  box-shadow: 1px 1px 10px #b0b3b3;
+  transition: 0.5s;
+}
+.date {
+  font-size: 16px;
+}
+.month {
+  width: 100%;
+  height: 5.1rem;
+  background-color: white;
+  color: #0892d0;
+  display: flex;
+  padding: 0.325rem;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+  border-radius: 2px;
+  text-shadow: 5px;
+}
+.month i {
+  font-size: 1.3rem;
+  cursor: pointer;
+}
+.month h2 {
+  font-size: 1.3rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 0.325rem;
+  margin-bottom: 0.325rem;
+  text-align: center;
+}
+.weekdays {
+  width: 100%;
+  height: 3rem;
+  display: flex;
+  padding: 0.26rem;
+  align-items: center;
+}
+.weekdays div {
+  font-size: 0.975rem;
+  letter-spacing: 0.065rem;
+  font-weight: 500;
+  width: calc(18.98rem / 7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.days {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0.26rem;
+}
+.days div {
+  font-size: 0.91rem;
+  width: calc(18.98rem / 7);
+  height: 2.08rem;
+  padding-top: 0.455rem;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  text-shadow: 0 0.3rem 0.5rem rgba(36, 35, 35, 0.521);
+  transition: background-color 0.3s;
+}
+.days div:hover:not(.today) {
+  background-color: white;
+  border: 2px solid #0892d0;
+  border-color: #0892d0;
+  border-radius: 0.195rem;
+}
+.prev-date,
+.next-date {
+  opacity: 50%;
+}
+.today {
+  background-color: #0892d0;
+  color: rgb(255, 255, 255);
+  border-radius: 0.195rem;
+}
+.today:hover {
+  background-color: #0892d0;
+  color: white;
+  border: 0.2rem;
+  border-color: #0892d0;
+  border-radius: 0.3rem;
+}
+.dayButton {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+@media screen and (max-width: 1197px) {
+  .calender {
+    margin-top: 50px;
+    width: 15.6rem;
+    height: 16.928rem;
+    background-color: white;
+    border-radius: 2px;
+    box-shadow: 1px 1px 10px #b0b3b3;
+  }
+  .date {
+    font-size: 16px;
+  }
+  .month {
+    width: 100%;
+    height: 4.08rem;
+    background-color: white;
+    color: #0892d0;
+    display: flex;
+    padding: 0.26rem;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+    border-radius: 2px;
+    text-shadow: 5px;
+  }
+  .month i {
+    font-size: 1.04rem;
+    cursor: pointer;
+  }
+  .month h2 {
+    font-size: 1.04rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.26rem;
+    margin-bottom: 0.26rem;
+    text-align: center;
+  }
+  .weekdays {
+    width: 100%;
+    height: 3rem;
+    display: flex;
+    padding: 0.208rem;
+    align-items: center;
+  }
+  .weekdays div {
+    font-size: 0.78rem;
+    letter-spacing: 0.052rem;
+    font-weight: 500;
+    width: calc(15.184rem / 7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .days {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0.208rem;
+  }
+  .days div {
+    font-size: 0.728rem;
+    width: calc(15.184rem / 7);
+    height: 1.664rem;
+    padding-top: 0.364rem;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    text-shadow: 0 0.3rem 0.5rem rgba(36, 35, 35, 0.521);
+    transition: background-color 0.3s;
+  }
+}

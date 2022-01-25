@@ -1,0 +1,40 @@
+.Horizontal-tab {
+  display: flex;
+  width: 80%;
+  align-items: center;
+  /* background-color: darkorchid; */
+}
+.tabContainer {
+  display: flex;
+  justify-content: space-between;
+  width: 25%;
+  align-items: center;
+  /* background-color: blue; */
+  /* background-color: white; */
+  margin-right: 80px;
+}
+.page-change-button {
+  background-color: #f2f2f2;
+  width: 150px;
+  padding-right: 5px;
+  padding-left: 5px;
+  font-size: 16px;
+  width: fit-content;
+  border: none;
+  margin-right: 20px;
+  height: 30px;
+}
+.page-change-button-selected {
+  background-color: #f2f2f2;
+  padding-right: 5px;
+  padding-left: 5px;
+  font-size: 16px;
+  width: fit-content;
+  border: none;
+  margin-right: 20px;
+  height: 30px;
+  border-bottom: 2px solid black;
+}
+.page-change-button:hover {
+  color: #0892d0;
+}

@@ -1,0 +1,20 @@
+.container-st {
+  visibility: visible;
+}
+.container-st-hidden {
+  visibility: hidden;
+}
+
+.add-container {
+  visibility: hidden;
+}
+.add-container-visible {
+  visibility: visible;
+}
+
+.second-container {
+  visibility: hidden;
+}
+.second-container-visible {
+  visibility: visible;
+}

@@ -1,0 +1,53 @@
+
+/* Add new package title */
+.mid-box-title-container{
+    width: 100%;
+    text-align: center;
+    border-radius: 13px;
+    /* background-color: tomato; */
+}
+
+/* Details are in this class */
+.mid-box-details-container{
+    width: 100%;
+    /* background-color: seagreen; */
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+.mid-box-row{
+    width: 86%;
+    height: 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* background-color: aqua; */
+}
+.mid-box-column-1{
+    width: 30%;
+    height: 90%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* background-color: blueviolet; */
+}
+.mid-box-column-2{
+    width: 65%;
+    height: 90%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* background-color: chartreuse; */
+}
+.mid-box-button-container{
+    width: 80%;
+    height: 70px;
+    display: flex;
+    justify-content: right;
+    
+    align-items: center;
+    /* background-color: cornflowerblue; */
+    
+}
+
+

@@ -1,0 +1,250 @@
+.save,
+.confirm,
+.cancel,
+.delete {
+  height: 45px;
+  width: 100px;
+  border-radius: 3px;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.save,
+.confirm {
+  border: none;
+  color: #f3f7f7;
+  background-color: #0892d0;
+  box-shadow: 5px 5px 10px #cfd7ed;
+}
+.delete {
+  border: none;
+  color: #f3f7f7;
+  background-color: #2e2d2d;
+  box-shadow: 5px 5px 10px #cfd7ed;
+}
+.cancel {
+  color: #505050;
+  background-color: #bbbbbb;
+  border: solid 2px #757575;
+}
+.cancel:hover {
+  background-color: #d1d0d0;
+  cursor: pointer;
+}
+
+.save:hover,
+.confirm:hover {
+  background-color: #0892d0;
+  cursor: pointer;
+}
+
+.delete:hover {
+  background-color: #2e2d2d;
+}
+
+.row-delete {
+  width: fit-content;
+  padding-left: 10px;
+  padding-right: 10px;
+  height: 35px;
+  border: 2px solid #2e2d2d;
+  box-shadow: 1px 1px 5px #b0b3b3;
+  background-color: #2e2d2d;
+  color: white;
+  border-radius: 2px;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.row-delete:hover {
+  border: 2px solid #2e2d2d;
+  background-color: white;
+  color: #2e2d2d;
+  width: fit-content;
+  padding-left: 10px;
+  padding-right: 10px;
+
+  cursor: pointer;
+}
+
+.save:active,
+.confirm:active,
+.cancel:active,
+.delete:active {
+  margin-top: 20px;
+}
+
+.back {
+  width: 80px;
+  height: 40px;
+  border: none;
+  border-radius: 5px;
+  background-color: #2e2d2d;
+  color: #f3f7f7;
+  font-size: 15px;
+  font-weight: 600;
+}
+.back:hover {
+  background-color: #353a53;
+  cursor: pointer;
+}
+.back:active {
+  margin-top: 5px;
+}
+
+.edit-large {
+  width: 100px;
+  height: 30px;
+  background-color: #bbbbbb;
+  box-shadow: 1px 1px 5px #2e2d2d;
+  color: white;
+  border: none;
+  border-radius: 3px;
+  /* background-color: indianred; */
+}
+
+.edit-large:hover {
+  background-color: #777777;
+  cursor: pointer;
+}
+
+.edit {
+  width: 50px;
+  height: 25px;
+  background-color: #d0d0d5;
+  box-shadow: 1px 1px 5px #2e2d2d;
+  color: #1b1b32;
+  border: none;
+  border-radius: 3px;
+  /* background-color: indianred; */
+}
+
+.edit-deactivate{
+  display: none;
+}
+
+.edit:hover {
+  background-color: #777777;
+}
+
+.add-new {
+  width: fit-content;
+  padding-left: 10px;
+  padding-right: 10px;
+  height: 40px;
+  border: 3px solid #0892d0;
+  /* background-color: white; */
+  color: #0892d0;
+  border-radius: 5px;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.add-new:hover {
+  background-color: #0892d0;
+  color: white;
+  cursor: pointer;
+}
+
+.view-more,
+.mark-as-read {
+  display: block;
+  width: fit-content;
+  padding-left: 10px;
+  padding-right: 10px;
+  height: 35px;
+  border: 2px solid #0892d0;
+  box-shadow: 1px 1px 5px #b0b3b3;
+  background-color: #0892d0;
+  color: white;
+  border-radius: 2px;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.view-more-deactivate{
+  display: none;
+}
+
+.save-small:hover,
+.view-more:hover,
+.mark-as-read:hover {
+  border: 2px solid #0892d0;
+  background-color: white;
+  color: #0892d0;
+  /* width: fit-content;
+  padding-left: 10px;
+  padding-right: 10px; */
+
+  cursor: pointer;
+}
+
+.save-small {
+  display: block;
+  width: fit-content;
+  padding: 5px 8px;
+  height: fit-content;
+  border: 2px solid #0892d0;
+  box-shadow: 1px 1px 5px #b0b3b3;
+  background-color: #0892d0;
+  color: white;
+  border-radius: 5px;
+  font-size: 13px;
+  font-weight: 400;
+}
+
+.save-small-deactivate{
+  display: none;
+}
+.registerStudent-button-container {
+  display: flex;
+  width: 85%;
+  justify-content: flex-end;
+}
+.registerStudent-button {
+  width: fit-content;
+  padding-left: 10px;
+  padding-right: 10px;
+  height: 40px;
+  border: 2px solid #0892d0;
+  box-shadow: 1px 1px 5px #b0b3b3;
+  background-color: #0892d0;
+  color: white;
+  border-radius: 2px;
+  font-size: 15px;
+  font-weight: 600;
+}
+.registerStudent-button:hover {
+  border: 2px solid #0892d0;
+  background-color: white;
+  color: #0892d0;
+  width: fit-content;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.cancel-small-deactivate{
+  display: none;
+}
+
+.cancel-small{
+  display: block;
+  height: fit-content;
+  width: fit-content;
+  padding: 5px 8px;
+  font-size: 13px;
+  font-weight: 400;
+  border-radius: 5px;
+  color: #505050;
+  background-color: #bbbbbb;
+  border: 2px solid #bbbbbb;
+}
+
+.cancel-small:hover{
+  background-color: white;
+  cursor: pointer;
+}
+
+.col-4 > .cancel-small{
+  margin-right: 5px;
+}

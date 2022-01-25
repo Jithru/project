@@ -1,0 +1,143 @@
+.table {
+  overflow-y: auto;
+  height: 450px;
+  width: 90%;
+  background-color: #f2f2f2;
+  position: relative;
+  align-self: center;
+  /* box-shadow: 1px 1px 10px #b0b3b3 inset; */
+  border-radius: 3px;
+  margin-top: 10px;
+  margin-bottom: 40px;
+}
+.heading {
+  display: flex;
+  width: 90%;
+  align-self: center;
+  /* padding: 10px 10px; */
+  border-radius: 5px;
+  position: relative;
+  margin-top: 12px;
+  box-shadow: 1px 1px 10px #b0b3b3;
+  background-color: #262b2f;
+  color: white;
+  text-shadow: 5px;
+  font-size: 15px;
+}
+.headingDetails {
+  display: flex;
+  margin-left: 20px;
+  width: 100%;
+  justify-content: space-around;
+}
+.heading-row {
+  width: 100%;
+  font-size: 15px;
+  margin: 6px 5px;
+  padding: 9px 0px;
+  height: 50px;
+  text-shadow: 5px;
+  font-weight: 600;
+}
+.row {
+  font-size: 15px;
+  margin: 6px 5px;
+  padding: 8px 0px;
+  height: 50px;
+  text-shadow: 5px;
+  background: white;
+  border-radius: 3px;
+  box-shadow: 1px 1px 10px #b0b3b3;
+}
+.cell {
+  width: 100%;
+  height: 30px;
+  display: flex;
+  align-items: center;
+}
+.information {
+  margin-top: 7px;
+  margin-left: 20px;
+  height: 40px;
+  display: flex;
+  width: 100%;
+  align-items: center;
+  /* background-color: blue; */
+}
+.one {
+  width: 15%;
+}
+.two {
+  width: 20%;
+  cursor: pointer;
+}
+.three {
+  width: 25%;
+}
+.four {
+  width: 15%;
+}
+.five {
+  width: 10%;
+}
+.six {
+  margin-right: 20px;
+  display: flex;
+  width: 15%;
+  justify-content: flex-end;
+}
+.two .description {
+  visibility: hidden;
+  width: fit-content;
+  background-color: #0892d0;
+  color: #fff;
+  text-align: center;
+  padding: 10px 10px;
+  border-radius: 3px;
+  position: absolute;
+  box-shadow: 1px 1px 10px #b0b3b3;
+  z-index: 1;
+}
+.two:hover {
+  color: #0892d0;
+}
+.two:hover .description {
+  visibility: visible;
+  transition: 0.5s;
+}
+.done-button {
+  width: fit-content;
+  height: 28px;
+  font-size: 15px;
+  font-weight: bold;
+  padding: 0px 20px;
+  box-shadow: 1px 1px 10px #b0b3b3;
+  color: white;
+  background-color: #0892d0;
+  border: none;
+  border-radius: 2px;
+}
+
+.accept-text {
+  display: flex;
+  /* background-color: blueviolet; */
+  justify-content: center;
+  padding-right: 10px;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 5px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background-color: #0892d0;
+}

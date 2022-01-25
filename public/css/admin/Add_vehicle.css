@@ -1,0 +1,68 @@
+.title-container{
+    width: 100%;
+    text-align: center;
+    border-radius: 13px;
+    margin-top: 25px;
+    
+    /* background-color: tomato; */
+}
+
+/* Details are in this class */
+.field-container{
+    width: 80%;
+    /* background-color: seagreen; */
+    margin-top: 35px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.input-container{
+    width: 100%;
+    height: 50px;
+    /* background-color: yellowgreen; */
+    display: flex;
+    align-items: center;
+}
+
+/* common styles for input fields */
+
+input, .vehicle-class{
+    height: 30px;
+    border: none;
+    border-radius: 3px;
+    padding-left: 10px;
+    background-color: #f3f7f7;
+    box-shadow: 0px 0px 10px #dce0e094 inset;
+}
+/* common styles for input fields (focus)*/
+.vehicle-type[type=text]:focus,  .vehicle-num[type=text]:focus{
+    background-color: #e8f0fe;
+    outline: none;
+}
+
+.vehicle-type,.vehicle-num{
+    width: 72%;
+}
+
+select.vehicle-class {
+    width: 50%;
+    border:0px;
+    outline:0px;
+ }
+
+ 
+label{
+    font-size: 16px;
+    width: 135px;
+    /* background-color: #07c075; */
+}
+
+.button-container{
+    margin-top: 50px;
+    width: 80%;
+    height: 70px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* background-color: violet; */
+}
