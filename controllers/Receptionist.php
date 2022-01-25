@@ -177,6 +177,185 @@ class Receptionist extends Controller{
     //     $result=$this->model->addFail($cube[0],$cube[1]);
     //     echo json_encode($result);
     // }
+
+        //student List
+
+        function studentList(){
+
+            if(isset($_SESSION['job_title'])){
+                if($_SESSION['job_title']=='Receptionist'){
+                    $this->view->render('receptionist/listOfStudent');
+                    
+                }else{
+                    $this->view->render('error');
+                }
+            }
+            else{
+                $this->view->render('error');
+            }   
+        }
+        function examPassed(){
+    
+            if(isset($_SESSION['job_title'])){
+                if($_SESSION['job_title']=='Receptionist'){
+                    $this->view->render('receptionist/examPassed');
+                    
+                }else{
+                    $this->view->render('error');
+                }
+            }
+            else{
+                $this->view->render('error');
+            }   
+        }
+        function trialPassed(){
+    
+            if(isset($_SESSION['job_title'])){
+                if($_SESSION['job_title']=='Receptionist'){
+                    $this->view->render('receptionist/trialPassed');
+                    
+                }else{
+                    $this->view->render('error');
+                }
+            }
+            else{
+                $this->view->render('error');
+            }   
+        }
+        function examFailed(){
+    
+            if(isset($_SESSION['job_title'])){
+                if($_SESSION['job_title']=='Receptionist'){
+                    $this->view->render('receptionist/examFailed');
+                    
+                }else{
+                    $this->view->render('error');
+                }
+            }
+            else{
+                $this->view->render('error');
+            }   
+        }
+        
+        function getStudentDetails(){
+            $result=$this->model->getStudentDetails();
+            echo json_encode($result);
+        }
+    
+        function getEmployeeDetailsMore($id){
+            $result=$this->model->getEmployeeDetailsMore($id);
+            // echo "hi";
+            echo json_encode($result);
+        }
+        function viewExam($id=''){
+            if(isset($_SESSION['job_title'])){
+                if($_SESSION['job_title']=='Receptionist'){
+                    if($id!=''){
+                        $_SESSION['viewExamId']=$id;
+                    }
+                    $this->view->render('Receptionist/viewExam');
+                }else{
+                    $this->view->render('error');
+                }
+            }
+            else{
+                $this->view->render('error');
+            } 
+            
+        }
+        function viewSession($id=''){
+            if(isset($_SESSION['job_title'])){
+                if($_SESSION['job_title']=='Receptionist'){
+                    if($id!=''){
+                        $_SESSION['viewSessionId']=$id;
+                    }
+                    $this->view->render('Receptionist/viewSession');
+                }else{
+                    $this->view->render('error');
+                }
+            }
+            else{
+                $this->view->render('error');
+            } 
+        }
+        function viewStudent(){
+            if(isset($_SESSION['job_title'])){
+                if($_SESSION['job_title']=='Receptionist'){
+                    $this->view->render('Receptionist/viewStudent');
+                }else{
+                    $this->view->render('error');
+                }
+            }
+            else{
+                $this->view->render('error');
+            }   
+        }
+        function viewStudentS(){
+            if(isset($_SESSION['job_title'])){
+                if($_SESSION['job_title']=='Receptionist'){
+                    $this->view->render('Receptionist/viewStudentS');
+                }else{
+                    $this->view->render('error');
+                }
+            }
+            else{
+                $this->view->render('error');
+            } 
+            
+        }
+        function viewInstructor(){
+            if(isset($_SESSION['job_title'])){
+                if($_SESSION['job_title']=='Receptionist'){
+                    $this->view->render('Receptionist/viewInstructor');
+                }else{
+                    $this->view->render('error');
+                }
+            }
+            else{
+                $this->view->render('error');
+            } 
+        }
+        function viewInstructorS(){
+            if(isset($_SESSION['job_title'])){
+                if($_SESSION['job_title']=='Receptionist'){
+                    $this->view->render('Receptionist/viewInstructorS');
+                }else{
+                    $this->view->render('error');
+                }
+            }
+            else{
+                $this->view->render('error');
+            } 
+        }
+        function viewVehicle(){
+            if(isset($_SESSION['job_title'])){
+                if($_SESSION['job_title']=='Receptionist'){
+                    $this->view->render('Receptionist/viewVehicle');
+                }else{
+                    $this->view->render('error');
+                }
+            }
+            else{
+                $this->view->render('error');
+            } 
+        }
+        function viewVehicleS(){
+            if(isset($_SESSION['job_title'])){
+                if($_SESSION['job_title']=='Receptionist'){
+                    $this->view->render('Receptionist/viewVehicleS');
+                }else{
+                    $this->view->render('error');
+                }
+            }
+            else{
+                $this->view->render('error');
+            }
+        }
+         //list of student search special student
+        function findStudent($findMe){
+            $result = $this->model->findStudent($findMe);
+            echo json_encode($result);
+        }
     
     
 }
