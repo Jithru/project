@@ -110,6 +110,7 @@ class Admin_Model extends Model{
         return $result;
 
     }
+    // view reviews
     function getreviews(){
         $result=$this->db->runQuery("SELECT reviews.submitted_date_time,reviews.idea,reviews.satisfaction,reviews.improvements, student.init_name from reviews INNER JOIN student on student.student_id=reviews.student_id");
         return $result;
