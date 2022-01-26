@@ -12,7 +12,7 @@ function nextPage(){
         document.getElementById("fullName").style.border="2px solid red"
         flag=false;
     }
-    var pmtAddress=document.getElementById("pmtAddress").value;
+    var pmtAddress=document.getElementById("pmtAddress").value; 
     if(pmtAddress.length==0){
         document.getElementById("pmtAddress").placeholder="Address can not be empty"
         document.getElementById("pmtAddress").style.border="2px solid red"
@@ -118,7 +118,8 @@ function nextPage(){
         }
 
     }
-   
+    //.......................................................remove flag.........................................................................
+    flag=true;
     if(flag==true){
         document.getElementById("reg-form").classList.replace("reg-form","reg-form-hidden");
         document.getElementById("reg2-f2").classList.replace("reg2-f2","reg2-f2-visible");
@@ -127,10 +128,13 @@ function nextPage(){
     
     // document.getElementById("reg-form").classList.replace("reg-form","reg-form-hidden");
     // document.getElementById("reg2-f2").classList.replace("reg2-f2","reg2-f2-visible");
-    
-
 }
-
+function RegCancel(){
+    window.location.href = "http://localhost/project/Receptionist/studentList/";
+}
+function cancelf2(){
+    window.location.href = "http://localhost/project/Receptionist/studentList/";
+}
 function pre(){
     document.getElementById("reg2-f2").classList.replace("reg2-f2-visible","reg2-f2");
     // alert("hi");
@@ -159,9 +163,17 @@ function changing(){
 }
 
 function SaveData(){
+    // alert('Hello');
+
     var initName=document.getElementById("initName").value;
+    var init=initName.replace(/\s+/g, '-');
     var fullName=document.getElementById("fullName").value;
+    var fullN=fullName.replace(/\s+/g, '-');
     var pmtAddress=document.getElementById("pmtAddress").value;
+    var pmtAdd=pmtAddress.replace(/,+/g, '_');
+    pmtAdd=pmtAdd.replace(/\s+/g, '-');
+    pmtAdd=pmtAdd.replace(/\/+/g, '~');
+    
     var city=document.getElementById("city").value;
     var district=document.getElementById("district").value;
     var divSecre=document.getElementById("divSecre").value;
@@ -210,15 +222,17 @@ function SaveData(){
     }
 
     if(type=="written"){
-        var classA=document.getElementById("A1-A").checked;
-        var classAauto=document.getElementById("A-Auto").checked;
+        var medNo = document.getElementById("medical").value;
+        var issuDate = document.getElementById("issue").value;
+
+        var classA1=document.getElementById("A1").checked;
+        var classA=document.getElementById("A").checked;
         var classB1=document.getElementById("B1").checked;
         var classB=document.getElementById("B").checked;
-        var classBauto=document.getElementById("B-Auto").checked;
 
         var classArray=[]
-        if(classAauto==true){
-            classArray.push("A-Auto");
+        if(classA1==true){
+            classArray.push("A1");
         }if(classA==true){
             classArray.push("A");
         }if(classB1==true){
@@ -226,10 +240,7 @@ function SaveData(){
         }if(classB==true){
             classArray.push("B");
         }
-        if(classBauto==true){
-            classArray.push("B-Auto");
-        }
-   
+        console.log(classA1,classA,classB1,classB);
         console.log(classArray);
         var packageId=document.getElementById("package-id-container").value;
         var initialCharges=document.getElementById("initPayment").value;
@@ -240,49 +251,109 @@ function SaveData(){
           console.log("onreadystatechange");
           if( httpreq.readyState === 4 && httpreq.status === 200){
             console.log(httpreq.responseText);
-            alert(httpreq.responseText) ;
-              
           }
         }
-        var medicalId=document.getElementById("medical").value;
-        var issuedDate=document.getElementById("issue").value;
-        // alert(gender)
-
-
-        pmtAddress=pmtAddress.replace(/,+/g, '_');
-        pmtAddress=pmtAddress.replace(/\s+/g, '-');
-        pmtAddress=pmtAddress.replace(/\/+/g, '~');
-
-        divSecre=divSecre.replace(/,+/g, '_');
-        divSecre=divSecre.replace(/\s+/g, '-');
-        divSecre=divSecre.replace(/\/+/g, '~');
-        
-        fullName=fullName.replace(/\s+/g, '-');
-        initName=initName.replace(/\s+/g, '-');
-
-        let data=[nic,pmtAddress,gender,dateofbirth,mobile,initialCharges,packagePrice,district,city,divSecre,police,occupation,type,initName,fullName,medicalId,issuedDate]
-        console.log(data);
-        let vehicleClasses=[classA,classAauto,classB1,classB,classBauto]
+        data=[nic,pmtAdd,gender,dateofbirth,mobile,initialCharges,packagePrice,district,city,divSecre,police,occupation,type,init,fullN,medNo,issuDate]
+        vehicleClasses=[classA1,classA,classB1,classB]
         var url="http://localhost/project/Receptionist/registerForWritten/"+data+"/"+vehicleClasses+"/"+packageId+"/"+classArray;
         httpreq.open( "POST" , url  , true);
         httpreq.send();
+
     }else if(type=="trial"){
+        var lPermit = document.getElementById("medical").value;
+        var issue = document.getElementById("issue").value;
+        var ending = document.getElementById("ending").value;
+
+        var classA1=document.getElementById("A1").checked;
+        var classA=document.getElementById("A").checked;
+        var classB1=document.getElementById("B1").checked;
+        var classB=document.getElementById("B").checked;
+
+        var classArray=[]
+        if(classA1==true){
+            classArray.push("A1");
+        }if(classA==true){
+            classArray.push("A");
+        }if(classB1==true){
+            classArray.push("B1");
+        }if(classB==true){
+            classArray.push("B");
+        }
+        console.log(classA1,classA,classB1,classB);
+        console.log(classArray);
+
+        var packageId=document.getElementById("package-id-container").value;
+        var initialCharges=document.getElementById("initPayment").value;
+        var packagePrice=document.getElementById("package-amount-container").value;
+        //edit
+        let httpreq = new XMLHttpRequest();
+        httpreq.onreadystatechange = function(){
+          console.log("onreadystatechange");
+          if( httpreq.readyState === 4 && httpreq.status === 200){
+            console.log(httpreq.responseText);
+          }
+        }
+        data=[nic,pmtAdd,gender,dateofbirth,mobile,initialCharges,packagePrice,district,city,divSecre,police,occupation,type,init,fullN,lPermit,issue,ending]
+        vehicleClasses=[classA1,classA,classB1,classB]
+
+        var url="http://localhost/project/Receptionist/registerForTrial/"+data+"/"+vehicleClasses+"/"+packageId+"/"+classArray;
+        // var url2="http://localhost/project/Receptionist/registerForTrial/"+trial;
+        httpreq.open( "POST" , url , true);
+        httpreq.send();
+
 
     }else if(type=="license"){
+        //Lpermit, ending date
+        var licenseNo = document.getElementById("medical").value;
+        var issue = document.getElementById("issue").value;
+        var ending = document.getElementById("ending").value;
+
+        var classA1=document.getElementById("A1").checked;
+        var classA=document.getElementById("A").checked;
+        var classB1=document.getElementById("B1").checked;
+        var classB=document.getElementById("B").checked;
+
+        var classArray=[]
+        if(classA1==true){
+            classArray.push("A1");
+        }if(classA==true){
+            classArray.push("A");
+        }if(classB1==true){
+            classArray.push("B1");
+        }if(classB==true){
+            classArray.push("B");
+        }
+        console.log(classA1,classA,classB1,classB);
+        console.log(classArray);
+
+        var packageId=document.getElementById("package-id-container").value;
+        var initialCharges=document.getElementById("initPayment").value;
+        var packagePrice=document.getElementById("package-amount-container").value;
+        //edit
+        let httpreq = new XMLHttpRequest();
+        httpreq.onreadystatechange = function(){
+          console.log("onreadystatechange");
+          if( httpreq.readyState === 4 && httpreq.status === 200){
+            console.log(httpreq.responseText);
+          }
+        }
+        data=[nic,pmtAdd,gender,dateofbirth,mobile,initialCharges,packagePrice,district,city,divSecre,police,occupation,type,init,fullN,licenseNo,issue,ending]
+        vehicleClasses=[classA1,classA,classB1,classB]
+
+        var url="http://localhost/project/Receptionist/registerForLicense/"+data+"/"+vehicleClasses+"/"+packageId+"/"+classArray;
+        // var url2="http://localhost/project/Receptionist/registerForTrial/"+trial;
+        httpreq.open( "POST" , url , true);
+        httpreq.send();
 
     }
-    window.location.assign("http://localhost/project/Receptionist/studentList");
-    // document.getElementById("reg2-f2").classList.replace("reg2-f2-visible","reg2-f2");
-    // document.getElementById("reg-form").classList.replace("reg-form-hidden","reg-form");
-    
+    window.location.href = "http://localhost/project/Receptionist/studentList/";
 }
 
 function loadVehicleClasses(){
-    var classA=document.getElementById("A1-A").checked;
-    var classAauto=document.getElementById("A-Auto").checked;
+    var classA1=document.getElementById("A1").checked;
+    var classA=document.getElementById("A").checked;
     var classB1=document.getElementById("B1").checked;
     var classB=document.getElementById("B").checked;
-    var classBauto=document.getElementById("B-Auto").checked;
     let httpreq = new XMLHttpRequest();
     httpreq.onreadystatechange = function(){
         
@@ -292,7 +363,7 @@ function loadVehicleClasses(){
             document.getElementById("initPayment").value=text;
         }
     }
-    let data=[classA,classAauto,classB1,classB,classBauto]
+    let data=[classA1,classA,classB1,classB]
     var url="http://localhost/project/Receptionist/vehicleClassSelection/"+data;
     httpreq.open( "POST" , url  , true);
     httpreq.send();
@@ -304,6 +375,7 @@ function packageLoad(){
     console.log("packageload");
     var packageRows=document.getElementById("scroll");
     let httpr= new XMLHttpRequest();
+    packageRows.innerHTML=""
     httpr.onreadystatechange = function(){
         // console.log("onreadystatechange");
         // console.log(httpr.readyState,httpr.status);
