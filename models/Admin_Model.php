@@ -104,7 +104,7 @@ class Admin_Model extends Model{
     }
 
     
-
+    //complaints function
     function getcomplaints(){
         $result=$this->db->runQuery("SELECT complaints.submitted_date_time,complaints.description,complaints.suggestions, student.init_name from complaints INNER JOIN student on student.student_id=complaints.student_id");
         return $result;
