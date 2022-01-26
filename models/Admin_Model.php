@@ -21,14 +21,14 @@ class Admin_Model extends Model{
         $nic=$this->db->runQuery("SELECT nic FROM admin WHERE nic='$NIC'");
         // check whether contact or nic is empty or not that feched from admin table
         if(empty($contact)||empty($nic)){
-            // check whether contact is
+            
             if(empty($contact)){
                 $contact=$this->db->runQuery("SELECT contact_no FROM employee WHERE contact_no='$telNo'");
             }
             if(empty($nic)){
                 $nic=$this->db->runQuery("SELECT nic FROM employee WHERE nic='$NIC'");
             }
-        
+            // check whether contact or nic is empty or not that feched from student table
             if(empty($contact)||empty($nic)){
                 if(empty($contact)){
                     $contact=$this->db->runQuery("SELECT contact FROM student WHERE contact='$telNo'");
@@ -40,7 +40,7 @@ class Admin_Model extends Model{
                 
             }
         }
-
+        // check whether contact or nic is empty or not that feched from employee table
         if(empty($contact)&&empty($nic)){
             $this->db->runQuery("INSERT INTO employee (name, address, gender, dob ,hired_date, contact_no, nic, job_title) VALUES ('$name','$empAddress', '$gender', '$Dob','$hired_date','$telNo', '$NIC', '$empType')");
 
