@@ -73,7 +73,6 @@
                 <button class="cancel">
                     Cancel
                 </button></a>
-                <!-- reg button -->
                 <button class="confirm" type="submit" id="submit" name="submit"  onclick="register()">
                    Register
                 </button>

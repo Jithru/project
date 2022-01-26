@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="<?php echo URL?>public/css/admin/buttons.css">
     <link rel="stylesheet" href="<?php echo URL?>public/css/common/sidebar.css">
     <link rel="stylesheet" href="<?php echo URL?>public/css/common/header.css">
+    <link rel="stylesheet" href="<?php echo URL?>public/css/admin/vehicle.css">
     <!-- <script  src="<?php echo URL?>public/js/common/header.js"></script>
     <script src="<?php echo URL?>public/js/common/sidebar.js"></script> -->
     <script src="<?php echo URL?>public/js/admin/popup.js"></script>
@@ -41,6 +42,13 @@
      </div>
      <div id="pop-div2" class="popup-container2">
         <div class="conf-box2">
+            <div class="invalid-login" id="invalid-login">
+                Invalid password, please try again.
+            </div>
+            <div class="input-container">
+                <label for="">Username :</label>
+                <input type="text" id="username"> 
+            </div>
             <div class="input-container">
                 <label for="">Password :</label>
                 <input type="text"> 

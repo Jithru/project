@@ -218,7 +218,7 @@ hr {
 }
 
 .going-click-notgoing{
-  /* width: 90px;
+  width: 90px;
   height: 40px;
   font-size: 16px;
   font-weight: 600;
@@ -227,7 +227,7 @@ hr {
   background-color: #0892d0;
   color: seashell;
   box-shadow: 1px 1px 10px #b0b3b3;
-  cursor: pointer; */
+  cursor: pointer;
   display: none;
 }
 .going:hover {
@@ -259,7 +259,7 @@ hr {
 }
 
 .notgoing-click-going{
-  /* width: 90px;
+  width: 90px;
   height: 40px;
   font-size: 17px;
   font-weight: 600;
@@ -268,7 +268,7 @@ hr {
   border-radius: 3px;
   background-color: #262b2f;
   cursor: pointer;
-  box-shadow: 1px 1px 10px #b0b3b3; */
+  box-shadow: 1px 1px 10px #b0b3b3;
   display: none;
  
   

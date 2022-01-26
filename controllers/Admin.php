@@ -516,12 +516,48 @@ class Admin extends Controller{
         $result = $this->model->getPackages();
         echo json_encode($result);
     }
-
+    // load edit package details
     function clickEditPackages($id){
         $result = $this->model->clickEditPackages($id);
         echo $result;
     }
+    //get edit package details
+    function editDetails(){
+        $result = $this->model->editDetails();
+        echo json_encode($result); 
+    }
+    //function for edit pakage  name
+    function editPackageName($name){
+        $result = $this->model->editPackageName($name);
+        echo $result;
+    }
+    //function for edit pakage  days
+    function editPackageDays($days){
+        $result = $this->model->editPackageDays($days);
+        echo $result;
+    }
+    //function for edit pakage price
+    function editPackagePrices($price){
+        $result = $this->model->editPackagePrices($price);
+        echo $result;
+    }
+    //function fo delete packages
+    function deletePackage($username,$password){
+        $result = $this->model->deletePackage($username,$password);
+        echo $result;
+    }
+    //get vehicle classes for add package ui
+    function getClasses(){
+        $result = $this->model->getClasses();
+        echo json_encode($result);
+    }
 
+    //add packages
+    function addPackageLogic($data){
+        $details = explode(",", $data);
+        $result = $this->model->addPackageLogic($details);
+        // echo $data;
+    }
 
     
 
