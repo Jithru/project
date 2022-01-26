@@ -68,7 +68,7 @@ class Admin extends Controller{
         }
         
     }
-
+    //graphic
     function conductorGraphic(){
         if(isset($_SESSION['job_title'])){
             if($_SESSION['job_title']=='Admin'||$_SESSION['job_title']=='Manager'){
@@ -80,7 +80,7 @@ class Admin extends Controller{
         }
         
     }
-
+    //
     function customerGraphic(){
         if(isset($_SESSION['job_title'])){
             if($_SESSION['job_title']=='Admin'||$_SESSION['job_title']=='Manager'){
@@ -92,7 +92,7 @@ class Admin extends Controller{
         }
         
     }
-
+    //
     function exam_participation(){
         if(isset($_SESSION['job_title'])){
             if($_SESSION['job_title']=='Admin'||$_SESSION['job_title']=='Manager'){
@@ -104,7 +104,7 @@ class Admin extends Controller{
         }
         
     }
-
+    //
     function sessionGraph(){
         if(isset($_SESSION['job_title'])){
             if($_SESSION['job_title']=='Admin'||$_SESSION['job_title']=='Manager'){
@@ -116,7 +116,7 @@ class Admin extends Controller{
         }
         
     }
-
+    // 
     //newly add
     function attendanceSession(){
         if(isset($_SESSION['job_title'])){
@@ -129,6 +129,7 @@ class Admin extends Controller{
         }
         
     }
+    //
     function attendanceStudent(){
         if(isset($_SESSION['job_title'])){
             if($_SESSION['job_title']=='Admin'||$_SESSION['job_title']=='Manager'){
@@ -140,6 +141,7 @@ class Admin extends Controller{
         }
         
     }
+    //
     function ConductorParticipation(){
         if(isset($_SESSION['job_title'])){
             if($_SESSION['job_title']=='Admin'||$_SESSION['job_title']=='Manager'){
@@ -151,6 +153,7 @@ class Admin extends Controller{
         }
         
     }
+    //
     function customerGrowing(){
         if(isset($_SESSION['job_title'])){
             if($_SESSION['job_title']=='Admin'||$_SESSION['job_title']=='Manager'){
@@ -162,6 +165,7 @@ class Admin extends Controller{
         }
         
     }
+    //
     function examParticipationDays(){
         if(isset($_SESSION['job_title'])){
             if($_SESSION['job_title']=='Admin'||$_SESSION['job_title']=='Manager'){
@@ -173,6 +177,7 @@ class Admin extends Controller{
         }
         
     }
+    //
     function examParticipationStudents(){
         if(isset($_SESSION['job_title'])){
             if($_SESSION['job_title']=='Admin'||$_SESSION['job_title']=='Manager'){
@@ -184,6 +189,7 @@ class Admin extends Controller{
         }
         
     }
+    //
     function sessionReport(){
         if(isset($_SESSION['job_title'])){
             if($_SESSION['job_title']=='Admin'||$_SESSION['job_title']=='Manager'){
@@ -198,12 +204,12 @@ class Admin extends Controller{
 
     
 //end report
-
+    //JOB TITLES FOR add employee
     function loadJobs(){
         $jobs=$this->model->loadJobs();
         echo json_encode($jobs);
     }
-
+    //register an employee view
     function addEmployee(){
         if(isset($_SESSION['job_title'])){
             if($_SESSION['job_title']=='Admin'){
@@ -215,7 +221,7 @@ class Admin extends Controller{
         }
         
     }
-
+    // add extra prices view
     function addExtraPrices(){
         if(isset($_SESSION['job_title'])){
             if($_SESSION['job_title']=='Admin'){
@@ -227,7 +233,7 @@ class Admin extends Controller{
         }
         
     }
-
+    // add init prices view
     function addInitPrices(){
         if(isset($_SESSION['job_title'])){
             if($_SESSION['job_title']=='Admin'){
@@ -239,7 +245,7 @@ class Admin extends Controller{
         }
         
     }
-
+    // add packages view
     function addPackage(){
         if(isset($_SESSION['job_title'])){
             if($_SESSION['job_title']=='Admin'){
