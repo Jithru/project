@@ -7,26 +7,78 @@
     <link rel="stylesheet" href="<?php echo URL?>public/css/admin/Mid_Box_Layout.css">
     <link rel="stylesheet" href="<?php echo URL?>public/css/admin/buttons.css">
     <link rel="stylesheet" href="<?php echo URL?>public/css/admin/Edit_packages.css">
+    <link  rel="stylesheet" href="<?php echo URL?>public/css/admin/popup.css">
     <title>Lead driving school</title>
 </head>
 <body>
+<div id="pop-div" class="popup-container">
+        <div class="conf-box">
+            <div class="msg-container">
+                <h2>Delete Package?</h2>
+                deleting a Packages will permenently remove it from your system 
+            </div>
+            <div class="btn-container">
+                <button class="yess" onclick="cancel()">
+                    No, keep Package 
+                </button >
+                    
+                <button class="no" onclick="yesDelete()">
+                    Yes, Delete Package
+                </button>
+            </div>
+        </div>
+     </div>
+     <div id="pop-div2" class="popup-container2">
+        <div class="conf-box2">
+            <div class="invalid-login" id="invalid-login">
+                Invalid password, please try again.
+            </div>
+            <div class="input-container">
+                <label for="">Username :</label>
+                <input type="text" id="username"> 
+            </div>
+            <div class="input-container">
+                <label for="">Password :</label>
+                <input type="password" id="passwordd"> 
+            </div>
+            <div class="btn-container2">
+                <button class="yess" onclick="cancel2()">
+                    Cancel 
+                </button >
+                    
+                <button class="no" onclick="deletePackage()">
+                    Confirm
+                </button>
+            </div>
+        </div>
+     </div>
     <div class="mid-box-container-1">
         <div class="mid-box-container-2">
             <div class="title-container">
                 <h1>Edit Package</h1>
             </div>
             <div class="field-container">
-               <div class="input-container">
-                   <div class="input-container-edit">
+               <div class="input-container-2">
+                   <div class="input-container-edit" id="p-name">
                         <label for="package-name-edit">Package Name :</label>
-                        <div class="package-name-edit">
-                            Package-1
-                        </div>
+                        
+                    
                    </div>
-                   <button class="edit">
-                    Edit
+                    <button id="p-name-e" class="edit" onclick="editPname()">
+                        Edit
                     </button>
+                    <div id="responsive-name" class="responsive">
+
+                    </div>
                </div>
+               <div id="nm" class="btn-cnt">
+                    <button id="p-name-c" class="cancel-small-deactivate" onclick="cancelPname()">
+                        cancel
+                    </button>
+                    <button id="p-name-s" class="save-small-deactivate" onclick="savePname()">
+                        save
+                    </button>
+                </div>
                <!-- <div class="input-container">
                     <div class="input-container-edit">
                         <label for="vehicle-class-type-edit">Vehicle classes :</label>
@@ -38,63 +90,70 @@
                         Edit
                     </button>
                 </div>  -->
-                <div class="classes-check-outer-edit">
-                    <div class="classes-check-edit">
-                        
-                        <div class="classes-check-edit-in">
-                            <div class="chk-bx">
-                                <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike">
-                                <label for="vehicle1">A </label><br>
-                            </div>
-                            <div class="chk-bx">
-                                <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike">
-                                <label for="vehicle1">A1 </label><br>
-                            </div>
-                            <div class="chk-bx">
-                                <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike">
-                                <label for="vehicle1">A(Auto) </label><br>
-                            </div>
-                            <div class="chk-bx">
-                                <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike">
-                                <label for="vehicle1">B </label><br>
-                            </div>
-                            <div class="chk-bx">
-                                <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike">
-                                <label for="vehicle1">B1 </label><br>
-                            </div>
-                            <div class="chk-bx">
-                                <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike">
-                                <label for="vehicle1">B(Auto) </label><br>
-                            </div>
-                            <div class="chk-bx">
-                                <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike">
-                                <label for="vehicle1">C </label><br>
-                            </div>
+                <div class="input-container-2" id="classesd">
+                    <div class="input-container-edit" id="classes">
+                        <label for="classes-edit">Number of Training Days :</label>
+                        <div class="classes-edit" id="classes-edit">
+                            
                         </div>
-                        <div class="res"></div>
                     </div>
-                    <div class="res"></div>
+                    <!-- <button id="p-class-e" class="edit" onclick="editPclass()">
+                        Edit
+                    </button> -->
+                    <div id="responsive-class" class="responsive-active">
+
+                    </div>
                 </div>
-                <div class="input-container">
-                    <div class="input-container-edit">
+                <!-- <div id="cls" class="btn-cnt">
+                    <button id="p-class-c" class="cancel-small-deactivate" onclick="cancelPclass()">
+                        cancel
+                    </button>
+                    <button id="p-class-s" class="save-small-deactivate" onclick="savePclass()">
+                        save
+                    </button>
+                </div> -->
+                    
+                <div class="input-container-2">
+                    <div class="input-container-edit" id="p-days">
                         <label for="training-days-edit">Number of Training Days :</label>
-                        <div class="training-days-edit">
-                            15
-                        </div>
+                        
+                        
                     </div>
-                    <button class="edit">
+                    <button id="p-day-e" class="edit" onclick="editPdays()">
                         Edit
                     </button>
-                </div>
-                <div class="input-container">
-                    <div class="input-container-edit">
-                        <label for="total-price-edit">total-price (LKR):</label>
-                        <div class="total-price-edit">
-                            3500.00
-                        </div>
+                    <div id="responsive-day" class="responsive">
+
                     </div>
-                    <button class="edit">
+                    
+                </div>
+                <div id="dy" class="btn-cnt">
+                    <button id="p-day-c" class="cancel-small-deactivate" onclick="cancelPdays()">
+                        cancel
+                    </button>
+                    <button id="p-day-s" class="save-small-deactivate" onclick="savePdays()">
+                        save
+                    </button>
+                </div>
+                <div class="input-container-2">
+                    <div class="input-container-edit" id="p-amount">
+                        <label for="total-price-edit">total-price (LKR):</label>
+
+                    </div>
+                    <button id="p-amount-e" class="edit" onclick="editPamount()">
                         Edit
+                    </button>
+                    <div id="responsive-amount" class="responsive">
+
+                    </div>
+                    
+                </div>
+                <div id="am" class="btn-cnt">
+                    <button id="p-amount-c" class="cancel-small-deactivate" onclick="cancelPamount()">
+                        cancel
+                    </button>
+                    <button id="p-amount-s" class="save-small-deactivate" onclick="savePamount()">
+                        save
                     </button>
                 </div>
                      
@@ -102,19 +161,18 @@
             <div class="button-container">
                 <a href="<?php echo URL?>Admin/packages">
                     <button class="cancel">
-                        Cancel
+                        Back
                     </button>
                 </a>
-                <button class="delete">
+                <button class="delete" onclick="deletex()">
                     Delete
-                </button>
-
-                <button class="save">
-                    Save
                 </button>
                 
             </div>
         </div>
     </div>
+    <script src="<?php echo URL?>public/js/admin/popup.js"></script>
+    <script  src="<?php echo URL?>public/js/Admin/editPackages.js"></script>
+    <script  src="<?php echo URL?>public/js/Admin/deletePackages.js"></script>
 </body>
 </html>

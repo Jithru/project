@@ -76,33 +76,7 @@
                         </div> 
                     </div>
                     <div class="row-container" id="packages">
-                        <div class="row">
-                            <div class="col-1"><b class="bold-name-3">Package Name</b><b class="bold">: </b>Package 1</div>
-                            <div class="col-2"><b class="bold-name-3">Vehicle classes</b><b class="bold">: </b>A,B,B1</div>
-                            <div class="col-3"><b class="bold-name-3">Price (LKR)</b><b class="bold">: </b>14500.00</div>
-                            <div class="col-4"><a href="<?php echo URL?>Admin/editPackages"><button class="edit">Edit</button></a></div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-1"><b class="bold-name-3">Package Name</b><b class="bold">: </b>Package 1</div>
-                            <div class="col-2"><b class="bold-name-3">Vehicle classes</b><b class="bold">: </b>A,B,B1</div>
-                            <div class="col-3"><b class="bold-name-3">Price (LKR)</b><b class="bold">: </b>14500.00</div>
-                            <div class="col-4"><a href="<?php echo URL?>Admin/editPackages"><button class="edit">Edit</button></a></div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-1"><b class="bold-name-3">Package Name</b><b class="bold">: </b>Package 1</div>
-                            <div class="col-2"><b class="bold-name-3">Vehicle classes</b><b class="bold">: </b>A,B,B1</div>
-                            <div class="col-3"><b class="bold-name-3">Price (LKR)</b><b class="bold">: </b>14500.00</div>
-                            <div class="col-4"><a href="<?php echo URL?>Admin/editPackages"><button class="edit">Edit</button></a></div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-1"><b class="bold-name-3">Package Name</b><b class="bold">: </b>Package 1</div>
-                            <div class="col-2"><b class="bold-name-3">Vehicle classes</b><b class="bold">: </b>A,B,B1</div>
-                            <div class="col-3"><b class="bold-name-3">Price (LKR)</b><b class="bold">: </b>14500.00</div>
-                            <div class="col-4"><a href="<?php echo URL?>Admin/editPackages"><button class="edit">Edit</button></a></div>
-                        </div>
+                        
                     </div>
                 </div>
 

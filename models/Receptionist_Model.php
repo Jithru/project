@@ -14,7 +14,7 @@ class Receptionist_Model extends Model{
     function registerLicense(){
         
     }
-    function getVehicleClasses($classA,$classAauto,$classB1,$classB){
+    function getVehicleClasses($classA,$classAauto,$classB1,$classB,$classBauto){
         $total=0;
         if($classA=="true"){
             $result=$this->db->runQuery("SELECT initial_charge FROM vehicle_classes WHERE vehicle_class='A'");
@@ -32,10 +32,10 @@ class Receptionist_Model extends Model{
             $result=$this->db->runQuery("SELECT initial_charge FROM vehicle_classes WHERE vehicle_class='B'");
             $total=$total+doubleval($result[0]['initial_charge']);
         }
-        // if($classBauto=="true"){
-        //     $result=$this->db->runQuery("SELECT initial_charge FROM vehicle_classes WHERE vehicle_class='B-Auto'");
-        //     $total=$total+doubleval($result[0]['initial_charge']);
-        // }
+        if($classBauto=="true"){
+            $result=$this->db->runQuery("SELECT initial_charge FROM vehicle_classes WHERE vehicle_class='B-Auto'");
+            $total=$total+doubleval($result[0]['initial_charge']);
+        }
             
         return $total;
     }
@@ -44,12 +44,6 @@ class Receptionist_Model extends Model{
         return $result;
     }
     function addStudent($nic,$address,$gender,$dob,$contact,$initPrice,$packagePrice,$district,$city,$div_sec,$police,$occupation,$type,$initName,$fullName){
-        //if($selectMethod=="Written"){
-        //    $totalAmount=doubleval($initPrice)+doubleval($packagePrice);
-        //}
-        //else if($selectMethod=="Trial"){
-            
-        //}
         $totalAmount=doubleval($initPrice)+doubleval($packagePrice);
         $date=date('Y-m-d');
         $OTP=rand(100000,999999);
@@ -58,7 +52,7 @@ class Receptionist_Model extends Model{
         if(empty($result[0]['student_id'])){
             $result=$this->db->runQuery("SELECT(student_id) from student where contact='$contact'");
             if(empty($result[0]['contact'])){
-                $result=$this->db->runQuery("INSERT INTO student(nic,address,arival_date,gender,dob,contact,total_amount,district,city,div_sec,police_station,occupation,type,init_name,full_name) VALUES('$nic','$address','$date','$gender','$dob','$contact',$totalAmount,'$district','$city','$div_sec','$police','$occupation','$type','$initName','$fullName')");
+                $result=$this->db->runQuery("INSERT INTO student(nic,address,arival_date,gender,dob,contact,total_amount,district,city,div_sec,police_station,occupation,type,init_name,full_name) values('$nic','$address','$date','$gender','$dob','$contact',$totalAmount,'$district','$city','$div_sec','$police','$occupation','$type','$initName','$fullName')");
 
                 $studentId=$this->db->runQuery("SELECT(student_id) from student where nic='$nic'");
                 $student_Id=$studentId[0]['student_id'];
@@ -72,7 +66,6 @@ class Receptionist_Model extends Model{
         }else{
             $message="NIC Exist";
         }
-
         return $message;
     }
 
@@ -126,18 +119,60 @@ class Receptionist_Model extends Model{
         $studentId=intval($st_id[0]['student_id']);
         $result=$this->db->runQuery("INSERT INTO medical_report VALUES($studentId,'$medicalNo','$issuedDate')");
     }
-    function addLernerPermitDetails($nic,$lPermit,$issDate,$endDate){
-        $lPermit=intval($lPermit);
-        $id = $this->db->runQuery("SELECT (student_id) FROM student WHERE nic='$nic'");
-        $studentId=intval($id[0]['student_id']);
-        $result=$this->db->runQuery("INSERT INTO learner_permit VALUES ('$studentId','$lPermit','$issDate','$endDate')");
+    function getSessions(){
+        $result=$this->db->runQuery("SELECT Session_id,session_title,session_date,session_time,type FROM sessions");
         return $result;
     }
-    function addLicenseDetails($nic,$license,$issDate,$endDate){
-        $license = intval($license);
-        $id = $this->db->runQuery("SELECT (student_id) FROM student WHERE nic='$nic'");
-        $studentId=intval($id[0]['student_id']);
-        $result=$this->db->runQuery("INSERT INTO license VALUES ('$studentId','$license','$issDate','$endDate')");
+
+    function getExams(){
+        $result=$this->db->runQuery("SELECT Exam_id,exam_date,exam_time,exam_type FROM exams");
+        return $result;
+    }
+    function getExamDetails($id){
+        $id=intval($id);
+        $result=$this->db->runQuery("SELECT * FROM exams where Exam_id=$id");
+        return $result;
+    }
+    function loadPreSelectedInstructors($examId){
+        $result=$this->db->runQuery("SELECT employee.employee_id,employee.name,employee.job_title from ((((employee 
+        INNER JOIN instructor on instructor.employee_id=employee.employee_id) 
+        INNER JOIN conductor on conductor.employee_id=instructor.employee_id)
+        INNER JOIN exam_conductor_assigns on exam_conductor_assigns.conductor_id=conductor.employee_id)
+        INNER JOIN exams on exams.exam_id=exam_conductor_assigns.exam_id)
+        where exams.exam_id=$examId");
+        return $result;
+    }
+    function loadPreSelectedVehicles($examId){
+        $result=$this->db->runQuery("SELECT vehicle.vehicle_id,vehicle.vehicle_type,vehicle.vehicle_no,vehicle_classes.vehicle_class from (((vehicle INNER JOIN exam_vehicle_assigns on exam_vehicle_assigns.vehicle_id=vehicle.vehicle_id) INNER JOIN exams on exams.exam_id=exam_vehicle_assigns.exam_id) INNER JOIN vehicle_classes on vehicle_classes.vehicle_class_id=vehicle.vehicle_class_id) WHERE exams.exam_id=$examId");
+        return $result;
+    }
+
+    function loadPreSelectedStudents($examId){
+        $result=$this->db->runQuery("SELECT count(exam_student_assigns.student_id) AS total_assigns,exam_student_assigns.student_id,GROUP_CONCAT(exam_student_assigns.exam_id) AS exam_IDs,student.init_name FROM ((exam_student_assigns LEFT JOIN student on student.student_id=exam_student_assigns.student_id) LEFT JOIN exams on exams.exam_id=exam_student_assigns.exam_id) GROUP BY exam_student_assigns.student_id,student.init_name");
+        return $result;
+    }
+
+    //Sessions
+    function getSessionDetails($id){
+        $id=intval($id);
+        $result=$this->db->runQuery("SELECT * FROM sessions where Session_id=$id");
+        return $result;
+    }
+    function loadPreSelectedInstructorsS($sessionId){
+        $result=$this->db->runQuery("SELECT employee.employee_id,employee.name,employee.job_title from ((((employee 
+        INNER JOIN instructor on instructor.employee_id=employee.employee_id) 
+        INNER JOIN conductor on conductor.employee_id=instructor.employee_id)
+        INNER JOIN session_conductor_assigns on session_conductor_assigns.conductor_id=conductor.employee_id)
+        INNER JOIN sessions on sessions.session_id=session_conductor_assigns.session_id)
+        where sessions.session_id=$sessionId");
+        return $result;
+    }
+    function loadPreSelectedVehiclesS($sessionId){
+        $result=$this->db->runQuery("SELECT vehicle.vehicle_id,vehicle.vehicle_type,vehicle.vehicle_no,vehicle_classes.vehicle_class from (((vehicle INNER JOIN session_vehicle_assigns on session_vehicle_assigns.vehicle_id=vehicle.vehicle_id) INNER JOIN sessions on sessions.session_id=session_vehicle_assigns.session_id) INNER JOIN vehicle_classes on vehicle_classes.vehicle_class_id=vehicle.vehicle_class_id)WHERE sessions.session_id=$sessionId");
+        return $result;
+    }
+    function loadPreSelectedStudentsS($sessionId){
+        $result=$this->db->runQuery("SELECT count(session_student_assigns.student_id) AS total_assigns,session_student_assigns.student_id,GROUP_CONCAT(session_student_assigns.session_id) AS session_IDs,student.init_name FROM ((session_student_assigns LEFT JOIN student on student.student_id=session_student_assigns.student_id) LEFT JOIN sessions on sessions.session_id=session_student_assigns.session_id) GROUP BY session_student_assigns.student_id,student.init_name");
         return $result;
     }
 }

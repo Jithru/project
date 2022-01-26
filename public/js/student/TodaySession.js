@@ -31,7 +31,6 @@ function viewTodaySession(){
                 '<div class="col">'+obj[i].session_time+'</div>'+
                 '<div class="col">Going</div>'+
                 '<div class="col"></div></div>'
-                document.getElementById("going_row"+sessionid).style.border="2px solid red";
                 document.getElementById("going_row"+sessionid).style.background="rgba(8,146,208, 0.25)";
             }
             else if(status=="notgoing"){
@@ -42,7 +41,6 @@ function viewTodaySession(){
                 '<div class="col">'+obj[i].session_time+'</div>'+
                 '<div class="col"></div>'+
                 '<div class="col">Not Going</div></div>'
-                document.getElementById("notgoing_row"+sessionid).style.border="2px solid green";
                 document.getElementById("notgoing_row"+sessionid).style.background="rgba(176,179,179, 0.15)";
             }
             else{
@@ -53,7 +51,6 @@ function viewTodaySession(){
         }
 
         }
-
 
     }
     

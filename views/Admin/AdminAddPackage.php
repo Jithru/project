@@ -18,7 +18,7 @@
             <div class="field-container">
                <div class="input-container">
                    <label for="package-name">Package Name :</label>
-                   <input type="text" class="package-name">
+                   <input type="text" class="package-name" id="package-name">
                </div>
                <!-- <div class="input-container">
                     <label for="vehicle-class-type">Vehicle classes :</label>
@@ -28,44 +28,17 @@
                     </select>
                 </div>  -->
                 <div class="classes-check-outer">
-                <div class="classes-check">
-                        <div class="chk-bx">
-                            <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike">
-                            <label for="vehicle1">A </label><br>
-                        </div>
-                        <div class="chk-bx">
-                            <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike">
-                            <label for="vehicle1">A1 </label><br>
-                        </div>
-                        <div class="chk-bx">
-                            <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike">
-                            <label for="vehicle1">A(Auto) </label><br>
-                        </div>
-                        <div class="chk-bx">
-                            <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike">
-                            <label for="vehicle1">B </label><br>
-                        </div>
-                        <div class="chk-bx">
-                            <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike">
-                            <label for="vehicle1">B1 </label><br>
-                        </div>
-                        <div class="chk-bx">
-                            <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike">
-                            <label for="vehicle1">B(Auto) </label><br>
-                        </div>
-                        <div class="chk-bx">
-                            <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike">
-                            <label for="vehicle1">C </label><br>
-                        </div>
+                <div class="classes-check" id="classes-edit"> 
+                        
                     </div>
                 </div>
                 <div class="input-container">
                     <label for="training-days">Number of Training Days :</label>
-                    <input type="number" class="training-days">
+                    <input type="number" class="training-days" id="training-days">
                 </div>
                 <div class="input-container">
                     <label for="total-price">total-price (LKR):</label>
-                    <input type="number" class="total-price">
+                    <input type="number" class="total-price" id="total-price">
                 </div>
                      
             </div>
@@ -75,12 +48,12 @@
                     Cancel
                 </button></a>
                 
-                <button class="confirm">
+                <button class="confirm" onclick="addPackage()">
                     Confirm
                 </button>
-                
             </div>
         </div>
     </div>
+    <script  src="<?php echo URL?>public/js/Admin/addPackage.js"></script>
 </body>
 </html>

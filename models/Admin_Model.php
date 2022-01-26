@@ -19,6 +19,7 @@ class Admin_Model extends Model{
         $initPassword=rand(100000,999999);
         $contact=$this->db->runQuery("SELECT contact FROM admin WHERE contact='$telNo'");
         $nic=$this->db->runQuery("SELECT nic FROM admin WHERE nic='$NIC'");
+        // check whether contact or nic is empty or not that feched from admin table
         if(empty($contact)||empty($nic)){
             
             if(empty($contact)){
@@ -27,7 +28,7 @@ class Admin_Model extends Model{
             if(empty($nic)){
                 $nic=$this->db->runQuery("SELECT nic FROM employee WHERE nic='$NIC'");
             }
-        
+            // check whether contact or nic is empty or not that feched from student table
             if(empty($contact)||empty($nic)){
                 if(empty($contact)){
                     $contact=$this->db->runQuery("SELECT contact FROM student WHERE contact='$telNo'");
@@ -39,7 +40,7 @@ class Admin_Model extends Model{
                 
             }
         }
-
+        // check whether contact or nic is empty or not that feched from employee table
         if(empty($contact)&&empty($nic)){
             $this->db->runQuery("INSERT INTO employee (name, address, gender, dob ,hired_date, contact_no, nic, job_title) VALUES ('$name','$empAddress', '$gender', '$Dob','$hired_date','$telNo', '$NIC', '$empType')");
 
@@ -91,7 +92,7 @@ class Admin_Model extends Model{
         $_SESSION['result'] = $result;
         return "success";
     }
-
+    //view more employee
     public function getEmployeeDetailsMore($id){
         $result=$this->db->runQuery("SELECT employee_id,name,job_title,nic,contact_no,address,dob,gender,hired_date FROM employee WHERE employee_id='$id'");
         $license=[];
@@ -103,12 +104,13 @@ class Admin_Model extends Model{
     }
 
     
-
+    //complaints function , view copmplaints
     function getcomplaints(){
         $result=$this->db->runQuery("SELECT complaints.submitted_date_time,complaints.description,complaints.suggestions, student.init_name from complaints INNER JOIN student on student.student_id=complaints.student_id");
         return $result;
 
     }
+    // view reviews
     function getreviews(){
         $result=$this->db->runQuery("SELECT reviews.submitted_date_time,reviews.idea,reviews.satisfaction,reviews.improvements, student.init_name from reviews INNER JOIN student on student.student_id=reviews.student_id");
         return $result;
@@ -200,14 +202,77 @@ class Admin_Model extends Model{
     }
     //select packages for view training packages
     function getPackages(){
-        $result=$this->db->runQuery("SELECT packages.package_id,GROUP_CONCAT(vehicle_classes.vehicle_class) as classes,packages.amount , packages.type from ((package_n_vehicles inner join packages on package_n_vehicles.package_id=packages.package_id) inner join vehicle_classes on package_n_vehicles.vehicle_class_id=vehicle_classes.vehicle_class_id) group by package_id");
+        $result=$this->db->runQuery("SELECT packages.package_id,GROUP_CONCAT(vehicle_classes.vehicle_class) as classes,packages.amount , packages.type ,packages.status from ((package_n_vehicles inner join packages on package_n_vehicles.package_id=packages.package_id) inner join vehicle_classes on package_n_vehicles.vehicle_class_id=vehicle_classes.vehicle_class_id) group by package_id");
         return $result;
     }
     //get packages for edit packages page
     function clickEditPackages($id){
-        $result=$this->db->runQuery("SELECT packages.package_id,GROUP_CONCAT(vehicle_classes.vehicle_class) as classes,packages.amount , packages.type from ((package_n_vehicles inner join packages on package_n_vehicles.package_id=packages.package_id) inner join vehicle_classes on package_n_vehicles.vehicle_class_id=vehicle_classes.vehicle_class_id) where packages.package_id='$id'");
-        $_SESSION['packageDetails'] = $result;
+        $_SESSION['package_id'] = $id;
+        // $result=$this->db->runQuery("SELECT packages.package_id,GROUP_CONCAT(vehicle_classes.vehicle_class) as classes,packages.amount , packages.type, packages.training_days from ((package_n_vehicles inner join packages on package_n_vehicles.package_id=packages.package_id) inner join vehicle_classes on package_n_vehicles.vehicle_class_id=vehicle_classes.vehicle_class_id) where packages.package_id='$id'");
+        // $_SESSION['packageDetails'] = $result;
         return 'success';
+    }
+    //details for edit packages
+    function editDetails(){
+        $id=$_SESSION['package_id'];
+        $data = $result=$this->db->runQuery("SELECT packages.package_id,GROUP_CONCAT(vehicle_classes.vehicle_class) as classes,packages.amount , packages.type, packages.training_days ,packages.status from ((package_n_vehicles inner join packages on package_n_vehicles.package_id=packages.package_id) inner join vehicle_classes on package_n_vehicles.vehicle_class_id=vehicle_classes.vehicle_class_id) where packages.package_id='$id'");;
+        $class=$this->db->runQuery("SELECT vehicle_class FROM vehicle_classes");
+        $results = array($class,$data);
+        return $results;
+    }
+
+
+    //function for edit pakage  name
+    function editPackageName($name){
+        $ID=$_SESSION['package_id'];
+        $result = $this->db->runQuery("UPDATE packages SET type ='$name' WHERE package_id='$ID'");
+        return "success";
+    }
+    //function for edit pakage  days
+    function editPackageDays($days){
+        $ID=$_SESSION['package_id'];
+        $result = $this->db->runQuery("UPDATE packages SET training_days ='$days' WHERE package_id='$ID'");
+        return "success";
+    }
+    //function for edit pakage price
+    function editPackagePrices($price){
+        $ID=$_SESSION['package_id'];
+        $result = $this->db->runQuery("UPDATE packages SET amount ='$price' WHERE package_id='$ID'");
+        return "success";
+    }
+
+    ///function fo delete packages
+    function deletePackage($username,$password){
+        $result=$this->db->runQuery("SELECT passwordhash FROM admin WHERE username='$username'");
+        if(!empty($result)){
+            if(password_verify($password,
+            $result[0]['passwordhash'] )){
+                $ID=$_SESSION['package_id'];
+                $status='deactive';
+                $result = $this->db->runQuery("UPDATE packages SET status ='$status' WHERE package_id='$ID'");
+                return "success";
+            }
+            else{return 'fales';}
+        }
+        else{return 'fales';}
+    }
+    //get vehicle classes for add package ui
+    function getClasses(){
+        $class=$this->db->runQuery("SELECT vehicle_class,vehicle_class_id FROM vehicle_classes");
+        return  $class;
+    }
+
+    //add packages
+    function addPackageLogic($details){
+        $this->db->runQuery("INSERT INTO packages (type,training_days,amount,status) VALUES ('$details[0]','$details[1]','$details[2]','active')");
+        $PackId=$this->db->runQuery("SELECT package_id FROM packages WHERE type='$details[0]'");
+        $id = $PackId[0]['package_id'];
+        $size = sizeof($details)-3;
+        // echo 'abcd_________'.$details[3];
+        for($i=3;$i<sizeof($details);$i++){
+            // echo $i;
+            $this->db->runQuery("INSERT INTO package_n_vehicles (package_id, vehicle_class_id) VALUES ('$id', '$details[$i]')");
+        }
     }
 
     

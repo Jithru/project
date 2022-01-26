@@ -6,12 +6,16 @@ function loadPackages(){
             console.log(httprequest.responseText+"kkk")
             const package = JSON.parse(httprequest.responseText)
             for(i=0; i<package.length; i++){
-                packages.innerHTML += '<div class="row">'+
+                console.log(i)
+                if(package[i].status=='active'){
+                    packages.innerHTML += '<div class="row">'+
                 '<div class="col-1"><b class="bold-name-3">Package Name</b><b class="bold">: </b>'+package[i].type+'</div>'+
                 '<div class="col-2"><b class="bold-name-3">Vehicle classes</b><b class="bold">: </b>'+package[i].classes+'</div>'+
                 '<div class="col-3"><b class="bold-name-3">Price (LKR)</b><b class="bold">: </b>'+package[i].amount+'</div>'+
                 '<div class="col-4"><button class="edit" onclick ="editPackage('+package[i].package_id+')">Edit</button></div>'+
                 '</div>'
+                }
+                
             }
             
         }
