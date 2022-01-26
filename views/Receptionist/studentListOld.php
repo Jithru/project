@@ -14,7 +14,7 @@
 
 <div class="mid-box-container-1" id="mid-box-container-1">
         <div class="mid-box-container-2">
-            <div class="mid-box-title-container">
+            <div class="mid-box-title-container"> 
                 <h1>Details of Student</h1>
             </div>
             <div class="mid-box-details-container" id="mid-box-details-container">
