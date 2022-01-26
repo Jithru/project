@@ -11,7 +11,7 @@ body {
   height: 100vh;
   background-color: #f2f2f2;
   display: flex;
-  justify-content: center;
+  justify-content: center; 
   align-items: center;
 }
 .reg-form {
@@ -129,6 +129,14 @@ input[type="text"] {
   display: flex;
   align-items: center;
 }
+.part-4 .colen_g {
+  width: 4%;
+  height: 90%;
+  /* background-color: rgb(99, 216, 252); */
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
 .part-4 input[type="text"] {
   width: 45%;
   height: 40px;
@@ -143,7 +151,7 @@ input[type="text"] {
   align-items: center;
 }
 .part-4 input[type="date"] {
-  width: 45%;
+  width: 172px;
   height: 40px;
   font-style: normal;
   font-size: 15px;
@@ -153,6 +161,7 @@ input[type="text"] {
   box-shadow: 0px 0px 10px #dce0e094 inset;
   display: flex;
   align-items: center;
+  /* background-color: pink; */
 }
 .left {
   width: 40%;

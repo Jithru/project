@@ -1,71 +1,105 @@
-* {
-  margin: 0;
-  padding: 0;
-}
-body {
-  font-family: sans-serif;
-  min-width: 100px;
-  background-color: #f2f2f2;
-}
 .second-container {
   width: 100%;
   height: 100vh;
-  /* top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0; */
   z-index: 999;
+  position: fixed;
   background-color: #ebe9e9dc;
   display: flex;
   align-items: center;
   justify-content: center;
 }
-.confirm-container {
-  background-color: white;
-  width: 460px;
+
+.confirm-container { 
+  width: 430px;
+  height: 260px;
   position: fixed;
-  height: 250px;
+  margin: -150px auto auto auto;
+  background-color: white;
   border-radius: 8px;
   box-shadow: 0rem 0.1rem 0.3rem rgb(0, 0, 0, 0.3);
   /* padding: 10px; */
 }
+.title{
+  width: 100%;
+  height: 65px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* background-color: pink; */
+}
 h1 {
   display: flex;
   justify-content: center;
-  margin: 20px auto auto auto;
-  color: #262b2f;
-
-  line-height: 52px;
+  color: black;
+  text-shadow: 0rem 0.01rem 0.04rem rgb(0, 0, 0, 0.3);
 }
 .input-area-two {
   /* padding: 20px; */
-  width: 300px;
-  margin: 5px auto auto auto;
+  width: 100%;
+  height: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  /* background-color: yellow; */
 }
-p {
-  line-height: 32px;
+/* p {
+  line-height: 26px;
+} */
+.pOne{
+  width: 100%;
+  height: 40px;
+  /* background-color: rgb(55, 253, 204); */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.entered-amount{
+  width: 44%;
+  height: 40px;
+  background-color: #0892d0;
+  color: white;
+  /* border: 1px solid #0000; */
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0rem 0.1rem 0.3rem rgb(0, 0, 0, 0.3);
 }
 .footer-two {
-  /* padding: 20px; */
+  width: 100%;
+  height: 70px;
   display: flex;
   justify-content: space-around;
+  align-items: center;
+  /* background-color: aqua; */
 }
-button {
+.footer-two button {
   color: white;
   /* padding: 8px; */
   width: 100px;
-  height: 32px;
+  height: 40px;
   border: none;
-  border-radius: 4px;
+  border-radius: 3px;
   box-shadow: 0rem 0.1rem 0.3rem rgb(0, 0, 0, 0.5);
-  transition: 0.4s;
+  /* transition: 0.4s; */
 }
-button:hover {
-  background-color: #414767;
+.footer-two .cancel {
+  background-color: black;
 }
-.cancel {
-  background-color: #6f7599;
-}
-.confirm {
+.footer-two .confirm {
   background-color: #0892d0;
+}
+.footer-two .cancel:hover {
+  background-color: white;
+  color: black;
+  border: 2px solid black;
+}
+.footer-two .confirm:hover {
+  background-color: white;
+  color: #0892d0;
+  border: 2px solid #0892d0;
+}
+.entered-amount{
+  font-size: 20px;
 }
