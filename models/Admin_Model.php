@@ -92,7 +92,7 @@ class Admin_Model extends Model{
         $_SESSION['result'] = $result;
         return "success";
     }
-
+    //view more employee
     public function getEmployeeDetailsMore($id){
         $result=$this->db->runQuery("SELECT employee_id,name,job_title,nic,contact_no,address,dob,gender,hired_date FROM employee WHERE employee_id='$id'");
         $license=[];
