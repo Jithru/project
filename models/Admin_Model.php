@@ -19,8 +19,9 @@ class Admin_Model extends Model{
         $initPassword=rand(100000,999999);
         $contact=$this->db->runQuery("SELECT contact FROM admin WHERE contact='$telNo'");
         $nic=$this->db->runQuery("SELECT nic FROM admin WHERE nic='$NIC'");
+        // check whether contact or nic is empty or not that feched from admin table
         if(empty($contact)||empty($nic)){
-            
+            // check whether contact is
             if(empty($contact)){
                 $contact=$this->db->runQuery("SELECT contact_no FROM employee WHERE contact_no='$telNo'");
             }
