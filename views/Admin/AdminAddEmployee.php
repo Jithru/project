@@ -59,6 +59,7 @@
                         <option value="Receptionist">Receptionist</option>
                         <option value="Instructor">Instructor</option>
                         <option value="Teacher">Teacher</option> -->
+                        <!--  -->
                     </select>
                 </div> 
 
@@ -84,3 +85,5 @@
     <script src="<?php echo URL?>public/js/admin/registerEmployee.js"></script>
 </body>
 </html>
+
+<!--  -->
