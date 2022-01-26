@@ -1,0 +1,82 @@
+body{
+    margin: 0;
+    padding: 0;
+}
+.main-show{
+    visibility: visible;
+   
+}
+.main{
+    visibility: hidden;
+}
+
+.container-hidden{
+    visibility: hidden;
+}
+.container{
+    visibility: visible;
+}
+
+.reg-form{
+    visibility: visible;
+}
+.reg-form-hidden{
+    visibility: hidden;
+}
+
+.reg2-f2{
+    visibility: hidden;
+}
+.reg2-f2-visible{
+    visibility: visible;
+}
+
+/* payments */
+.container-st{
+    visibility: hidden;
+}
+.container-st-visible{
+    visibility: visible;
+}
+
+.add-container{
+    visibility: hidden;
+}
+.add-container-visible{
+    visibility: visible;
+    margin: -400px auto auto 500px;
+}
+
+.second-container{
+    visibility: hidden;
+}
+.second-container-visible{
+    visibility: visible;
+    margin: -360px auto auto 520px;
+}
+.third-container{
+    visibility: hidden;
+}
+.third-container-visible{
+    visibility: visible;
+    margin: -360px auto auto 520px;
+}
+.edit-container{
+    visibility: hidden;
+}
+.edit-container-visible{
+    visibility: visible;
+}
+/* sessions */
+/* .table-body-all{
+    visibility: visible;
+}
+.table-body-all-hidden{
+    visibility: hidden;
+}
+.table-body-today{
+    visibility: hidden;
+}
+.table-body-today-visible{
+    visibility: visible;
+} */
