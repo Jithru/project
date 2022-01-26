@@ -16,7 +16,7 @@ class Admin extends Controller{
             $this->view->render('error');
         }
     }
-    
+    //Admins income and expenses page
     function incomeExpenses(){
         if(isset($_SESSION['job_title'])){
             if($_SESSION['job_title']=='Admin'){
@@ -30,7 +30,7 @@ class Admin extends Controller{
     }
 
     
-
+    // student details for admin
     function AdminStudentDetails(){
         if(isset($_SESSION['job_title'])){
             if($_SESSION['job_title']=='Admin'||$_SESSION['job_title']=='Manager'){
@@ -55,6 +55,8 @@ class Admin extends Controller{
         }
         
     }
+
+    //attendance 
     function attendence_sessions(){
         if(isset($_SESSION['job_title'])){
             if($_SESSION['job_title']=='Admin'||$_SESSION['job_title']=='Manager'){
