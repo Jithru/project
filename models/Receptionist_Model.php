@@ -140,7 +140,6 @@ class Receptionist_Model extends Model{
         $result=$this->db->runQuery("INSERT INTO license VALUES ('$studentId','$license','$issDate','$endDate')");
         return $result;
     }
-
     //sessions 
     function session(){                                                                 //changed status->type here
         $result=$this->db->runQuery("SELECT sessions.session_id,sessions.session_title,sessions.session_date,sessions.session_time,sessions.type,employee.name,session_status.held_or_not FROM ((sessions INNER JOIN employee ON employee.employee_id=sessions.employee_id) INNER JOIN session_status ON session_status.session_id=sessions.session_id) ORDER BY sessions.session_date DESC");
@@ -274,5 +273,89 @@ class Receptionist_Model extends Model{
         $result=$this->db->runQuery("SELECT student_id,init_name,full_name,address,NIC,gender,district,city,div_sec,police_station,dob,contact,occupation,type,arival_date FROM student WHERE student_id='$id'");
         return $result;
     }
+    //examPassed
+    function display_examPassed(){
+        $result=$this->db->runQuery("SELECT student.student_id,student.full_name,student.contact FROM ((student INNER JOIN exam_participation ON exam_participation.student_id=student.student_id) INNER JOIN exams ON exams.exam_id=exam_participation.exam_id) WHERE exam_participation.results='Pass' AND exams.exam_type='Written'");
+        // $result=$this->db->runQuery("SELECT student.student_id,student.full_name,student.contact FROM student WHERE student.type='written' AND student.student_status='pass'");
+        return $result;
+    }
+    //examFailed
+    function display_examFailed(){
+        $result=$this->db->runQuery("SELECT student.student_id,student.full_name,student.contact FROM ((student INNER JOIN exam_participation ON exam_participation.student_id=student.student_id) INNER JOIN exams ON exams.exam_id=exam_participation.exam_id) WHERE exam_participation.results='Fail' AND exams.exam_type='Written'");
+        // $result=$this->db->runQuery("SELECT student.student_id,student.full_name,student.contact FROM student WHERE student.type='written' AND student.student_status='fail'");
+        return $result;
+    }
+    //trialPassed
+    function display_trialPassed(){
+        $result=$this->db->runQuery("SELECT student.student_id,student.full_name,student.contact FROM ((exam_participation INNER JOIN student ON student.student_id=exam_participation.student_id) INNER JOIN exams ON exams.exam_id=exam_participation.exam_id) WHERE (exams.exam_type='trial' OR exams.exam_type='Trial') AND exam_participation.results='Pass'");
+        // $result=$this->db->runQuery("SELECT student.student_id,student.full_name,student.contact FROM student WHERE student.type='trial' AND student.student_status='pass'");
+        return $result;
+    }
+        //whoAmI
+    function whoAmI($id){
+        $result=$this->db->runQuery("SELECT student_id,full_name FROM student WHERE student_id='$id'");
+        return $result;
+    }
     
+    function getSessions(){
+        $result=$this->db->runQuery("SELECT Session_id,session_title,session_date,session_time,type FROM sessions");
+        return $result;
+    }
+
+    function getExams(){
+        $result=$this->db->runQuery("SELECT Exam_id,exam_date,exam_time,exam_type FROM exams");
+        return $result;
+    }
+    function getExamDetails($id){
+        $id=intval($id);
+        $result=$this->db->runQuery("SELECT * FROM exams where Exam_id=$id");
+        return $result;
+    }
+    function loadPreSelectedInstructors($examId){
+        $result=$this->db->runQuery("SELECT employee.employee_id,employee.name,employee.job_title from ((((employee 
+        INNER JOIN instructor on instructor.employee_id=employee.employee_id) 
+        INNER JOIN conductor on conductor.employee_id=instructor.employee_id)
+        INNER JOIN exam_conductor_assigns on exam_conductor_assigns.conductor_id=conductor.employee_id)
+        INNER JOIN exams on exams.exam_id=exam_conductor_assigns.exam_id)
+        where exams.exam_id=$examId");
+        return $result;
+    }
+    function loadPreSelectedVehicles($examId){
+        $result=$this->db->runQuery("SELECT vehicle.vehicle_id,vehicle.vehicle_type,vehicle.vehicle_no,vehicle_classes.vehicle_class from (((vehicle INNER JOIN exam_vehicle_assigns on exam_vehicle_assigns.vehicle_id=vehicle.vehicle_id) INNER JOIN exams on exams.exam_id=exam_vehicle_assigns.exam_id) INNER JOIN vehicle_classes on vehicle_classes.vehicle_class_id=vehicle.vehicle_class_id) WHERE exams.exam_id=$examId");
+        return $result;
+    }
+
+    function loadPreSelectedStudents($examId){
+        $result=$this->db->runQuery("SELECT count(exam_student_assigns.student_id) AS total_assigns,exam_student_assigns.student_id,GROUP_CONCAT(exam_student_assigns.exam_id) AS exam_IDs,student.init_name FROM ((exam_student_assigns LEFT JOIN student on student.student_id=exam_student_assigns.student_id) LEFT JOIN exams on exams.exam_id=exam_student_assigns.exam_id) GROUP BY exam_student_assigns.student_id,student.init_name");
+        return $result;
+    }
+
+    //Sessions
+    function getSessionDetails($id){
+        $id=intval($id);
+        $result=$this->db->runQuery("SELECT * FROM sessions where Session_id=$id");
+        return $result;
+    }
+    function updateMe($id,$init,$fName,$add,$nic,$gen,$dis,$city,$dds,$police,$dob,$con,$occ,$type){
+        $result=$this->db->runQuery("UPDATE student SET NIC='$nic', student.address='$add', gender='$gen', dob='$dob', contact='$con',district='$dis', city='$city', div_sec='$dds', police_station='$police', occupation='$occ', student.type='$type', init_name='$init', full_name='$fName' WHERE student_id='$id'");
+        return $result;
+    }
+
+    function loadPreSelectedInstructorsS($sessionId){
+        $result=$this->db->runQuery("SELECT employee.employee_id,employee.name,employee.job_title from ((((employee 
+        INNER JOIN instructor on instructor.employee_id=employee.employee_id) 
+        INNER JOIN conductor on conductor.employee_id=instructor.employee_id)
+        INNER JOIN session_conductor_assigns on session_conductor_assigns.conductor_id=conductor.employee_id)
+        INNER JOIN sessions on sessions.session_id=session_conductor_assigns.session_id)
+        where sessions.session_id=$sessionId");
+        return $result;
+    }
+    function loadPreSelectedVehiclesS($sessionId){
+        $result=$this->db->runQuery("SELECT vehicle.vehicle_id,vehicle.vehicle_type,vehicle.vehicle_no,vehicle_classes.vehicle_class from (((vehicle INNER JOIN session_vehicle_assigns on session_vehicle_assigns.vehicle_id=vehicle.vehicle_id) INNER JOIN sessions on sessions.session_id=session_vehicle_assigns.session_id) INNER JOIN vehicle_classes on vehicle_classes.vehicle_class_id=vehicle.vehicle_class_id)WHERE sessions.session_id=$sessionId");
+        return $result;
+    }
+    function loadPreSelectedStudentsS($sessionId){
+        $result=$this->db->runQuery("SELECT count(session_student_assigns.student_id) AS total_assigns,session_student_assigns.student_id,GROUP_CONCAT(session_student_assigns.session_id) AS session_IDs,student.init_name FROM ((session_student_assigns LEFT JOIN student on student.student_id=session_student_assigns.student_id) LEFT JOIN sessions on sessions.session_id=session_student_assigns.session_id) GROUP BY session_student_assigns.student_id,student.init_name");
+        return $result;
+    }
 }
