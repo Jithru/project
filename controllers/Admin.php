@@ -5,6 +5,7 @@ class Admin extends Controller{
     function __construct(){
         parent:: __construct();
     }
+    //admin profile page
     function index(){
         if(isset($_SESSION['job_title'])){
             if($_SESSION['job_title']=='Admin'){
