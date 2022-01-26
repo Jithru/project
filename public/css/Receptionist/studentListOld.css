@@ -9,7 +9,7 @@ body {
 .container {
   width: 100%;
   height: 100vh;
-  display: flex;
+  display: flex; 
   flex-direction: column;
   /* background-color: pink; */
 }
@@ -20,6 +20,14 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
+}
+.menu-logo{
+  width: 240px;
+  height: 100%;
+  /* background-color: pink; */
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
 }
 .logo {
   padding-left: 20px;
@@ -34,11 +42,11 @@ body {
   align-items: center;
   justify-content: space-around;
 }
-select {
-  border: none;
-  border-radius: 3px;
-  height: 30px;
-  width: 120px;
+.menu-bttn{
+  visibility: hidden;
+  width: 20px;
+  height: 20px;
+  background-color: red;
 }
 .main {
   height: calc(100% - 80px);
@@ -54,26 +62,20 @@ ul li {
 }
 ul li a {
   color: white;
-  /* transition: 0.4s; */
   text-decoration: none;
   padding-left: 50px;
 }
 ul li:hover {
   padding-left: 10px;
-  /* background-color: white;
-    width: 80%;
-    height: 40px; */
 }
 .view {
   width: calc(100% - 250px);
   height: 100%;
   background-color: #f2f2f2;
-  /* display: flex;
-    flex-direction: column; */
 }
 .part-1 {
   width: 100%;
-  height: 12%;
+  height: 70px;
   /* background-color: rgb(229, 248, 123); */
   display: flex;
   align-items: center;
@@ -87,7 +89,7 @@ ul li:hover {
 }
 .part-2 {
   width: 100%;
-  height: 12%;
+  height: 70px;
   /* background-color: rgb(104, 224, 245); */
   display: flex;
   justify-content: center;
@@ -96,8 +98,7 @@ ul li:hover {
 .choise {
   background-color: none;
   width: 88%;
-  height: 69%;
-  /* padding-left: 10%; */
+  height: 70px;
   display: flex;
   flex-direction: row;
   background-color: #f2f2f2;
@@ -160,15 +161,14 @@ input[type="text"] {
 
 .part-3 {
   width: 100%;
-  height: 64%;
-  /* background-color: #28f7a4; */
+  height: 450px;
   display: flex;
   flex-direction: column;
-  /* justify-content: center; */
   align-items: center;
+  /* background-color: red; */
 }
 .head-cover {
-  width: 72%;
+  width: 71%;
   height: 12%;
   background-color: #262b2f;
   color: white;
@@ -176,7 +176,7 @@ input[type="text"] {
   align-items: center;
   border-radius: 3px;
   box-shadow: 1px 1px 5px #b0b3b3;
-  /* justify-content: center; */
+
 }
 .table-head {
   width: 95%;
@@ -219,19 +219,17 @@ input[type="text"] {
   /* background-color: #c0a405; */
 }
 .table-body {
-  width: 1005px;
+  width: 72%;
   height: 80%;
   background-color: none;
   display: flex;
-  /* position: fixed; */
   flex-direction: column;
   align-items: center;
   justify-content: space-around;
-  /* overflow-x: none;
-    overflow-y: auto; */
+  /* background-color: blue; */
 }
 .scroll {
-  width: 93%;
+  width: 100%;
   height: 90%;
   padding-top: 20px;
   margin-bottom: 10px;
@@ -254,29 +252,7 @@ input[type="text"] {
   box-shadow: 1px 1px 5px #b0b3b3;
   border-radius: 3px;
 }
-/* .scroll{
-    width: 100%;
-    height: 600px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    align-items: center;
-    
-   
-} */
-/* .row-1{
-    width: 98%;
-    height: 63px;
-    border-radius: 4px;
-    margin-top:10px;
-    border: none;
-    box-shadow: 0rem 0.1rem 0.3rem rgb(0,0,0,0.3);
-    background-color: white;
-    display: flex;
-    align-items: center;
-    flex-direction: row;
-    justify-content: center
-} */
+
 .col-1,
 .col-2,
 .col-3,
@@ -342,11 +318,10 @@ input[type="text"] {
 .part-4 {
   width: 89%;
   height: 11%;
-  /* background-color: #ce68f7; */
-  /* padding-left: 80%; */
   display: flex;
   align-items: center;
   justify-content: flex-end;
+  /* background-color: pink; */
 }
 
 .sort:hover {
@@ -396,4 +371,63 @@ input[type="text"] {
   justify-content: space-between;
   align-items: center;
   /* background-color: chartreuse; */
+}
+@media screen and (max-width:600px){
+  .sidebar{
+    visibility: hidden;
+    margin: auto auto auto -250px;
+  }
+  .header{
+    width: 100%;
+    height: 70px;
+  }
+  .menu-bttn{
+    visibility: visible;
+  }
+  .view{
+    width: 100%;
+    /* height: 100vh; */
+    /* background-color: green; */
+  }
+  .part-1 {
+    width: 100%;
+    height: 76px;
+  }
+  .topic{
+    font-size: 36px;
+  }
+  .part-2{
+    width: 100%;
+    height: 72px;
+  }
+  .choise{
+    width: 100%;
+    height: 60px;
+  }
+  .cl1{
+    width: 60%;
+  }
+  .cl1 button{
+    font-size: 14px;
+  }
+  .cl2{
+    width: 35%;
+  }
+  .head-cover{
+    width: 98%;
+  }
+  .table-body {
+    width: 100%;
+  }
+  .scroll {
+    width: 100%;
+  }
+  .row-1{
+    width: 99%;
+    font-size: 13px;
+  }
+  .registerStudent-button-container button{
+    /* font-size: 14px; */
+    margin: auto -62px auto auto;
+  }
 }
