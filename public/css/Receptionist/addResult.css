@@ -17,7 +17,7 @@ body {
 }
 .header {
   width: 100%;
-  height: 82px;
+  height: 80px;
   background-color: white;
   display: flex;
   flex-direction: row;
@@ -33,9 +33,9 @@ body {
   justify-content: space-between;
 }
 .view {
-  width: calc(100% - 250px);
+  width: 86%;
   height: 100%;
-  /* background-color: red; */
+  /* background-color: white; */
 }
 .part-1 {
   width: 100%;
@@ -43,50 +43,48 @@ body {
   /* background-color: #7da8f8; */
   display: flex;
   align-items: center;
-  justify-content: flex-end;
 }
 .topic {
-  padding-right: 44px;
+  padding-left: 74%;
   color: black;
   font-size: 27px;
   text-shadow: 0rem 0.1rem 0.3rem rgb(0, 0, 0, 0.3);
 }
 .part-2 {
   width: 100%;
-  height: 12%;
+  height: 15%;
   /* background-color: #cb7df8; */
   display: flex;
   flex-direction: row;
   align-items: center;
+  justify-content: space-around;
 }
 .dateofExam {
-  width: 36%;
-  height: 70px;
+  width: 25%;
+  height: 80%;
   /* background-color: #7df887; */
-  margin: auto auto auto 185px;
   display: flex;
   align-items: center;
+  justify-content: center;
+  justify-content: space-evenly;
 }
-.date{
-  width: 240px;
-  height: 45px;
+.exm-type {
+  width: 25%;
+  height: 80%;
+  /* background-color: #f87dac; */
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+.date,
+.exam {
+  width: 180px;
+  height: 36px;
   border: none;
   border-radius: 4px;
-  font-size: 16px;
   background-color: white;
   padding: 6px;
   box-shadow: 0rem 0.1rem 0.3rem rgb(0, 0, 0, 0.3);
-}
-.btn-search{
-  width: 120px;
-  height: 45px;
-  border: none;
-  border-radius: 4px;
-  background-color: #0892d0;
-  box-shadow: 0rem 0.1rem 0.3rem rgb(0, 0, 0, 0.3);
-}
-.btn-search:hover{
-  background-color: #0099ff;
 }
 .part-3 {
   /* background-color: rgb(248, 250, 146); */
@@ -95,39 +93,41 @@ body {
   display: flex;
   align-items: center;
   flex-direction: column;
-  /* justify-content: center; */
+
+  justify-content: center;
 }
 
 .table-head {
   width: 71%;
-  height: 55px;
+  height: 12%;
   background-color: #262b2f;
   color: white;
   border-radius: 4px;
   display: flex;
+  /* justify-content: center; */
   box-shadow: 0rem 0.1rem 0.3rem rgb(0, 0, 0, 0.3);
 }
 .one,
 .two,
 .three,
 .four,
-.five{
+.five,
+.six {
   height: 100%;
   display: flex;
   align-items: center;
 }
 .one {
-  width: 15%;
-  padding-left: 31px;
+  width: 14%;
   /* background-color: rgb(255, 59, 59); */
 }
 
 .two {
-  width: 35%;
+  width: 18%;
   /* background-color: rgb(253, 222, 44); */
 }
 .three {
-  width: 18%;
+  width: 15%;
   /* background-color: rgb(109, 255, 72); */
 }
 .four {
@@ -135,19 +135,19 @@ body {
   /* background-color: rgb(51, 113, 248); */
 }
 .five {
-  width: 16%;
+  width: 20%;
   /* background-color: rgb(253, 222, 44); */
 }
 
 .table-body {
-  width: 79%;
+  width: 1005px;
   height: 80%;
   background-color: none;
   display: flex;
   /* position: fixed; */
   flex-direction: column;
   align-items: center;
-  /* justify-content: space-around; */
+  justify-content: space-around;
 }
 .scroll {
   width: 92%;
@@ -186,57 +186,45 @@ body {
   box-shadow: 1px 1px 5px #b0b3b3;
   border-radius: 4px;
 }
-
-/* .zero {
-  width: 1%;
-} */
-
+.z-row {
+  width: 8%;
+}
+.zero {
+  width: 2%;
+}
 .col-1,
 .col-2,
 .col-3,
 .col-4,
-.col-5 {
+.col-5,
+.col-6 {
   height: 57px;
   display: flex;
   align-items: center;
 }
 .col-1 {
-  width: 15%;
-  padding-left: 31px;
+  width: 11%;
   /* background-color: rgb(248, 144, 144); */
 }
 .col-2 {
-  width: 35%;
-  padding-left: 2.6px;
+  width: 16%;
   /* background-color: rgb(144, 248, 248); */
 }
 .col-3 {
-  width: 16%;
-  padding-left: 5px;
+  width: 15%;
   /* background-color: rgb(160, 144, 248); */
 }
 .col-4 {
-  width: 17%;
-  padding-left: 12px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  width: 15%;
   /* background-color: rgb(224, 144, 248); */
 }
 .col-5 {
-  width: 17%;
-  padding-left: 12px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  width: 20%;
   /* background-color: rgb(248, 144, 144); */
 }
-.col-6{
-  width: 34%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.col-6 {
+  width: 15%;
+  /* background-color: rgb(144, 248, 248); */
 }
 button {
   width: 100px;

@@ -9,16 +9,6 @@
     <title>Lead driving school</title>
 </head>
 <body>
-    <div class="confirmation-box" id="confirmation">
-          <div class="box-body">
-              <div class="popup-content-box">
-                  <p id="boxMsg"></p>
-                      <div class="popup-button-set">
-                        <button class="popup-confirm" name="confirm" id="confirm-got">Got it</button>     
-                      </div>
-              </div>
-          </div>
-      </div>
     <div class="main-content">
         <div class="addInstructor-box">
         <input type="hidden" id="selectedArr" value="<?php echo isset($_SESSION['selectedInstructorList'])?$_SESSION['selectedInstructorList']:"";?>">

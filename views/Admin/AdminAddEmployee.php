@@ -59,6 +59,7 @@
                         <option value="Receptionist">Receptionist</option>
                         <option value="Instructor">Instructor</option>
                         <option value="Teacher">Teacher</option> -->
+                        <!--  -->
                     </select>
                 </div> 
 
@@ -73,7 +74,6 @@
                 <button class="cancel">
                     Cancel
                 </button></a>
-                <!-- reg button -->
                 <button class="confirm" type="submit" id="submit" name="submit"  onclick="register()">
                    Register
                 </button>
@@ -85,3 +85,5 @@
     <script src="<?php echo URL?>public/js/admin/registerEmployee.js"></script>
 </body>
 </html>
+
+<!--  -->

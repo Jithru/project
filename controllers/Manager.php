@@ -404,12 +404,8 @@ class Manager extends Controller{
     }
 
     function selectedInstructorsForExams($selectedList){
-        $result=$this->model->checkSelectedInstructorsForExams($selectedList,$_SESSION['date'],$_SESSION['time']);
-        
         $_SESSION['selectedInstructorList']=$selectedList;
-    
-        echo json_encode($result);
-        // echo "instructors:".$result;
+        echo "saved";
     }
     
     function selectedVehiclesForExams($selectedList){

@@ -31,12 +31,12 @@
               </div>
           </div>
     </div>
-      <div class="confirmation-box" id="confirmation">
+    <div class="confirmation-box" id="confirmation">
           <div class="box-body">
               <div class="popup-content-box">
                   <p>Are you sure about sending request?</p>
                       <div class="popup-button-set">
-                          <button class="popup-confirm" name="confirm" id="confirm" >I'm sure</button>
+                          <button class="popup-confirm" name="confirm" id="confirm" on>I'm sure</button>
                           <button class="popup-cancel" name="cancel" id="cancel" onclick="cancel()">I have to recheck</button>   
                       </div>
               </div>

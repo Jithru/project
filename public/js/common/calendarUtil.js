@@ -2,10 +2,7 @@ function getFullDate(date,month,year) {
         if(date<10){
                 date="0"+date
         }
-        if(month+1<10){
-                month="0"+(month+1)
-        }
-        var day=year+"-"+month+"-"+date
+        var day=year+"-"+(month+1)+"-"+date
         console.log(day);
         document.getElementById("selectedDateContainer").value=day
         xhr=new XMLHttpRequest()
@@ -115,14 +112,7 @@ httpreq2.onreadystatechange=function(){
                             else{
                                 var dateval=today.getDate()
                             }
-                            if((today.getMonth()+1)<10){
-                                var monthval="0"+(today.getMonth()+1)
-                            }
-                            else{
-                                var monthval=today.getMonth()+1
-                            }
-                            var initDate=today.getFullYear()+"-"+monthval+"-"+dateval
-                        
+                        var initDate=today.getFullYear()+"-"+(today.getMonth()+1)+"-"+dateval
                         document.getElementById("selectedDateContainer").value=initDate
 
 

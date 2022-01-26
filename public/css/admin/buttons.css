@@ -105,7 +105,7 @@
 
 .edit-large:hover {
   background-color: #777777;
-  cursor: pointer;
+  cursor: pointer; 
 }
 
 .edit {
@@ -122,6 +122,8 @@
 .edit-deactivate{
   display: none;
 }
+
+
 
 .edit:hover {
   background-color: #777777;

@@ -89,5 +89,6 @@
     position: sticky;
     top: 80px;
     background-color: #262b2f;
+    display: none;
   }
 }

@@ -5,6 +5,7 @@ class Admin extends Controller{
     function __construct(){
         parent:: __construct();
     }
+    //admin profile page
     function index(){
         if(isset($_SESSION['job_title'])){
             if($_SESSION['job_title']=='Admin'){
@@ -15,7 +16,7 @@ class Admin extends Controller{
             $this->view->render('error');
         }
     }
-    
+    //Admins income and expenses page
     function incomeExpenses(){
         if(isset($_SESSION['job_title'])){
             if($_SESSION['job_title']=='Admin'){
@@ -29,7 +30,7 @@ class Admin extends Controller{
     }
 
     
-
+    // student details for admin
     function AdminStudentDetails(){
         if(isset($_SESSION['job_title'])){
             if($_SESSION['job_title']=='Admin'||$_SESSION['job_title']=='Manager'){
@@ -54,6 +55,8 @@ class Admin extends Controller{
         }
         
     }
+
+    //attendance 
     function attendence_sessions(){
         if(isset($_SESSION['job_title'])){
             if($_SESSION['job_title']=='Admin'||$_SESSION['job_title']=='Manager'){
@@ -65,7 +68,7 @@ class Admin extends Controller{
         }
         
     }
-
+    //graphic
     function conductorGraphic(){
         if(isset($_SESSION['job_title'])){
             if($_SESSION['job_title']=='Admin'||$_SESSION['job_title']=='Manager'){
@@ -77,7 +80,7 @@ class Admin extends Controller{
         }
         
     }
-
+    //
     function customerGraphic(){
         if(isset($_SESSION['job_title'])){
             if($_SESSION['job_title']=='Admin'||$_SESSION['job_title']=='Manager'){
@@ -89,7 +92,7 @@ class Admin extends Controller{
         }
         
     }
-
+    //
     function exam_participation(){
         if(isset($_SESSION['job_title'])){
             if($_SESSION['job_title']=='Admin'||$_SESSION['job_title']=='Manager'){
@@ -101,7 +104,7 @@ class Admin extends Controller{
         }
         
     }
-
+    //
     function sessionGraph(){
         if(isset($_SESSION['job_title'])){
             if($_SESSION['job_title']=='Admin'||$_SESSION['job_title']=='Manager'){
@@ -113,7 +116,7 @@ class Admin extends Controller{
         }
         
     }
-
+    // 
     //newly add
     function attendanceSession(){
         if(isset($_SESSION['job_title'])){
@@ -126,6 +129,7 @@ class Admin extends Controller{
         }
         
     }
+    //
     function attendanceStudent(){
         if(isset($_SESSION['job_title'])){
             if($_SESSION['job_title']=='Admin'||$_SESSION['job_title']=='Manager'){
@@ -137,6 +141,7 @@ class Admin extends Controller{
         }
         
     }
+    //
     function ConductorParticipation(){
         if(isset($_SESSION['job_title'])){
             if($_SESSION['job_title']=='Admin'||$_SESSION['job_title']=='Manager'){
@@ -148,6 +153,7 @@ class Admin extends Controller{
         }
         
     }
+    //
     function customerGrowing(){
         if(isset($_SESSION['job_title'])){
             if($_SESSION['job_title']=='Admin'||$_SESSION['job_title']=='Manager'){
@@ -159,6 +165,7 @@ class Admin extends Controller{
         }
         
     }
+    //
     function examParticipationDays(){
         if(isset($_SESSION['job_title'])){
             if($_SESSION['job_title']=='Admin'||$_SESSION['job_title']=='Manager'){
@@ -170,6 +177,7 @@ class Admin extends Controller{
         }
         
     }
+    //
     function examParticipationStudents(){
         if(isset($_SESSION['job_title'])){
             if($_SESSION['job_title']=='Admin'||$_SESSION['job_title']=='Manager'){
@@ -181,6 +189,7 @@ class Admin extends Controller{
         }
         
     }
+    //
     function sessionReport(){
         if(isset($_SESSION['job_title'])){
             if($_SESSION['job_title']=='Admin'||$_SESSION['job_title']=='Manager'){
@@ -195,12 +204,12 @@ class Admin extends Controller{
 
     
 //end report
-
+    //JOB TITLES FOR add employee
     function loadJobs(){
         $jobs=$this->model->loadJobs();
         echo json_encode($jobs);
     }
-
+    //register an employee view
     function addEmployee(){
         if(isset($_SESSION['job_title'])){
             if($_SESSION['job_title']=='Admin'){
@@ -212,7 +221,7 @@ class Admin extends Controller{
         }
         
     }
-
+    // add extra prices view
     function addExtraPrices(){
         if(isset($_SESSION['job_title'])){
             if($_SESSION['job_title']=='Admin'){
@@ -224,7 +233,7 @@ class Admin extends Controller{
         }
         
     }
-
+    // add init prices view
     function addInitPrices(){
         if(isset($_SESSION['job_title'])){
             if($_SESSION['job_title']=='Admin'){
@@ -236,7 +245,7 @@ class Admin extends Controller{
         }
         
     }
-
+    // add packages view
     function addPackage(){
         if(isset($_SESSION['job_title'])){
             if($_SESSION['job_title']=='Admin'){
@@ -516,12 +525,48 @@ class Admin extends Controller{
         $result = $this->model->getPackages();
         echo json_encode($result);
     }
-
+    // load edit package details
     function clickEditPackages($id){
         $result = $this->model->clickEditPackages($id);
         echo $result;
     }
+    //get edit package details
+    function editDetails(){
+        $result = $this->model->editDetails();
+        echo json_encode($result); 
+    }
+    //function for edit pakage  name
+    function editPackageName($name){
+        $result = $this->model->editPackageName($name);
+        echo $result;
+    }
+    //function for edit pakage  days
+    function editPackageDays($days){
+        $result = $this->model->editPackageDays($days);
+        echo $result;
+    }
+    //function for edit pakage price
+    function editPackagePrices($price){
+        $result = $this->model->editPackagePrices($price);
+        echo $result;
+    }
+    //function fo delete packages
+    function deletePackage($username,$password){
+        $result = $this->model->deletePackage($username,$password);
+        echo $result;
+    }
+    //get vehicle classes for add package ui
+    function getClasses(){
+        $result = $this->model->getClasses();
+        echo json_encode($result);
+    }
 
+    //add packages
+    function addPackageLogic($data){
+        $details = explode(",", $data);
+        $result = $this->model->addPackageLogic($details);
+        // echo $data;
+    }
 
     
 

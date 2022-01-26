@@ -13,9 +13,10 @@
     flex-direction: column;
     align-items: center;
 }
-.input-container{
+.input-container-2{
+    /* position: fixed; */
     width: 100%;
-    height: 60px;
+    min-height: 60px;
     /* background-color: yellowgreen; */
     display: flex;
     justify-content: space-around;
@@ -29,6 +30,12 @@
     align-items: center;
 }
 
+#classes{
+    align-items: flex-start;
+}
+
+
+
 /* common styles for input fields */
 
 .package-name-edit, .vehicle-class-type-edit, .training-days-edit,.total-price-edit{
@@ -37,17 +44,23 @@
     border-radius: 3px;
     text-align: center;
     padding-left: 10px;
-    padding-top: 10px;
+    /* padding-top: 10px; */
     color: #50505086;
     font-weight: 700;
     background-color: #f3f7f7;
     box-shadow: 0px 0px 10px #dce0e094 inset;
+    display: flex;
+    align-items: center;
 }
 /* common styles for input fields (focus)*/
 
 
 .package-name-edit{
     width: 50%;
+}
+.classes-edit{
+    width: 50%;
+    height: 150px;
 }
 .vehicle-class-type-edit{
     width: 50%;
@@ -68,7 +81,7 @@
     
 }
 .classes-check-edit-in{
-    width: 50%;
+    width: 80%;
     padding-top: 10px;
     background-color: #f3f7f7;
     box-shadow: 0px 0px 10px #dce0e094 inset;
@@ -79,10 +92,10 @@
 }
 .res{
     width: 50px;
+    padding-top: 115px;
 }
 .chk-bx{
     margin-left: 10%;
-    width: 50%;
     color: #50505086;
 }
 
@@ -106,3 +119,46 @@
     align-items: center;
     /* background-color: violet; */
 }
+.btn-cnt{
+    width: 100%;
+    display: flex;
+    flex-direction: row-reverse;
+    padding-right: 47px;
+}
+
+.btn-cnt > button{
+    margin-left: 15px;
+    margin-bottom: 10px;
+}
+
+
+.responsive{
+    display: none;
+}
+.responsive-active{
+    width: 50px;
+    height: 25px;
+    display: block;
+}
+
+.invalid-login {
+    height: 0;
+    visibility: hidden;
+  }
+  
+  .invalid-login-true {
+    width: 310px;
+    height: 50px;
+    font-size: 14px;
+    background-color: #fad1d8;
+    border: 1px solid #d11534;
+    color: #d11534;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* margin: auto; */
+    margin-bottom: 10px;
+    margin-right: 44px;
+    transition: 0.5s;
+  }
+  
