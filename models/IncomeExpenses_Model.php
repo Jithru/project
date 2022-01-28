@@ -749,4 +749,707 @@ class IncomeExpenses_Model extends Model{
         $annualAmount=$this->db->runQuery("SELECT sum(amount) as total from other_expenses where recorded_date_time>='$startDate' and recorded_date_time < '$endDate'");
         return intval($annualAmount[0]['total']);
     }
+
+    //Income part
+    function getOnlineIncomeDetails(){
+        $result=$this->db->runQuery("SELECT online_payments.opayment_id,online_payments.payment_date_time,online_payments.amount,student.init_name from online_payments INNER JOIN student ON student.student_id= online_payments.student_id");
+        return $result;
+    }
+    function getCashIncomeDetails(){
+        $result=$this->db->runQuery("SELECT cash_payment.cpayment_id,cash_payment.payment_date_time,cash_payment.amount,student.init_name FROM ((cash_payment INNER JOIN cash_payment_submits ON cash_payment_submits.cpayment_id=cash_payment.cpayment_id)INNER JOIN student ON student.student_id=cash_payment_submits.student_id)");
+        return $result;
+    }
+
+    function loadIncomeGraphAnnual($annual){
+        $startdate=$annual.'-01-01';
+        $onlineAmount=array();
+        $totalAmount=array();
+        $cashAmount=array();
+        for($i=0;$i<12;$i++){
+            $startDate=date('Y-m-d', strtotime($startdate. ' + '. $i .' months'));
+            $endDate=date('Y-m-d', strtotime($startdate. ' + '. ($i+1) .' months'));
+            $startDate=$startDate.' 00:00:00';
+            $endDate=$endDate.' 00:00:00'; 
+
+            $onlineAmount[$i]=$this->db->runQuery("SELECT sum(amount) as total from online_payments where payment_date_time>='$startDate' and payment_date_time < '$endDate'");        
+            $cashAmount[$i]=$this->db->runQuery("SELECT sum(amount) as total from cash_payment where payment_date_time>='$startDate' and payment_date_time < '$endDate'");
+
+            $totalAmount[$i]=0;
+            $totalAmount[$i]=intval($onlineAmount[$i][0]['total'])+intval($cashAmount[$i][0]['total']);
+        }
+        return $totalAmount;
+    }
+    function loadIncomeGraphWeek($week){
+        $startdate=date('Y-m-d',strtotime($week));
+        $onlineAmount=array();
+        $totalAmount=array();
+        $cashAmount=array();
+        // $startTime=$startdate.' 00:00:00';
+        // $i=5;
+        // $date=date('Y-m-d', strtotime($startdate. ' + '. $i .' days'));
+        for($i=0;$i<7;$i++){
+            $date=date('Y-m-d', strtotime($startdate. ' + '. $i .' days'));
+            $startTime=$date.' 00:00:00';
+            $endTime=$date.' 11:59:59';
+
+            $onlineAmount[$i]=$this->db->runQuery("SELECT sum(amount) as total from online_payments where payment_date_time>='$startTime' and payment_date_time < '$endTime'");        
+            $cashAmount[$i]=$this->db->runQuery("SELECT sum(amount) as total from cash_payment where payment_date_time>='$startTime' and payment_date_time < '$endTime'");
+
+            $totalAmount[$i]=0;
+            $totalAmount[$i]=intval($onlineAmount[$i][0]['total'])+intval($cashAmount[$i][0]['total']);
+
+        }
+        return $totalAmount;
+    }
+    function loadIncomeGraphMonth($month){
+        $startdate=$month.'-01';
+        $onlineAmount=array();
+        $totalAmount=array();
+        $cashAmount=array();
+
+
+        for($i=0;$i<31;$i++){
+            $date=date('Y-m-d', strtotime($startdate. ' + '. $i .' days'));
+            $startTime=$date.' 00:00:00';
+            $endTime=$date.' 11:59:59';
+
+            $onlineAmount[$i]=$this->db->runQuery("SELECT sum(amount) as total from online_payments where payment_date_time>='$startTime' and payment_date_time < '$endTime'");        
+            $cashAmount[$i]=$this->db->runQuery("SELECT sum(amount) as total from cash_payment where payment_date_time>='$startTime' and payment_date_time < '$endTime'");
+
+            $totalAmount[$i]=0;
+            $totalAmount[$i]=intval($onlineAmount[$i][0]['total'])+intval($cashAmount[$i][0]['total']);
+        }
+        return $totalAmount;
+    }
+    function getMaxIncomeWeek($week){
+        $startdate=date('Y-m-d',strtotime($week));
+        $onlineAmount=array();
+        $totalAmount=array();
+        $cashAmount=array();
+        for($i=0;$i<7;$i++){
+            $date=date('Y-m-d', strtotime($startdate. ' + '. $i .' days'));
+            $startTime=$date.' 00:00:00';
+            $endTime=$date.' 11:59:59';
+
+            $onlineAmount[$i]=$this->db->runQuery("SELECT sum(amount) as total from online_payments where payment_date_time>='$startTime' and payment_date_time < '$endTime'");        
+            $cashAmount[$i]=$this->db->runQuery("SELECT sum(amount) as total from cash_payment where payment_date_time>='$startTime' and payment_date_time < '$endTime'");
+
+            $totalAmount[$i]=0;
+            $totalAmount[$i]=intval($onlineAmount[$i][0]['total'])+intval($cashAmount[$i][0]['total']);
+
+        }
+        return max($totalAmount);
+    }
+    function getMinIncomeWeek($week){
+        $startdate=date('Y-m-d',strtotime($week));
+        $onlineAmount=array();
+        $totalAmount=array();
+        $cashAmount=array();
+        for($i=0;$i<7;$i++){
+            $date=date('Y-m-d', strtotime($startdate. ' + '. $i .' days'));
+            $startTime=$date.' 00:00:00';
+            $endTime=$date.' 11:59:59';
+
+            $onlineAmount[$i]=$this->db->runQuery("SELECT sum(amount) as total from online_payments where payment_date_time>='$startTime' and payment_date_time < '$endTime'");        
+            $cashAmount[$i]=$this->db->runQuery("SELECT sum(amount) as total from cash_payment where payment_date_time>='$startTime' and payment_date_time < '$endTime'");
+
+            $totalAmount[$i]=0;
+            $totalAmount[$i]=intval($onlineAmount[$i][0]['total'])+intval($cashAmount[$i][0]['total']);
+
+        }
+        return min($totalAmount);
+    }
+    function getAvgIncomeWeek($week){
+        $startdate=date('Y-m-d',strtotime($week));
+        $onlineAmount=array();
+        $totalAmount=array();
+        $cashAmount=array();
+        for($i=0;$i<7;$i++){
+            $date=date('Y-m-d', strtotime($startdate. ' + '. $i .' days'));
+            $startTime=$date.' 00:00:00';
+            $endTime=$date.' 11:59:59';
+
+            $onlineAmount[$i]=$this->db->runQuery("SELECT sum(amount) as total from online_payments where payment_date_time>='$startTime' and payment_date_time < '$endTime'");        
+            $cashAmount[$i]=$this->db->runQuery("SELECT sum(amount) as total from cash_payment where payment_date_time>='$startTime' and payment_date_time < '$endTime'");
+
+            $totalAmount[$i]=0;
+            $totalAmount[$i]=intval($onlineAmount[$i][0]['total'])+intval($cashAmount[$i][0]['total']);
+
+        }
+        return array_sum($totalAmount)/7;;
+    }
+    function getNoOfIncomesWeek($week){
+        $startDate=date('Y-m-d',strtotime($week));
+        $endDate=date('Y-m-d', strtotime($startDate. ' + '. 7 .' days'));
+        $startDate=$startDate.' 00:00:00';
+        $endDate=$endDate.' 00:00:00';
+        $onlineAmount=$this->db->runQuery("SELECT count(amount) as totalCount from online_payments where payment_date_time>='$startDate' and payment_date_time < '$endDate'");
+        $cashAmount=$this->db->runQuery("SELECT count(amount) as totalCount from cash_payment where payment_date_time>='$startDate' and payment_date_time < '$endDate'");
+        $totalAmount=0;
+        $totalAmount=intval($onlineAmount[0]['totalCount'])+intval($cashAmount[0]['totalCount']);
+        return $totalAmount;
+    }
+    function maxCountIncomesWeek($week){
+        $startdate=date('Y-m-d',strtotime($week));
+        $onlineAmount=array();
+        $totalAmount=array();
+        $cashAmount=array();
+        for($i=0;$i<7;$i++){
+            $date=date('Y-m-d', strtotime($startdate. ' + '. $i .' days'));
+            $startTime=$date.' 00:00:00';
+            $endTime=$date.' 11:59:59';
+
+            $onlineAmount[$i]=$this->db->runQuery("SELECT count(amount) as totalCount from online_payments where payment_date_time>='$startTime' and payment_date_time < '$endTime'");        
+            $cashAmount[$i]=$this->db->runQuery("SELECT count(amount) as totalCount from cash_payment where payment_date_time>='$startTime' and payment_date_time < '$endTime'");
+
+            $totalAmount[$i]=0;
+            $totalAmount[$i]=intval($onlineAmount[$i][0]['totalCount'])+intval($cashAmount[$i][0]['totalCount']);
+        }
+        return max($totalAmount);
+    }
+    function minCountIncomesWeek($week){
+        $startdate=date('Y-m-d',strtotime($week));
+        $onlineAmount=array();
+        $totalAmount=array();
+        $cashAmount=array();
+        for($i=0;$i<7;$i++){
+            $date=date('Y-m-d', strtotime($startdate. ' + '. $i .' days'));
+            $startTime=$date.' 00:00:00';
+            $endTime=$date.' 11:59:59';
+
+            $onlineAmount[$i]=$this->db->runQuery("SELECT count(amount) as totalCount from online_payments where payment_date_time>='$startTime' and payment_date_time < '$endTime'");        
+            $cashAmount[$i]=$this->db->runQuery("SELECT count(amount) as totalCount from cash_payment where payment_date_time>='$startTime' and payment_date_time < '$endTime'");
+
+            $totalAmount[$i]=0;
+            $totalAmount[$i]=intval($onlineAmount[$i][0]['totalCount'])+intval($cashAmount[$i][0]['totalCount']);
+        }
+        return min($totalAmount);
+    }
+    function minCountElementIncomesWeek($week){
+        $startdate=date('Y-m-d',strtotime($week));
+        $onlineAmount=array();
+        $totalAmount=array();
+        $cashAmount=array();
+        for($i=0;$i<7;$i++){
+            $date=date('Y-m-d', strtotime($startdate. ' + '. $i .' days'));
+            $startTime=$date.' 00:00:00';
+            $endTime=$date.' 11:59:59';
+
+            $onlineAmount[$i]=$this->db->runQuery("SELECT count(amount) as totalCount from online_payments where payment_date_time>='$startTime' and payment_date_time < '$endTime'");        
+            $cashAmount[$i]=$this->db->runQuery("SELECT count(amount) as totalCount from cash_payment where payment_date_time>='$startTime' and payment_date_time < '$endTime'");
+
+            $totalAmount[$i]=0;
+            $totalAmount[$i]=intval($onlineAmount[$i][0]['totalCount'])+intval($cashAmount[$i][0]['totalCount']);
+        }
+        $minval= min($totalAmount);
+        $minvalArr=array();
+        for($i=0;$i<count($totalAmount);$i++){
+            if($totalAmount[$i]==$minval){
+                array_push($minvalArr,($i+1));
+            }
+        }
+        return $minvalArr;
+    }
+    function maxCountElementIncomesWeek($week){
+        $startdate=date('Y-m-d',strtotime($week));
+        $weekAmount=array();
+        $totalAmount=array();
+        $studentAmount=array();
+        for($i=0;$i<7;$i++){
+            $date=date('Y-m-d', strtotime($startdate. ' + '. $i .' days'));
+            $startTime=$date.' 00:00:00';
+            $endTime=$date.' 11:59:59';
+
+
+            $onlineAmount[$i]=$this->db->runQuery("SELECT count(amount) as totalCount from online_payments where payment_date_time>='$startTime' and payment_date_time < '$endTime'");        
+            $cashAmount[$i]=$this->db->runQuery("SELECT count(amount) as totalCount from cash_payment where payment_date_time>='$startTime' and payment_date_time < '$endTime'");
+
+            $totalAmount[$i]=0;
+            $totalAmount[$i]=intval($onlineAmount[$i][0]['totalCount'])+intval($cashAmount[$i][0]['totalCount']);
+        }
+        $maxval= max($totalAmount);
+        $maxvalArr=array();
+        for($i=0;$i<count($totalAmount);$i++){
+            if($totalAmount[$i]==$maxval){
+                array_push($maxvalArr,($i+1));
+            }
+        }
+        return $maxvalArr;
+    }
+    function totalOnlineIncomesWeek($week){
+        $startDate=date('Y-m-d',strtotime($week));
+        $endDate=date('Y-m-d', strtotime($startDate. ' + '. 7 .' days'));
+        $startDate=$startDate.' 00:00:00';
+        $endDate=$endDate.' 00:00:00';
+        $onlineAmount=$this->db->runQuery("SELECT sum(amount) as total from online_payments where payment_date_time>='$startDate' and payment_date_time < '$endDate'");        
+            
+        return intval($onlineAmount[0]['total']);
+    }
+    function totalCashIncomesWeek($week){
+        $startDate=date('Y-m-d',strtotime($week));
+        $endDate=date('Y-m-d', strtotime($startDate. ' + '. 7 .' days'));
+        $startDate=$startDate.' 00:00:00';
+        $endDate=$endDate.' 00:00:00';
+        $cashAmount=$this->db->runQuery("SELECT sum(amount) as total from cash_payment where payment_date_time>='$startDate' and payment_date_time < '$endDate'");
+        return intval($cashAmount[0]['total']);
+
+    }
+
+
+    function getMaxIncomeMonth($month){
+        $startdate=$month.'-01';
+        $onlineAmount=array();
+        $totalAmount=array();
+        $cashAmount=array();
+
+        $parts=explode("-",$month);
+        if($parts[1]=="01" || $parts[1]=="03" || $parts[1]=="05" || $parts[1]=="07" || $parts[1]=="08" || $parts[1]=="10" || $parts[1]=="12"){
+            $divisor=31;
+        }else if($parts[1]=="04" || $parts[1]=="06" || $parts[1]=="09" || $parts[1]=="11"){
+            $divisor=30;
+        }else if($parts[1]=="02" && isLeapYear($parts[0])==true){
+            $divisor=29;
+        }else if($parts[1]=="02" && isLeapYear($parts[0])==false){
+            $divisor=28;
+        }
+        for($i=0;$i<$divisor;$i++){
+            $date=date('Y-m-d', strtotime($startdate. ' + '. $i .' days'));
+            $startTime=$date.' 00:00:00';
+            $endTime=$date.' 11:59:59';
+
+            $onlineAmount[$i]=$this->db->runQuery("SELECT sum(amount) as total from online_payments where payment_date_time>='$startTime' and payment_date_time < '$endTime'");        
+            $cashAmount[$i]=$this->db->runQuery("SELECT sum(amount) as total from cash_payment where payment_date_time>='$startTime' and payment_date_time < '$endTime'");
+
+            $totalAmount[$i]=0;
+            $totalAmount[$i]=intval($onlineAmount[$i][0]['total'])+intval($cashAmount[$i][0]['total']);
+
+        }
+        return max($totalAmount);
+    }
+    function getMinIncomeMonth($month){
+        $startdate=$month.'-01';
+        $onlineAmount=array();
+        $totalAmount=array();
+        $cashAmount=array();
+
+        $parts=explode("-",$month);
+        if($parts[1]=="01" || $parts[1]=="03" || $parts[1]=="05" || $parts[1]=="07" || $parts[1]=="08" || $parts[1]=="10" || $parts[1]=="12"){
+            $divisor=31;
+        }else if($parts[1]=="04" || $parts[1]=="06" || $parts[1]=="09" || $parts[1]=="11"){
+            $divisor=30;
+        }else if($parts[1]=="02" && isLeapYear($parts[0])==true){
+            $divisor=29;
+        }else if($parts[1]=="02" && isLeapYear($parts[0])==false){
+            $divisor=28;
+        }
+        for($i=0;$i<$divisor;$i++){
+            $date=date('Y-m-d', strtotime($startdate. ' + '. $i .' days'));
+            $startTime=$date.' 00:00:00';
+            $endTime=$date.' 11:59:59';
+
+            $onlineAmount[$i]=$this->db->runQuery("SELECT sum(amount) as total from online_payments where payment_date_time>='$startTime' and payment_date_time < '$endTime'");        
+            $cashAmount[$i]=$this->db->runQuery("SELECT sum(amount) as total from cash_payment where payment_date_time>='$startTime' and payment_date_time < '$endTime'");
+
+            $totalAmount[$i]=0;
+            $totalAmount[$i]=intval($onlineAmount[$i][0]['total'])+intval($cashAmount[$i][0]['total']);
+
+        }
+        return min($totalAmount);
+    }
+    function getAvgIncomeMonth($month){
+        $startdate=$month.'-01';
+        $onlineAmount=array();
+        $totalAmount=array();
+        $cashAmount=array();
+
+        $parts=explode("-",$month);
+        if($parts[1]=="01" || $parts[1]=="03" || $parts[1]=="05" || $parts[1]=="07" || $parts[1]=="08" || $parts[1]=="10" || $parts[1]=="12"){
+            $divisor=31;
+        }else if($parts[1]=="04" || $parts[1]=="06" || $parts[1]=="09" || $parts[1]=="11"){
+            $divisor=30;
+        }else if($parts[1]=="02" && isLeapYear($parts[0])==true){
+            $divisor=29;
+        }else if($parts[1]=="02" && isLeapYear($parts[0])==false){
+            $divisor=28;
+        }
+        for($i=0;$i<$divisor;$i++){
+            $date=date('Y-m-d', strtotime($startdate. ' + '. $i .' days'));
+            $startTime=$date.' 00:00:00';
+            $endTime=$date.' 11:59:59';
+
+            $onlineAmount[$i]=$this->db->runQuery("SELECT sum(amount) as total from online_payments where payment_date_time>='$startTime' and payment_date_time < '$endTime'");        
+            $cashAmount[$i]=$this->db->runQuery("SELECT sum(amount) as total from cash_payment where payment_date_time>='$startTime' and payment_date_time < '$endTime'");
+
+            $totalAmount[$i]=0;
+            $totalAmount[$i]=intval($onlineAmount[$i][0]['total'])+intval($cashAmount[$i][0]['total']);
+
+        }
+        return array_sum($totalAmount)/$divisor;
+    }
+    function getNoOfIncomesMonth($month){
+        $parts=explode("-",$month);
+        if($parts[1]=="01" || $parts[1]=="03" || $parts[1]=="05" || $parts[1]=="07" || $parts[1]=="08" || $parts[1]=="10" || $parts[1]=="12"){
+            $divisor=31;
+        }else if($parts[1]=="04" || $parts[1]=="06" || $parts[1]=="09" || $parts[1]=="11"){
+            $divisor=30;
+        }else if($parts[1]=="02" && isLeapYear($parts[0])==true){
+            $divisor=29;
+        }else if($parts[1]=="02" && isLeapYear($parts[0])==false){
+            $divisor=28;
+        }
+        $startDate=$month.'-01';
+        $endDate=date('Y-m-d', strtotime($startDate. ' + '. $divisor .' days'));
+        $startDate=$startDate.' 00:00:00';
+        $endDate=$endDate.' 00:00:00';
+        $onlineAmount=$this->db->runQuery("SELECT count(amount) as totalCount from online_payments where payment_date_time>='$startDate' and payment_date_time < '$endDate'");
+        $cashAmount=$this->db->runQuery("SELECT count(amount) as totalCount from cash_payment where payment_date_time>='$startDate' and payment_date_time < '$endDate'");
+        $totalAmount=0;
+        $totalAmount=intval($onlineAmount[0]['totalCount'])+intval($cashAmount[0]['totalCount']);
+        return $totalAmount;
+    }
+    function  maxCountIncomesMonth($month){
+        $startdate=$month.'-01';
+        $onlineAmount=array();
+        $totalAmount=array();
+        $cashAmount=array();
+
+        $parts=explode("-",$month);
+        if($parts[1]=="01" || $parts[1]=="03" || $parts[1]=="05" || $parts[1]=="07" || $parts[1]=="08" || $parts[1]=="10" || $parts[1]=="12"){
+            $divisor=31;
+        }else if($parts[1]=="04" || $parts[1]=="06" || $parts[1]=="09" || $parts[1]=="11"){
+            $divisor=30;
+        }else if($parts[1]=="02" && isLeapYear($parts[0])==true){
+            $divisor=29;
+        }else if($parts[1]=="02" && isLeapYear($parts[0])==false){
+            $divisor=28;
+        }
+
+        for($i=0;$i<$divisor;$i++){
+            $date=date('Y-m-d', strtotime($startdate. ' + '. $i .' days'));
+            $startTime=$date.' 00:00:00';
+            $endTime=$date.' 11:59:59';
+
+            $onlineAmount[$i]=$this->db->runQuery("SELECT count(amount) as totalCount from online_payments where payment_date_time>='$startTime' and payment_date_time < '$endTime'");        
+            $cashAmount[$i]=$this->db->runQuery("SELECT count(amount) as totalCount from cash_payment where payment_date_time>='$startTime' and payment_date_time < '$endTime'");
+
+            $totalAmount[$i]=0;
+            $totalAmount[$i]=intval($onlineAmount[$i][0]['totalCount'])+intval($cashAmount[$i][0]['totalCount']);
+        }
+        return max($totalAmount);
+    }
+    function  minCountIncomesMonth($month){
+        $startdate=$month.'-01';
+        $onlineAmount=array();
+        $totalAmount=array();
+        $cashAmount=array();
+
+        $parts=explode("-",$month);
+        if($parts[1]=="01" || $parts[1]=="03" || $parts[1]=="05" || $parts[1]=="07" || $parts[1]=="08" || $parts[1]=="10" || $parts[1]=="12"){
+            $divisor=31;
+        }else if($parts[1]=="04" || $parts[1]=="06" || $parts[1]=="09" || $parts[1]=="11"){
+            $divisor=30;
+        }else if($parts[1]=="02" && isLeapYear($parts[0])==true){
+            $divisor=29;
+        }else if($parts[1]=="02" && isLeapYear($parts[0])==false){
+            $divisor=28;
+        }
+
+        for($i=0;$i<$divisor;$i++){
+            $date=date('Y-m-d', strtotime($startdate. ' + '. $i .' days'));
+            $startTime=$date.' 00:00:00';
+            $endTime=$date.' 11:59:59';
+
+            $onlineAmount[$i]=$this->db->runQuery("SELECT count(amount) as totalCount from online_payments where payment_date_time>='$startTime' and payment_date_time < '$endTime'");        
+            $cashAmount[$i]=$this->db->runQuery("SELECT count(amount) as totalCount from cash_payment where payment_date_time>='$startTime' and payment_date_time < '$endTime'");
+
+            $totalAmount[$i]=0;
+            $totalAmount[$i]=intval($onlineAmount[$i][0]['totalCount'])+intval($cashAmount[$i][0]['totalCount']);
+        }
+        return min($totalAmount);
+    }
+    function minCountElementIncomesMonth($month){
+        $startdate=$month.'-01';
+        $onlineAmount=array();
+        $totalAmount=array();
+        $cashAmount=array();
+
+        $parts=explode("-",$month);
+        if($parts[1]=="01" || $parts[1]=="03" || $parts[1]=="05" || $parts[1]=="07" || $parts[1]=="08" || $parts[1]=="10" || $parts[1]=="12"){
+            $divisor=31;
+        }else if($parts[1]=="04" || $parts[1]=="06" || $parts[1]=="09" || $parts[1]=="11"){
+            $divisor=30;
+        }else if($parts[1]=="02" && isLeapYear($parts[0])==true){
+            $divisor=29;
+        }else if($parts[1]=="02" && isLeapYear($parts[0])==false){
+            $divisor=28;
+        }
+        for($i=0;$i<$divisor;$i++){
+            $date=date('Y-m-d', strtotime($startdate. ' + '. $i .' days'));
+            $startTime=$date.' 00:00:00';
+            $endTime=$date.' 11:59:59';
+
+            $onlineAmount[$i]=$this->db->runQuery("SELECT count(amount) as totalCount from online_payments where payment_date_time>='$startTime' and payment_date_time < '$endTime'");        
+            $cashAmount[$i]=$this->db->runQuery("SELECT count(amount) as totalCount from cash_payment where payment_date_time>='$startTime' and payment_date_time < '$endTime'");
+
+            $totalAmount[$i]=0;
+            $totalAmount[$i]=intval($onlineAmount[$i][0]['totalCount'])+intval($cashAmount[$i][0]['totalCount']);
+        }
+        $minval= min($totalAmount);
+        $minvalArr=array();
+        for($i=0;$i<count($totalAmount);$i++){
+            if($totalAmount[$i]==$minval){
+                array_push($minvalArr,($i+1));
+            }
+        }
+        return $minvalArr;
+
+    }
+    function maxCountElementIncomesMonth($month){
+        $startdate=$month.'-01';
+        $onlineAmount=array();
+        $totalAmount=array();
+        $cashAmount=array();
+
+        $parts=explode("-",$month);
+        if($parts[1]=="01" || $parts[1]=="03" || $parts[1]=="05" || $parts[1]=="07" || $parts[1]=="08" || $parts[1]=="10" || $parts[1]=="12"){
+            $divisor=31;
+        }else if($parts[1]=="04" || $parts[1]=="06" || $parts[1]=="09" || $parts[1]=="11"){
+            $divisor=30;
+        }else if($parts[1]=="02" && isLeapYear($parts[0])==true){
+            $divisor=29;
+        }else if($parts[1]=="02" && isLeapYear($parts[0])==false){
+            $divisor=28;
+        }
+        for($i=0;$i<$divisor;$i++){
+            $date=date('Y-m-d', strtotime($startdate. ' + '. $i .' days'));
+            $startTime=$date.' 00:00:00';
+            $endTime=$date.' 11:59:59';
+
+            $onlineAmount[$i]=$this->db->runQuery("SELECT count(amount) as totalCount from online_payments where payment_date_time>='$startTime' and payment_date_time < '$endTime'");        
+            $cashAmount[$i]=$this->db->runQuery("SELECT count(amount) as totalCount from cash_payment where payment_date_time>='$startTime' and payment_date_time < '$endTime'");
+
+            $totalAmount[$i]=0;
+            $totalAmount[$i]=intval($onlineAmount[$i][0]['totalCount'])+intval($cashAmount[$i][0]['totalCount']);
+        }
+        $maxval= max($totalAmount);
+        $maxvalArr=array();
+        for($i=0;$i<count($totalAmount);$i++){
+            if($totalAmount[$i]==$maxval){
+                array_push($maxvalArr,($i+1));
+            }
+        }
+        return $maxvalArr;
+
+    }
+
+    function totalOnlineIncomesMonth($month){
+        $parts=explode("-",$month);
+        if($parts[1]=="01" || $parts[1]=="03" || $parts[1]=="05" || $parts[1]=="07" || $parts[1]=="08" || $parts[1]=="10" || $parts[1]=="12"){
+            $divisor=31;
+        }else if($parts[1]=="04" || $parts[1]=="06" || $parts[1]=="09" || $parts[1]=="11"){
+            $divisor=30;
+        }else if($parts[1]=="02" && isLeapYear($parts[0])==true){
+            $divisor=29;
+        }else if($parts[1]=="02" && isLeapYear($parts[0])==false){
+            $divisor=28;
+        }
+        $startDate=$month.'-01';
+        $endDate=date('Y-m-d', strtotime($startDate. ' + '. $divisor .' days'));
+        $startDate=$startDate.' 00:00:00';
+        $endDate=$endDate.' 00:00:00';
+        $onlineAmount=$this->db->runQuery("SELECT sum(amount) as total from online_payments where payment_date_time>='$startDate' and payment_date_time < '$endDate'");        
+            
+        return intval($onlineAmount[0]['total']);
+    }
+    function totalCashIncomesMonth($month){
+        $parts=explode("-",$month);
+        if($parts[1]=="01" || $parts[1]=="03" || $parts[1]=="05" || $parts[1]=="07" || $parts[1]=="08" || $parts[1]=="10" || $parts[1]=="12"){
+            $divisor=31;
+        }else if($parts[1]=="04" || $parts[1]=="06" || $parts[1]=="09" || $parts[1]=="11"){
+            $divisor=30;
+        }else if($parts[1]=="02" && isLeapYear($parts[0])==true){
+            $divisor=29;
+        }else if($parts[1]=="02" && isLeapYear($parts[0])==false){
+            $divisor=28;
+        }
+        $startDate=$month.'-01';
+        $endDate=date('Y-m-d', strtotime($startDate. ' + '. $divisor .' days'));
+        $startDate=$startDate.' 00:00:00';
+        $endDate=$endDate.' 00:00:00';
+        $cashAmount=$this->db->runQuery("SELECT sum(amount) as total from cash_payment where payment_date_time>='$startDate' and payment_date_time < '$endDate'");
+        return intval($cashAmount[0]['total']);
+    }
+    function getMaxIncomeAnnual($annual){
+        $startdate=$annual.'-01-01';
+        $onlineAmount=array();
+        $totalAmount=array();
+        $cashAmount=array();
+        for($i=0;$i<12;$i++){
+            $startDate=date('Y-m-d', strtotime($startdate. ' + '. $i .' months'));
+            $endDate=date('Y-m-d', strtotime($startdate. ' + '. ($i+1) .' months'));
+            $startDate=$startDate.' 00:00:00';
+            $endDate=$endDate.' 00:00:00';
+
+            $onlineAmount[$i]=$this->db->runQuery("SELECT sum(amount) as total from online_payments where payment_date_time>='$startDate' and payment_date_time < '$endDate'");        
+            $cashAmount[$i]=$this->db->runQuery("SELECT sum(amount) as total from cash_payment where payment_date_time>='$startDate' and payment_date_time < '$endDate'");
+
+            $totalAmount[$i]=0;
+            $totalAmount[$i]=intval($onlineAmount[$i][0]['total'])+intval($cashAmount[$i][0]['total']);
+        }
+        return max($totalAmount);
+    }
+    function getMinIncomeAnnual($annual){
+        $startdate=$annual.'-01-01';
+        $onlineAmount=array();
+        $totalAmount=array();
+        $cashAmount=array();
+        for($i=0;$i<12;$i++){
+            $startDate=date('Y-m-d', strtotime($startdate. ' + '. $i .' months'));
+            $endDate=date('Y-m-d', strtotime($startdate. ' + '. ($i+1) .' months'));
+            $startDate=$startDate.' 00:00:00';
+            $endDate=$endDate.' 00:00:00';
+
+            $onlineAmount[$i]=$this->db->runQuery("SELECT sum(amount) as total from online_payments where payment_date_time>='$startDate' and payment_date_time < '$endDate'");        
+            $cashAmount[$i]=$this->db->runQuery("SELECT sum(amount) as total from cash_payment where payment_date_time>='$startDate' and payment_date_time < '$endDate'");
+
+            $totalAmount[$i]=0;
+            $totalAmount[$i]=intval($onlineAmount[$i][0]['total'])+intval($cashAmount[$i][0]['total']);
+        }
+        return min($totalAmount);
+    }
+    function getAvgIncomeAnnual($annual){
+        $startdate=$annual.'-01-01';
+        $onlineAmount=array();
+        $totalAmount=array();
+        $cashAmount=array();
+        for($i=0;$i<12;$i++){
+            $startDate=date('Y-m-d', strtotime($startdate. ' + '. $i .' months'));
+            $endDate=date('Y-m-d', strtotime($startdate. ' + '. ($i+1) .' months'));
+            $startDate=$startDate.' 00:00:00';
+            $endDate=$endDate.' 00:00:00';
+
+            $onlineAmount[$i]=$this->db->runQuery("SELECT sum(amount) as total from online_payments where payment_date_time>='$startDate' and payment_date_time < '$endDate'");        
+            $cashAmount[$i]=$this->db->runQuery("SELECT sum(amount) as total from cash_payment where payment_date_time>='$startDate' and payment_date_time < '$endDate'");
+
+            $totalAmount[$i]=0;
+            $totalAmount[$i]=intval($onlineAmount[$i][0]['total'])+intval($cashAmount[$i][0]['total']);
+        }
+        return array_sum($totalAmount)/12;
+    }
+    function getNoOfIncomesAnnual($annual){
+        $startDate=$annual.'-01-01';
+        $endDate=date('Y-m-d', strtotime($startDate. ' + '. 12 .' months'));
+        $startDate=$startDate.' 00:00:00';
+        $endDate=$endDate.' 00:00:00';
+        $onlineAmount=$this->db->runQuery("SELECT count(amount) as totalCount from online_payments where payment_date_time>='$startDate' and payment_date_time < '$endDate'");
+        $cashAmount=$this->db->runQuery("SELECT count(amount) as totalCount from cash_payment where payment_date_time>='$startDate' and payment_date_time < '$endDate'");
+        $totalAmount=0;
+        $totalAmount=intval($onlineAmount[0]['totalCount'])+intval($cashAmount[0]['totalCount']);
+        return $totalAmount;
+    }
+    function maxCountIncomesAnnual($annual){
+        $startdate=$annual.'-01-01';
+        $onlineAmount=array();
+        $totalAmount=array();
+        $cashAmount=array();
+        for($i=0;$i<12;$i++){
+            $startDate=date('Y-m-d', strtotime($startdate. ' + '. $i .' months'));
+            $endDate=date('Y-m-d', strtotime($startdate. ' + '. ($i+1) .' months'));
+            $startDate=$startDate.' 00:00:00';
+            $endDate=$endDate.' 00:00:00';
+
+            $onlineAmount[$i]=$this->db->runQuery("SELECT count(amount) as totalCount from online_payments where payment_date_time>='$startDate' and payment_date_time < '$endDate'");
+            $cashAmount[$i]=$this->db->runQuery("SELECT count(amount) as totalCount from cash_payment where payment_date_time>='$startDate' and payment_date_time < '$endDate'");
+            $totalAmount[$i]=0;
+            $totalAmount[$i]=intval($onlineAmount[$i][0]['totalCount'])+intval($cashAmount[$i][0]['totalCount']);
+        }
+        return max($totalAmount);
+    }
+    function minCountIncomesAnnual($annual){
+        $startdate=$annual.'-01-01';
+        $onlineAmount=array();
+        $totalAmount=array();
+        $cashAmount=array();
+        for($i=0;$i<12;$i++){
+            $startDate=date('Y-m-d', strtotime($startdate. ' + '. $i .' months'));
+            $endDate=date('Y-m-d', strtotime($startdate. ' + '. ($i+1) .' months'));
+            $startDate=$startDate.' 00:00:00';
+            $endDate=$endDate.' 00:00:00';
+
+            $onlineAmount[$i]=$this->db->runQuery("SELECT count(amount) as totalCount from online_payments where payment_date_time>='$startDate' and payment_date_time < '$endDate'");
+            $cashAmount[$i]=$this->db->runQuery("SELECT count(amount) as totalCount from cash_payment where payment_date_time>='$startDate' and payment_date_time < '$endDate'");
+            $totalAmount[$i]=0;
+            $totalAmount[$i]=intval($onlineAmount[$i][0]['totalCount'])+intval($cashAmount[$i][0]['totalCount']);
+        }
+        return min($totalAmount);
+    }
+    function minCountElementIncomesAnnual($annual){
+        $startdate=$annual.'-01-01';
+        $annualAmount=array();
+        $totalAmount=array();
+        $studentAmount=array();
+        for($i=0;$i<12;$i++){
+            $startDate=date('Y-m-d', strtotime($startdate. ' + '. $i .' months'));
+            $endDate=date('Y-m-d', strtotime($startdate. ' + '. ($i+1) .' months'));
+            $startDate=$startDate.' 00:00:00';
+            $endDate=$endDate.' 00:00:00';
+
+            $onlineAmount[$i]=$this->db->runQuery("SELECT count(amount) as totalCount from online_payments where payment_date_time>='$startDate' and payment_date_time < '$endDate'");
+            $cashAmount[$i]=$this->db->runQuery("SELECT count(amount) as totalCount from cash_payment where payment_date_time>='$startDate' and payment_date_time < '$endDate'");
+            $totalAmount[$i]=0;
+            $totalAmount[$i]=intval($onlineAmount[$i][0]['totalCount'])+intval($cashAmount[$i][0]['totalCount']);
+        }
+        $minval= min($totalAmount);
+        $minvalArr=array();
+        for($i=0;$i<count($totalAmount);$i++){
+            if($totalAmount[$i]==$minval){
+                array_push($minvalArr,($i+1));
+            }
+        }
+        return $minvalArr;
+    }
+    function maxCountElementIncomesAnnual($annual){
+        $startdate=$annual.'-01-01';
+        $annualAmount=array();
+        $totalAmount=array();
+        $studentAmount=array();
+        for($i=0;$i<12;$i++){
+            $startDate=date('Y-m-d', strtotime($startdate. ' + '. $i .' months'));
+            $endDate=date('Y-m-d', strtotime($startdate. ' + '. ($i+1) .' months'));
+            $startDate=$startDate.' 00:00:00';
+            $endDate=$endDate.' 00:00:00';
+
+            $onlineAmount[$i]=$this->db->runQuery("SELECT count(amount) as totalCount from online_payments where payment_date_time>='$startDate' and payment_date_time < '$endDate'");
+            $cashAmount[$i]=$this->db->runQuery("SELECT count(amount) as totalCount from cash_payment where payment_date_time>='$startDate' and payment_date_time < '$endDate'");
+            $totalAmount[$i]=0;
+            $totalAmount[$i]=intval($onlineAmount[$i][0]['totalCount'])+intval($cashAmount[$i][0]['totalCount']);
+        }
+        $maxval= max($totalAmount);
+        $maxvalArr=array();
+        for($i=0;$i<count($totalAmount);$i++){
+            if($totalAmount[$i]==$maxval){
+                array_push($maxvalArr,($i+1));
+            }
+        }
+        return $maxvalArr;
+    }
+    function totalOnlineIncomesAnnual($annual){
+        $startDate=$annual.'-01-01';
+        $endDate=date('Y-m-d', strtotime($startDate. ' + '. 12 .' months'));
+        $startDate=$startDate.' 00:00:00';
+        $endDate=$endDate.' 00:00:00';
+        $onlineAmount=$this->db->runQuery("SELECT sum(amount) as total from online_payments where payment_date_time>='$startDate' and payment_date_time < '$endDate'");        
+            
+        return intval($onlineAmount[0]['total']);
+    }
+    function totalCashIncomesAnnual($annual){
+        $startDate=$annual.'-01-01';
+        $endDate=date('Y-m-d', strtotime($startDate. ' + '. 12 .' months'));
+        $startDate=$startDate.' 00:00:00';
+        $endDate=$endDate.' 00:00:00';
+        $cashAmount=$this->db->runQuery("SELECT sum(amount) as total from cash_payment where payment_date_time>='$startDate' and payment_date_time < '$endDate'");
+        return intval($cashAmount[0]['total']);
+    }
+
+    
 }

@@ -77,6 +77,82 @@
   color: #0892d0;
   border: 2px solid #0892d0;
 }
+.confirmation-box {
+  /* background-color: tomato; */
+  position: fixed;
+  align-items: center;
+  justify-content: center;
+  visibility: hidden;
+}
+.confirmation-box-active {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  z-index: 1000;
+  visibility: visible;
+  position: fixed;
+  align-items: center;
+  background-color: transparent;
+  justify-content: space-around;
+}
+.box-body {
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  width: 600px;
+  height: 250px;
+  border-radius: 3px;
+  box-shadow: 1px 1px 10px #b0b3b3;
+}
+.popup-content-box {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 80%;
+  align-items: center;
+  justify-content: space-around;
+}
+p {
+  font-size: 15px;
+  font-weight: 600;
+}
+.popup-button-set {
+  display: flex;
+  width: 90%;
+  justify-content: space-around;
+  height: 45px;
+}
+.popup-cancel {
+  width: 150px;
+  height: 43px;
+  font-weight: bold;
+  border: none;
+  color: white;
+  border-radius: 3px;
+  background-color: #262b2f;
+  border: 2px solid #262b2f;
+  box-shadow: 1px 1px 10px #898a8a;
+}
+.popup-confirm {
+  width: 150px;
+  height: 43px;
+  font-weight: bold;
+  border: none;
+  color: white;
+  border-radius: 3px;
+  background-color: #0892d0;
+  border: 2px solid #0892d0;
+  box-shadow: 1px 1px 10px #898a8a;
+}
+.popup-confirm:hover {
+  background-color: white;
+  color: #0892d0;
+  cursor: pointer;
+  border: 2px solid #0892d0;
+  box-shadow: 1px 1px 10px #898a8a;
+}
 @media screen and (max-width: 1117px) {
   .save {
     width: 100px;
