@@ -63,6 +63,28 @@ class Manager_Model extends Model{
         $result=$this->db->runQuery("SELECT employee_id,name,job_title FROM employee where job_title='Instructor' OR job_title='Teacher'");
         return $result;
     }
+
+
+    //check Instructors,vehicles and students
+    function checkSelectedInstructorsForExams($instructorsList,$date,$time){
+        $list=array();
+        $instructors=explode(",",$instructorsList);
+        $startTime=date('H:i:s', strtotime($time. ' - '. 1 .' hours'));
+        $endTime=date('H:i:s', strtotime($time. ' + '. 1 .' hours'));
+        for($i=0;$i<count($instructors);$i++){
+            $result=$this->db->runQuery("SELECT DISTINCT exam_conductor_assigns.conductor_id as conductors from exam_conductor_assigns INNER JOIN exams where exams.exam_date>='$date' and exams.exam_time>='$startTime' and exams.exam_time < '$endTime' and exam_conductor_assigns.conductor_id=$instructors[$i]");
+            
+            if(!empty($result[0]['conductors'])){
+                if(intval($result[0]['conductors'])==intval($instructors[$i])){
+                    array_push($list,$instructors[$i]);
+                }
+            }
+
+        }
+        
+        return $list;
+    }
+
     function addSession($data,$instructors,$vehicles,$managerId){
         $values=explode(",",$data);
         $instructorsList=explode(",",$instructors);
@@ -191,6 +213,7 @@ class Manager_Model extends Model{
        
         if($stdCount<4){
             $result=$this->db->runQuery("INSERT INTO exam_student_assigns VALUES($managerId,$examId,$studentId)");
+            $result1=$this->db->runQuery("INSERT INTO exam_participation(student_id,exam_id) values($studentId,$examId)");
             return true;
         }else{
             return false;
@@ -199,6 +222,7 @@ class Manager_Model extends Model{
     }
     function removeStudents($studentId,$examId){
         $result=$this->db->runQuery("DELETE FROM exam_student_assigns WHERE student_id=$studentId AND exam_id=$examId");
+        $result=$this->db->runQuery("DELETE FROM exam_participation WHERE student_id=$studentId AND exam_id=$examId");
         return true;
     }
 

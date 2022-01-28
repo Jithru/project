@@ -28,8 +28,8 @@
                 <div class="heading-row">
                     <div class="cell">
                     <div class="headingDetails">
-                        <div class="one">Income ID</div>
-                        <div class="two">Income</div>
+                        <div class="one">Index</div>
+                        <div class="two">Payment method</div>
                         <div class="three">Student name</div>
                         <div class="four">Date</div>
                         <div class="five">Time</div>
@@ -38,31 +38,8 @@
                     </div>
                 </div>
             </div>
-            <div class="table">
-                <div class="row">
-                    <div class="cell">
-                        <div class="information">
-                            <div class="one">In_1</div>
-                            <div class="two">Partial Payment</div>
-                            <div class="three">Roshan Senevirathne</div>
-                            <div class="four">2021-10-16</div>
-                            <div class="five">8:15:22</div>
-                            <div class="six">1000</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="cell">
-                        <div class="information">
-                            <div class="one">In_2</div>
-                            <div class="two">Partial Payment</div>
-                            <div class="three">Roshan Senevirathne</div>
-                            <div class="four">2021-10-16</div>
-                            <div class="five">8:15:22</div>
-                            <div class="six">1000</div>
-                        </div> 
-                    </div>
-                </div>
+            <div class="table" id="tableRows">
+
             </div>
             <div class="button-container">
                 <a href="<?php echo URL?>IncomeExpenses/incomeGraphic"><button class="income-graph-button" id="incomeGraph" name="incomeGraph">Graphical view</button></a>
@@ -70,5 +47,6 @@
             </div>
         </div>
     </div>
+    <script src="<?php echo URL?>public/js/IncomeExpenses/viewIncome.js"></script>
 </body>
 </html>
