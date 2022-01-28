@@ -15,68 +15,66 @@
         <div class="selectors">
             <div class="method-selector">
                 <label for="method-selector-button" class="method-selector-label">Select method:</label>
-                <select class="method-selector-select" name="method-selector" id="methodSelector">
-                    <optgroup>
-                        <option value="Weekly">Weekly</option>
-                        <option value="Monthly">Monthly</option>
-                        <option value="Annualy">Annualy</option>
-                    </optgroup>
+                <select class="method-selector-select" name="method-selector" id="methodSelector" onclick="inputSelector()">
+                    
+                    
                 </select>
             </div>
-            <div class="date-selector">
-                <label for="date-container" class="date-container-label">Select Week:</label>
-                <input type="week" class="date-container" name="dateContainer" id="dateContainer" required>
+            <div class="date-selector" id="dateSelector">
+
             </div>
             <div class="go-button-container">
-                <button class="go-button" id="go" name="go">Go</button>
+                <button class="go-button" id="go" onclick="loadGraph()">Go</button>
             </div>
         </div>
         
         <div class="chart-n-values">
             <div class="income-chart">
-                <canvas  id="incomeChart"></canvas>
+                <canvas id="incomeChart"></canvas>
             </div>
             <div class="containers">
                 <div class="container1">
                     <div class="max-container">
                         <div class="topic"><h2>Maximum Total Payment</h2></div>
-                        <div class="details"><div class="day"><h3>Thursday</h3></div><div class="amount"><h3>10000.00</h3></div></div>
-                        <div class="details"><div class="day"><h3>Friday</h3></div><div class="amount"><h3>10000.00</h3></div></div>
+                        <div class="details" id="maxTotalpayment">
+                        
+                        </div>
                     </div>
                     <div class="min-container">
                         <div class="topic"><h2>Minimum Total Payment</h2></div>
-                        <div class="details"><div class="day"><h3>Saturday</h3></div><div class="amount"><h3>3000.00</h3></div></div>
+                        <div class="details" id="minTotalpayment">
                         
+                        </div>
                     </div>
                 </div>
                 <div class="container2">
                     <div class="max-container">
                         <div class="topic"><h2>Average payment</h2></div>
-                        <div class="details"><div class="amount"><h3>6642.85</h3></div></div>
+                        <div class="details" id="average"></div>
                     </div>
                     <div class="min-container">
                         <div class="topic"><h2>No of payments received</h2></div>
-                        <div class="details"><div class="amount"><h3>43</h3></div></div> 
+                        <div class="details" id="noOfPayments"><div class="amount"></div></div>
                     </div>
                 </div>
                 <div class="container3">
                     <div class="max-container">
                         <div class="topic"><h2>Maximum No of payments</h2></div>
-                        <div class="details"><div class="day"><h3>Thursday</h3></div><div class="amount"><h3>19</h3></div></div>
+                        <div class="details"><div class="day"><h3 id="maxNoPaymentDays"></h3></div><div class="amount" id="maxNoPayments"></div></div>
                     </div>
                     <div class="min-container">
                         <div class="topic"><h2>Minimum No of payments</h2></div>
-                        <div class="details"><div class="day"><h3>Saturday</h3></div><div class="amount"><h3>2</h3></div></div>
+                        <div class="details"><div class="day"><h3 id="minNoPaymentDays"></h3></div><div class="amount" id="minNoPayments"></div></div>
                     </div>
                 </div>
                 <div class="container4">
                     <div class="max-container">
                         <div class="topic"><h2>Online Payments</h2></div>
-                        <div class="details"><div class="amount"><h3>10</h3></div></div>
+                        <div class="details" id="totalOnlinePayments"></div>
                     </div>
                     <div class="min-container">
                         <div class="topic"><h2>Cash Payments</h2></div>
-                        <div class="details"><div class="amount"><h3>33</h3></div></div>
+                        <div class="details" id="totalCashPayments"></div>
                     </div>
                 </div>
             </div>

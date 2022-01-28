@@ -77,7 +77,13 @@ function submitSession(){
         else{
             var dateval=today.getDate()
         }
-        var day=today.getFullYear()+"-"+(today.getMonth()+1)+"-"+dateval
+        if((today.getMonth()+1)<10){
+            var monthval="0"+(today.getMonth()+1)
+        }
+        else{
+            var monthval=today.getMonth()+1
+        }
+        var day=today.getFullYear()+"-"+monthval+"-"+dateval
         var todaytime=today.getHours()+":"+today.getMinutes()
         if(date<day){
             console.log(day)
