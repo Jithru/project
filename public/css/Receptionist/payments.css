@@ -314,7 +314,7 @@ body {
   height: 90px;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-end;
   /* background-color: yellow; */
 }
 .part-4-st a {
