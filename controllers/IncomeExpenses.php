@@ -212,4 +212,20 @@ class IncomeExpenses extends Controller{
         echo json_encode($result);
     }
 
+    function loadfrontBoxAnnual($annual){
+        $result['expense']=$this->model->totalExpenseAnnual($annual);
+        $result['income']=$this->model->totalIncomeAnnual($annual);
+        echo json_encode($result);
+    }
+    function loadfrontBoxMonth($month){
+        $result['expense']=$this->model->totalExpenseMonth($month);
+        $result['income']=$this->model->totalIncomeMonth($month);
+        echo json_encode($result);
+    }
+    function loadfrontBoxWeek($week){
+        $result['expense']=$this->model->totalExpenseWeek($week);
+        $result['income']=$this->model->totalIncomeWeek($week);
+        echo json_encode($result);
+    }
+
 }
