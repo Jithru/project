@@ -18,10 +18,10 @@ function todayAll(){
                 myName = myName.replace(/-+/g, ' ');
                 myName=myName.replace(/~+/g, '/');
 
-                if(result[i].exam_type=='Written' || result[i].exam_type=='written'){
+                if(result[i].exam_type=='Theory' || result[i].exam_type=='Written'){
                     var exType = "Written";
                 }
-                else if(result[i].exam_type=='Trial' || result[i].exam_type=='trial'){
+                else if(result[i].exam_type=='Practical' || result[i].exam_type=='Trial'){
                     var exType = "Trial";
                 }
                 // console.log(result[i].participation_exam_id);
