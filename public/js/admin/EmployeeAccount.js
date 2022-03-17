@@ -35,7 +35,7 @@
     httpreq.send();
 }
 
-loadTable()
+loadTable() 
 
 
 function viewMore(ID){
