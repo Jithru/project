@@ -1,0 +1,321 @@
+* {
+    margin: 0;
+    padding: 0;
+  }
+  body {
+    min-width: 100px;
+    font-family: sans-serif;
+  }
+.container{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center; 
+    /* justify-content: center; */
+    flex-direction: column;
+    /* background-color: pink; */
+}
+.header{
+    width: 100%;
+    height: 80px;
+    /* background-color: gray; */
+}
+.big-view{
+    width: 100%;
+    height: calc(100%-80px);
+    display: flex;
+    justify-self: flex-end;
+    flex-direction: row;
+    /* background-color: blue; */
+}
+.main_view{
+    /* width: 1250px; */
+    width: calc(100% - 250px);
+    height: 100%;
+    
+    background-color: #f2f2f2;
+}
+.part-1{
+    width: 100%;
+    height: 60px;
+    /* background-color: rgb(56, 250, 88); */
+    display: flex;
+    align-items: center;
+    justify-content: flex-end; 
+}
+.head-title{
+    font-size: 40px;
+    color: black;
+    text-shadow: 0rem 0.1rem 0.3rem rgb(0,0,0,0.3);
+    padding-right: 46px;
+}
+.part-2 {
+    width: 100%;
+    height: 70px;
+    /* background-color: rgb(104, 224, 245); */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.choise {
+    /* width: 82.6%; */
+    width: 87%;
+    height: 70px;
+    display: flex;
+    flex-direction: row;
+    background-color: #f2f2f2;
+    justify-content: space-around;
+    align-items: center;
+}
+.choise .cl1-bttn {
+    background-color: #f2f2f2;
+    display: flex;
+    justify-content: center;
+    border-radius: none;
+}
+.choise .cl1-bttn button {
+    background-color: #f2f2f2;
+    /* width: 140px; */
+    height: 50px;
+    font-size: 17px;
+    box-shadow: none;
+    border-radius: 0px;
+    color: black;
+    /* background-color: pink; */
+}
+
+.choise .cl1-bttn button:hover {
+    border-bottom: 2px solid black;
+}
+
+.all {
+    width: 84px;
+    height: 100%;
+    border: none;
+    /* background-color: #2cf881; */
+}
+
+.exam {
+    width: 140px;
+    height: 100%;
+    border: none;
+}
+
+.trial {
+    width: 140px;
+    height: 100%;
+    border: none;
+}
+
+.fail {
+    width: 140px;
+    height: 100%;
+    border: none;
+}
+#all, #exam, #trial, #fail{
+    border-bottom: 2px solid black;
+}
+  
+.cl2 ::placeholder {
+    color: #0892d0;
+    padding: 6px;
+}
+.choise input[type="text"] {
+    width: 200px;
+    height: 34px;
+    border: 2px solid #0892d0;
+    border-radius: 3px;
+    box-shadow: 0rem 0.1rem 0.3rem rgb(0, 0, 0, 0.3);
+    padding: 10px;
+}
+
+.part-3 {
+    width: 100%;
+    height: 450px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* background-color: red; */
+  }
+  .head-cover {
+    width: 71%;
+    height: 55px;
+    background-color: #262b2f;
+    color: white;
+    display: flex;
+    align-items: center;
+    border-radius: 3px;
+    box-shadow: 1px 1px 5px #b0b3b3;
+  
+  }
+  .table-head {
+    width: 95%;
+    height: 55px;
+    /* background-color: rgb(219, 55, 55); */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    border-radius: 3px;
+  }
+  .one,
+  .two,
+  .three,
+  .four,
+  .five {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    /* justify-content: center; */
+  }
+  .one {
+    width: 16%;
+    /* background-color: #056cc0; */
+    padding-left: 19px;
+  }
+  .two {
+    width: 34%;
+    /* background-color: #7505c0; */
+  }
+  .three {
+    width: 16%;
+    /* background-color: #24c005; */
+  }
+  .four {
+    width: 17%;
+    /* background-color: #c00572; */
+  }
+  .five {
+    width: 17%;
+    /* background-color: #c0a405; */
+  }
+/*table*/
+.box-1{
+    width: 74.5%;
+    /* height: fit-content; */
+    height: 400px;
+    display: flex;
+    
+    /* justify-content: center; */
+    align-items: center;
+    flex-direction: column;
+    background-color: #f2f2f2;
+}
+.scroll{
+    width: 96%;
+    height: 90%;
+    padding-top: 20px;
+    margin-bottom: 10px;
+    /* border-radius: 10px; */
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    /* background-color: blue; */
+}
+
+.row{
+    width: 99%;
+    height: 60px;
+    background-color: white;
+    display: flex;
+    flex-direction: row;
+    /* justify-content: center; */
+    margin: 5px auto 10px auto;
+    border-radius: 4px;
+    box-shadow: 0rem 0.1rem 0.1rem rgb(0,0,0,0.3);
+    
+}
+.stId{
+    width: 137px;
+    height: 100%;
+    padding-left: 20px;
+    display: flex;
+    align-items: center;
+    /* background-color: pink; */
+}
+.fName{
+    width: 295.6px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    /* background-color: rgb(252, 53, 86); */
+}
+.tell{
+    width: 190px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+.pay, .view{
+    width: 130px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* background-color: yellow; */
+}
+.bttn-pay{
+    width: 95px;
+    height: 35px;
+    border-radius: 3px;
+    border: none;
+    background-color: black;
+    color: white;
+    font-size: 14px;
+    /* transition: 0.4s; */
+}
+.btt-view{
+    width: 95px;
+    height: 35px;
+    border-radius: 3px;
+    border: none;
+    background-color: #0892d0;
+    color: white;
+    font-size: 14px;
+    /* transition: 0.4s; */
+}
+
+/* button{
+    width: 120px;
+    height: 40px;
+    background-color: #0099ff;
+    border: none;
+    border-radius: 3px;
+} */
+
+.btt-view:hover{
+    background-color: white;
+    color: #0099ff;
+    border: 2px solid #0099ff;
+}
+.bttn-pay:hover{
+    background-color: white;
+    color: black;
+    border: 2px solid black;
+}
+.registerStudent-button-container{
+    width: 100%;
+    height: 55px;
+    /* background-color: pink; */
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+.registerStudent-button-container button{
+    width: 180px;
+    height: 45px;
+    border-radius: 4px;
+    background-color: #0892d0;
+    color: white;
+    font-size: 18px;
+    border: none;
+    margin-right: 190px;
+    
+}
+.registerStudent-button-container button:hover{
+    background-color: white;
+    border: 2px solid #0892d0;
+    color: #0892d0;
+}

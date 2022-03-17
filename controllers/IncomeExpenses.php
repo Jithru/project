@@ -153,5 +153,63 @@ class IncomeExpenses extends Controller{
         $result['otherExpenses']=$this->model->totalOtherExpensesAnnual($annual);
         echo json_encode($result);
     }
+    function getIncomeDetails(){
+        $resultOnline=$this->model->getOnlineIncomeDetails();
+        $resultCash=$this->model->getCashIncomeDetails();
+        echo json_encode(array_merge($resultOnline,$resultCash));
+    }
+
+    function loadIncomeGraphWeek($week){
+        $result=$this->model->loadIncomeGraphWeek($week);
+        echo json_encode($result);
+    }
+    function loadIncomeGraphMonth($month){
+        $result=$this->model->loadIncomeGraphMonth($month);
+        echo json_encode($result);
+    }
+    function loadIncomeGraphAnnual($annual){
+        $result=$this->model->loadIncomeGraphAnnual($annual);
+        echo json_encode($result);
+    }
+    function loadIncomeBoxesWeek($week){
+        $result['maxTotalIn']=$this->model->getMaxIncomeWeek($week);
+        $result['minTotalIn']=$this->model->getMinIncomeWeek($week);
+        $result['avgIn']=$this->model->getAvgIncomeWeek($week);
+        $result['NoOfPayments']=$this->model->getNoOfIncomesWeek($week);
+        $result['maxNoOfPayment']=$this->model->maxCountIncomesWeek($week);
+        $result['minNoOfPayment']=$this->model->minCountIncomesWeek($week);
+        $result['minValDates']=$this->model->minCountElementIncomesWeek($week);
+        $result['maxValDates']=$this->model->maxCountElementIncomesWeek($week);
+        $result['onlinePayments']=$this->model->totalOnlineIncomesWeek($week);
+        $result['cashPayments']=$this->model->totalCashIncomesWeek($week);
+        echo json_encode($result);
+    }
+    function loadIncomeBoxesMonth($month){
+        $result['maxTotalIn']=$this->model->getMaxIncomeMonth($month);
+        $result['minTotalIn']=$this->model->getMinIncomeMonth($month);
+        $result['avgIn']=$this->model->getAvgIncomeMonth($month);
+        $result['NoOfPayments']=$this->model->getNoOfIncomesMonth($month);
+        $result['maxNoOfPayment']=$this->model->maxCountIncomesMonth($month);
+        $result['minNoOfPayment']=$this->model->minCountIncomesMonth($month);
+        $result['minValDates']=$this->model->minCountElementIncomesMonth($month);
+        $result['maxValDates']=$this->model->maxCountElementIncomesMonth($month);
+        $result['onlinePayments']=$this->model->totalOnlineIncomesMonth($month);
+        $result['cashPayments']=$this->model->totalCashIncomesMonth($month);
+        echo json_encode($result);
+    }
+
+    function loadIncomeBoxesAnnual($annual){
+        $result['maxTotalIn']=$this->model->getMaxIncomeAnnual($annual);
+        $result['minTotalIn']=$this->model->getMinIncomeAnnual($annual);
+        $result['avgIn']=$this->model->getAvgIncomeAnnual($annual);
+        $result['NoOfPayments']=$this->model->getNoOfIncomesAnnual($annual);
+        $result['maxNoOfPayment']=$this->model->maxCountIncomesAnnual($annual);
+        $result['minNoOfPayment']=$this->model->minCountIncomesAnnual($annual);
+        $result['minValDates']=$this->model->minCountElementIncomesAnnual($annual);
+        $result['maxValDates']=$this->model->maxCountElementIncomesAnnual($annual);
+        $result['onlinePayments']=$this->model->totalOnlineIncomesAnnual($annual);
+        $result['cashPayments']=$this->model->totalCashIncomesAnnual($annual);
+        echo json_encode($result);
+    }
 
 }

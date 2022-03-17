@@ -290,11 +290,11 @@ class Manager extends Controller{
         $result=$this->model->deleteExam($_SESSION['editExamId']);
     }
 
-
+    // listOfStudent part.....................................................................
     function studentList(){
         if(isset($_SESSION['job_title'])){
             if($_SESSION['job_title']=='Manager'){
-                $this->view->render('Manager/studentList');
+                $this->view->render('Manager/listOfStudent');
             }else{
                 $this->view->render('error');
             }
@@ -303,6 +303,51 @@ class Manager extends Controller{
             $this->view->render('error');
         }
     }
+
+    function examPassed(){
+
+        if(isset($_SESSION['job_title'])){
+            if($_SESSION['job_title']=='Manager'){
+                $this->view->render('Manager/examPassed');
+                
+            }else{
+                $this->view->render('error');
+            }
+        }
+        else{
+            $this->view->render('error');
+        }   
+    }
+    function trialPassed(){
+
+        if(isset($_SESSION['job_title'])){
+            if($_SESSION['job_title']=='Manager'){
+                $this->view->render('Manager/trialPassed');
+                
+            }else{
+                $this->view->render('error');
+            }
+        }
+        else{
+            $this->view->render('error');
+        }   
+    }
+    function examFailed(){
+
+        if(isset($_SESSION['job_title'])){
+            if($_SESSION['job_title']=='Manager'){
+                $this->view->render('Manager/examFailed');
+                
+            }else{
+                $this->view->render('error');
+            }
+        }
+        else{
+            $this->view->render('error');
+        }   
+    }
+    //end
+    
     function eventCalendar(){
         if(isset($_SESSION['job_title'])){
             if($_SESSION['job_title']=='Manager'){
@@ -404,8 +449,12 @@ class Manager extends Controller{
     }
 
     function selectedInstructorsForExams($selectedList){
+        $result=$this->model->checkSelectedInstructorsForExams($selectedList,$_SESSION['date'],$_SESSION['time']);
+        
         $_SESSION['selectedInstructorList']=$selectedList;
-        echo "saved";
+    
+        echo json_encode($result);
+        // echo "instructors:".$result;
     }
     
     function selectedVehiclesForExams($selectedList){
