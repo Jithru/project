@@ -6,20 +6,20 @@ function loadPackages(){
             console.log(httprequest.responseText+"kkk")
             const package = JSON.parse(httprequest.responseText)
             for(i=0; i<package.length; i++){
-                console.log(i)
-                if(package[i].status=='active'){
+                console.log(i+package[i].status)
+                if(package[i].status=='activated'){
                     packages.innerHTML += '<div class="row">'+
-                '<div class="col-1"><b class="bold-name-3">Package Name</b><b class="bold">: </b>'+package[i].type+'</div>'+
-                '<div class="col-2"><b class="bold-name-3">Vehicle classes</b><b class="bold">: </b>'+package[i].classes+'</div>'+
-                '<div class="col-3"><b class="bold-name-3">Price (LKR)</b><b class="bold">: </b>'+package[i].amount+'</div>'+
-                '<div class="col-4"><button class="edit" onclick ="editPackage('+package[i].package_id+')">Edit</button></div>'+
-                '</div>'
+                    '<div class="col-1"><b class="bold-name-3">Package Name</b><b class="bold">: </b>'+package[i].type+'</div>'+
+                    '<div class="col-2"><b class="bold-name-3">Vehicle classes</b><b class="bold">: </b>'+package[i].classes+'</div>'+
+                    '<div class="col-3"><b class="bold-name-3">Price (LKR)</b><b class="bold">: </b>'+package[i].amount+'</div>'+
+                    '<div class="col-4"><button class="edit" onclick ="editPackage('+package[i].package_id+')">Edit</button></div>'+
+                    '</div>'
                 }
                 
             }
             
         }
-    }
+    } 
     
     var url="http://localhost/project/Admin/getPackages";
     httprequest.open("POST",url,true)
@@ -134,7 +134,7 @@ function saveInit(id){
             if(httprequest.responseText=="success"){
                 window.location.assign("http://localhost/project/Admin/packages");
             }
-            
+             
         }
     }
     let initPrice = [id,iprice]

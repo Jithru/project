@@ -113,7 +113,7 @@
                     </button>
                 </div> -->
                     
-                <div class="input-container-2">
+                <div class="input-container-2"> 
                     <div class="input-container-edit" id="p-days">
                         <label for="training-days-edit">Number of Training Days :</label>
                         
