@@ -212,4 +212,5 @@ class Instructor extends Controller{
         $result=$this->model->loadPreSelectedStudentsS($_SESSION['viewSessionIdInstructor']);
         echo json_encode($result);
     }
+
 }
