@@ -27,7 +27,7 @@
             <!--Header-->
             <h1>Attendance</h1>
             <div class="date-viewer">
-                <p>16th Aug 2021</p>
+                <p id="todayDate"></p>
             </div>
             <div class="heading">
                 <div class="heading-row">
@@ -76,5 +76,6 @@
             </div>
         </div>
     </div>
+    <script src="<?php echo URL?>public/js/instructor/markAttendance.js"></script>
 </body>
 </html>

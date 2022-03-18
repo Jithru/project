@@ -84,7 +84,7 @@
         
     </div>
     <script src="<?php echo URL?>public/js/instructor/calendarUtil.js"></script>
-    <script src="<?php echo URL?>public/js/common/calendarscript.js"></script> 
+    <script src="<?php echo URL?>public/js/instructor/calendarscript.js"></script> 
     <script src="<?php echo URL?>public/js/instructor/viewSessionsExams.js"></script> 
 </body>
 </html>

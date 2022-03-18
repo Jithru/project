@@ -108,7 +108,7 @@
         
     </div>
     <script src="<?php echo URL?>public/js/student/calendarUtil.js"></script>
-    <script src="<?php echo URL?>public/js/common/calendarscript.js"></script> 
+    <script src="<?php echo URL?>public/js/student/calendarscript.js"></script> 
     <script src="<?php echo URL?>public/js/student/viewSessionsExams.js"></script> 
 </body>
 </html>

@@ -57,6 +57,15 @@ function getFullDate(date,month,year) {
 
 }
 
+// let httprequest=new XMLHttpRequest()
+// httprequest.onreadystatechange=function(){
+//         if(httprequest.readyState===4 && httprequest.status===200){
+
+//         }
+// }
+// let url0="http://localhost/project/Student/getrequests"
+// httprequest.open("POST",url0,true)
+// httprequest.send()
 
 let httpreq1=new XMLHttpRequest()
 httpreq1.onreadystatechange=function(){

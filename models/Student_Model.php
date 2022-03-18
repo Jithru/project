@@ -94,6 +94,15 @@ class Student_Model extends Model{
         $result=$this->db->runQuery("SELECT Session_id,session_title,session_date,session_time,type FROM sessions");
         return $result;
     }
+    function getAllExamRequests($studentId){
+        $result=$this->db->runQuery("SELECT exam_id from exam_request where student_id=$studentId");
+        return $result;
+    }
+    function getAllSessionRequests($studentId){
+        $result=$this->db->runQuery("SELECT session_id from session_request where student_id=$studentId");
+        return $result;
+    }
+
     
     function getExamDetails($id){
         $id=intval($id);
@@ -174,9 +183,11 @@ class Student_Model extends Model{
         $date = date('Y-m-d H:i:s');
         $studentId=intval($studentId);
         $sessionId=intval($sessionId);
+        $daysCount=$this->db->runQuery("SELECT packages.training_days from (packages INNER JOIN package_assigning on packages.package_id=package_assigning.package_id) INNER JOIN student on student.student_id=package_assigning.student_id where student.student_id=$studentId");
+        $daysCount=intval($daysCount[0]['training_days']);
         $stdCount=$this->db->runQuery("SELECT Count(student_id) as count_std from  session_student_assigns where student_id=$studentId");
         $stdCount=intval($stdCount[0]['count_std']);
-        if($stdCount<20){
+        if($stdCount<$daysCount){
             $result=$this->db->runQuery("INSERT INTO session_request (student_id,session_id,date_time) VALUES ($studentId,$sessionId,'$date')");
             return true;
         }
