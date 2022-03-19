@@ -34,6 +34,14 @@
             Mark Attendance
             </div>
         </a>
+        <a href="<?php echo URL?>Instructor/upload" class="<?php echo (getLink()=="http://localhost/project/Instructor/upload")?"list-item-active":"list-item";?>">
+            <div class="link-icon">
+            &#xf046
+            </div>
+            <div class="link-name">
+            Questions & Answer
+            </div>
+        </a>
         <a href="<?php echo URL?>Staff/logout" class="list-item">
             <div class="link-icon">
             &#xf08b

@@ -134,7 +134,6 @@ class Receptionist extends Controller{
             $this->view->render('error');
         }
     }
-    //----------------------------------part 1 -------------------------------------------------------------------
     //sessions
     function my_sessions(){
         $result=$this->model->session();
@@ -177,7 +176,6 @@ class Receptionist extends Controller{
     //     $result=$this->model->addFail($cube[0],$cube[1]);
     //     echo json_encode($result);
     // }
-    //---------------------------------------------------------part 2 ------------------------------------------------
     //student List
 
     function studentList(){
@@ -356,7 +354,6 @@ class Receptionist extends Controller{
         $result = $this->model->findStudent($findMe);
         echo json_encode($result);
     }
-    //-----------------------------------------------------part 3 ---------------------------------------------------------------
         //addPayment
     function payHere(){
         if(isset($_SESSION['job_title'])){

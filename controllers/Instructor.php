@@ -33,6 +33,18 @@ class Instructor extends Controller{
             $this->view->render('error');
         }  
     }
+    function upload(){
+        if(isset($_SESSION['job_title'])){
+            if($_SESSION['job_title']=='Instructor'){
+                $this->view->render('Conductor/upload');
+            }else{
+                $this->view->render('error');
+            }
+        }
+        else{
+            $this->view->render('error');
+        }  
+    }
     function sessions(){
         if(isset($_SESSION['job_title'])){
             if($_SESSION['job_title']=='Instructor'){
@@ -200,4 +212,5 @@ class Instructor extends Controller{
         $result=$this->model->loadPreSelectedStudentsS($_SESSION['viewSessionIdInstructor']);
         echo json_encode($result);
     }
+
 }
