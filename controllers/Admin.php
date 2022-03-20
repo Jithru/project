@@ -575,6 +575,7 @@ class Admin extends Controller{
 
     function updateEmployeeDetails($cat,$data){
         $result = $this->model->updateEmployeeDetails($cat,$data);
+        echo $result;
     }
 
     
