@@ -26,7 +26,7 @@ function getDetails(){
 
             
             name.innerHTML+='<input type="text"  class="name-edit-input" id="name-edit-input"  value="'+empname+'" disabled>'
-            contact.innerHTML+='<input type="text"  class="name-edit-input" id="contact-edit-input"  value="'+employee[0].contact_no+'" disabled>'
+            contact.innerHTML+='<input type="number"  class="name-edit-input" id="contact-edit-input"  value="'+employee[0].contact_no+'" disabled>'
             add.innerHTML+='<input type="text"  class="name-edit-input" id="add-edit-input"  value="'+empAddress+'" disabled>'
             
 
@@ -103,69 +103,98 @@ function cancelAdd(){
 
 function saveName(){
     let name = document.getElementById('name-edit-input').value
+    if(name == "") {
+        document.getElementById('name-edit-input').placeholder="Name field can't be empty";
+        document.getElementById('name-edit-input').style.border="2px solid red";
+    } 
 
-        name=name.replace(/,+/g, '_');
-        name=name.replace(/\s+/g, '-');
-        name=name.replace(/\/+/g, '~');
+        else{
+            name=name.replace(/,+/g, '_');
+            name=name.replace(/\s+/g, '-');
+            name=name.replace(/\/+/g, '~');
 
-    let httprequest  = new XMLHttpRequest();
-    httprequest.onreadystatechange = function(){
-        if (httprequest.readyState===4 && httprequest.status===200){
-            console.log(httprequest.responseText);
-            if(httprequest.responseText="success"){
-                window.location.assign("http://localhost/project/Admin/editEmployee");
+            let httprequest  = new XMLHttpRequest();
+            httprequest.onreadystatechange = function(){
+                if (httprequest.readyState===4 && httprequest.status===200){
+                    console.log(httprequest.responseText);
+                    if(httprequest.responseText="success"){
+                        window.location.assign("http://localhost/project/Admin/editEmployee");
+                    }
+                    
+                }
             }
-            
-        }
-    }
 
-    var url="http://localhost/project/Admin/updateEmployeeDetails/name/"+name;
-    httprequest.open("POST",url,true)
-    httprequest.send()
+            var url="http://localhost/project/Admin/updateEmployeeDetails/name/"+name;
+            httprequest.open("POST",url,true)
+            httprequest.send()
+        }
 }
 
 
 function saveContact(){
     let contact = document.getElementById('contact-edit-input').value
-    let httprequest  = new XMLHttpRequest();
-    httprequest.onreadystatechange = function(){
-        if (httprequest.readyState===4 && httprequest.status===200){
-            console.log(httprequest.responseText);
-            if(httprequest.responseText="success"){
-                window.location.assign("http://localhost/project/Admin/editEmployee");
+    if(contact == "") {
+        document.getElementById('contact-edit-input').placeholder="Contact field can't be empty";
+        document.getElementById('contact-edit-input').style.border="2px solid red";
+    }
+    else{
+        if(contact.length!=10){
+        
+            document.getElementById("invalid-login").innerText="Please recheck the mobile number";
+            document.getElementById("invalid-login").classList.replace("invalid-login","invalid-login-true");
+        }
+        else{
+            let httprequest  = new XMLHttpRequest();
+            httprequest.onreadystatechange = function(){
+            if (httprequest.readyState===4 && httprequest.status===200){
+                console.log(httprequest.responseText);
+                if(httprequest.responseText=="exist"){
+                    document.getElementById("invalid-login").innerText="The contact number you entered is already exist";
+                    document.getElementById("invalid-login").classList.replace("invalid-login","invalid-login-true");
+                }
+                else if(httprequest.responseText=="success"){
+                    
+                    window.location.assign("http://localhost/project/Admin/editEmployee");
+                }
+                
+                
             }
-            
+        }
+
+        var url="http://localhost/project/Admin/updateEmployeeDetails/contact/"+contact;
+        httprequest.open("POST",url,true)
+        httprequest.send()
         }
     }
-
-    var url="http://localhost/project/Admin/updateEmployeeDetails/contact/"+contact;
-    httprequest.open("POST",url,true)
-    httprequest.send()
 }
 function saveAdd(){
     let add = document.getElementById('add-edit-input').value
+    if(add == "") {
+        document.getElementById('add-edit-input').placeholder="Address field can't be empty";
+        document.getElementById('add-edit-input').style.border="2px solid red";
+    }
 
-        name=name.replace(/,+/g, '_');
-        name=name.replace(/\s+/g, '-');
-        name=name.replace(/\/+/g, '~');
         
+        
+    else{
         add=add.replace(/,+/g, '_');
         add=add.replace(/\s+/g, '-');
         add=add.replace(/\/+/g, '~');
 
 
-    let httprequest  = new XMLHttpRequest();
-    httprequest.onreadystatechange = function(){
-        if (httprequest.readyState===4 && httprequest.status===200){
-            console.log(httprequest.responseText);
-            if(httprequest.responseText="success"){
-                window.location.assign("http://localhost/project/Admin/editEmployee");
+        let httprequest  = new XMLHttpRequest();
+        httprequest.onreadystatechange = function(){
+            if (httprequest.readyState===4 && httprequest.status===200){
+                console.log(httprequest.responseText);
+                if(httprequest.responseText="success"){
+                    window.location.assign("http://localhost/project/Admin/editEmployee");
+                }
+                
             }
-            
         }
-    }
 
-    var url="http://localhost/project/Admin/updateEmployeeDetails/address/"+add;
-    httprequest.open("POST",url,true)
-    httprequest.send()
+        var url="http://localhost/project/Admin/updateEmployeeDetails/address/"+add;
+        httprequest.open("POST",url,true)
+        httprequest.send()
+        }
 }

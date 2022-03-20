@@ -280,18 +280,32 @@ class Admin_Model extends Model{
             $this->db->runQuery("INSERT INTO package_n_vehicles (package_id, vehicle_class_id) VALUES ('$id', '$details[$i]')");
         }
     }
-
+    
 
     function updateEmployeeDetails($cat,$data){
         $ID=$_SESSION['empID'];
         if($cat=="name"){
-            $result = $this->db->runQuery("UPDATE employee SET name ='$data' WHERE employee_id='$ID'");
+            $this->db->runQuery("UPDATE employee SET name ='$data' WHERE employee_id='$ID'");
         }
         else if($cat=="contact"){
-            $result = $this->db->runQuery("UPDATE employee SET contact_no ='$data' WHERE employee_id='$ID'");
+            $result=$this->db->runQuery("SELECT contact FROM admin WHERE contact='$data'");
+            if(empty($result)){
+                $result=$this->db->runQuery("SELECT contact_no FROM employee WHERE contact_no='$data'");
+                if(empty($result)){
+                    $result=$this->db->runQuery("SELECT contact FROM student WHERE contact='$data'");
+                    
+                }
+            }
+            if(!empty($result)){
+                return "exist";
+            }
+            else if(empty($result)){
+                $this->db->runQuery("UPDATE employee SET contact_no ='$data' WHERE employee_id='$ID'");
+                return "success";
+            }
         }
         else if($cat=="address"){
-            $result = $this->db->runQuery("UPDATE employee SET address ='$data' WHERE employee_id='$ID'");
+            $this->db->runQuery("UPDATE employee SET address ='$data' WHERE employee_id='$ID'");
         }
         echo "success";
 

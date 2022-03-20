@@ -15,6 +15,9 @@
             <div class="title-container">
                 <h1>Edit Employee</h1>
             </div>
+            <div class="invalid-login" id="invalid-login">
+                            Invalid username or password, please try again.
+            </div>
             <div class="details-container">
                 
                 <div class="row">
