@@ -19,7 +19,7 @@
                 
                 <div class="row">
                     <div class="column-1"><h4>Name</h4><h3>:</h3></div> 
-                    <div class="column-2">Gihan Sandaruwan Weerasinghe</div> 
+                    <div id="name" class="column-2"></div> 
                     <button id="name-edit" class="edit" onclick="editName()">
                         Edit
                     </button> 
@@ -34,49 +34,9 @@
                 </div>
 
 
-
-
-                <div class="row">
-                    <div class="column-1"><h4>Job title</h4><h4>:</h4></div> 
-                    <div class="column-2">Manager</div>  
-                    <button id="job-edit" class="edit" onclick="editJob()">
-                        Edit
-                    </button>  
-                </div>
-                <div id="job-saveC" class="btn-cnt">
-                    <button id="job-cancel" class="cancel-small-deactivate" onclick="cancelJob()">
-                        cancel
-                    </button>
-                    <button id="job-save" class="save-small-deactivate" onclick="saveJob()">
-                        save
-                    </button>
-                </div>
-
-
-
-
-                <div class="row">
-                    <div class="column-1"><h4>NIC</h4><h4>:</h4></div> 
-                    <div class="column-2">980210324v</div>  
-                    <button id="nic-edit" class="edit" onclick="editNIC()">
-                        Edit
-                    </button> 
-                </div>
-                <div id="nin-saveC" class="btn-cnt">
-                    <button id="nic-cancel" class="cancel-small-deactivate" onclick="cancelNIC()">
-                        cancel
-                    </button>
-                    <button id="nic-save" class="save-small-deactivate" onclick="saveNIC()">
-                        save
-                    </button>
-                </div>
-
-
-
-
                 <div class="row">
                     <div class="column-1"><h4>Contact</h4><h4>:</h4></div> 
-                    <div class="column-2">0778560822</div>  
+                    <div id="contact" class="column-2"></div>  
                     <button id="contact-edit" class="edit" onclick="editContact()">
                         Edit
                     </button> 
@@ -95,7 +55,7 @@
 
                 <div class="row">
                     <div class="column-1"><h4>Address</h4><h4>:</h4></div> 
-                    <div class="column-2">No-177 danture,Pilimathalawa,kandy</div>  
+                    <div id="add" class="column-2"></div>  
                     <button id="add-edit" class="edit" onclick="editAdd()">
                         Edit
                     </button> 
@@ -110,99 +70,19 @@
                 </div>
 
 
-
-
-                <div class="row">
-                    <div class="column-1"><h4>Date of birth</h4><h4>:</h4></div> 
-                    <div class="column-2">1998/01/21</div>  
-                    <button id="dob-edit" class="edit" onclick="editDOB()">
-                        Edit
-                    </button> 
-                </div>
-                <div id="dob-saveC" class="btn-cnt">
-                    <button id="dob-cancel" class="cancel-small-deactivate" onclick="cancelDOB()">
-                        cancel
-                    </button>
-                    <button id="dob-save" class="save-small-deactivate" onclick="saveDOB()">
-                        save
-                    </button>
-                </div>
-
-
-
-
-                <div class="row">
-                    <div class="column-1"><h4>Gender</h4><h4>:</h4></div> 
-                    <div class="column-2">Male</div> 
-                    <button id="gender-edit" class="edit" onclick="editGender()">
-                        Edit
-                    </button>  
-                </div>
-                <div id="gender-saveC" class="btn-cnt">
-                    <button id="gender-cancel" class="cancel-small-deactivate" onclick="cancelGender()">
-                        cancel
-                    </button>
-                    <button id="gender-save" class="save-small-deactivate" onclick="saveGender()">
-                        save
-                    </button>
-                </div>
-
-
-
-
-                <div class="row">
-                    <div class="column-1"><h4>Hiring Date</h4><h4>:</h4></div> 
-                    <div class="column-2">2020-02-20</div> 
-                    <button id="hDate-edit" class="edit" onclick="editHdate()">
-                        Edit
-                    </button> 
-                </div>
-                <div id="hDate-saveC" class="btn-cnt">
-                    <button id="hDate-cancel" class="cancel-small-deactivate" onclick="cancelHdate()">
-                        cancel
-                    </button>
-                    <button id="hDate-save" class="save-small-deactivate" onclick="saveHdate()">
-                        save
-                    </button>
-                </div>
-
-
-
-
-                <div class="row">
-                    <div class="column-1"><h4>Licence-No</h4><h4>:</h4></div> 
-                    <div class="column-2">E-162049898</div>  
-                    <button id="licence-edit" class="edit" onclick="editLicence()">
-                        Edit
-                    </button>
-                </div>
-                <div id="licence-saveC" class="btn-cnt">
-                    <button id="licence-cancel" class="cancel-small-deactivate" onclick="cancelLicence()">
-                        cancel
-                    </button>
-                    <button id="licence-save" class="save-small-deactivate" onclick="saveLicence()">
-                        save
-                    </button>
-                </div>
-
             </div>
-
-
-
 
             <div class="button-container">
                 <a href="<?php echo URL?>Admin/employeeAccounts">
                     <button class="cancel">
-                        Cancel
+                        Back
                     </button>
                 </a>
                 <button class="delete">
                     Delete
                 </button>
 
-                <button class="save">
-                    Save
-                </button>
+                
                 
             </div>
         </div>
@@ -210,7 +90,7 @@
 
     <!-- <script src="<?php echo URL?>public/js/admin/popup.js"></script> -->
     <script  src="<?php echo URL?>public/js/Admin/editEmployee.js"></script>
-    <script  src="<?php echo URL?>public/js/Admin/deleteEmployee.js"></script>
+    <!-- <script  src="<?php echo URL?>public/js/Admin/deleteEmployee.js"></script> -->
 
 
 </body>

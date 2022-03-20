@@ -441,6 +441,11 @@ class Admin extends Controller{
         echo json_encode($_SESSION['empDetails']);
     }
 
+    function displayEmployeeDetailsforEdit(){
+        $results = $this->model->displayEmployeeDetailsforEdit();
+        echo json_encode($results);
+    }
+
     //function for load vehicle classes (admin/addInitPrice.js   && view/admin/addInitPrice.php) ----- add vehicle to database
     function addVehiclelogic($data){
         $vehicle = explode(",", $data);
@@ -567,6 +572,12 @@ class Admin extends Controller{
         $result = $this->model->addPackageLogic($details);
         // echo $data;
     }
+
+    function updateEmployeeDetails($cat,$data){
+        $result = $this->model->updateEmployeeDetails($cat,$data);
+    }
+
+    
 
     
 
