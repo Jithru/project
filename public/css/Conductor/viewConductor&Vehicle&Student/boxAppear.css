@@ -1,0 +1,20 @@
+body{
+    margin: 0;
+    padding: 0;
+}
+.container{
+    visibility: visible;
+   
+}
+.container-hidden{
+    visibility: hidden;
+}
+
+.box-container{
+    visibility: hidden;
+}
+.box-container-visible{
+    visibility: visible;
+    margin: -560px auto auto 450px;
+    /* position: fixed; */
+}
