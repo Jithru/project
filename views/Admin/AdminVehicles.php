@@ -51,14 +51,14 @@
             </div>
             <div class="input-container">
                 <label for="">Password :</label>
-                <input type="text"> 
+                <input type="text" id="passwordd"> 
             </div>
             <div class="btn-container2">
                 <button class="yess" onclick="cancel2()">
                     Cancel 
                 </button >
                     
-                <button class="no">
+                <button class="no" onclick="deleteVehicle()">
                     Confirm
                 </button>
             </div>
@@ -102,6 +102,7 @@
     
     
     <script src="<?php echo URL?>public/js/admin/vehicles.js"></script>
+    <script src="<?php echo URL?>public/js/admin/deleteVehicle.js"></script>
     
 </body>
 
