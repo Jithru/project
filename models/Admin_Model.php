@@ -99,8 +99,14 @@ class Admin_Model extends Model{
         if($result[0]['job_title']=='Instructor'){
             $license=$this->db->runQuery("SELECT instructor_license_id FROM instructor WHERE employee_id='$id'");
         }
-
+        $_SESSION['empID']=$id;
         $_SESSION['empDetails'] = array_merge($result, $license);
+    }
+
+    public function displayEmployeeDetailsforEdit(){
+        $id=$_SESSION['empID'];
+        $result=$this->db->runQuery("SELECT name,contact_no,address FROM employee WHERE employee_id='$id'");
+        return $result;
     }
 
     
@@ -221,7 +227,7 @@ class Admin_Model extends Model{
         return $results;
     }
 
-
+//edit pacckage------------------------------------------------------------------------------------------------------------------
     //function for edit pakage  name
     function editPackageName($name){
         $ID=$_SESSION['package_id'];
@@ -240,7 +246,7 @@ class Admin_Model extends Model{
         $result = $this->db->runQuery("UPDATE packages SET amount ='$price' WHERE package_id='$ID'");
         return "success";
     }
-
+//------------------------------------------------------------------------------------------------------------------
     ///function fo delete packages
     function deletePackage($username,$password){
         $result=$this->db->runQuery("SELECT passwordhash FROM admin WHERE username='$username'");
@@ -274,6 +280,24 @@ class Admin_Model extends Model{
             $this->db->runQuery("INSERT INTO package_n_vehicles (package_id, vehicle_class_id) VALUES ('$id', '$details[$i]')");
         }
     }
+
+
+    function updateEmployeeDetails($cat,$data){
+        $ID=$_SESSION['empID'];
+        if($cat=="name"){
+            $result = $this->db->runQuery("UPDATE employee SET name ='$data' WHERE employee_id='$ID'");
+        }
+        else if($cat=="contact"){
+            $result = $this->db->runQuery("UPDATE employee SET contact_no ='$data' WHERE employee_id='$ID'");
+        }
+        else if($cat=="address"){
+            $result = $this->db->runQuery("UPDATE employee SET address ='$data' WHERE employee_id='$ID'");
+        }
+        echo "success";
+
+    }
+
+    
 
     
 
