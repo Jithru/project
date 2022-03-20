@@ -287,6 +287,29 @@ class Admin_Model extends Model{
 
 
 
+
+    function deleteEmployee($username,$password,$id){
+        $result=$this->db->runQuery("SELECT passwordhash FROM admin WHERE username='$username'");
+        if(!empty($result)){
+            if(password_verify($password,
+            $result[0]['passwordhash'] )){
+                $session=$this->db->runQuery("SELECT session_id FROM session_vehicle_assigns WHERE employee_id='$id'");
+                if(!empty($session)){
+                    return "assigned";
+                }
+                else{
+                    $this->db->runQuery("DELETE FROM employee WHERE employee.employee_id = '$id'");
+                }
+                // $result = $this->db->runQuery("UPDATE packages SET status ='$status' WHERE package_id='$id'");
+                return "success";
+            }
+            else{return 'fales';}
+        }
+        else{return 'fales';}
+    }
+
+
+
     //get vehicle classes for add package ui
     function getClasses(){
         $class=$this->db->runQuery("SELECT vehicle_class,vehicle_class_id FROM vehicle_classes");

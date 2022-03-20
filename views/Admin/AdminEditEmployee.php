@@ -7,13 +7,55 @@
     <link rel="stylesheet" href="<?php echo URL?>public/css/admin/Mid_Box_Layout.css">
     <link rel="stylesheet" href="<?php echo URL?>public/css/admin/buttons.css">
     <link rel="stylesheet" href="<?php echo URL?>public/css/admin/Edit_Employee.css">
+    <link  rel="stylesheet" href="<?php echo URL?>public/css/admin/popup.css">
     <title>Lead driving school</title>
 </head>
 <body>
+    <div id="pop-div" class="popup-container">
+        <div class="conf-box">
+            <div class="msg-container">
+                <h2>Delete Package?</h2>
+                deleting a Packages will permenently remove it from your system 
+            </div>
+            <div class="btn-container">
+                <button class="yess" onclick="cancel()">
+                    No, keep Package 
+                </button >
+                    
+                <button class="no" onclick="yesDelete()">
+                    Yes, Delete Package
+                </button>
+            </div>
+        </div>
+     </div>
+     <div id="pop-div2" class="popup-container2">
+        <div class="conf-box2">
+            <div class="invalid-login" id="invalid-login">
+                Invalid password, please try again.
+            </div>
+            <div class="input-container">
+                <label for="">Username :</label>
+                <input type="text" id="username"> 
+            </div>
+            <div class="input-container">
+                <label for="">Password :</label>
+                <input type="password" id="passwordd"> 
+            </div>
+            <div class="btn-container2">
+                <button class="yess" onclick="cancel2()">
+                    Cancel 
+                </button >
+                    
+                <button class="no" onclick="deleteEmployee()">
+                    Confirm
+                </button>
+            </div>
+        </div>
+     </div>
     <div class="mid-box-container-1">
         <div class="mid-box-container-2">
             <div class="title-container">
-                <h1>Edit Employee</h1>
+                <h1>Edit Employee</h1> 
             </div>
             <div class="invalid-login" id="invalid-login">
                             
@@ -81,7 +123,7 @@
                         Back
                     </button>
                 </a>
-                <button class="delete">
+                <button class="delete" onclick="deletex()">
                     Delete
                 </button>
 
@@ -91,9 +133,9 @@
         </div>
     </div>
 
-    <!-- <script src="<?php echo URL?>public/js/admin/popup.js"></script> -->
+    <script src="<?php echo URL?>public/js/admin/popup.js"></script>
     <script  src="<?php echo URL?>public/js/Admin/editEmployee.js"></script>
-    <!-- <script  src="<?php echo URL?>public/js/Admin/deleteEmployee.js"></script> -->
+    <script  src="<?php echo URL?>public/js/Admin/deleteEmployee.js"></script>
 
 
 </body>

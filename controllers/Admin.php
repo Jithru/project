@@ -569,6 +569,11 @@ class Admin extends Controller{
         $result = $this->model->deleteVehicle($username,$password,$_SESSION['vehiId']);
         echo $result;
     }
+
+    function deleteEmployee($username,$password){
+        $result = $this->model->deleteEmployee($username,$password,$_SESSION['empID']);
+        echo $result;
+    }
     //get vehicle classes for add package ui
     function getClasses(){
         $result = $this->model->getClasses();
