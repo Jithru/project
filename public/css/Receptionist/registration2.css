@@ -257,6 +257,16 @@ input[type="radio"] {
   justify-content: center;
 }
 
+
+/* .crosul-container-f2{
+  visibility: visible;
+} */
+.crosul-container-f2-hidden{
+  visibility: hidden;
+}
+
+
+
 .crosul-f2 {
   width: 100%;
   height: 90%;

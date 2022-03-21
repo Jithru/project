@@ -119,7 +119,7 @@ function nextPage(){
 
     }
     //.......................................................remove flag.........................................................................
-    flag=true;
+    // flag=true;
     if(flag==true){
         document.getElementById("reg-form").classList.replace("reg-form","reg-form-hidden");
         document.getElementById("reg2-f2").classList.replace("reg2-f2","reg2-f2-visible");
@@ -152,13 +152,15 @@ function changing(){
     if(type=="written"){
         document.getElementById("number-text").innerHTML="Medical No"
         document.getElementById("ending-date").classList.replace("sub-row-f2","sub-row-f2-hidden")
+        document.getElementById("packages").classList.replace("crosul-container-f2-hidden","crosul-container-f2")
     }else if(type=="trial"){
         document.getElementById("number-text").innerHTML="L-permit No"
         document.getElementById("ending-date").classList.replace("sub-row-f2-hidden","sub-row-f2")
+        document.getElementById("packages").classList.replace("crosul-container-f2-hidden","crosul-container-f2")
     }else{
         document.getElementById("number-text").innerHTML="License No"
         document.getElementById("ending-date").classList.replace("sub-row-f2-hidden","sub-row-f2")
-        document.getElementById("packageContainer").classList.replace("crosul-title-f","crosul-title-f-hidden")
+        document.getElementById("packages").classList.replace("crosul-container-f2","crosul-container-f2-hidden")
     }
 }
 
@@ -354,6 +356,8 @@ function loadVehicleClasses(){
     var classA=document.getElementById("A").checked;
     var classB1=document.getElementById("B1").checked;
     var classB=document.getElementById("B").checked;
+    var exam = document.getElementById("license").checked;
+    
     let httpreq = new XMLHttpRequest();
     httpreq.onreadystatechange = function(){
         
@@ -363,7 +367,7 @@ function loadVehicleClasses(){
             document.getElementById("initPayment").value=text;
         }
     }
-    let data=[classA1,classA,classB1,classB]
+    let data=[classA1,classA,classB1,classB,exam]
     var url="http://localhost/project/Receptionist/vehicleClassSelection/"+data;
     httpreq.open( "POST" , url  , true);
     httpreq.send();

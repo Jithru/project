@@ -4,10 +4,10 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="<?php echo URL?>public/css/Conductor/viewConductor&Vehicle&Student/upload.css">
-    <link rel="stylesheet" href="<?php echo URL?>public/css/Conductor/viewConductor&Vehicle&Student/prompt.css">
-    <link rel="stylesheet" href="<?php echo URL?>public/css/Conductor/viewConductor&Vehicle&Student/boxAppear.css">
-    <script src="<?php echo URL?>public/js/instructor/upload.js"></script>
+    <link rel="stylesheet" href="<?php echo URL?>public/css/student/upload.css">
+    <!-- <link rel="stylesheet" href="<?php echo URL?>public/css/Conductor/viewConductor&Vehicle&Student/prompt.css"> -->
+    <!-- <link rel="stylesheet" href="<?php echo URL?>public/css/Conductor/viewConductor&Vehicle&Student/boxAppear.css"> -->
+    <script src="<?php echo URL?>public/js/student/upload.js"></script>
     <title>Lead Driving School</title>
 </head>
 <body>
@@ -18,9 +18,9 @@
         <div class="content">
             <?php require_once APPROOT."/../views/common/InstructorSidebar.php"; ?>            
             <div class="view">
-                <div class="new">
+                <!-- <div class="new">
                     <button class="new-btn" onclick="newFile()">New</button>
-                </div>
+                </div> -->
                 <div class="file-area">
                     <div class="scroll" id="scroll">
                         <div class="row">
@@ -46,7 +46,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="delete"><button class="delete-btn" onclick="deleteMe()">Delete</button></div>
+                            <div class="download"><button class="download-btn" onclick="downloadMe()">Download</button></div>
                         </div>
                         <div class="row">
                             <div class="iconDetails">
@@ -71,7 +71,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="delete"><button class="delete-btn">Delete</button></div>
+                            <div class="download"><button class="download-btn">Download</button></div>
                         </div>
                         <div class="row">
                             <div class="iconDetails">
@@ -96,7 +96,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="delete"><button class="delete-btn">Delete</button></div>
+                            <div class="download"><button class="download-btn">Download</button></div>
                         </div>
                         <div class="row">
                             <div class="iconDetails">
@@ -121,7 +121,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="delete"><button class="delete-btn">Delete</button></div>
+                            <div class="download"><button class="download-btn">Download</button></div>
                         </div>
                         <div class="row">
                             <div class="iconDetails">
@@ -146,7 +146,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="delete"><button class="delete-btn">Delete</button></div>
+                            <div class="download"><button class="download-btn">Download</button></div>
                         </div>
                     </div>
                     
@@ -155,7 +155,7 @@
         </div>
     </div>
 
-    <div class="box-container" id="box-container">
+    <!-- <div class="box-container" id="box-container">
         <div class="box-content">
             <div class="appear">
                 <div class="uploadArea">
@@ -167,6 +167,6 @@
             </div>
         </div>
         
-    </div>
+    </div> -->
 </body>
 </html>
