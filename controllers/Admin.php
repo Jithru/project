@@ -441,6 +441,11 @@ class Admin extends Controller{
         echo json_encode($_SESSION['empDetails']);
     }
 
+    function displayEmployeeDetailsforEdit(){
+        $results = $this->model->displayEmployeeDetailsforEdit();
+        echo json_encode($results);
+    }
+
     //function for load vehicle classes (admin/addInitPrice.js   && view/admin/addInitPrice.php) ----- add vehicle to database
     function addVehiclelogic($data){
         $vehicle = explode(",", $data);
@@ -555,6 +560,20 @@ class Admin extends Controller{
         $result = $this->model->deletePackage($username,$password);
         echo $result;
     }
+    function VehicleID($id){
+        $_SESSION['vehiId'] = $id;
+        echo $id;
+    }
+
+    function deleteVehicle($username,$password){
+        $result = $this->model->deleteVehicle($username,$password,$_SESSION['vehiId']);
+        echo $result;
+    }
+
+    function deleteEmployee($username,$password){
+        $result = $this->model->deleteEmployee($username,$password,$_SESSION['empID']);
+        echo $result;
+    }
     //get vehicle classes for add package ui
     function getClasses(){
         $result = $this->model->getClasses();
@@ -567,6 +586,20 @@ class Admin extends Controller{
         $result = $this->model->addPackageLogic($details);
         // echo $data;
     }
+
+    function updateEmployeeDetails($cat,$data){
+        $result = $this->model->updateEmployeeDetails($cat,$data);
+        echo $result;
+    }
+
+
+
+    function searchEmployee($id){
+        $result = $this->model->searchEmployee($id);
+        echo json_encode($result);
+    }
+
+    
 
     
 

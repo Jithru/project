@@ -19,18 +19,19 @@ body{
 }
 
 .container-2{
-    width: 40%;
-    height: 80%;
+    width: 25%;
+    height: 50%;
     box-shadow: 1px 1px 10px #b0b3b3 ;
     border-radius: 6px;
     display: flex;
     flex-direction: column;
     background-color: white;
-    /* background-color: rgb(206, 206, 206); */
+    background-color: rgb(119, 35, 35);
 }
 
 .div-1{
-    flex-grow: 1;
+    width: 100%;
+    height: 20%;
    display: flex;
    justify-content: center;
    align-items: center;
@@ -65,10 +66,11 @@ h3{
 }
 
 .div-5{
-    flex-grow: 2;
+    width:100% ;
+    height: 100px;
     display: flex;
     justify-content: center;
-    align-items: flex-end;
+    /* align-items: flex-end; */
     /* background-color: rgb(161, 172, 16); */
 }
 
@@ -131,10 +133,11 @@ h3{
     /* background-color: darkred; */
 }
 .Back{
-    height: 70%;
-    width: fit-content;
-    padding-left: 30px;
-    padding-right: 30px;
+    height: 45px;
+    width: 90px;
+    display: flex;
+    align-items: center;
+    justify-content: center;  
     font-size: 20px;
     font-weight: 600;
     border: 2px solid #262b2f;
@@ -142,6 +145,7 @@ h3{
     border-radius: 3px;
     background-color:  #262b2f;
     cursor: pointer;
+    text-decoration: none;
     
     /* background-color: rgb(19, 224, 19); */
 }
@@ -153,8 +157,11 @@ h3{
 }
 
 .Cancel{
-    height: 70%;
-    width: 60%;
+    height: 45px;
+    width: 90px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     font-size: 20px;
     font-weight: 600;
     color: seashell;
@@ -172,8 +179,11 @@ h3{
     box-shadow: 1px 1px 10px #b0b3b3;
 }
 .pay{
-    height: 70%;
-    width: 60%;
+    height: 45px;
+    width: 90px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     font-size: 20px;
     font-weight: 600;
     color:seashell ;

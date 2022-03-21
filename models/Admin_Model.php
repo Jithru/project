@@ -99,8 +99,14 @@ class Admin_Model extends Model{
         if($result[0]['job_title']=='Instructor'){
             $license=$this->db->runQuery("SELECT instructor_license_id FROM instructor WHERE employee_id='$id'");
         }
-
+        $_SESSION['empID']=$id;
         $_SESSION['empDetails'] = array_merge($result, $license);
+    }
+
+    public function displayEmployeeDetailsforEdit(){
+        $id=$_SESSION['empID'];
+        $result=$this->db->runQuery("SELECT name,contact_no,address FROM employee WHERE employee_id='$id'");
+        return $result;
     }
 
     
@@ -221,7 +227,7 @@ class Admin_Model extends Model{
         return $results;
     }
 
-
+//edit pacckage------------------------------------------------------------------------------------------------------------------
     //function for edit pakage  name
     function editPackageName($name){
         $ID=$_SESSION['package_id'];
@@ -240,7 +246,7 @@ class Admin_Model extends Model{
         $result = $this->db->runQuery("UPDATE packages SET amount ='$price' WHERE package_id='$ID'");
         return "success";
     }
-
+//------------------------------------------------------------------------------------------------------------------
     ///function fo delete packages
     function deletePackage($username,$password){
         $result=$this->db->runQuery("SELECT passwordhash FROM admin WHERE username='$username'");
@@ -256,6 +262,54 @@ class Admin_Model extends Model{
         }
         else{return 'fales';}
     }
+
+
+
+    function deleteVehicle($username,$password,$id){
+        $result=$this->db->runQuery("SELECT passwordhash FROM admin WHERE username='$username'");
+        if(!empty($result)){
+            if(password_verify($password,
+            $result[0]['passwordhash'] )){
+                $session=$this->db->runQuery("SELECT session_id FROM session_vehicle_assigns WHERE vehicle_id='$id'");
+                if(!empty($session)){
+                    return "assigned";
+                }
+                else{
+                    $this->db->runQuery("DELETE FROM vehicle WHERE vehicle.vehicle_id = '$id'");
+                }
+                // $result = $this->db->runQuery("UPDATE packages SET status ='$status' WHERE package_id='$id'");
+                return "success";
+            }
+            else{return 'fales';}
+        }
+        else{return 'fales';}
+    }
+
+
+
+
+    function deleteEmployee($username,$password,$id){
+        $result=$this->db->runQuery("SELECT passwordhash FROM admin WHERE username='$username'");
+        if(!empty($result)){
+            if(password_verify($password,
+            $result[0]['passwordhash'] )){
+                $session=$this->db->runQuery("SELECT session_id FROM session_vehicle_assigns WHERE employee_id='$id'");
+                if(!empty($session)){
+                    return "assigned";
+                }
+                else{
+                    $this->db->runQuery("DELETE FROM employee WHERE employee.employee_id = '$id'");
+                }
+                // $result = $this->db->runQuery("UPDATE packages SET status ='$status' WHERE package_id='$id'");
+                return "success";
+            }
+            else{return 'fales';}
+        }
+        else{return 'fales';}
+    }
+
+
+
     //get vehicle classes for add package ui
     function getClasses(){
         $class=$this->db->runQuery("SELECT vehicle_class,vehicle_class_id FROM vehicle_classes");
@@ -274,6 +328,48 @@ class Admin_Model extends Model{
             $this->db->runQuery("INSERT INTO package_n_vehicles (package_id, vehicle_class_id) VALUES ('$id', '$details[$i]')");
         }
     }
+    
+
+    function updateEmployeeDetails($cat,$data){
+        $ID=$_SESSION['empID'];
+        if($cat=="name"){
+            $this->db->runQuery("UPDATE employee SET name ='$data' WHERE employee_id='$ID'");
+        }
+        else if($cat=="contact"){
+            $result=$this->db->runQuery("SELECT contact FROM admin WHERE contact='$data'");
+            if(empty($result)){
+                $result=$this->db->runQuery("SELECT contact_no FROM employee WHERE contact_no='$data'");
+                if(empty($result)){
+                    $result=$this->db->runQuery("SELECT contact FROM student WHERE contact='$data'");
+                    
+                }
+            }
+            if(!empty($result)){
+                return "exist";
+            }
+            else if(empty($result)){
+                $this->db->runQuery("UPDATE employee SET contact_no ='$data' WHERE employee_id='$ID'");
+                return "success";
+            }
+        }
+        else if($cat=="address"){
+            $this->db->runQuery("UPDATE employee SET address ='$data' WHERE employee_id='$ID'");
+        }
+        echo "success";
+
+    }
+
+
+
+
+
+    function searchEmployee($key){
+        $searchKey="%".$key."%";
+        $result=$this->db->runQuery("SELECT employee_id,name,job_title,contact_no FROM employee WHERE name LIKE '$searchKey'");
+        return $result;
+    }
+
+    
 
     
 

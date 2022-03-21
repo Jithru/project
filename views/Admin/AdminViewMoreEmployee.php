@@ -77,5 +77,6 @@
         </div>
     </div>
     <script src="<?php echo URL?>public/js/Admin/employeeMoreDetails.js"></script>
+    <script src="<?php echo URL?>public/js/Admin/editEmployee.js"></script>
 </body>
 </html>

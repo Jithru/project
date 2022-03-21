@@ -34,6 +34,7 @@ class Receptionist extends Controller{
         if(isset($_SESSION['job_title'])){
             if($_SESSION['job_title']=='Receptionist'){
                 $this->view->render('receptionist/eventCalendar');
+                
             }else{
                 $this->view->render('error'); 
             }
@@ -61,7 +62,7 @@ class Receptionist extends Controller{
     //$result=$this->model->addPass($cube[0],$cube[1],$cube[2]);
     function vehicleClassSelection($data){
         $values = explode(",",$data);
-        $result=$this->model->getVehicleClasses($values[0],$values[1],$values[2],$values[3]);
+        $result=$this->model->getVehicleClasses($values[0],$values[1],$values[2],$values[3],$values[4]);
         echo json_encode($result);
     }
     function packageSelection(){
@@ -134,7 +135,6 @@ class Receptionist extends Controller{
             $this->view->render('error');
         }
     }
-    //----------------------------------part 1 -------------------------------------------------------------------
     //sessions
     function my_sessions(){
         $result=$this->model->session();
@@ -177,7 +177,6 @@ class Receptionist extends Controller{
     //     $result=$this->model->addFail($cube[0],$cube[1]);
     //     echo json_encode($result);
     // }
-    //---------------------------------------------------------part 2 ------------------------------------------------
     //student List
 
     function studentList(){
@@ -356,7 +355,6 @@ class Receptionist extends Controller{
         $result = $this->model->findStudent($findMe);
         echo json_encode($result);
     }
-    //-----------------------------------------------------part 3 ---------------------------------------------------------------
         //addPayment
     function payHere(){
         if(isset($_SESSION['job_title'])){

@@ -87,5 +87,4 @@ class Instructor_Model extends Model{
         $result=$this->db->runQuery("UPDATE session_participation SET status='present' WHERE student_id=$studentId AND session_id=$sessionId");
         return true;
     }
-    
 }

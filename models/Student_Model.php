@@ -64,14 +64,15 @@ class Student_Model extends Model{
     
     }
     function getTodaySession(){
-        $date=date("Y-m-d");
-        $result=$this->db->runQuery("SELECT sessions.session_id , sessions.session_title, sessions.session_date, sessions.session_time,session_participation.status FROM sessions INNER JOIN session_participation ON sessions.session_id=session_participation.session_id WHERE session_date='2021-11-18'");
+        // $date=date("Y-m-d");
+        $result=$this->db->runQuery("SELECT sessions.session_id , sessions.session_title, sessions.session_date, sessions.session_time,session_participation.status FROM sessions INNER JOIN session_participation ON sessions.session_id=session_participation.session_id WHERE session_date='2021-12-07'");
         return $result;
     }
 
     function upadateTodaySession($status){
         $id=$_SESSION['student_id'];
-        $result=$this->db->runQuery("UPDATE session_participation SET status='$status' WHERE student_id='$id'");
+        $statusexplode=explode(",",$status);  
+        $result=$this->db->runQuery("UPDATE session_participation SET status='$statusexplode[0]' WHERE student_id='$id'");
         return true;
 
     }
@@ -204,6 +205,11 @@ class Student_Model extends Model{
         $result=array_merge($result_cash,$result_online);
         return $result;
 
+    }
+
+    function makeOnlinePayments($dateTime,$amount,$studentId){
+        $this->db->runQuery("INSERT INTO `online_payments` (`opayment_id`, `payment_date_time`, `amount`, `student_id`) VALUES (NULL, '$dateTime','$amount','$studentId');");
+            return "INSERT INTO `online_payments` (`opayment_id`, `payment_date_time`, `amount`, `student_id`) VALUES (NULL, '$dateTime','$amount','$studentId');";
     }
 
 }

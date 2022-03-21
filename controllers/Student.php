@@ -119,6 +119,15 @@ class Student extends Controller{
         }
     }
 
+    function onlinePayments($data){
+        $value= explode(",",$data);
+        $myval = explode("_" , $value[0]);
+        $studentId= 55;
+        $result= $this->model->makeOnlinePayments($myval[0] . " " . $myval[1] ,$value[1],$studentId);
+        echo json_encode($result);
+        
+    }
+
     function paymentDetails(){
         $studentId=$_SESSION['student_id'];
         $value=$this->model->getPaymentDetails($studentId);
@@ -151,8 +160,21 @@ class Student extends Controller{
     }
 
     function markGoingNotGoingLogic_Going($status){
+        echo json_encode($status);
         $value=$this->model->upadateTodaySession($status);
 
+    }
+    function questionsAndAnswers(){
+        if(isset($_SESSION['job_title'])){
+            if($_SESSION['job_title']=='student'){
+                $this->view->render('Student/upload');
+            }else{
+                $this->view->render('error');
+            }
+        }
+        else{
+            $this->view->render('error');
+        }
     }
 
     function payments(){
