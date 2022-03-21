@@ -30,7 +30,7 @@
                     </div>
                 </div>
                 <div class="row-hidden-Image" id="hidden-Image">
-                    <label for="file" class="change" >Change
+                    <label for="file" class="change" id="change" value="hhjh">Change
                     <input type="file" class="file" id="file">
                     </label> 
                     <button class="remove" onclick="removeImage()">Remove</button>
@@ -164,6 +164,7 @@
 
         function cancelImage(){
             // var phone=document.getElementById("phone").value;
+            window.location.reload('http://localhost/project/Student/editprofile');
             document.getElementById("hidden-Image").classList.replace("row-hidden-Image-active","row-hidden-Image");
             document.getElementById("editImage").classList.replace("Edit-active","Edit");
   
@@ -178,6 +179,9 @@
                 alert("File type is not valid");
             }else{
                 img.src=URL.createObjectURL(this.files[0]);
+
+                let httpreq=xm
+
             }
 
         })

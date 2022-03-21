@@ -15,16 +15,16 @@
             </div>
             <div class="div-2">
                 <div class="col-1">
-                    <h3>Paying Amount(Rs.)</h3>
+                    <h4>Paying Amount(Rs.)</h4>
                 </div>
                 <div class="col-2">
                     <h3>:</h3>
                 </div>
                 <div class="col-3">
-                    <input type="number" class="amount">
+                    <input type="number" class="amount" id="amount" min=0 max=10000>
                 </div>
             </div>
-            <div class="div-3">
+            <!-- <div class="div-3">
                 <div class="col-1">
                     <h3>Method of payment</h3>
                 </div>
@@ -48,21 +48,25 @@
                     <h3>:</h3>
                 </div>
                 <div class="col-3">
-                    <div class="total"></div>
+                    <div class="total" id="total"></div>
                 </div>
-            </div>
+            </div> -->
             <div class="div-5">
                 <div class="div-button">
-                   <a href="<?php echo URL?>Student/payments"> <button class="Back">Back</button></a>
+                   <button class="Back" id="back" onclick="back()">Back</button>
                 </div>
                 <div class="div-button">
-                    <button class="Cancel">Cancel</button>
+                    <button class="Cancel" id="cancelpay" onclick="cancelpay()">Cancel</button>
                 </div>
                 <div class="div-button">
-                    <button class="pay">Pay</button>
+                    <button type="submit" class="pay" id="payhere-payment" >Pay</button>
+                    <!-- <button class="pay" onclick="gatewayload()">Pay</button> -->
                 </div>
             </div>
         </div>
     </div>
 </body>
+<script src="<?php echo URL?>public/js/student/makepayments.js"></script>
+<script type="text/javascript" src="https://www.payhere.lk/lib/payhere.js"></script>
+
 </html>
