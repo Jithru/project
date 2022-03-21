@@ -27,6 +27,10 @@
             <span class="link-name">Sessions</span>
         </a>
         
+        <a class="list-item" href="<?php echo URL?>Student/markGoingNotGoing" class="<?php echo (getLink()=="http://localhost/project/Student/questionsAndAnswers")?"list-item-active":"list-item";?>">
+            <span class="link-icon">&#xf0c0</span>
+            <span class="link-name">Questions & Answers</span>
+        </a>
         <!-- <a class="list-item" href="<?php echo URL?>student/makepayments">
             <span class="link-icon">&#xf09d</span>
             <span class="link-name">Pay Online</span>
