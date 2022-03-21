@@ -58,7 +58,7 @@ function loadDataWeekly(){
             document.getElementById("expenseVal").innerHTML='LKR '+obj['expense']+'.00'
         }
     }
-    "http://localhost/project/IncomeExpenses/loadfrontBoxWeek/"+content;
+    let url="http://localhost/project/IncomeExpenses/loadfrontBoxWeek/"+content;
     httpreq.open( "POST" , url  , true);
 
     httpreq.send();

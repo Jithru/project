@@ -28,7 +28,11 @@
             <h1>Attendance</h1>
             <div class="date-viewer">
                 <p id="todayDate"></p>
+                <div class="session-id-container" id="sessionIdContainer">
+               
+                </div>
             </div>
+
             <div class="heading">
                 <div class="heading-row">
                     <div class="cell">
@@ -43,8 +47,8 @@
                     </div>
                 </div>
             </div>
-            <div class="table">
-                <div class="row">
+            <div class="table" id="tableRows">
+                <!-- <div class="row">
                     <div class="cell">
                         <div class="information">
                             <div class="one">Image</div>
@@ -57,22 +61,8 @@
                             <button class="absent" id="absent">Absent</button>
                         </div>
                     </div>
-                </div>
-                <div class="row">
-                    <div class="cell">
-                        <div class="information">
-                            <div class="one">Image</div>
-                            <div class="three">ST_2</div>
-                            <div class="two">N.R.Senevirathne</div>
-                            <div class="four">0711524221</div>
-                        </div>
-                        <div class="Attendance-Button-set">
-                            <button class="present" id="present">Present</button>
-                            <button class="absent" id="absent">Absent</button>
-                            
-                        </div>
-                    </div>
-                </div>
+                </div> -->
+
             </div>
         </div>
     </div>
