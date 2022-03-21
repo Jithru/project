@@ -73,7 +73,7 @@
 
                 <div class="add-new-search-container">
                    <a href="<?php echo URL?>Admin/addVehicle"><button class="add-new">Add Vehicle</button></a> 
-                   <input type="search" placeholder='&#xf002; Search'>
+                   
                 </div>
 
                 <div class="table-heading-container">

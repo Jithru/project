@@ -359,6 +359,16 @@ class Admin_Model extends Model{
 
     }
 
+
+
+
+
+    function searchEmployee($key){
+        $searchKey="%".$key."%";
+        $result=$this->db->runQuery("SELECT employee_id,name,job_title,contact_no FROM employee WHERE name LIKE '$searchKey'");
+        return $result;
+    }
+
     
 
     

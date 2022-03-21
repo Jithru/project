@@ -164,6 +164,18 @@ class Student extends Controller{
         $value=$this->model->upadateTodaySession($status);
 
     }
+    function questionsAndAnswers(){
+        if(isset($_SESSION['job_title'])){
+            if($_SESSION['job_title']=='student'){
+                $this->view->render('Student/upload');
+            }else{
+                $this->view->render('error');
+            }
+        }
+        else{
+            $this->view->render('error');
+        }
+    }
 
     function payments(){
         if(isset($_SESSION['job_title'])){

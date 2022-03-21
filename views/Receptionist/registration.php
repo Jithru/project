@@ -151,12 +151,12 @@
                         </div>
                         <button class="calculate-total" id="calculate" onclick="loadVehicleClasses()">calculate total</button>
                     </div>
-                <div class="crosul-container-f2">
+                <div class="crosul-container-f2" id="packages">
 
                 <input type="hidden" id="package-id-container" value="0">
                 <input type="hidden" id="package-amount-container" value="0">
 
-                    <div class="crosul-title-f2" id="packageContainer">Traning Packages</div>
+                <div class="crosul-title-f2" id="packageContainer">Traning Packages</div>
                     <div class="crosul-f2">
                         <div class="scroll-f2" id="scroll">
                             

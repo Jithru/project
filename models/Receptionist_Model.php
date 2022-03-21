@@ -14,30 +14,72 @@ class Receptionist_Model extends Model{
     function registerLicense(){
         
     }
-    function getVehicleClasses($classA,$classAauto,$classB1,$classB){
-        $total=0;
-        if($classA=="true"){
-            $result=$this->db->runQuery("SELECT initial_charge FROM vehicle_classes WHERE vehicle_class='A'");
-            $total=$total+doubleval($result[0]['initial_charge']);
+    function getVehicleClasses($classA,$classAauto,$classB1,$classB,$exam){
+        if($exam=="false"){
+            $total=0;
+            if($classA=="true"){
+                $result=$this->db->runQuery("SELECT initial_charge FROM vehicle_classes WHERE vehicle_class='A'");
+                $total=$total+doubleval($result[0]['initial_charge']);
+            }
+            if($classAauto=="true"){
+                $result=$this->db->runQuery("SELECT initial_charge FROM vehicle_classes WHERE vehicle_class='A-Auto'");
+                $total=$total+doubleval($result[0]['initial_charge']);
+            }
+            if($classB1=="true"){
+                $result=$this->db->runQuery("SELECT initial_charge FROM vehicle_classes WHERE vehicle_class='B1'");
+                $total=$total+doubleval($result[0]['initial_charge']);
+            }
+            if($classB=="true"){
+                $result=$this->db->runQuery("SELECT initial_charge FROM vehicle_classes WHERE vehicle_class='B'"); 
+                $total=$total+doubleval($result[0]['initial_charge']);
+            }
+                
+            return $total;
         }
-        if($classAauto=="true"){
-            $result=$this->db->runQuery("SELECT initial_charge FROM vehicle_classes WHERE vehicle_class='A-Auto'");
-            $total=$total+doubleval($result[0]['initial_charge']);
+        else{
+            $total=0;
+            if($classA=="true"){
+                $result=$this->db->runQuery("SELECT extra_charges_for_extra_day FROM vehicle_classes WHERE vehicle_class='A'");
+                $total=$total+doubleval($result[0]['extra_charges_for_extra_day']);
+                // $total=$total+500;
+            }
+            if($classAauto=="true"){
+                $result=$this->db->runQuery("SELECT extra_charges_for_extra_day FROM vehicle_classes WHERE vehicle_class='A-Auto'");
+                $total=$total+doubleval($result[0]['extra_charges_for_extra_day']);
+                // $total=$total+750;
+            }
+            if($classB1=="true"){
+                $result=$this->db->runQuery("SELECT extra_charges_for_extra_day FROM vehicle_classes WHERE vehicle_class='B1'");
+                $total=$total+doubleval($result[0]['extra_charges_for_extra_day']);
+                // $total=$total+250;
+            }
+            if($classB=="true"){
+                $result=$this->db->runQuery("SELECT extra_charges_for_extra_day FROM vehicle_classes WHERE vehicle_class='B'"); 
+                $total=$total+doubleval($result[0]['extra_charges_for_extra_day']);
+                // $total=$total+650;
+            }
+                
+            return $total;
         }
-        if($classB1=="true"){
-            $result=$this->db->runQuery("SELECT initial_charge FROM vehicle_classes WHERE vehicle_class='B1'");
-            $total=$total+doubleval($result[0]['initial_charge']);
-        }
-        if($classB=="true"){
-            $result=$this->db->runQuery("SELECT initial_charge FROM vehicle_classes WHERE vehicle_class='B'"); 
-            $total=$total+doubleval($result[0]['initial_charge']);
-        }
-        // if($classBauto=="true"){
-        //     $result=$this->db->runQuery("SELECT initial_charge FROM vehicle_classes WHERE vehicle_class='B-Auto'");
+        // $total=0;
+        // if($classA=="true"){
+        //     $result=$this->db->runQuery("SELECT initial_charge FROM vehicle_classes WHERE vehicle_class='A'");
+        //     $total=$total+doubleval($result[0]['initial_charge']);
+        // }
+        // if($classAauto=="true"){
+        //     $result=$this->db->runQuery("SELECT initial_charge FROM vehicle_classes WHERE vehicle_class='A-Auto'");
+        //     $total=$total+doubleval($result[0]['initial_charge']);
+        // }
+        // if($classB1=="true"){
+        //     $result=$this->db->runQuery("SELECT initial_charge FROM vehicle_classes WHERE vehicle_class='B1'");
+        //     $total=$total+doubleval($result[0]['initial_charge']);
+        // }
+        // if($classB=="true"){
+        //     $result=$this->db->runQuery("SELECT initial_charge FROM vehicle_classes WHERE vehicle_class='B'"); 
         //     $total=$total+doubleval($result[0]['initial_charge']);
         // }
             
-        return $total;
+        // return $total;
     }
     function getPackages(){
         $result=$this->db->runQuery("SELECT packages.package_id,GROUP_CONCAT(vehicle_classes.vehicle_class) as classes,packages.amount from ((package_n_vehicles inner join packages on package_n_vehicles.package_id=packages.package_id) inner join vehicle_classes on package_n_vehicles.vehicle_class_id=vehicle_classes.vehicle_class_id) group by package_id");
