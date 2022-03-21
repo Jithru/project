@@ -81,7 +81,7 @@
 
                 <div class="add-new-search-container">
                 <a href="<?php echo URL?>Admin/addEmployee"><button class="add-new">Add Employee</button></a>
-                <input type="search" placeholder='&#xf002; Search'>
+                <input id="searchInput" type="search" placeholder='&#xf002; Search' oninput="search()">
                 </div>
 
                 <div class="table-heading-container">

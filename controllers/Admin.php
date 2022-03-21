@@ -592,6 +592,13 @@ class Admin extends Controller{
         echo $result;
     }
 
+
+
+    function searchEmployee($id){
+        $result = $this->model->searchEmployee($id);
+        echo json_encode($result);
+    }
+
     
 
     
