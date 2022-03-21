@@ -25,7 +25,7 @@ function loadPreSelectedStudents(){
                         '<div class="information">'+
                             '<div class="one">ST_'+obj[i].student_id+'</div>'+
                             '<div class="two">'+obj[i].init_name+'</div>'+
-                            '<div class="three">'+obj[i].total_assigns+'/20</div>'+
+                            '<div class="three">'+obj[i].total_assigns+'/'+obj[i].training_days+'</div>'+
                         '</div>'+
                         '<div class="removeButton">'+
                             '<button id="Remove_'+obj[i].student_id+'" class="Remove" onclick=removeStudents('+obj[i].student_id+')>Remove</button>'+
@@ -58,18 +58,21 @@ function loadUnselectedStudents(){
             }
             for(var i=0;i<obj.length;i++){
                 if(!selectedStudents.includes(obj[i].student_id)){
-                    rows.innerHTML+='<div class="row">'+
-                    '<div class="cell">'+
-                        '<div class="information">'+
-                            '<div class="one">ST_'+obj[i].student_id+'</div>'+
-                            '<div class="two">'+obj[i].init_name+'</div>'+
-                            '<div class="three">'+obj[i].total_assigns+'/20</div>'+
-                        '</div>'+
-                        '<div class="addButton">'+
-                            '<button id="Add_'+obj[i].student_id+'" class="Add" onclick=addNewStudents('+obj[i].student_id+')>Add</button>'+
-                        '</div>'+
-                    '</div>'+
-                '</div>'
+                    if(obj[i].training_days!=null){
+                        rows.innerHTML+='<div class="row">'+
+                            '<div class="cell">'+
+                                '<div class="information">'+
+                                    '<div class="one">ST_'+obj[i].student_id+'</div>'+
+                                    '<div class="two">'+obj[i].init_name+'</div>'+
+                                    '<div class="three">'+obj[i].total_assigns+'/'+obj[i].training_days+'</div>'+
+                                '</div>'+
+                                '<div class="addButton">'+
+                                    '<button id="Add_'+obj[i].student_id+'" class="Add" onclick=addNewStudents('+obj[i].student_id+')>Add</button>'+
+                                '</div>'+
+                            '</div>'+
+                        '</div>'
+                    }
+
                 }
                
             }

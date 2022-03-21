@@ -212,5 +212,28 @@ class Instructor extends Controller{
         $result=$this->model->loadPreSelectedStudentsS($_SESSION['viewSessionIdInstructor']);
         echo json_encode($result);
     }
+<<<<<<< HEAD
+    function loadAllSessionsForToday(){
+        $result=$this->model->loadAllSessionsForToday($_SESSION['employee_id']);
+        echo json_encode($result);
+    }
+    function loadStudentsForSession($sessionId){
+        $result=$this->model->loadStudentsForSession($sessionId);
+        echo json_encode($result);
+    }
+    function setAbsent($sessionId,$studentId){
+        $result=$this->model->setAbsent($sessionId,$studentId);
+        if($result==true){
+            echo $sessionId;
+        }
+    }
+    function setPresent($sessionId,$studentId){
+        $result=$this->model->setPresent($sessionId,$studentId);
+        if($result==true){
+            echo $sessionId;
+        }
+    }
+=======
 
+>>>>>>> 06ecdeb97ef2a6292bab2c751f181042e221f8c1
 }

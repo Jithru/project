@@ -6,6 +6,36 @@
   justify-content: center;
   /* background-color: darkblue; */
 }
+.selectors {
+  margin-top: 20px;
+  display: flex;
+  width: 50%;
+  justify-content: space-around;
+}
+.method-selector-select {
+  width: 100px;
+  height: 30px;
+}
+
+.go-button {
+  width: 100px;
+  height: 30px;
+  background-color: #0892d0;
+  color: white;
+  font-weight: bold;
+  border: none;
+  border-radius: 3px;
+  box-shadow: 1px 1px 10px #b0b3b3;
+}
+.go-button:hover {
+  background-color: white;
+  color: #0892d0;
+  border: 2px solid #0892d0;
+}
+.date-container {
+  width: 140px;
+  height: 30px;
+}
 h1 {
   align-self: flex-end;
   font-size: 40px;
@@ -81,8 +111,8 @@ h1 {
   /* background-color: rgb(187, 187, 187); */
 }
 .value-field {
-  width: 40%;
-  /* background-color: darkcyan; */
+  width: 100%;
+  /* background-color: yellow; */
 }
 .view-more {
   width: 100%;

@@ -288,18 +288,22 @@ class Manager_Model extends Model{
         return true;
     }
     function loadPreSelectedStudentsS($sessionId){
-        $result=$this->db->runQuery("SELECT count(session_student_assigns.student_id) AS total_assigns,session_student_assigns.student_id,GROUP_CONCAT(session_student_assigns.session_id) AS session_IDs,student.init_name FROM ((session_student_assigns LEFT JOIN student on student.student_id=session_student_assigns.student_id) LEFT JOIN sessions on sessions.session_id=session_student_assigns.session_id) GROUP BY session_student_assigns.student_id,student.init_name");
+        // $result=$this->db->runQuery("SELECT count(session_student_assigns.student_id) AS total_assigns,session_student_assigns.student_id,GROUP_CONCAT(session_student_assigns.session_id) AS session_IDs,student.init_name FROM ((session_student_assigns LEFT JOIN student on student.student_id=session_student_assigns.student_id) LEFT JOIN sessions on sessions.session_id=session_student_assigns.session_id) GROUP BY session_student_assigns.student_id,student.init_name");
+        $result=$this->db->runQuery("SELECT count(session_student_assigns.student_id) AS total_assigns,session_student_assigns.student_id,GROUP_CONCAT(session_student_assigns.session_id) AS session_IDs,student.init_name,packages.training_days FROM ((((session_student_assigns LEFT JOIN student on student.student_id=session_student_assigns.student_id) LEFT JOIN sessions on sessions.session_id=session_student_assigns.session_id) LEFT JOIN package_assigning on package_assigning.student_id=student.student_id) LEFT JOIN packages on packages.package_id=package_assigning.package_id) GROUP BY session_student_assigns.student_id,student.init_name");
         return $result;
     }
     function loadUnselectedStudentsS(){
-        $result=$this->db->runQuery("SELECT count(session_student_assigns.student_id) AS total_assigns,GROUP_CONCAT(session_student_assigns.session_id) AS session_IDs,student.student_id,student.init_name FROM (session_student_assigns RIGHT OUTER JOIN student on student.student_id=session_student_assigns.student_id) GROUP BY student.student_id,student.init_name");
+        // $result=$this->db->runQuery("SELECT count(session_student_assigns.student_id) AS total_assigns,GROUP_CONCAT(session_student_assigns.session_id) AS session_IDs,student.student_id,student.init_name FROM (session_student_assigns RIGHT OUTER JOIN student on student.student_id=session_student_assigns.student_id) GROUP BY student.student_id,student.init_name");
+        $result=$this->db->runQuery("SELECT count(session_student_assigns.student_id) AS total_assigns,GROUP_CONCAT(session_student_assigns.session_id) AS session_IDs,student.student_id,student.init_name,packages.training_days FROM (((session_student_assigns RIGHT OUTER JOIN student on student.student_id=session_student_assigns.student_id) LEFT JOIN package_assigning on package_assigning.student_id=student.student_id) LEFT JOIN packages on packages.package_id=package_assigning.package_id) GROUP BY student.student_id,student.init_name");
         return $result;
     }
     function addNewStudentsS($managerId,$studentId,$sessionId){
+        $daysCount=$this->db->runQuery("SELECT packages.training_days from (packages INNER JOIN package_assigning on packages.package_id=package_assigning.package_id) INNER JOIN student on student.student_id=package_assigning.student_id where student.student_id=$studentId");
+        $daysCount=intval($daysCount[0]['training_days']);
         $stdCount=$this->db->runQuery("SELECT Count(student_id) as count_std from  session_student_assigns where student_id=$studentId");
         $stdCount=intval($stdCount[0]['count_std']);
         
-        if($stdCount<20){
+        if($stdCount<$daysCount){
             $result=$this->db->runQuery("INSERT INTO session_student_assigns VALUES($managerId,$sessionId,$studentId)");
             return true;
         }else{
@@ -355,6 +359,16 @@ class Manager_Model extends Model{
         $studentId=intval($studentId);
         $examId=intval($examId);
         $result=$this->db->runQuery("DELETE from exam_request WHERE student_id=$studentId and exam_id=$examId");
+    }
+
+    //calendar coloring functions
+    function getDatesOfSessions(){
+        $result=$this->db->runQuery("SELECT DISTINCT sessions.session_date from sessions");
+        return $result;
+    }
+    function getDatesOfExams(){
+        $result=$this->db->runQuery("SELECT DISTINCT exams.exam_date from exams");
+        return $result;
     }
 
 }

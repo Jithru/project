@@ -68,5 +68,23 @@ class Instructor_Model extends Model{
         $result=$this->db->runQuery("SELECT count(session_student_assigns.student_id) AS total_assigns,session_student_assigns.student_id,GROUP_CONCAT(session_student_assigns.session_id) AS session_IDs,student.init_name FROM ((session_student_assigns LEFT JOIN student on student.student_id=session_student_assigns.student_id) LEFT JOIN sessions on sessions.session_id=session_student_assigns.session_id) GROUP BY session_student_assigns.student_id,student.init_name");
         return $result;
     }
-    
+
+    function loadAllSessionsForToday($conductorId){
+        // $todayDate=date("Y-m-d");
+        $result=$this->db->runQuery("SELECT sessions.session_id,session_time FROM sessions INNER JOIN session_conductor_assigns on session_conductor_assigns.session_id=sessions.session_id WHERE session_conductor_assigns.conductor_id=$conductorId and sessions.session_date='2021-11-18'");
+        return $result;
+    }
+    function loadStudentsForSession($sessionId){
+        $result=$this->db->runQuery("SELECT student.student_id,student.init_name,student.contact,session_participation.status from ((student INNER JOIN session_participation on session_participation.student_id=student.student_id) INNER JOIN sessions on sessions.session_id=session_participation.session_id) WHERE session_participation.session_id=$sessionId AND session_participation.status='going' OR session_participation.status='absent' OR session_participation.status='present'");
+        // $result=$this->db->runQuery("SELECT student.student_id,student.init_name,student.contact from ((student INNER JOIN session_participation on session_participation.student_id=student.student_id) INNER JOIN sessions on sessions.session_id=session_participation.session_id) WHERE session_participation.session_id='4' AND session_participation.status='going'");
+        return $result;
+    }
+    function setAbsent($sessionId,$studentId){
+        $result=$this->db->runQuery("UPDATE session_participation SET status='absent' WHERE student_id=$studentId AND session_id=$sessionId");
+        return true;
+    }
+    function setPresent($sessionId,$studentId){
+        $result=$this->db->runQuery("UPDATE session_participation SET status='present' WHERE student_id=$studentId AND session_id=$sessionId");
+        return true;
+    }
 }

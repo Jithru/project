@@ -4,6 +4,8 @@ function getFullDate(date,month,year) {
         }
         if(month+1<10){
                 month="0"+(month+1)
+        }else{
+                month=month+1
         }
         var day=year+"-"+month+"-"+date
         console.log(day);
@@ -12,6 +14,7 @@ function getFullDate(date,month,year) {
         xhr.onreadystatechange=function(){
                 if(xhr.readyState===4 && xhr.status===200){
                         const obj=JSON.parse(xhr.responseText)
+
                         var selectedDate=document.getElementById("selectedDateContainer").value
 
                         let row=document.getElementById("tablerows")
@@ -59,6 +62,7 @@ httpreq1.onreadystatechange=function(){
         if(httpreq1.readyState===4 && httpreq1.status===200){
                 
                 const obj=JSON.parse(httpreq1.responseText)
+
                 document.getElementById("examBtn").addEventListener("click",function(){
                         var selectedDate=document.getElementById("selectedDateContainer").value
                         let row=document.getElementById("tablerows")
@@ -105,7 +109,7 @@ httpreq2.onreadystatechange=function(){
         if(httpreq2.readyState===4 && httpreq2.status===200){
                 console.log(httpreq2.responseText)
                 const obj=JSON.parse(httpreq2.responseText)
-                
+
                 window.addEventListener('load',function(){
 
                         var today=new Date();
@@ -123,7 +127,7 @@ httpreq2.onreadystatechange=function(){
                             }
                             var initDate=today.getFullYear()+"-"+monthval+"-"+dateval
                         document.getElementById("selectedDateContainer").value=initDate
-
+                        console.log(initDate)
 
 
                         let row=document.getElementById("tablerows")
@@ -199,4 +203,5 @@ httpreq2.onreadystatechange=function(){
 let url2="http://localhost/project/Manager/getAvailableSessions"
 httpreq2.open("POST",url2,true)
 httpreq2.send()
+
 
