@@ -16,7 +16,7 @@
         <?php require_once APPROOT."/../views/common/header.php"; ?>
         </div>
         <div class="content">
-            <?php require_once APPROOT."/../views/common/InstructorSidebar.php"; ?>            
+            <?php require_once APPROOT."/../views/common/StudentSidebar.php"; ?>            
             <div class="view">
                 <!-- <div class="new">
                     <button class="new-btn" onclick="newFile()">New</button>
