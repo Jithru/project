@@ -127,7 +127,7 @@ httpreq2.onreadystatechange=function(){
                             }
                             var initDate=today.getFullYear()+"-"+monthval+"-"+dateval
                         document.getElementById("selectedDateContainer").value=initDate
-
+                        console.log(initDate)
 
 
                         let row=document.getElementById("tablerows")

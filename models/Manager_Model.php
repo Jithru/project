@@ -361,4 +361,14 @@ class Manager_Model extends Model{
         $result=$this->db->runQuery("DELETE from exam_request WHERE student_id=$studentId and exam_id=$examId");
     }
 
+    //calendar coloring functions
+    function getDatesOfSessions(){
+        $result=$this->db->runQuery("SELECT DISTINCT sessions.session_date from sessions");
+        return $result;
+    }
+    function getDatesOfExams(){
+        $result=$this->db->runQuery("SELECT DISTINCT exams.exam_date from exams");
+        return $result;
+    }
+
 }
