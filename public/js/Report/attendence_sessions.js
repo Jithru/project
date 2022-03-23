@@ -1,6 +1,6 @@
 // let label1=['Nimal','Sirimal','Kamal','Sunil','Jagath','Sandun','Kasun'];
-let label1=['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday','Sunday']
-let participation=[2,5,7,1,10,5,3];
+let label1=['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday','Sunday','Sunday','Sunday','Sunday','Sunday','Sunday']
+let participation=[2,5,7,1,100,5,3,100,5,3];
 let colors1=['#0892d0'];
 
 let mychart=document.getElementById("incomeChart").getContext('2d');
