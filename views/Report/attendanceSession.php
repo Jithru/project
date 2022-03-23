@@ -80,7 +80,7 @@
                     </div>
     
                     
-                    <div class="table-body">
+                    <div id="table-body" class="table-body"> 
                         <div class="row">
                             <div class="cel-1">SE001</div>
                             <div class="cel-2">Road Signs</div>
