@@ -156,16 +156,20 @@
     </div>
 
     <div class="box-container" id="box-container">
-        <div class="box-content">
-            <div class="appear">
-                <div class="uploadArea">
-                    <input type="file" name="file">
-                </div>
-                <div class="uploadButton">
-                    <button class="uploadButtn" type="submit" name="submit" onclick="uploadMe()">Upload File</button>
-                </div>
+    <div class="box-content"><input type="checkbox" class="check" id="check">
+        <!-- <label for="check">
+            
+            <img src="image/cancel2.png"  id="cancel" alt="canl" width="20" height="20">
+        </label> -->
+        <div class="appear">
+            <div class="uploadArea">
+                <input type="file" name="file">
+            </div>
+            <div class="uploadButton">
+                <button class="uploadButtn" type="submit" name="submit" onclick="uploadMe()">Upload File</button>
             </div>
         </div>
+    </div>
         
     </div>
 </body>
