@@ -344,6 +344,15 @@ class Student extends Controller{
         $result=$this->model->getExams($_SESSION['student_id']);
         echo json_encode($result);
     }
+    function getAllExamRequests(){
+        $result=$this->model->getAllExamRequests($_SESSION['student_id']);
+        echo json_encode($result);
+    }
+    function getAllSessionRequests(){
+        $result=$this->model->getAllSessionRequests($_SESSION['student_id']);
+        echo json_encode($result);
+    }
+
 
     function getExamDetails(){
         $result=$this->model->getExamDetails($_SESSION['viewExamId']);

@@ -20,6 +20,100 @@ class IncomeExpenses_Model extends Model{
         $result=$this->db->runQuery("UPDATE initial_service_expenses_submits SET status='accepted' WHERE student_id=$studentId");
         return $studentId;
     }
+    //first page content
+    function totalExpenseAnnual($annual){
+        $startDate=$annual.'-01-01';
+        $endDate=date('Y-m-d', strtotime($startDate. ' + '. 12 .' months'));
+        $startDate=$startDate.' 00:00:00';
+        $endDate=$endDate.' 00:00:00';
+        $otherEx=$this->db->runQuery("SELECT sum(other_expenses.amount) as total from other_expenses WHERE recorded_date_time>='$startDate' and recorded_date_time < '$endDate'");
+        $initEx=$this->db->runQuery("SELECT sum(initial_service_expenses.amount) as total from initial_service_expenses INNER JOIN initial_service_expenses_submits on initial_service_expenses_submits.ischarge_id=initial_service_expenses.ischarge_id WHERE initial_service_expenses_submits.date_time>='$startDate' and initial_service_expenses_submits.date_time <'$endDate' and initial_service_expenses_submits.status='Accepted'");
+        return intval($initEx[0]['total'])+intval($otherEx[0]['total']); 
+    }
+    function totalExpenseMonth($month){
+        $parts=explode("-",$month);
+        if($parts[1]=="01" || $parts[1]=="03" || $parts[1]=="05" || $parts[1]=="07" || $parts[1]=="08" || $parts[1]=="10" || $parts[1]=="12"){
+            $divisor=31;
+        }else if($parts[1]=="04" || $parts[1]=="06" || $parts[1]=="09" || $parts[1]=="11"){
+            $divisor=30;
+        }else if($parts[1]=="02" && isLeapYear($parts[0])==true){
+            $divisor=29;
+        }else if($parts[1]=="02" && isLeapYear($parts[0])==false){
+            $divisor=28;
+        }
+        $startDate=$month.'-01';
+        $endDate=date('Y-m-d', strtotime($startDate. ' + '. $divisor .' days'));
+        $startDate=$startDate.' 00:00:00';
+        $endDate=$endDate.' 00:00:00';
+        $otherEx=$this->db->runQuery("SELECT sum(amount) as total from other_expenses WHERE recorded_date_time>='$startDate' and recorded_date_time < '$endDate'");
+        $initEx=$this->db->runQuery("SELECT sum(initial_service_expenses.amount) as total from initial_service_expenses INNER JOIN initial_service_expenses_submits on initial_service_expenses_submits.ischarge_id=initial_service_expenses.ischarge_id WHERE initial_service_expenses_submits.date_time>='$startDate' and initial_service_expenses_submits.date_time <'$endDate' and initial_service_expenses_submits.status='Accepted'");
+        $initEx=intval($initEx[0]['total']);
+        $otherEx=intval($otherEx[0]['total']);
+        $totalEx=$otherEx+$initEx;
+        return $totalEx;
+
+    }
+    function totalExpenseWeek($week){
+        $startDate=date('Y-m-d',strtotime($week));
+        $endDate=date('Y-m-d', strtotime($startDate. ' + '. 7 .' days'));
+        $startDate=$startDate.' 00:00:00'; 
+        $endDate=$endDate.' 00:00:00';
+        $otherEx=$this->db->runQuery("SELECT sum(amount) as total from other_expenses WHERE recorded_date_time>='$startDate' and recorded_date_time < '$endDate'");
+        $initEx=$this->db->runQuery("SELECT sum(initial_service_expenses.amount) as total from initial_service_expenses INNER JOIN initial_service_expenses_submits on initial_service_expenses_submits.ischarge_id=initial_service_expenses.ischarge_id WHERE initial_service_expenses_submits.date_time>='$startDate' and initial_service_expenses_submits.date_time <'$endDate' and initial_service_expenses_submits.status='Accepted'");
+        $initEx=intval($initEx[0]['total']);
+        $otherEx=intval($otherEx[0]['total']);
+        $totalEx=$otherEx+$initEx;
+        return $totalEx;
+    }
+
+    function totalIncomeAnnual($annual){
+        $startDate=$annual.'-01-01';
+        $endDate=date('Y-m-d', strtotime($startDate. ' + '. 12 .' months'));
+        $startDate=$startDate.' 00:00:00';
+        $endDate=$endDate.' 00:00:00';
+        $cashAmount=$this->db->runQuery("SELECT sum(amount) as total from cash_payment where payment_date_time>='$startDate' and payment_date_time < '$endDate'");
+        $onlineAmount=$this->db->runQuery("SELECT sum(amount) as total from online_payments where payment_date_time>='$startDate' and payment_date_time < '$endDate'");
+        $cashAmount=intval($cashAmount[0]['total']);
+        $onlineAmount=intval($onlineAmount[0]['total']);
+        $totalAmount=$cashAmount+$onlineAmount;
+        return $totalAmount;
+    }
+    function totalIncomeMonth($month){
+        $parts=explode("-",$month);
+        if($parts[1]=="01" || $parts[1]=="03" || $parts[1]=="05" || $parts[1]=="07" || $parts[1]=="08" || $parts[1]=="10" || $parts[1]=="12"){
+            $divisor=31;
+        }else if($parts[1]=="04" || $parts[1]=="06" || $parts[1]=="09" || $parts[1]=="11"){
+            $divisor=30;
+        }else if($parts[1]=="02" && isLeapYear($parts[0])==true){
+            $divisor=29;
+        }else if($parts[1]=="02" && isLeapYear($parts[0])==false){
+            $divisor=28;
+        }
+        $startDate=$month.'-01';
+        $endDate=date('Y-m-d', strtotime($startDate. ' + '. $divisor .' days'));
+        $startDate=$startDate.' 00:00:00';
+        $endDate=$endDate.' 00:00:00';
+        $cashAmount=$this->db->runQuery("SELECT sum(amount) as total from cash_payment where payment_date_time>='$startDate' and payment_date_time < '$endDate'");
+        $onlineAmount=$this->db->runQuery("SELECT sum(amount) as total from online_payments where payment_date_time>='$startDate' and payment_date_time < '$endDate'");
+        $cashAmount=intval($cashAmount[0]['total']);
+        $onlineAmount=intval($onlineAmount[0]['total']);
+        $totalAmount=$cashAmount+$onlineAmount;
+        return $totalAmount;
+    } 
+    function totalIncomeWeek($week){
+        $startDate=date('Y-m-d',strtotime($week));
+        $endDate=date('Y-m-d', strtotime($startDate. ' + '. 7 .' days'));
+        $startDate=$startDate.' 00:00:00';
+        $endDate=$endDate.' 00:00:00';
+        $cashAmount=$this->db->runQuery("SELECT sum(amount) as total from cash_payment where payment_date_time>='$startDate' and payment_date_time < '$endDate'");
+        $onlineAmount=$this->db->runQuery("SELECT sum(amount) as total from online_payments where payment_date_time>='$startDate' and payment_date_time < '$endDate'");
+        $cashAmount=intval($cashAmount[0]['total']);
+        $onlineAmount=intval($onlineAmount[0]['total']);
+        $totalAmount=$cashAmount+$onlineAmount;
+        return $totalAmount;
+    }
+
+
     function loadGraphWeek($week){
         $startdate=date('Y-m-d',strtotime($week));
         $weekAmount=array();
@@ -551,7 +645,7 @@ class IncomeExpenses_Model extends Model{
         $studentAmount=$this->db->runQuery("SELECT sum(initial_service_expenses.amount) as total from initial_service_expenses INNER JOIN initial_service_expenses_submits on initial_service_expenses_submits.ischarge_id=initial_service_expenses.ischarge_id WHERE initial_service_expenses_submits.date_time>='$startDate' and initial_service_expenses_submits.date_time <'$endDate' and initial_service_expenses_submits.status='Accepted'");
         
         return intval($studentAmount[0]['total']);
-    }
+    } 
 
     function totalOtherExpensesMonth($month){
         $parts=explode("-",$month);

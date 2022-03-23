@@ -5,9 +5,9 @@ function loadType(){
                             '<option value="Weekly">Weekly</option>'
                             
 
-    let content=document.getElementById("dateSelector")
-    content.innerHTML='<label for="date-container" class="date-container-label">Select Week:  </label>'+
-    '<input type="week" class="date-container" name="dateContainer" id="dateContainer">'
+    // let content=document.getElementById("dateSelector")
+    // content.innerHTML='<label for="date-container" class="date-container-label">Select Week:  </label>'+
+    // '<input type="week" class="date-container" name="dateContainer" id="dateContainer">'
 }
 loadType()
 function inputSelector(){

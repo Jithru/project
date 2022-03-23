@@ -32,7 +32,7 @@
                 </div>
 
                 <div class="search-container">
-                <input type="search" placeholder='&#xf002; Search'>
+                <input id="searchInput" type="search" placeholder='&#xf002; Search' oninput="search()">
                 </div>
 
                 <div class="table-heading-container">
