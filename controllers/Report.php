@@ -170,5 +170,11 @@ class Report extends Controller{
         }
         
     }
+
+
+    function loadAtSession(){
+        $result=$this->model->loadAtSession();
+        echo json_encode($result);
+    }
 }
 

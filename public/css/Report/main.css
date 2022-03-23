@@ -1,0 +1,383 @@
+*{
+    font-family: Arial, Helvetica, FontAwesome, sans-serif;
+    box-sizing: border-box;
+}
+
+body{
+    margin: 0;
+    padding: 0;
+    background-color: #f2f2f2;
+    /* background-color: #0892d0; */
+}
+
+.box-1{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 30px;
+}
+
+
+.report-title{
+    display: none;
+}
+
+
+
+.title{
+    width: 97.5%;
+    height: 50px;
+    display: flex;
+    justify-content: right;
+    align-items: baseline;
+    margin-top: 30px;
+    margin-bottom: 20px;
+    margin-right: 0.5%;
+    /* background-color: #0892d0; */
+    font-size: 40px;
+    font-weight: 600;
+}
+
+
+
+
+.tab-container {
+    width: 90.16%;
+    height: 40px;
+    display: flex;
+    align-items: flex-start;
+    margin-left: 3.75%;
+    /* background-color: violet; */
+  }
+  
+  .tab-1,
+  .tab-2 {
+    width: fit-content;
+    color: #292d42;
+    /* background-color: tomato; */
+  }
+  
+  .tab-1:hover,
+  .tab-2:hover {
+    color: #0892d0;
+  }
+  
+  .tab-2 {
+    margin-left: 20px;
+  }
+  
+  .tab-line {
+    margin-top: 3px;
+  }
+  
+  a:link {
+    text-decoration: none;
+  }
+
+.selector{
+    width: 66.15%;
+    height: 40px;
+    margin-left: 3.75%;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    /* background-color: #0892d0; */
+    justify-content: space-between;
+
+}
+
+.method-selector-select{
+    margin-right: 30px;
+}
+
+.date-selector{
+    margin-right: 50px;
+}
+
+.container{
+    display: block;
+    width: 100%;
+    /* background-color: aqua; */
+    display: flex;
+}
+
+.table{
+    width: 75%;
+    display: flex;
+    justify-content: center;
+    /* background-color: chartreuse; */
+}
+.inner-table{
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    /* background-color: blue; */
+}
+
+.table-head{
+    width: 100%;
+    display: flex;
+    /* justify-content: center; */
+    align-items: center;
+    margin-bottom: 10px;
+    
+
+}
+.col-names{
+    width: 98%;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    border-radius: 3px;
+    background-color: #262b2f;
+    color: white;
+}
+.table-body{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    /* background-color: black; */
+    /* justify-content: center; */
+}
+.row{
+    width: 98%;
+    display: flex;
+    align-items: center;
+    height: 50px;
+    border-radius: 3px;
+    background-color: white;
+    box-shadow: 1px 1px 5px #b0b3b3;
+    margin-bottom: 8px;
+    
+}
+
+.cel-1{
+    width: 15%;
+    margin-left: 10px;
+}
+
+.cel-2{
+    width: 15%;
+}
+
+.cel-3{
+    width: 15%;
+}
+
+.cel-4{
+    width: 15%;
+}
+
+.cel-5{
+    width: 20%;
+}
+
+.cel-6{
+    width: 20%;
+}
+
+.row > .cel-5 , .row > .cel-6{
+    padding-left: 2%;
+}
+.hrr{
+    display: none;
+}
+
+.summary{
+    display: flex;
+    flex-direction: column;
+    width: 23%;
+    /* background-color: brown; */
+    padding-left: 1%;
+}
+
+.total{
+    display: flex;
+    height: 70px;
+    /* background-color: rgb(0, 4, 255); */
+    margin-bottom: 10px;
+}
+.tot-col-1{
+    width: 60%;
+    display: flex;
+    align-items: center;
+    /* font-size: large; */
+    /* text-align: center; */
+}
+.tot-col-2{
+    width: 3%;
+    display: flex;
+    align-items: center;
+    /* font-size: large; */
+    text-align: center;
+}
+.tot-col-3{
+    width: 30%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: xx-large;
+    text-align: center;
+}
+
+
+.button{
+    width: 100%;
+    height: 120px;
+    /* background-color: chartreuse; */
+    display: flex;
+    flex-direction: column;
+    
+    /* align-items: flex-end; */
+}
+
+.Graphical{
+    width: 170px;
+    height: 45px;
+    font-size: 20px;
+    font-weight: 600;
+    border: 2px solid #0892d0;
+    border-radius: 3px;
+    background-color: #0892d0;
+    color: seashell;
+    box-shadow: 1px 1px 10px #b0b3b3;
+    cursor: pointer;
+    /* margin-top: 10px; */
+    margin-bottom: 15px;
+}
+.Graphical:hover {
+    border: 2px solid #0892d0;
+    background-color: seashell;
+    color: #0892d0;
+    box-shadow: 1px 1px 10px #b0b3b3;
+  
+  }
+
+.back{
+    width: 170px;
+    height: 45px;
+    font-size: 20px;
+    font-weight: 600;
+    color: seashell;
+    border: 2px solid #262b2f;
+    border-radius: 3px;
+    background-color: #262b2f;
+    cursor: pointer;
+    box-shadow: 1px 1px 10px #b0b3b3;
+}
+
+.back:hover{
+    color: #262b2f;
+    background-color: seashell;
+    border: 2px solid #262b2f;
+    box-shadow: 1px 1px 10px #b0b3b3;
+}
+.btn{
+    /* background-color: #292d42; */
+    width: 25%;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.print{
+    height: 30px;
+    width: 100px;
+    border-radius: 3px;
+    font-size: 16px;
+    font-weight: 600;
+    border: none;
+    color: #f3f7f7;
+    background-color: #0892d0;
+    box-shadow: 5px 5px 10px #cfd7ed;
+    margin-right: 0;
+}
+
+
+
+/* printable format */
+.container-print{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 100px;
+    /* background-color: aqua; */
+}
+
+.container-print > .summary{
+    display: flex;
+    flex-direction: row;
+    width: 75%;
+    /* background-color: brown; */
+    padding-left: 1%;
+}
+
+.container-print > .summary > .total{
+    display: flex;
+    height: 70px;
+    width: 67.5%;
+    margin-bottom: 10px;
+    
+}
+
+.container-print > .summary > .button{
+    display: none;
+    
+}
+
+.container-print > .hrr{
+    display: block;
+    width: 75%;
+    height: 3px;
+    background-color: black;
+    
+}
+
+.container-print > .table > .inner-table >.table-body> .row{
+    border-radius: 0;
+    margin: 0px 0px;
+    box-shadow: none;
+    border: solid black 1px;
+}
+.container-print > .table > .inner-table >.table-head> .col-names > .cel-5 ,.cel-6{
+    width: 13%;
+}
+
+.container-print > .table > .inner-table >.table-head> .col-names > .cel-5{
+    margin-right: 8%;
+}
+.container-print > .table > .inner-table >.table-head{
+    margin: 0px 0px;
+}
+
+.container-print > .table > .inner-table >.table-head>.col-names{
+    border-radius: 0;
+}
+
+.container-print > .table {
+    margin-top: 30px;
+    margin-bottom: 75px;
+}
+
+
+
+.container-print > .report-title {
+    display: block;
+    text-align: center;
+}
+
+
+
+
+/* btns */
+
+.backk, .downld{
+    display: none;
+}
+
+.backk-active, .downld-active{
+    display: block;
+}
+
+.print-deactive{
+    display: none;
+}
