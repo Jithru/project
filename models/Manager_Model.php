@@ -362,13 +362,12 @@ class Manager_Model extends Model{
     }
 
     //calendar coloring functions
-    function getDatesOfSessions(){
-        $result=$this->db->runQuery("SELECT DISTINCT sessions.session_date from sessions");
+    function getDatesOfSessionsAndSessions(){
+        $sessionResult=$this->db->runQuery("SELECT DISTINCT sessions.session_date as date from sessions");
+        $examResult=$this->db->runQuery("SELECT DISTINCT exams.exam_date as date from exams");
+        $result=array_merge($sessionResult,$examResult);
         return $result;
     }
-    function getDatesOfExams(){
-        $result=$this->db->runQuery("SELECT DISTINCT exams.exam_date from exams");
-        return $result;
-    }
+
 
 }
