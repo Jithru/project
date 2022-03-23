@@ -33,19 +33,18 @@ function loadTable(){
             // console.log(vehicleClass[1]["vehicle_class"]);
             for(i=0;i<data.length;i++){
                 rows.innerHTML+='<div class="row">'
-                +'<div class="cel-1">'+data[i]['session_id']+'</div>'
-                +'<div class="cel-2">'+data[i]['session_title']+'</div>'
-                +'<div class="cel-3">'+data[i]['session_date']+'</div>'
-                +'<div class="cel-4">'+data[i]['session_time']+'</div>'
-                +'<div class="cel-5">'+data[i]['session_id']+'</div>'
-                +'<div class="cel-6">'+data[i]['session_id']+'</div>'
+                +'<div class="col-1">'+data[i]['session_id']+'</div>'
+                +'<div class="col-2">'+data[i]['session_title']+'</div>'
+                +'<div class="col-3">'+data[i]['session_date']+'</div>'
+                +'<div class="col-4">'+data[i]['session_time']+'</div>'
+                +'<div class="col-5">'+data[i]['session_id']+'</div>'
             +'</div>'
             }
 
         }
     }
 
-    let url ="http://localhost/project/Report/loadAtSession"
+    let url ="http://localhost/project/Report/loadAtStudent"
     httpreq.open("post" , url ,true)
     httpreq.send();
 }

@@ -105,6 +105,53 @@ function fail(id,exId){
     httpreq.send();
 
 }
+
+//search buttons
+function passSearch(id,exId){
+    alert(id);
+    // document.getElementById("pass").property.style.background="red";
+    // changeButton();
+    let httpreq = new XMLHttpRequest();
+    httpreq.onreadystatechange = function(){
+        console.log("onreadystatechange");
+        if( httpreq.readyState === 4 && httpreq.status === 200){
+            console.log(httpreq.responseText);
+            //const result = JSON.parse(httpreq.responseText);
+            
+        }
+    }
+    var pass="Pass";
+    var send = [id,exId,pass];
+    let url = "http://localhost/project/Receptionist/addPass/"+send;
+    //alert(id);
+    // window.location.href = "http://localhost/project/Receptionist/addResult/";
+    httpreq.open( "POST" , url  , true);
+    httpreq.send();
+}
+function changeButton(){
+    document.getElementById("pass").style.backgroundColor="red";
+}
+function failSearch(id,exId){
+    alert(id);
+    // alert(exId);
+    let httpreq = new XMLHttpRequest();
+    httpreq.onreadystatechange = function(){
+        console.log("onreadystatechange");
+        if( httpreq.readyState === 4 && httpreq.status === 200){
+            console.log(httpreq.responseText);
+            //const result = JSON.parse(httpreq.responseText);
+            
+        }
+    }
+    var fail = "Fail";
+    var send = [id,exId,fail];
+    let url = "http://localhost/project/Receptionist/addPass/"+send;
+    //alert(id);
+    // window.location.href = "http://localhost/project/Receptionist/addResult/";
+    httpreq.open( "POST" , url  , true);
+    httpreq.send();
+
+}
 function search(){
     var date = document.getElementById("date").value;
     
@@ -142,7 +189,7 @@ function search(){
                     '<div class="row-1"><div class="col-1"><p>'+selectDate[i].student_id+
                     '</p></div><div class="col-2"><p>'+myName+
                     '</p></div><div class="col-3"><p>'+exType+
-                    '</p></div><div class="col-4"><button class="pass" id="pass'+selectDate[i].student_id+','+selectDate[i].exam_id+'" onclick="pass('+selectDate[i].student_id+','+selectDate[i].exam_id+')">Passed</button></div><div class="col-5"><button class="fail"  id="fail'+selectDate[i].student_id+selectDate[i].exam_id+'" onclick="fail('+selectDate[i].student_id+','+selectDate[i].exam_id+')">Failed</button></div></div>';
+                    '</p></div><div class="col-4"><button class="pass" id="pass'+selectDate[i].student_id+','+selectDate[i].exam_id+'" onclick="passSearch('+selectDate[i].student_id+','+selectDate[i].exam_id+')">Passed</button></div><div class="col-5"><button class="fail"  id="fail'+selectDate[i].student_id+selectDate[i].exam_id+'" onclick="failSearch('+selectDate[i].student_id+','+selectDate[i].exam_id+')">Failed</button></div></div>';
 
                 }
                 else{

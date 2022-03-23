@@ -72,6 +72,7 @@
                 </div>
             </div>
         </div>
+    </div>
         
     </div>
     <script src="<?php echo URL?>public/js/instructor/upload.js"></script>
