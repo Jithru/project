@@ -368,8 +368,13 @@ class Admin_Model extends Model{
         $result=$this->db->runQuery("SELECT employee_id,name,job_title,contact_no FROM employee WHERE name LIKE '$searchKey'");
         return $result;
     }
-
     
+    
+    function searchStudent($key){
+        $searchKey="%".$key."%";
+        $result=$this->db->runQuery("SELECT student_id,init_name,contact FROM student WHERE init_name LIKE '$searchKey'");
+        return $result;
+    }
 
     
 

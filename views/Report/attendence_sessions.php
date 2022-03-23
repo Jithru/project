@@ -10,7 +10,7 @@
 
 </head>
 <body>
-    <div class="body-container">
+    <div class="body-container"> 
         <div class="heading"><h1>Attendence Report</h1></div>
         <div class="selectors">
             <div class="method-selector">

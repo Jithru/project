@@ -9,13 +9,10 @@
 </head>
 <body>
     <div class="container-1">
-        <div class="container-2">
+        <div class="container-2"> 
             <div class="search">
                 <div class="title">
                     <h2>Attendance Report</h2>
-                </div>
-                <div class="search-bar">
-                    <input type="text" class="search-val" placeholder="Search">
                 </div>
             </div>
             <div class="aaa">
@@ -102,7 +99,7 @@
                                 <div class="tot-div">360</div>
                             </div>
                         </div>
-                        <!-- <div class="total">
+                        <div class="total">
                             <div class="tot-col-1">
                                 <h4>No. of passed of trail exams</h4>
                             </div>
@@ -112,7 +109,7 @@
                             <div class="tot-col-3">
                                 <div class="tot-div">310</div>
                             </div>
-                        </div> -->
+                        </div>
                     </div>
                 </div>
                 <div class="filter">
