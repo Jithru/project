@@ -139,7 +139,8 @@ class Receptionist_Model extends Model{
         $st_id=$this->db->runQuery("SELECT(student_id) from student where nic='$nic'");
         $studentId=intval($st_id[0]['student_id']);
         $packageId=intval($packageId);
-        $result=$this->db->runQuery("INSERT INTO package_assigning VALUES($studentId,$packageId,$receptionistId)");
+        $result=$this->db->runQuery("INSERT INTO package_assigning VALUES('$studentId','$packageId','$receptionistId')");
+        return $result;
     }
     function assginVehicleClasses($nic,$classArray){
         $st_id=$this->db->runQuery("SELECT(student_id) from student where nic='$nic'");
@@ -166,23 +167,23 @@ class Receptionist_Model extends Model{
     public function addMedicalDetails($nic,$medicalNo,$issuedDate){
         $st_id=$this->db->runQuery("SELECT(student_id) from student where nic='$nic'");
         $studentId=intval($st_id[0]['student_id']);
-        $result=$this->db->runQuery("INSERT INTO medical_report VALUES($studentId,'$medicalNo','$issuedDate')");
+        $result=$this->db->runQuery("INSERT INTO medical_report VALUES('$studentId','$medicalNo','$issuedDate')");
     }
     function addLernerPermitDetails($nic,$lPermit,$issDate,$endDate){
         $lPermit=intval($lPermit);
-        $id = $this->db->runQuery("SELECT (student_id) FROM student WHERE nic='$nic'");
-        $studentId=intval($id[0]['student_id']);
+        $st_id = $this->db->runQuery("SELECT (student_id) FROM student WHERE nic='$nic'");
+        $studentId=intval($st_id[0]['student_id']);
         $result=$this->db->runQuery("INSERT INTO learner_permit VALUES ('$studentId','$lPermit','$issDate','$endDate')");
         return $result;
     }
     function addLicenseDetails($nic,$license,$issDate,$endDate){
         $license = intval($license);
-        $id = $this->db->runQuery("SELECT (student_id) FROM student WHERE nic='$nic'");
-        $studentId=intval($id[0]['student_id']);
+        $st_id = $this->db->runQuery("SELECT (student_id) FROM student WHERE nic='$nic'");
+        $studentId=intval($st_id[0]['student_id']);
         $result=$this->db->runQuery("INSERT INTO license VALUES ('$studentId','$license','$issDate','$endDate')");
+        // echo $issDate;
         return $result;
     }
-    //--------------------------------------------------------------------part 1------------------------------------------------------------------------------------------------------------------------
     //sessions 
     function session(){                                                                 //changed status->type here
         $result=$this->db->runQuery("SELECT sessions.session_id,sessions.session_title,sessions.session_date,sessions.session_time,sessions.type,employee.name,session_status.held_or_not FROM ((sessions INNER JOIN employee ON employee.employee_id=sessions.employee_id) INNER JOIN session_status ON session_status.session_id=sessions.session_id) ORDER BY sessions.session_date DESC");
@@ -319,19 +320,19 @@ class Receptionist_Model extends Model{
     //-----------------------------------------------------------------------part 2 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
     //examPassed
     function display_examPassed(){
-        $result=$this->db->runQuery("SELECT student.student_id,student.full_name,student.contact FROM ((student INNER JOIN exam_participation ON exam_participation.student_id=student.student_id) INNER JOIN exams ON exams.exam_id=exam_participation.exam_id) WHERE exam_participation.results='Pass' AND exams.exam_type='Written'");
+        $result=$this->db->runQuery("SELECT student.student_id,student.full_name,student.contact FROM ((student INNER JOIN exam_participation ON exam_participation.student_id=student.student_id) INNER JOIN exams ON exams.exam_id=exam_participation.exam_id) WHERE exam_participation.results='Pass' AND exams.exam_type='Theory'");
         // $result=$this->db->runQuery("SELECT student.student_id,student.full_name,student.contact FROM student WHERE student.type='written' AND student.student_status='pass'");
         return $result;
     }
     //examFailed
     function display_examFailed(){
-        $result=$this->db->runQuery("SELECT student.student_id,student.full_name,student.contact FROM ((student INNER JOIN exam_participation ON exam_participation.student_id=student.student_id) INNER JOIN exams ON exams.exam_id=exam_participation.exam_id) WHERE exam_participation.results='Fail' AND exams.exam_type='Written'");
+        $result=$this->db->runQuery("SELECT student.student_id,student.full_name,student.contact FROM ((student INNER JOIN exam_participation ON exam_participation.student_id=student.student_id) INNER JOIN exams ON exams.exam_id=exam_participation.exam_id) WHERE exam_participation.results='Fail' AND exams.exam_type='Theory'");
         // $result=$this->db->runQuery("SELECT student.student_id,student.full_name,student.contact FROM student WHERE student.type='written' AND student.student_status='fail'");
         return $result;
     }
     //trialPassed
     function display_trialPassed(){
-        $result=$this->db->runQuery("SELECT student.student_id,student.full_name,student.contact FROM ((exam_participation INNER JOIN student ON student.student_id=exam_participation.student_id) INNER JOIN exams ON exams.exam_id=exam_participation.exam_id) WHERE (exams.exam_type='trial' OR exams.exam_type='Trial') AND exam_participation.results='Pass'");
+        $result=$this->db->runQuery("SELECT student.student_id,student.full_name,student.contact FROM ((exam_participation INNER JOIN student ON student.student_id=exam_participation.student_id) INNER JOIN exams ON exams.exam_id=exam_participation.exam_id) WHERE (exams.exam_type='Practical' OR exams.exam_type='Trial') AND exam_participation.results='Pass'");
         // $result=$this->db->runQuery("SELECT student.student_id,student.full_name,student.contact FROM student WHERE student.type='trial' AND student.student_status='pass'");
         return $result;
     }
