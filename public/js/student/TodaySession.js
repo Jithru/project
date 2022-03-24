@@ -31,8 +31,7 @@ function viewTodaySession(){
                 '<div class="col">'+obj[i].session_time+'</div>'+
                 '<div class="col">Going</div>'+
                 '<div class="col"></div></div>'
-                document.getElementById("going_row"+sessionid).style.background="rgba(8,146,208,0.25)";
-               
+                document.getElementById("going_row"+sessionid).style.border="2px solid red";
             }
             else if(status=="notgoing"){
                 console.log("Not");
@@ -42,8 +41,7 @@ function viewTodaySession(){
                 '<div class="col">'+obj[i].session_time+'</div>'+
                 '<div class="col"></div>'+
                 '<div class="col">Not Going</div></div>'
-                // document.getElementById("notgoing_row"+sessionid).style.border="2px solid green";
-                document.getElementById("notgoing_row"+sessionid).style.background="rgba(176,179,179,0.15)";
+                document.getElementById("notgoing_row"+sessionid).style.border="2px solid green";
             }
             else{
                 alert("No data to show");
@@ -63,7 +61,7 @@ function viewTodaySession(){
 }
 function going_status(objId){
     // document.getElementById("going").style.display="none";
-    // const row = document.getElementById("data");
+    const row = document.getElementById("data");
     
     var status="going";
     let httprequest=new XMLHttpRequest();
@@ -71,7 +69,9 @@ function going_status(objId){
         if(httprequest.readyState===4 && httprequest.status===200){
             // console.log(httprequest.responseText);
                 console.log("Hi");
-                window.location.reload("http://localhost/project/Student/markGoingNotGoing");            
+                window.location.reload("http://localhost/project/Student/markGoingNotGoing");  
+            
+                     
         }
     }
     const data=[status,objId];
