@@ -1,7 +1,7 @@
 <link rel="stylesheet" href="<?php echo URL?>public/css/common/sidebar.css"> 
 <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
 
-<div class="sidebar">
+<div class="sidebar" id="sidebar">
 
     <div class="nav-list">
         <a class="list-item" href="<?php echo URL?>Student/" class="<?php echo (getLink()=="http://localhost/project/Student/")?"list-item-active":"list-item";?>">
