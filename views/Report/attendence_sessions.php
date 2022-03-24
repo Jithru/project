@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en"> 
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -10,7 +10,7 @@
 
 </head>
 <body>
-    <div class="body-container">
+    <div class="body-container"> 
         <div class="heading"><h1>Attendence Report</h1></div>
         <div class="selectors">
             <div class="method-selector">

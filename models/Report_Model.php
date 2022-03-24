@@ -12,4 +12,14 @@ class Report_Model extends Model{
         
     }
 
+    function loadAtSession(){
+        $result=$this->db->runQuery("SELECT * FROM sessions");
+        return $result;
+    }
+
+    function loadAtStudent(){
+        $result=$this->db->runQuery("SELECT * FROM sessions");
+        return $result;
+    }
+
 }
