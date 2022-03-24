@@ -23,20 +23,26 @@
                         <h4>:</h4> </div>
                     <div class="cell-2">
 
-                            <img src="<?php echo URL?>public/images/profpic.png" alt="pp" id="uploadImage">
+                            <img src="<?php echo URL?>public/images/profpic.png" alt="pp" id="uploadImage" name="uploadImage">
                     </div>
                     <div class="cell-3">
                         <button class="Edit" id="editImage" onclick="editImage()">Edit</button>
                     </div>
                 </div>
                 <div class="row-hidden-Image" id="hidden-Image">
+<<<<<<< HEAD
+                    <label for="file" class="change" id="change" value="hhjh">Change
+                    <input type="file" class="file" id="file" name="file">
+                    </label> 
+                    
+=======
                     <!-- <label for="file" class="change" id="change" value="hhjh">Change -->
                     <input type="file" class="file" id="file">
                     <button id="upload-button" class="change" onclick="uploadFile()"> Upload </button>
                     <!-- </label>  -->
+>>>>>>> 959f034c91a937c279719894a7c7318a0cbb901e
                     <button class="remove" onclick="removeImage()">Remove</button>
                     <button class="cancel-edit" onclick="cancelImage()">cancel</button>
-
                 </div>
 
                 <div class="row">
@@ -151,6 +157,26 @@
         //     document.getElementById("phone").readOnly="true";
         // }
 
+<<<<<<< HEAD
+        //password change
+        function popupPwd(){
+            document.getElementById("container-pwd").classList.replace("container-pwd","container-pwd-active");
+            document.getElementById("curruentPwd").value="";
+            document.getElementById("newPwd").value="";
+            document.getElementById("rePwd").value="";
+        }
+        function backPopup(){
+            document.getElementById("container-pwd").classList.replace("container-pwd-active","container-pwd");
+        }   
+
+        function cancel(){
+            document.getElementById("curruentPwd").value="";
+            document.getElementById("newPwd").value="";
+            document.getElementById("rePwd").value="";
+        }
+
+        function submitPwd(){
+=======
 
         // // Image upload button
         // function editImage(){
@@ -212,6 +238,7 @@
         // }
 
         // function submitPwd(){
+>>>>>>> 959f034c91a937c279719894a7c7318a0cbb901e
            
         //     var crntpwd= document.getElementById("curruentPwd").value;
         //     var newPwd=document.getElementById("newPwd").value;
@@ -288,5 +315,6 @@
 
         // }
     </script>
+    <script src="<?php echo URL?>public/js/student/editProfilePic.js"></script>
 </body>
 </html>

@@ -232,4 +232,8 @@ class Instructor extends Controller{
             echo $sessionId;
         }
     }
+    function getDatesOfSessionsAndSessions(){
+        $result=$this->model->getDatesOfSessionsAndSessions($_SESSION['employee_id']);
+        echo json_encode($result);
+    }
 }

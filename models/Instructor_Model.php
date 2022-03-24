@@ -87,4 +87,10 @@ class Instructor_Model extends Model{
         $result=$this->db->runQuery("UPDATE session_participation SET status='present' WHERE student_id=$studentId AND session_id=$sessionId");
         return true;
     }
+    function getDatesOfSessionsAndSessions($instructorId){
+        $sessionResult=$this->db->runQuery("SELECT DISTINCT sessions.session_date as date from sessions INNER join session_conductor_assigns on session_conductor_assigns.session_id=sessions.session_id where session_conductor_assigns.conductor_id=$instructorId");
+        $examResult=$this->db->runQuery("SELECT DISTINCT exams.exam_date as date from exams INNER join exam_conductor_assigns on exam_conductor_assigns.exam_id=exams.exam_id where exam_conductor_assigns.conductor_id=$instructorId");
+        $result=array_merge($sessionResult,$examResult);
+        return $result;
+    }
 }

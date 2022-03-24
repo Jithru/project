@@ -4,6 +4,8 @@ function getFullDate(date,month,year) {
         }
         if(month+1<10){
                 month="0"+(month+1)
+        }else{
+                month=month+1
         }
         var day=year+"-"+month+"-"+date
         console.log(day);
