@@ -1,5 +1,7 @@
 let selectedSessions=[]
 let selectedExams=[]
+
+
 function getFullDate(date,month,year) {
         if(date<10){
                 date="0"+date
@@ -68,6 +70,39 @@ function getFullDate(date,month,year) {
 // let url0="http://localhost/project/Student/getrequests"
 // httprequest.open("POST",url0,true)
 // httprequest.send()
+let xhr1=new XMLHttpRequest()
+xhr1.onreadystatechange=function(){
+        if(xhr1.readyState===4 && xhr1.status===200){
+                console.log(xhr1.responseText)
+                let requestedExams=[]
+                const obj=JSON.parse(xhr1.responseText)
+                for(var i=0;i<obj.length;i++){
+                        requestedExams.push(obj[i].exam_id)
+                }
+                loadAllOtherExams(requestedExams)
+        }
+}
+let link1="http://localhost/project/Student/getAllExamRequests"
+xhr1.open("POST",link1,true)
+xhr1.send()
+
+let xhr2=new XMLHttpRequest()
+xhr2.onreadystatechange=function(){
+        if(xhr2.readyState===4 && xhr2.status===200){
+                console.log(xhr2.responseText)
+                let requestedSessions=[]
+                const obj=JSON.parse(xhr2.responseText)
+                for(var i=0;i<obj.length;i++){
+                        requestedSessions.push(obj[i].session_id)
+                }
+                console.log(requestedSessions)
+                loadAllOthersessions(requestedSessions)
+        }
+}
+let link2="http://localhost/project/Student/getAllSessionRequests"
+xhr2.open("POST",link2,true)
+xhr2.send()
+
 
 let httpreq1=new XMLHttpRequest()
 httpreq1.onreadystatechange=function(){
@@ -218,107 +253,146 @@ let url2="http://localhost/project/Student/getAvailableSessions"
 httpreq2.open("POST",url2,true)
 httpreq2.send()
 
-
-
-let httpreq3=new XMLHttpRequest()
-httpreq3.onreadystatechange=function(){ 
-        if(httpreq3.readyState===4 && httpreq3.status===200){
-                
-                const obj=JSON.parse(httpreq3.responseText)
-                document.getElementById("requestExamBtn").addEventListener("click",function(){
-                        var selectedDate=document.getElementById("selectedDateContainer").value
-                        let row=document.getElementById("tablerows")
-                        let heading=document.getElementById("headingRow")
-                        heading.innerHTML=""
-                        heading.innerHTML='<div class="cell">'+
-                        '<div class="headingDetails">'+
-                          '<div class="one">Exam Id</div>'+
-                          '<div class="three">Type</div>'+
-                          '<div class="four">Time</div>'+
-                        '</div>'+
-                      '</div>'
-                        row.innerHTML=""
-                        for(var i=0;i<obj.length;i++){
-                                if(selectedDate==obj[i].exam_date){
-                                        if(!selectedExams.includes(obj[i].Exam_id)){
-                                                row.innerHTML+='<div class="row">'+
-                                                '<div class="cell">'+
-                                                  '<div class="information">'+
-                                                    '<div class="one">Ex_'+obj[i].Exam_id+'</div>'+
-                                                
-                                                    '<div class="three">'+obj[i].exam_type+'</div>'+
-                                                    '<div class="four">'+obj[i].exam_time+'</div>'+
-                                                  '</div>'+
-                                                  '<div class="viewButton">'+
-                                                   '<button id="View_'+obj[i].Exam_id+'" class="View" onclick=viewRequestedExam('+obj[i].Exam_id+')>View</button>'+
-                                                   '<button id="Join_'+obj[i].Exam_id+'" class="Join" onclick=requestExam('+obj[i].Exam_id+')>Join</button>'+
-                                                  '</div>'+
-                                                '</div>'+
-                                              '</div>'
+function loadAllOtherExams(requestedExams){
+        let httpreq3=new XMLHttpRequest()
+        httpreq3.onreadystatechange=function(){ 
+                if(httpreq3.readyState===4 && httpreq3.status===200){
+                        
+                        const obj=JSON.parse(httpreq3.responseText)
+                        document.getElementById("requestExamBtn").addEventListener("click",function(){
+                                var selectedDate=document.getElementById("selectedDateContainer").value
+                                let row=document.getElementById("tablerows")
+                                let heading=document.getElementById("headingRow")
+                                heading.innerHTML=""
+                                heading.innerHTML='<div class="cell">'+
+                                '<div class="headingDetails">'+
+                                '<div class="one">Exam Id</div>'+
+                                '<div class="three">Type</div>'+
+                                '<div class="four">Time</div>'+
+                                '</div>'+
+                        '</div>'
+                                row.innerHTML=""
+                                for(var i=0;i<obj.length;i++){
+                                        if(selectedDate==obj[i].exam_date){
+                                                if(!requestedExams.includes(obj[i].Exam_id)){
+                                                        if(!selectedExams.includes(obj[i].Exam_id)){
+                                                                row.innerHTML+='<div class="row">'+
+                                                                '<div class="cell">'+
+                                                                '<div class="information">'+
+                                                                '<div class="one">Ex_'+obj[i].Exam_id+'</div>'+
+                                                                
+                                                                '<div class="three">'+obj[i].exam_type+'</div>'+
+                                                                '<div class="four">'+obj[i].exam_time+'</div>'+
+                                                                '</div>'+
+                                                                '<div class="viewButton">'+
+                                                                '<button id="View_'+obj[i].Exam_id+'" class="View" onclick=viewRequestedExam('+obj[i].Exam_id+')>View</button>'+
+                                                                '<button id="Join_'+obj[i].Exam_id+'" class="Join" onclick=requestExam('+obj[i].Exam_id+')>Join</button>'+
+                                                                '</div>'+
+                                                                '</div>'+
+                                                        '</div>'
+                                                        }
+                                                }else{
+                                                        row.innerHTML+='<div class="row">'+
+                                                        '<div class="cell">'+
+                                                        '<div class="information">'+
+                                                        '<div class="one">Ex_'+obj[i].Exam_id+'</div>'+
+                                                        
+                                                        '<div class="three">'+obj[i].exam_type+'</div>'+
+                                                        '<div class="four">'+obj[i].exam_time+'</div>'+
+                                                        '</div>'+
+                                                        '<div class="viewButton">'+
+                                                        '<button id="View_'+obj[i].Exam_id+'" class="View" onclick=viewRequestedExam('+obj[i].Exam_id+')>View</button>'+
+                                                        '<p>Requested</p>'+
+                                                        '</div>'+
+                                                        '</div>'+
+                                                '</div>'  
+                                                }
+                                        
                                         }
-                                       
-                                }
-                               
-                        } 
-                });
-
-        }
-}
-let url3="http://localhost/project/Student/getAllExams"
-httpreq3.open("POST",url3,true)
-httpreq3.send()
-
-
-
-let httpreq4=new XMLHttpRequest()
-httpreq4.onreadystatechange=function(){
-        if(httpreq4.readyState===4 && httpreq4.status===200){
-                console.log(httpreq4.responseText)
-                const obj=JSON.parse(httpreq4.responseText)
-                
-
-                document.getElementById("requestSessionBtn").addEventListener("click",function(){
-                        var selectedDate=document.getElementById("selectedDateContainer").value
-
-                        let row=document.getElementById("tablerows")
-                        let heading=document.getElementById("headingRow")
-                        heading.innerHTML=""
-                        heading.innerHTML='<div class="cell">'+
-                        '<div class="headingDetails">'+
-                          '<div class="one">Session Id</div>'+
-                          '<div class="two">Title</div>'+
-                          '<div class="three">Type</div>'+
-                          '<div class="four">Time</div>'+
-                        '</div>'+
-                      '</div>'
-                        row.innerHTML=""
-                        for(var i=0;i<obj.length;i++){
-                                if(selectedDate==obj[i].session_date){
-                                        if(!selectedSessions.includes(obj[i].Session_id)){
-                                                obj[i].session_title = obj[i].session_title.replace(/-/g, " ");
-                                                row.innerHTML+='<div class="row">'+
-                                                '<div class="cell">'+
-                                                '<div class="information">'+
-                                                '<div class="one">SE_'+obj[i].Session_id+'</div>'+
-                                                '<div class="two">'+obj[i].session_title+'</div>'+
-                                                '<div class="three">'+obj[i].type+'</div>'+
-                                                '<div class="four">'+obj[i].session_time+'</div>'+
-                                                '</div>'+
-                                                '<div class="viewButton">'+
-                                                '<button id="View_'+obj[i].Session_id+'" class="View" onclick=viewSession('+obj[i].Session_id+')>View</button>'+
-                                                '<button id="Join_'+obj[i].Session_id+'" class="Join" onclick=requestSession('+obj[i].Session_id+')>Join</button>'+
-                                                '</div>'+
-                                                '</div>'+
-                                                '</div>'
-                                        }
-
-                                }
                                 
-                        } 
-                });
+                                } 
+                        });
 
+                }
         }
+        let url3="http://localhost/project/Student/getAllExams"
+        httpreq3.open("POST",url3,true)
+        httpreq3.send()
 }
-let url4="http://localhost/project/Student/getAllSessions"
-httpreq4.open("POST",url4,true)
-httpreq4.send()
+
+
+
+
+function loadAllOthersessions(requestedSessions){
+        console.log(requestedSessions[1])
+        let httpreq4=new XMLHttpRequest()
+        httpreq4.onreadystatechange=function(){
+                if(httpreq4.readyState===4 && httpreq4.status===200){
+                        console.log(httpreq4.responseText)
+                        const obj=JSON.parse(httpreq4.responseText)
+                        
+
+                        document.getElementById("requestSessionBtn").addEventListener("click",function(){
+                                var selectedDate=document.getElementById("selectedDateContainer").value
+
+                                let row=document.getElementById("tablerows")
+                                let heading=document.getElementById("headingRow")
+                                heading.innerHTML=""
+                                heading.innerHTML='<div class="cell">'+
+                                '<div class="headingDetails">'+
+                                '<div class="one">Session Id</div>'+
+                                '<div class="two">Title</div>'+
+                                '<div class="three">Type</div>'+
+                                '<div class="four">Time</div>'+
+                                '</div>'+
+                        '</div>'
+                                row.innerHTML=""
+                                for(var i=0;i<obj.length;i++){
+                                        if(selectedDate==obj[i].session_date){
+                                                if(!requestedSessions.includes(obj[i].Session_id)){
+                                                        if(!selectedSessions.includes(obj[i].Session_id)){
+                                                                obj[i].session_title = obj[i].session_title.replace(/-/g, " ");
+                                                                row.innerHTML+='<div class="row">'+
+                                                                '<div class="cell">'+
+                                                                '<div class="information">'+
+                                                                '<div class="one">SE_'+obj[i].Session_id+'</div>'+
+                                                                '<div class="two">'+obj[i].session_title+'</div>'+
+                                                                '<div class="three">'+obj[i].type+'</div>'+
+                                                                '<div class="four">'+obj[i].session_time+'</div>'+
+                                                                '</div>'+
+                                                                '<div class="viewButton">'+
+                                                                '<button id="View_'+obj[i].Session_id+'" class="View" onclick=viewSession('+obj[i].Session_id+')>View</button>'+
+                                                                '<button id="Join_'+obj[i].Session_id+'" class="Join" onclick=requestSession('+obj[i].Session_id+')>Join</button>'+
+                                                                '</div>'+
+                                                                '</div>'+
+                                                                '</div>'
+                                                        }
+                                                }else{
+                                                        obj[i].session_title = obj[i].session_title.replace(/-/g, " ");
+                                                        row.innerHTML+='<div class="row">'+
+                                                        '<div class="cell">'+
+                                                        '<div class="information">'+
+                                                        '<div class="one">SE_'+obj[i].Session_id+'</div>'+
+                                                        '<div class="two">'+obj[i].session_title+'</div>'+
+                                                        '<div class="three">'+obj[i].type+'</div>'+
+                                                        '<div class="four">'+obj[i].session_time+'</div>'+
+                                                        '</div>'+
+                                                        '<div class="viewButton">'+
+                                                        '<button id="View_'+obj[i].Session_id+'" class="View" onclick=viewSession('+obj[i].Session_id+')>View</button>'+
+                                                        '<p>Requested</p>'+
+                                                        '</div>'+
+                                                        '</div>'+
+                                                        '</div>' 
+                                                }
+                                        }
+                                        
+                                } 
+                        });
+
+                }
+        }
+        let url4="http://localhost/project/Student/getAllSessions"
+        httpreq4.open("POST",url4,true)
+        httpreq4.send()
+}
+

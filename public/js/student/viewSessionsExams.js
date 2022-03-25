@@ -17,6 +17,10 @@ function requestExam(id){
                     document.getElementById("confirm-got").addEventListener('click',function(){
                         document.getElementById("confirmation2").classList.replace("confirmation-box-active","confirmation-box")
                     });
+                }else{
+                    var idStr="Join_"+id
+                    console.log(idStr)
+                    document.getElementById(idStr).style.display='true'
                 }
             }
         }
@@ -41,6 +45,10 @@ function requestSession(id){
                     document.getElementById("confirm-got").addEventListener('click',function(){
                         document.getElementById("confirmation2").classList.replace("confirmation-box-active","confirmation-box")
                     });
+                }else{
+                    var idStr="Join_"+id
+                    console.log(idStr)
+                    document.getElementById(idStr).style.display='true'
                 }
             }
         }
