@@ -172,14 +172,15 @@ class Report extends Controller{
     }
     
 
-    function loadAtSession(){
-        $result=$this->model->loadAtSession();
+    function loadAtSession($method,$period){
+        $result=$this->model->loadAtSession($method,$period);
         echo json_encode($result);
     }
 
-    function loadAtStudent(){
-        $result=$this->model->loadAtStudent();
-        echo json_encode($result);
-    }
+    function loadAtStudent($method,$period){
+        $result=$this->model->loadAtStudent($method,$period);
+        // echo json_encode($result);
+        echo $result;
+    } 
 }
 
