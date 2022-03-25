@@ -14,7 +14,7 @@ function getFullDate(date,month,year) {
         var day=year+"-"+month+"-"+date
         console.log(day);
         document.getElementById("selectedDateContainer").value=day
-        xhr=new XMLHttpRequest()
+        let xhr=new XMLHttpRequest()
         xhr.onreadystatechange=function(){
                 if(xhr.readyState===4 && xhr.status===200){
                         const obj=JSON.parse(xhr.responseText)
@@ -324,7 +324,7 @@ function loadAllOtherExams(requestedExams){
 
 
 function loadAllOthersessions(requestedSessions){
-        console.log(requestedSessions[1])
+        // console.log(requestedSessions[1])
         let httpreq4=new XMLHttpRequest()
         httpreq4.onreadystatechange=function(){
                 if(httpreq4.readyState===4 && httpreq4.status===200){

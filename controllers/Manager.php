@@ -429,13 +429,15 @@ class Manager extends Controller{
     }
 
     function selectedInstructorsForSessions($selectedList){
+        $result=$this->model->checkSelectedInstructorsForSessions($selectedList,$_SESSION['date'],$_SESSION['time']);
         $_SESSION['selectedInstructorList']=$selectedList;
-        echo "saved";
+        echo json_encode($result);
     }
     
     function selectedVehiclesForSessions($selectedList){
+        $result=$this->model->checkSelectedVehiclesForSessions($selectedList,$_SESSION['date'],$_SESSION['time']);
         $_SESSION['selectedVehicleList']=$selectedList;
-        echo "saved";
+        echo json_encode($result);
     }
     function addSessionLogic($data){
         $result=$this->model->addSession($data,$_SESSION['selectedInstructorList'],$_SESSION['selectedVehicleList'],$_SESSION['employee_id']);
@@ -458,8 +460,9 @@ class Manager extends Controller{
     }
     
     function selectedVehiclesForExams($selectedList){
+        $result=$this->model->checkSelectedVehiclesForExams($selectedList,$_SESSION['date'],$_SESSION['time']);
         $_SESSION['selectedVehicleList']=$selectedList;
-        echo "saved";
+        echo json_encode($result);
     }
     function addExamLogic($data){
         $result=$this->model->addExam($data,$_SESSION['selectedInstructorList'],$_SESSION['selectedVehicleList'],$_SESSION['employee_id']);
@@ -551,7 +554,7 @@ class Manager extends Controller{
         echo json_encode($result);
     }
     function loadUnselectedStudents(){
-        $result=$this->model->loadUnselectedStudents();
+        $result=$this->model->loadUnselectedStudents($_SESSION['editExamId']);
         echo json_encode($result);
     }
     function addNewStudents($studentId){
@@ -643,7 +646,7 @@ class Manager extends Controller{
         echo json_encode($result);
     }
     function loadUnselectedStudentsS(){
-        $result=$this->model->loadUnselectedStudentsS();
+        $result=$this->model->loadUnselectedStudentsS($_SESSION['editSessionId']);
         echo json_encode($result);
     }
     function addNewStudentsS($studentId){

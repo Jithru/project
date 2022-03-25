@@ -84,15 +84,30 @@ class Student_Model extends Model{
     }
 
     function getExams($studentId){
+        // $result=$this->db->runQuery("");
         $result=$this->db->runQuery("SELECT exams.Exam_id,exams.exam_date,exams.exam_time,exams.exam_type FROM exams INNER JOIN exam_student_assigns on exam_student_assigns.exam_id=exams.exam_id where exam_student_assigns.student_id=$studentId");
         return $result;
     }
     function getAllExams($studentId){
-        $result=$this->db->runQuery("SELECT exams.Exam_id,exams.exam_date,exams.exam_time,exams.exam_type FROM exams");
+        $type=$this->db->runQuery("SELECT student_status from student where student_id=$studentId");
+        $type=$type[0]['student_status'];
+        if($type=="written exam failed"){
+            $result=$this->db->runQuery("SELECT exams.Exam_id,exams.exam_date,exams.exam_time,exams.exam_type FROM exams where exam_type='Theory'");
+        }else if($type=="written exam passed"){
+            $result=$this->db->runQuery("SELECT exams.Exam_id,exams.exam_date,exams.exam_time,exams.exam_type FROM exams where exam_type='Practical'");
+        }
+        
         return $result;
     }
     function getAllSessions($studentId){
-        $result=$this->db->runQuery("SELECT Session_id,session_title,session_date,session_time,type FROM sessions");
+        $type=$this->db->runQuery("SELECT student_status from student where student_id=$studentId");
+        $type=$type[0]['student_status'];
+        if($type=="written exam failed"){
+            $result=$this->db->runQuery("SELECT Session_id,session_title,session_date,session_time,type FROM sessions where type='Theory'");
+        }else if($type=="written exam passed"){
+            $result=$this->db->runQuery("SELECT Session_id,session_title,session_date,session_time,type FROM sessions where type='Practical'");
+        }
+        
         return $result;
     }
     function getAllExamRequests($studentId){

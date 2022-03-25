@@ -332,7 +332,7 @@ class Student extends Controller{
     }
 
     function getAvailableExams(){
-        $result=$this->model->getAllExams($_SESSION['student_id']);
+        $result=$this->model->getExams($_SESSION['student_id']);
         echo json_encode($result);
     }
     function getAllSessions(){
@@ -341,7 +341,7 @@ class Student extends Controller{
     }
 
     function getAllExams(){
-        $result=$this->model->getExams($_SESSION['student_id']);
+        $result=$this->model->getAllExams($_SESSION['student_id']);
         echo json_encode($result);
     }
     function getAllExamRequests(){
