@@ -406,4 +406,26 @@ class Student extends Controller{
         }
     }
 
+    function imageUploading(){
+        $target_dir = $_SERVER['DOCUMENT_ROOT']."/project/public/images/profilePics/";
+        $target_file = $target_dir . basename($_FILES["photo"]["name"]);
+        $file=$_FILES["photo"]["name"];
+        $tempName=$_FILES["photo"]["tmp_name"];
+        $path = pathinfo($file);
+        $filename = $path['filename'];
+        $ext = $path['extension'];
+        $path_filename_ext = $target_dir.$filename;
+
+        move_uploaded_file($tempName,$target_file);
+
+        echo $target_file;
+        echo $tempName;
+
+    }
+    function getDatesOfSessionsAndSessions(){
+        $result=$this->model->getDatesOfSessionsAndSessions($_SESSION['student_id']);
+        echo json_encode($result);
+    }
+
+
 }

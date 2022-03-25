@@ -1,5 +1,5 @@
 *{
-    margin: 0;
+    margin: 0; 
     padding: 0;
 }
 body{
@@ -235,6 +235,46 @@ h
     background-color: seashell;
     color: #0892d0;
     box-shadow: 1px 1px 10px #b0b3b3;
+}
+.topic1{
+    display: none;
+}
+.topic{
+    display: block;
+}
+
+
+@media screen and (max-width: 992px){
+    .topic1{
+        display: block;
+    }
+    .topic{
+        display: none;
+    }
+    .view{
+        flex-direction: column;
+        align-items: center;
+    }
+    .main{
+        padding-top: 0;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        height: fit-content;
+    }
+    .view{
+        margin-top: 0;
+        justify-content: flex-start;
+    }
+    .left{
+        min-width: 330px;
+    }
+    .right{
+        min-width: 350px;
+        margin-left: 50px;
+    }
+    
+
 }
 
 /* .more-button{

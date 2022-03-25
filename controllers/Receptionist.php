@@ -485,6 +485,10 @@ class Receptionist extends Controller{
         $result=$this->model->loadPreSelectedStudentsS($_SESSION['viewSessionId']);
         echo json_encode($result);
     }
+    function getDatesOfSessionsAndSessions(){
+        $result=$this->model->getDatesOfSessionsAndSessions();
+        echo json_encode($result);
+    }
     
     
 }

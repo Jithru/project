@@ -23,19 +23,21 @@
                         <h4>:</h4> </div>
                     <div class="cell-2">
 
-                            <img src="<?php echo URL?>public/images/profpic.png" alt="pp" id="uploadImage">
+                            <img src="<?php echo URL?>public/images/profpic.png" alt="pp" id="uploadImage" name="uploadImage">
                     </div>
                     <div class="cell-3">
                         <button class="Edit" id="editImage" onclick="editImage()">Edit</button>
                     </div>
                 </div>
                 <div class="row-hidden-Image" id="hidden-Image">
+
                     <label for="file" class="change" id="change" value="hhjh">Change
-                    <input type="file" class="file" id="file">
+                    <input type="file" class="file" id="file" name="file">
                     </label> 
+
+
                     <button class="remove" onclick="removeImage()">Remove</button>
                     <button class="cancel-edit" onclick="cancelImage()">cancel</button>
-
                 </div>
 
                 <div class="row">
@@ -106,6 +108,8 @@
             </div>      
         </div>
     </div>
+
+    <script src="<?php echo URL?>public/js/student/editprofiledetails.js"></script>
     
     <script>
 
@@ -147,48 +151,24 @@
             document.getElementById("phone").value=phone;
             document.getElementById("phone").readOnly="true";
         }
-
-
-        // Image upload button
-        function editImage(){
-            document.getElementById("hidden-Image").classList.replace("row-hidden-Image","row-hidden-Image-active");
-            document.getElementById("editImage").classList.replace("Edit","Edit-active");
-            
-
-        }
-
-        function removeImage(){
-            // var img=document.getElementById("uploadImage");
-            // img.innerHTML="<img src="<?php echo URL?>public/images/profpic.png" alt="pp" id="uploadImage">";
-        }
-
-        function cancelImage(){
-            // var phone=document.getElementById("phone").value;
-            window.location.reload('http://localhost/project/Student/editprofile');
-            document.getElementById("hidden-Image").classList.replace("row-hidden-Image-active","row-hidden-Image");
-            document.getElementById("editImage").classList.replace("Edit-active","Edit");
-  
-        }
-
-        let img=document.getElementById("uploadImage");
-        let changeF=document.getElementById("file");
-
-        changeF.addEventListener('change',function(){
-            console.log(this.files[0].type);
-            if(this.files[0].type!='image/png' && this.files[0].type != 'image/jpeg' && this.files[0].type != 'image/jpg'){
-                alert("File type is not valid");
-            }else{
-                img.src=URL.createObjectURL(this.files[0]);
-
-                let httpreq=xm
-
-            }
-
-        })
-
  
+        //password change
+        function popupPwd(){
+            document.getElementById("container-pwd").classList.replace("container-pwd","container-pwd-active");
+            document.getElementById("curruentPwd").value="";
+            document.getElementById("newPwd").value="";
+            document.getElementById("rePwd").value="";
+        }
+        function backPopup(){
+            document.getElementById("container-pwd").classList.replace("container-pwd-active","container-pwd");
+        }   
 
- 
+        function cancel(){
+            document.getElementById("curruentPwd").value="";
+            document.getElementById("newPwd").value="";
+            document.getElementById("rePwd").value="";
+        }
+
         
 
         //password change
@@ -209,7 +189,7 @@
         }
 
         function submitPwd(){
-           
+
             var crntpwd= document.getElementById("curruentPwd").value;
             var newPwd=document.getElementById("newPwd").value;
             var rePwd=document.getElementById("rePwd").value;
@@ -285,5 +265,6 @@
 
         }
     </script>
+    <script src="<?php echo URL?>public/js/student/editProfilePic.js"></script>
 </body>
 </html>
