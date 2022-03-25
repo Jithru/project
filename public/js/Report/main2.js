@@ -5,6 +5,30 @@ function format(){
     document.getElementById('backk').classList.replace('backk','backk-active')
 }
 
+
+function selectMethod(){
+    const method = document.getElementById("methodSelector").value;
+    var inpt = document.getElementById("dateContainer");
+    const label=document.getElementById("lbl");
+    if(method=="Weekly"){
+        inpt.type="week";
+        label.innerText="Select Week:"
+    }
+    else if(method=="Monthly"){
+        inpt.type="month";
+        label.innerText="Select Month:"
+    }
+    else if(method=="Annualy"){
+        inpt.type="number";
+        label.innerText="Select Year:"
+
+    }
+    // const period = document.getElementById("")
+}
+
+
+
+
 window.onload = function () {
     document.getElementById("downld")
         .addEventListener("click", () => {
@@ -23,14 +47,13 @@ window.onload = function () {
 }
 
 
-function loadTable(){
+function loadTable(method,period){
     const rows = document.getElementById("table-body");
     let httpreq =new XMLHttpRequest();
     httpreq.onreadystatechange = function(){
         if(httpreq.readyState === 4 && httpreq.status === 200){
             console.log(httpreq.responseText);
             const data = JSON.parse(httpreq.responseText);
-            // console.log(vehicleClass[1]["vehicle_class"]);
             for(i=0;i<data.length;i++){
                 rows.innerHTML+='<div class="row">'
                 +'<div class="col-1">'+data[i]['session_id']+'</div>'
@@ -44,9 +67,34 @@ function loadTable(){
         }
     }
 
-    let url ="http://localhost/project/Report/loadAtStudent"
+    let url ="http://localhost/project/Report/loadAtStudent/"+method+"/"+period
     httpreq.open("post" , url ,true)
     httpreq.send();
 }
 
-loadTable()
+loadTable("none","all")
+
+
+function filter(){
+    const method = document.getElementById("methodSelector").value;
+    var period = document.getElementById("dateContainer").value;
+    const rows = document.getElementById("table-body");
+    if(period==""){
+        if(method=="Weekly"){
+            alert("Please select a week")
+        }
+        else if(method=="Monthly"){
+            alert("Please select a month")
+        }
+        else if(method=="Annualy"){
+            alert("Please select a year")
+        }
+    }
+    else{
+        rows.innerHTML=""
+        loadTable(method,period)
+    }
+    
+    
+}
+

@@ -28,21 +28,23 @@
             
             <div class="method-selector">
                 <label for="method-selector-button" class="method-selector-label">Select method:</label>
-                <select class="method-selector-select" name="method-selector" id="methodSelector">
+                <select class="method-selector-select" name="method-selector" id="methodSelector" onchange="selectMethod()">
                     <optgroup>
+                        <option value="Annualy">Annualy</option>
                         <option value="Weekly">Weekly</option>
                         <option value="Monthly">Monthly</option>
-                        <option value="Annualy">Annualy</option>
+                        
                     </optgroup>
                 </select>
             </div>
-
+<!-- week
+month -->
             <div class="date-selector">
-                <label for="date-container" class="date-container-label">Select Week:</label>
-                <input type="week" class="date-container" name="dateContainer" id="dateContainer" required>
+                <label for="date-container" class="date-container-label" id="lbl">Select Year:</label>
+                <input type="number"  class="date-container" name="dateContainer" id="dateContainer" value="2022" required>
             </div>
             <div class="go-button-container">
-                <button class="go-button" id="go" name="go">Go</button>
+                <button class="go-button" id="go" name="go" onclick="filter()">Go</button>
             </div>
 
             <div class="btn">
