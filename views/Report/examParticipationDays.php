@@ -18,8 +18,8 @@
         
         
         <div class="tab-container">
-            <a href="<?php echo URL?>Report/examParticipationStudents"> <div class="tab-1">Students<hr class="tab-line"></div></a>
-            <a href=""><div class="tab-2">Days</div></a>
+            <a href="<?php echo URL?>Report/examParticipationStudents"> <div class="tab-1">Students</div></a>
+            <a href=""><div class="tab-2">Days<hr class="tab-line"></div></a>
         </div>
         
         
@@ -174,6 +174,6 @@ month -->
 
         </div>
     </div>
-    <script src="<?php echo URL?>public/js/Report/exam1.js"></script>
+    <script src="<?php echo URL?>public/js/Report/examD.js"></script>
 </body>
 </html>

@@ -15,16 +15,17 @@ class Report_Model extends Model{
     
     
     function loadAtSession($method,$period){
-        $startDate="";
         if($method=="Annualy"){
             $startDate=$period.'-01-01';
             $endDate=date('Y-m-d', strtotime($startDate. ' + '. 12 .' months'));
             $result=$this->db->runQuery("SELECT * FROM sessions");
+            return $result;
         }
         else if($method=="Weekly"){
             $startDate=date('Y-m-d',strtotime($period));
             $endDate=date('Y-m-d', strtotime($startDate. ' + '. 7 .' days'));
             $result=$this->db->runQuery("SELECT * FROM sessions");
+            return $result;
         }
         
         
@@ -44,25 +45,31 @@ class Report_Model extends Model{
             $endDate=date('Y-m-d', strtotime($startDate. ' + '. $divisor .' days'));
 
             $result=$this->db->runQuery("SELECT * FROM sessions");
+            return $result;
+        }
+        else{
+            $result=$this->db->runQuery("SELECT * FROM sessions");
+            return $result;
         }
         
-        return $result;
+        
     }
 
     
     
     
     function loadAtStudent($method,$period){
-        $startDate="";
         if($method=="Annualy"){
             $startDate=$period.'-01-01';
             $endDate=date('Y-m-d', strtotime($startDate. ' + '. 12 .' months'));
             $result=$this->db->runQuery("SELECT * FROM sessions");
+            return $result;
         }
         else if($method=="Weekly"){
             $startDate=date('Y-m-d',strtotime($period));
             $endDate=date('Y-m-d', strtotime($startDate. ' + '. 7 .' days'));
             $result=$this->db->runQuery("SELECT * FROM sessions");
+            return $result;
         }
         
         
@@ -82,9 +89,12 @@ class Report_Model extends Model{
             $endDate=date('Y-m-d', strtotime($startDate. ' + '. $divisor .' days'));
 
             $result=$this->db->runQuery("SELECT * FROM sessions");
+            return $result;
         }
-        
-        return $result;
+        else{
+            $result=$this->db->runQuery("SELECT * FROM sessions");
+            return $result;
+        }
     } 
 
     function isLeapYear($year){
