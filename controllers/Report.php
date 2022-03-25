@@ -179,8 +179,8 @@ class Report extends Controller{
 
     function loadAtStudent($method,$period){
         $result=$this->model->loadAtStudent($method,$period);
-        // echo json_encode($result);
-        echo $result;
+        echo json_encode($result);
+        // echo $result;
     } 
 }
 
