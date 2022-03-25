@@ -20,7 +20,7 @@ function requestExam(id){
                 }else{
                     var idStr="Join_"+id
                     console.log(idStr)
-                    document.getElementById(idStr).style.display='true'
+                    document.getElementById(idStr).style.display='none'
                 }
             }
         }
@@ -48,7 +48,7 @@ function requestSession(id){
                 }else{
                     var idStr="Join_"+id
                     console.log(idStr)
-                    document.getElementById(idStr).style.display='true'
+                    document.getElementById(idStr).style.display='none'
                 }
             }
         }
