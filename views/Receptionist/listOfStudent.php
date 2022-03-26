@@ -75,6 +75,7 @@
     </div>
     
 <!-- edit details -->
+
     <div class="edit-container" id="edit-container">
         <div class="editBox">
             <div class="edit-topic">
@@ -179,13 +180,7 @@
                         <input type="text" name="fName" id="edType">
                     </div>
                 </div>
-                <!-- <div class="edit-row">
-                    <div class="edit-theam">Arrival Date</div>
-                    <div class="edti-colon">:</div>
-                    <div class="edit-area">
-                        <input type="text" name="fName" id="">
-                    </div>
-                </div> -->
+               
                 
             </div>
             <div class="edit-footer">
@@ -211,86 +206,144 @@
                 <div class="call"><h6>Student ID</h6></div>
                 <div class="col">:</div>
                 <div class="cell" id="stId"></div>
+                <!-- <div class="bttn"></div> -->
             </div>
             <div class="row-2">
                 <div class="call"><h6>Name with initials</h6></div>
                 <div class="col">:</div>
                 <div class="cell" id="initName"></div>
+                <!-- <div class="bttn">
+                    <button class="editBttn" onclick="init()">edit</button>
+                </div> -->
             </div>
             
             <div class="row-2">
                 <div class="call"><h6>Full Name</h6></div>
                 <div class="col">:</div>
                 <div class="cell" id="fName"></div>
+                <!-- <div class="bttn">
+                    <button class="editBttn" onclick="fullName()">edit</button>
+                </div> -->
             </div>
             <div class="row-2">
                 <div class="call"><h6>Address</h6></div>
                 <div class="col">:</div>
                 <div class="cell" id="address"></div>
+                <!-- <div class="bttn">
+                    <button class="editBttn" onclick="address()">edit</button>
+                </div> -->
             </div>
             <div class="row-2">
                 <div class="call"><h6>NIC</h6></div>
                 <div class="col">:</div>
                 <div class="cell" id="nic"></div>
+                <!-- <div class="bttn">
+                    <button class="editBttn" onclick="nic()">edit</button>
+                </div> -->
             </div>
             <div class="row-2">
                 <div class="call"><h6>Gender</h6></div>
                 <div class="col">:</div>
                 <div class="cell" id="gen"></div>
+                <!-- <div class="bttn">
+                    <button class="editBttn" onclick="gender()">edit</button>
+                </div> -->
             </div>
             <div class="row-2">
                 <div class="call"><h6>District</h6></div>
                 <div class="col">:</div>
                 <div class="cell" id="dist"></div>
+                <!-- <div class="bttn">
+                    <button class="editBttn" onclick="district()">edit</button>
+                </div> -->
             </div>
             <div class="row-2">
                 <div class="call"><h6>City</h6></div>
                 <div class="col">:</div>
                 <div class="cell" id="city"></div>
+                <!-- <div class="bttn">
+                    <button class="editBttn" onclick="city()">edit</button>
+                </div> -->
             </div>
             <div class="row-2">
                 <div class="call"><h6>District Secratary</h6></div>
                 <div class="col">:</div>
                 <div class="cell" id="divSec"></div>
+                <!-- <div class="bttn">
+                    <button class="editBttn" onclick="disSec()">edit</button>
+                </div> -->
             </div>
             <div class="row-2">
                 <div class="call"><h6>Near Police Station</h6></div>
                 <div class="col">:</div>
                 <div class="cell" id="police"></div>
+                <!-- <div class="bttn">
+                    <button class="editBttn" onclick="police()">edit</button>
+                </div> -->
             </div>
             <div class="row-2">
                 <div class="call"><h6>Date of Birth</h6></div>
                 <div class="col">:</div>
                 <div class="cell" id="dob"></div>
+                <!-- <div class="bttn"> -->
+                    <!-- <button class="editBttn" onclick="dob()">edit</button> -->
+                <!-- </div> -->
             </div>
             <div class="row-2">
                 <div class="call"><h6>Contact</h6></div>
                 <div class="col">:</div>
                 <div class="cell" id="contact"></div>
+                <!-- <div class="bttn">
+                    <button class="editBttn" onclick="contact()">edit</button>
+                </div> -->
             </div>
             <div class="row-2">
                 <div class="call"><h6>Occupation</h6></div>
                 <div class="col">:</div>
                 <div class="cell" id="occ"></div>
+                <!-- <div class="bttn">
+                    <button class="editBttn" onclick="occupation()">edit</button>
+                </div> -->
             </div>
             <div class="row-2">
                 <div class="call"><h6>Type</h6></div>
                 <div class="col">:</div>
                 <div class="cell" id="type"></div>
+                <!-- <div class="bttn">
+                    <button class="editBttn" onclick="type()">edit</button>
+                </div> -->
             </div>
             <div class="row-2">
                 <div class="call"><h6>Arrival Date</h6></div>
                 <div class="col">:</div>
                 <div class="cell" id="date"></div>
+                <!-- <div class="bttn"></div> -->
             </div>
             <div class="allButtons">
                 <a href="http://localhost/project/Receptionist/studentList/"><button class="back">Back</button></a>
                 <button class="editMe" onclick="editMe()">Edit</button>
+                <!-- <button class="bttSave" onclick="updateMe()">Save</button> -->
+
             </div>
 
         </div>
     </div>
-    
+    <!-- edit -->
+    <!-- <div class="toEdit-container" id="toEdit-container">
+        <div class="toEdit-box">
+            <div class="theam">
+                <div class="theam-head" id="theam-head">Name with initials</div>
+                <div class="theam-colon">:</div>
+                <div class="theam-area">
+                    <input type="text" name="edInit" id="edInit">
+                </div>
+            </div>
+            <div class="theam-update">
+                <button class="update-button" onclick="editMe()" id="update_me">OK</button>
+            </div>
+        </div>
+    </div> -->
+
     <!-- add payment -->
 
     <div class="container-st" id="container-st">

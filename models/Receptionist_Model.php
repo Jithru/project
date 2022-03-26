@@ -218,9 +218,9 @@ class Receptionist_Model extends Model{
         // $result=array_merge($result1,$stresult2);
         return $result;
     }
-    function search($exDate){
+    function search($today){
         // $result=$this->db->runQuery("SELECT exam_student_assigns.student_id,student.full_name,student.student_status,student.type,exams.exam_id,exams.exam_type,exams.exam_date FROM ((exam_student_assigns INNER JOIN exams ON exams.exam_id=exam_student_assigns.exam_id) INNER JOIN student ON student.student_id=exam_student_assigns.student_id) WHERE exams.exam_date='$exDate'");
-        $result=$this->db->runQuery("SELECT exam_student_assigns.student_id,student.full_name,exams.exam_id,exams.exam_type,exams.exam_date,exam_participation.results FROM (((exam_student_assigns INNER JOIN exams ON exams.exam_id=exam_student_assigns.exam_id) INNER JOIN student ON student.student_id=exam_student_assigns.student_id) INNER JOIN exam_participation ON  (exam_participation.student_id=exam_student_assigns.student_id AND exam_participation.exam_id=exam_student_assigns.exam_id))  WHERE exams.exam_date='$exDate'");
+        $result=$this->db->runQuery("SELECT exam_student_assigns.student_id,student.full_name,exams.exam_id,exams.exam_type,exams.exam_date,exam_participation.results FROM (((exam_student_assigns INNER JOIN exams ON exams.exam_id=exam_student_assigns.exam_id) INNER JOIN student ON student.student_id=exam_student_assigns.student_id) INNER JOIN exam_participation ON (exam_participation.student_id=exam_student_assigns.student_id AND exam_participation.exam_id=exam_student_assigns.exam_id))  WHERE exams.exam_date='$today'");
         return $result;
     }
     function addPass($id,$exId,$pass){
@@ -383,6 +383,14 @@ class Receptionist_Model extends Model{
     }
     function updateMe($id,$init,$fName,$add,$nic,$gen,$dis,$city,$dds,$police,$dob,$con,$occ,$type){
         $result=$this->db->runQuery("UPDATE student SET NIC='$nic', student.address='$add', gender='$gen', dob='$dob', contact='$con',district='$dis', city='$city', div_sec='$dds', police_station='$police', occupation='$occ', student.type='$type', init_name='$init', full_name='$fName' WHERE student_id='$id'");
+        return $result;
+    }
+    // function update_me($id,$init,$fName,$add,$nic,$gen,$dis,$city,$dds,$police,$dob,$con,$occ,$type){
+    //     $result=$this->db->runQuery("UPDATE student SET NIC='$nic', student.address='$add', gender='$gen', dob='$dob', contact='$con',district='$dis', city='$city', div_sec='$dds', police_station='$police', occupation='$occ', student.type='$type', init_name='$init', full_name='$fName' WHERE student_id='$id'");
+    //     return $result;
+    // }
+    function update_me($id,$init){
+        $result=$this->db->runQuery("UPDATE student SET init_name='$init' WHERE student_id='$id'");
         return $result;
     }
 

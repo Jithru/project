@@ -409,6 +409,13 @@ class Receptionist extends Controller{
         $result=$this->model->updateMe($id,$data[0],$data[1],$data[2],$data[3],$data[4],$data[5],$data[6],$data[7],$data[8],$data[9],$data[10],$data[11],$data[12]);
         echo json_encode($result);
     }
+    function update_me($id,$update){
+        $data = explode(",",$update);
+        $result=$this->model->update_me($id,$data[0],$data[1],$data[2],$data[3],$data[4],$data[5],$data[6],$data[7],$data[8],$data[9],$data[10],$data[11],$data[12]);
+
+        // $result=$this->model->update_me($id,$update);
+        echo json_encode($result);
+    }
     function display_examPassed(){
         $result=$this->model->display_examPassed();
         echo json_encode($result);
