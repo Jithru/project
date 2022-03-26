@@ -24,3 +24,21 @@ let chart1= new Chart(mychart, {
     }
     
 });
+
+
+function loadTable(){
+    let httpreq =new XMLHttpRequest();
+    httpreq.onreadystatechange = function(){
+        if(httpreq.readyState === 4 && httpreq.status === 200){
+            console.log(httpreq.responseText);
+            const data = JSON.parse(httpreq.responseText);
+            // console.log(vehicleClass[1]["vehicle_class"]);
+            
+
+        }
+    }
+
+    let url ="http://localhost/project/Report/loadAtSession/"
+    httpreq.open("post" , url ,true)
+    httpreq.send();
+}

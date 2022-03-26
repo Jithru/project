@@ -13,7 +13,7 @@
     <div class="body-container"> 
         <div class="heading"><h1>Attendence Report</h1></div>
         <div class="selectors">
-            <div class="method-selector">
+            <!-- <div class="method-selector">
                 <label for="method-selector-button" class="method-selector-label">Select method:</label>
                 <select class="method-selector-select" name="method-selector" id="methodSelector">
                     <optgroup>
@@ -29,7 +29,7 @@
             </div>
             <div class="go-button-container">
                 <button class="go-button" id="go" name="go">Go</button>
-            </div>
+            </div> -->
         </div>
         
         <div class="chart-n-values">

@@ -11,15 +11,109 @@ class Report_Model extends Model{
         return $result;
         
     }
+    
+    
+    
+    function loadAtSession($method,$period){
+        if($method=="Annualy"){
+            $startDate=$period.'-01-01';
+            $endDate=date('Y-m-d', strtotime($startDate. ' + '. 12 .' months'));
+            $result[0]=$this->db->runQuery("SELECT sessions.session_id,sessions.session_title,sessions.session_date,sessions.session_time FROM sessions WHERE sessions.session_date>='$startDate' and sessions.session_date <= '$endDate'");
+            $result[1]=$this->db->runQuery("SELECT COUNT(session_student_assigns.student_id) AS assignSTcount,sessions.session_id FROM session_student_assigns INNER JOIN sessions ON sessions.session_id =session_student_assigns.session_id WHERE sessions.session_date>='$startDate' and sessions.session_date <= '$endDate' GROUP BY sessions.session_id");
+            $result[2]=$this->db->runQuery("SELECT COUNT(session_participation.student_id) AS partSTcount,sessions.session_id FROM session_participation INNER JOIN sessions ON sessions.session_id =session_participation.session_id WHERE sessions.session_date>='$startDate' and sessions.session_date <= '$endDate' GROUP BY sessions.session_id");
+            return $result;
+        }
+        else if($method=="Weekly"){
+            $startDate=date('Y-m-d',strtotime($period));
+            $endDate=date('Y-m-d', strtotime($startDate. ' + '. 7 .' days'));
+            $result[0]=$this->db->runQuery("SELECT sessions.session_id,sessions.session_title,sessions.session_date,sessions.session_time FROM sessions WHERE sessions.session_date>='$startDate' and sessions.session_date <= '$endDate'");
+            $result[1]=$this->db->runQuery("SELECT COUNT(session_student_assigns.student_id) AS assignSTcount,sessions.session_id FROM session_student_assigns INNER JOIN sessions ON sessions.session_id =session_student_assigns.session_id WHERE sessions.session_date>='$startDate' and sessions.session_date <= '$endDate' GROUP BY sessions.session_id");
+            $result[2]=$this->db->runQuery("SELECT COUNT(session_participation.student_id) AS partSTcount,sessions.session_id FROM session_participation INNER JOIN sessions ON sessions.session_id =session_participation.session_id WHERE sessions.session_date>='$startDate' and sessions.session_date <= '$endDate' GROUP BY sessions.session_id");
+            return $result;
+        }
+        
+        
+        
+        else if($method=="Monthly"){
+            $parts=explode("-",$period);
+            if($parts[1]=="01" || $parts[1]=="03" || $parts[1]=="05" || $parts[1]=="07" || $parts[1]=="08" || $parts[1]=="10" || $parts[1]=="12"){
+                $divisor=31;
+            }else if($parts[1]=="04" || $parts[1]=="06" || $parts[1]=="09" || $parts[1]=="11"){
+                $divisor=30;
+            }else if($parts[1]=="02" && isLeapYear($parts[0])==true){
+                $divisor=29;
+            }else if($parts[1]=="02" && isLeapYear($parts[0])==false){
+                $divisor=28;
+            }
+            $startDate=$period.'-01';
+            $endDate=date('Y-m-d', strtotime($startDate. ' + '. $divisor .' days'));
 
-    function loadAtSession(){
-        $result=$this->db->runQuery("SELECT * FROM sessions");
-        return $result;
+            $result[0]=$this->db->runQuery("SELECT sessions.session_id,sessions.session_title,sessions.session_date,sessions.session_time FROM sessions WHERE sessions.session_date>='$startDate' and sessions.session_date <= '$endDate'");
+            $result[1]=$this->db->runQuery("SELECT COUNT(session_student_assigns.student_id) AS assignSTcount,sessions.session_id FROM session_student_assigns INNER JOIN sessions ON sessions.session_id =session_student_assigns.session_id WHERE sessions.session_date>='$startDate' and sessions.session_date <= '$endDate' GROUP BY sessions.session_id");
+            $result[2]=$this->db->runQuery("SELECT COUNT(session_participation.student_id) AS partSTcount,sessions.session_id FROM session_participation INNER JOIN sessions ON sessions.session_id =session_participation.session_id WHERE sessions.session_date>='$startDate' and sessions.session_date <= '$endDate' GROUP BY sessions.session_id");
+            return $result;
+        }
+        else{
+            $result[0]=$this->db->runQuery("SELECT session_id,session_title,session_date,session_time FROM sessions");
+            $result[1]=$this->db->runQuery("SELECT COUNT(session_student_assigns.student_id) AS assignSTcount,sessions.session_id FROM session_student_assigns INNER JOIN sessions ON sessions.session_id =session_student_assigns.session_id  GROUP BY sessions.session_id");
+            $result[2]=$this->db->runQuery("SELECT COUNT(session_participation.student_id) AS partSTcount,sessions.session_id FROM session_participation INNER JOIN sessions ON sessions.session_id =session_participation.session_id GROUP BY sessions.session_id");
+            return $result;
+        }
+        
+        
     }
 
-    function loadAtStudent(){
-        $result=$this->db->runQuery("SELECT * FROM sessions");
-        return $result;
+    
+    
+    
+    function loadAtStudent($method,$period){
+        if($method=="Annualy"){
+            $startDate=$period.'-01-01';
+            $endDate=date('Y-m-d', strtotime($startDate. ' + '. 12 .' months'));
+            $result=$this->db->runQuery("SELECT * FROM sessions");
+            return $result;
+        }
+        else if($method=="Weekly"){
+            $startDate=date('Y-m-d',strtotime($period));
+            $endDate=date('Y-m-d', strtotime($startDate. ' + '. 7 .' days'));
+            $result=$this->db->runQuery("SELECT * FROM sessions");
+            return $result;
+        }
+        
+        
+        
+        else if($method=="Monthly"){
+            $parts=explode("-",$period);
+            if($parts[1]=="01" || $parts[1]=="03" || $parts[1]=="05" || $parts[1]=="07" || $parts[1]=="08" || $parts[1]=="10" || $parts[1]=="12"){
+                $divisor=31;
+            }else if($parts[1]=="04" || $parts[1]=="06" || $parts[1]=="09" || $parts[1]=="11"){
+                $divisor=30;
+            }else if($parts[1]=="02" && isLeapYear($parts[0])==true){
+                $divisor=29;
+            }else if($parts[1]=="02" && isLeapYear($parts[0])==false){
+                $divisor=28;
+            }
+            $startDate=$period.'-01';
+            $endDate=date('Y-m-d', strtotime($startDate. ' + '. $divisor .' days'));
+
+            $result=$this->db->runQuery("SELECT * FROM sessions");
+            return $result;
+        }
+        else{
+            $result=$this->db->runQuery("SELECT * FROM sessions");
+            return $result;
+        }
+    } 
+
+    function isLeapYear($year){
+        if($year%400==0){
+            return true;
+        }if($year%100==0){
+            return false;
+        }if($year%4==0){
+            return true;
+        }
+        return false;
     }
 
 }
