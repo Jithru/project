@@ -22,4 +22,9 @@ class Report_Model extends Model{
         return $result;
     }
 
+    function loadExamParticipation(){
+        $result=$this->db->runQuery("SELECT * FROM sessions");
+        return $result;    
+    }
+
 }

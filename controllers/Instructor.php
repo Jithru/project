@@ -57,12 +57,40 @@ class Instructor extends Controller{
             $this->view->render('error');
         } 
     }
-
+// get session relevant to conductor Id
     function markGoingNotGoingLogic(){
         
         $value=$this->model->getTodaySession();
         echo json_encode($value);
         
+    }
+//load stusents to session_participation table when instructor click going
+    function clickGoing($sessionId){
+        $conductorId=8;
+        $value=$this->model->LoadSessions($sessionId,$conductorId);
+        echo json_encode($value);
+
+    }
+
+    //delte srudents relevant to instructor and sessionsID
+
+    function clickNotGoing($sessionId){
+        $conductorId=8;
+        $value=$this->model->removeSessions($sessionId,$conductorId);
+        echo json_encode($value);      
+    }
+
+    //update start time in session_status table
+
+    function updateStartTime($data){
+        $value=$this->model->updateStart($data);
+        echo json_encode($value);
+
+    }
+
+    function updateEndTime($data){
+        $value=$this->model->updateEnd($data);
+        echo json_encode($value);       
     }
 
  

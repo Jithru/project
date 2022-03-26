@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href= "<?php echo URL?>public/css/student/MarkGoingNotGoing.css">
+    <link rel="stylesheet" href= "<?php echo URL?>public/css/Conductor/markAttendance/MarkGoingNotGoing.css">
     <title>Session DetailsS</title>
 </head>
 <body>
@@ -84,5 +84,6 @@
             </div>
         </div>
     </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js" integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="<?php echo URL?>public/js/instructor/Allmarkgoingnotgoing.js"></script>
 </body>
