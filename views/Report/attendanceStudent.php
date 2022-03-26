@@ -28,21 +28,21 @@
             
             <div class="method-selector">
                 <label for="method-selector-button" class="method-selector-label">Select method:</label>
-                <select class="method-selector-select" name="method-selector" id="methodSelector">
+                <select class="method-selector-select" name="method-selector" id="methodSelector" onchange="selectMethod()">
                     <optgroup>
-                        <option value="Weekly">Weekly</option>
-                        <option value="Monthly">Monthly</option>
                         <option value="Annualy">Annualy</option>
+                        <option value="Weekly">Weekly</option>
+                        <option value="Monthly">Monthly</option>   
                     </optgroup>
                 </select>
             </div>
 
             <div class="date-selector">
-                <label for="date-container" class="date-container-label">Select Week:</label>
-                <input type="week" class="date-container" name="dateContainer" id="dateContainer" required>
+                <label for="date-container" class="date-container-label" id="lbl">Select Week:</label>
+                <input type="number" class="date-container" name="dateContainer" id="dateContainer" value="2022" required>
             </div>
             <div class="go-button-container">
-                <button class="go-button" id="go" name="go">Go</button>
+                <button class="go-button" id="go" name="go" onclick="filter()">Go</button>
             </div>
 
             <div class="btn">
@@ -79,7 +79,7 @@
     
                     
                     <div id="table-body" class="table-body"> 
-                        <div class="row">
+                        <!-- <div class="row">
                             <div class="col-1">ST001</div>
                             <div class="col-2">N.R Senevirathne</div>
                             <div class="col-3">Exam passed</div>
@@ -106,7 +106,7 @@
                             <div class="col-3">Exam passed</div>
                             <div class="col-4">20</div>
                             <div class="col-3">18</div>
-                        </div>
+                        </div> -->
                         
                         
                     
