@@ -18,13 +18,17 @@ class Report_Model extends Model{
         if($method=="Annualy"){
             $startDate=$period.'-01-01';
             $endDate=date('Y-m-d', strtotime($startDate. ' + '. 12 .' months'));
-            $result=$this->db->runQuery("SELECT * FROM sessions");
+            $result[0]=$this->db->runQuery("SELECT sessions.session_id,sessions.session_title,sessions.session_date,sessions.session_time FROM sessions WHERE sessions.session_date>='$startDate' and sessions.session_date <= '$endDate'");
+            $result[1]=$this->db->runQuery("SELECT COUNT(session_student_assigns.student_id) AS assignSTcount,sessions.session_id FROM session_student_assigns INNER JOIN sessions ON sessions.session_id =session_student_assigns.session_id WHERE sessions.session_date>='$startDate' and sessions.session_date <= '$endDate' GROUP BY sessions.session_id");
+            $result[2]=$this->db->runQuery("SELECT COUNT(session_participation.student_id) AS partSTcount,sessions.session_id FROM session_participation INNER JOIN sessions ON sessions.session_id =session_participation.session_id WHERE sessions.session_date>='$startDate' and sessions.session_date <= '$endDate' GROUP BY sessions.session_id");
             return $result;
         }
         else if($method=="Weekly"){
             $startDate=date('Y-m-d',strtotime($period));
             $endDate=date('Y-m-d', strtotime($startDate. ' + '. 7 .' days'));
-            $result=$this->db->runQuery("SELECT * FROM sessions");
+            $result[0]=$this->db->runQuery("SELECT sessions.session_id,sessions.session_title,sessions.session_date,sessions.session_time FROM sessions WHERE sessions.session_date>='$startDate' and sessions.session_date <= '$endDate'");
+            $result[1]=$this->db->runQuery("SELECT COUNT(session_student_assigns.student_id) AS assignSTcount,sessions.session_id FROM session_student_assigns INNER JOIN sessions ON sessions.session_id =session_student_assigns.session_id WHERE sessions.session_date>='$startDate' and sessions.session_date <= '$endDate' GROUP BY sessions.session_id");
+            $result[2]=$this->db->runQuery("SELECT COUNT(session_participation.student_id) AS partSTcount,sessions.session_id FROM session_participation INNER JOIN sessions ON sessions.session_id =session_participation.session_id WHERE sessions.session_date>='$startDate' and sessions.session_date <= '$endDate' GROUP BY sessions.session_id");
             return $result;
         }
         
@@ -44,11 +48,15 @@ class Report_Model extends Model{
             $startDate=$period.'-01';
             $endDate=date('Y-m-d', strtotime($startDate. ' + '. $divisor .' days'));
 
-            $result=$this->db->runQuery("SELECT * FROM sessions");
+            $result[0]=$this->db->runQuery("SELECT sessions.session_id,sessions.session_title,sessions.session_date,sessions.session_time FROM sessions WHERE sessions.session_date>='$startDate' and sessions.session_date <= '$endDate'");
+            $result[1]=$this->db->runQuery("SELECT COUNT(session_student_assigns.student_id) AS assignSTcount,sessions.session_id FROM session_student_assigns INNER JOIN sessions ON sessions.session_id =session_student_assigns.session_id WHERE sessions.session_date>='$startDate' and sessions.session_date <= '$endDate' GROUP BY sessions.session_id");
+            $result[2]=$this->db->runQuery("SELECT COUNT(session_participation.student_id) AS partSTcount,sessions.session_id FROM session_participation INNER JOIN sessions ON sessions.session_id =session_participation.session_id WHERE sessions.session_date>='$startDate' and sessions.session_date <= '$endDate' GROUP BY sessions.session_id");
             return $result;
         }
         else{
-            $result=$this->db->runQuery("SELECT * FROM sessions");
+            $result[0]=$this->db->runQuery("SELECT session_id,session_title,session_date,session_time FROM sessions");
+            $result[1]=$this->db->runQuery("SELECT COUNT(session_student_assigns.student_id) AS assignSTcount,sessions.session_id FROM session_student_assigns INNER JOIN sessions ON sessions.session_id =session_student_assigns.session_id  GROUP BY sessions.session_id");
+            $result[2]=$this->db->runQuery("SELECT COUNT(session_participation.student_id) AS partSTcount,sessions.session_id FROM session_participation INNER JOIN sessions ON sessions.session_id =session_participation.session_id GROUP BY sessions.session_id");
             return $result;
         }
         
