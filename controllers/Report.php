@@ -1,6 +1,6 @@
 <?php
 
-class Report extends Controller{
+class Report extends Controller{ 
 
     function __construct(){
         parent:: __construct();
@@ -170,11 +170,17 @@ class Report extends Controller{
         }
         
     }
+    
 
-
-    function loadAtSession(){
-        $result=$this->model->loadAtSession();
+    function loadAtSession($method,$period){
+        $result=$this->model->loadAtSession($method,$period);
         echo json_encode($result);
     }
+
+    function loadAtStudent($method,$period){
+        $result=$this->model->loadAtStudent($method,$period);
+        echo json_encode($result);
+        // echo $result;
+    } 
 }
 

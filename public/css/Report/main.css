@@ -17,6 +17,18 @@ body{
     margin-bottom: 30px;
 }
 
+.go-button, .backk, .downld{
+    width: fit-content;
+    padding: 0px 5px;
+    border-radius: 3px;
+    min-width: 60px;
+    height: 30px;
+    border: none;
+    color: #f3f7f7;
+    background-color: #0892d0;
+    box-shadow: 5px 5px 10px #cfd7ed;
+}
+
 
 .report-title{
     display: none;
@@ -182,6 +194,10 @@ body{
 .hrr{
     display: none;
 }
+.col-1, .col-2, .col-3,  .col-4, .col-5{
+    width: 20%;
+}
+
 
 .summary{
     display: flex;
@@ -276,7 +292,19 @@ body{
     /* background-color: #292d42; */
     width: 25%;
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-between;
+}
+
+.btn > button{
+    width: fit-content;
+    padding: 0px 5px;
+    border-radius: 3px;
+    min-width: 60px;
+    height: 30px;
+    border: none;
+    color: #f3f7f7;
+    background-color: #0892d0;
+    box-shadow: 5px 5px 10px #cfd7ed;
 }
 
 .print{

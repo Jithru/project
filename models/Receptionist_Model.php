@@ -411,4 +411,10 @@ class Receptionist_Model extends Model{
         $result=$this->db->runQuery("SELECT count(session_student_assigns.student_id) AS total_assigns,session_student_assigns.student_id,GROUP_CONCAT(session_student_assigns.session_id) AS session_IDs,student.init_name FROM ((session_student_assigns LEFT JOIN student on student.student_id=session_student_assigns.student_id) LEFT JOIN sessions on sessions.session_id=session_student_assigns.session_id) GROUP BY session_student_assigns.student_id,student.init_name");
         return $result;
     }
+    function getDatesOfSessionsAndSessions(){
+        $sessionResult=$this->db->runQuery("SELECT DISTINCT sessions.session_date as date from sessions");
+        $examResult=$this->db->runQuery("SELECT DISTINCT exams.exam_date as date from exams");
+        $result=array_merge($sessionResult,$examResult);
+        return $result;
+    }
 }

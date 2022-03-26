@@ -692,12 +692,8 @@ class Manager extends Controller{
     function rejectRequestExam($studentId,$examId){
         $result=$this->model->rejectRequestExam($studentId,$examId);
     }
-    function getDatesOfSessions(){
-        $result=$this->model->getDatesOfSessions();
-        echo json_encode($result);
-    }
-    function getDatesOfExams(){
-        $result=$this->model->getDatesOfExams();
+    function getDatesOfSessionsAndSessions(){
+        $result=$this->model->getDatesOfSessionsAndSessions();
         echo json_encode($result);
     }
 }

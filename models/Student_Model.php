@@ -211,5 +211,11 @@ class Student_Model extends Model{
         $this->db->runQuery("INSERT INTO `online_payments` (`opayment_id`, `payment_date_time`, `amount`, `student_id`) VALUES (NULL, '$dateTime','$amount','$studentId');");
             return "INSERT INTO `online_payments` (`opayment_id`, `payment_date_time`, `amount`, `student_id`) VALUES (NULL, '$dateTime','$amount','$studentId');";
     }
+    function getDatesOfSessionsAndSessions($studentId){
+        $sessionResult=$this->db->runQuery("SELECT DISTINCT sessions.session_date as date from sessions INNER join session_student_assigns on session_student_assigns.session_id=sessions.session_id where session_student_assigns.student_id=$studentId");
+        $examResult=$this->db->runQuery("SELECT DISTINCT exams.exam_date as date from exams INNER join exam_student_assigns on exam_student_assigns.exam_id=exams.exam_id where exam_student_assigns.student_id=$studentId");
+        $result=array_merge($sessionResult,$examResult);
+        return $result;
+    }
 
 }

@@ -16,6 +16,7 @@
         </div>
         <div class="main">
         <?php require_once APPROOT."/../views/common/AdminSidebar.php"; ?>
+        
         <div class="view">
                 <div class="left">
                     <div class="big-picture">

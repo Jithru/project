@@ -212,7 +212,6 @@ class Instructor extends Controller{
         $result=$this->model->loadPreSelectedStudentsS($_SESSION['viewSessionIdInstructor']);
         echo json_encode($result);
     }
-<<<<<<< HEAD
     function loadAllSessionsForToday(){
         $result=$this->model->loadAllSessionsForToday($_SESSION['employee_id']);
         echo json_encode($result);
@@ -233,7 +232,8 @@ class Instructor extends Controller{
             echo $sessionId;
         }
     }
-=======
-
->>>>>>> 06ecdeb97ef2a6292bab2c751f181042e221f8c1
+    function getDatesOfSessionsAndSessions(){
+        $result=$this->model->getDatesOfSessionsAndSessions($_SESSION['employee_id']);
+        echo json_encode($result);
+    }
 }
