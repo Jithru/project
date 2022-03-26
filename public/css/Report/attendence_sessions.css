@@ -175,3 +175,11 @@ h3 {
 ::-webkit-scrollbar-thumb:hover {
   background: #0892d0;
 }
+
+@media screen and (max-width: 1370px){
+  .max-container,
+.min-container {
+  width: 200px;
+  
+}
+}

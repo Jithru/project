@@ -97,6 +97,11 @@ function loadTable(method,period){
                 totalPart+=parseInt(partiStudent[i])
             }
 
+
+            document.getElementById('no-of-student').innerText=totalAssign
+            document.getElementById('avg').innerText=avgPart
+            document.getElementById('total').innerText=totalPart
+
             avgPart=totalPart/data[0].length;
             console.log(totalAssign)
             console.log(totalPart)
@@ -133,4 +138,11 @@ function filter(){
         loadTable(method,period)
     }
     
+}
+
+function back(){
+    document.getElementById('container').classList.replace('container-print','container')
+    document.getElementById('print').classList.replace('print-deactive','print')
+    document.getElementById('downld').classList.replace('downld-active','downld')
+    document.getElementById('backk').classList.replace('backk-active','backk')
 }

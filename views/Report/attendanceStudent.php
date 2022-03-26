@@ -79,7 +79,7 @@
     
                     
                     <div id="table-body" class="table-body"> 
-                        <div class="row">
+                        <!-- <div class="row">
                             <div class="col-1">ST001</div>
                             <div class="col-2">N.R Senevirathne</div>
                             <div class="col-3">Exam passed</div>
@@ -106,7 +106,7 @@
                             <div class="col-3">Exam passed</div>
                             <div class="col-4">20</div>
                             <div class="col-3">18</div>
-                        </div>
+                        </div> -->
                         
                         
                     
