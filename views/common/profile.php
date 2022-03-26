@@ -3,7 +3,7 @@
     <div class="view">
                 <div class="left">
                     <div class="big-picture">
-                        <img src="<?php echo URL?>public/images/profpic.png" alt="big-pic" width="180" height="180">
+                        <img src="<?php echo URL?>public/images/profpic.png" alt="big-pic" id="bigPicture" width="180" height="180">
                     </div>
 
                     <div class="left-details">

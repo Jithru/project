@@ -232,5 +232,9 @@ class Student_Model extends Model{
         $result=array_merge($sessionResult,$examResult);
         return $result;
     }
+    function imageUploading($file,$studentId){
+        $result=$this->db->runQuery("UPDATE student SET profile_pic='$file' WHERE student_id=$studentId");
+        // return $studentId;
+    }
 
 }

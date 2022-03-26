@@ -15,8 +15,9 @@
         <?php require_once APPROOT."/../views/common/header.php"; ?>
         </div>
         <div class="main">
-        <?php require_once APPROOT."/../views/common/ManagerSidebar.php"; ?>
-        <div class="view">
+            <?php require_once APPROOT."/../views/common/ManagerSidebar.php"; ?>
+            <?php require_once APPROOT."/../views/common/profile.php"; ?>
+            <!-- <div class="view">
                 <div class="left">
                     <div class="big-picture">
                         <img class="prof-pic" src="<?php echo URL?>public/images/profpic.png" alt="big-pic" width="250" height="250">
@@ -58,11 +59,11 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> -->
         </div>
     </div>
 
-    <script>
+    <!-- <script>
                 let img=document.getElementById("uploadImage");
         let changeF=document.getElementById("file");
 
@@ -75,6 +76,7 @@
             }
 
         })
-    </script>
+    </script> -->
+    <script src="<?php echo URL?>public/js/manager/profile.js"></script>
 </body>
 </html>

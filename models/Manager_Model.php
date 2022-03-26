@@ -33,6 +33,11 @@ class Manager_Model extends Model{
             return false;
         }
     }
+    function getProfileDetails(){
+        $nic=$_SESSION['employee_id'];
+        $result=$this->db->runQuery("SELECT * from employee where employee_id = '$nic'");
+        return $result;
+    }
     function setExpenses($title,$discription,$amount,$managerId){
         date_default_timezone_set('Asia/Colombo');
         $date = date('Y-m-d H:i:s');

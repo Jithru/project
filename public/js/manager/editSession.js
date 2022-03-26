@@ -145,7 +145,7 @@ function saveTime(){
         var todaytime=today.getHours()+":"+today.getMinutes()
 
         if(day>newDate){
-            document.getElementById("msg").innerHTML="The time you have selected was past"
+            document.getElementById("msg").innerHTML="The day you have selected was past"
             document.getElementById("box").classList.replace("box","box-active")
         }
         else if(day==newDate){

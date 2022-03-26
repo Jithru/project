@@ -34,6 +34,13 @@ class Manager extends Controller{
             $this->view->render('error');
         }
     }
+
+    function profileLogic(){
+        $value=$this->model->getProfileDetails();   
+        echo json_encode($value);
+
+    }
+
     function addExpenses(){
         if(isset($_SESSION['job_title'])){
             if($_SESSION['job_title']=='Manager'){
