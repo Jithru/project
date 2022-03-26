@@ -38,7 +38,7 @@ function loadOtherExpences(){
     let httpreq = new XMLHttpRequest()
     httpreq.onreadystatechange = function(){
         if(httpreq.readyState == 4 && httpreq.status == 200){
-            // console.log(httpreq.responseText)
+            console.log(httpreq.responseText)
             const OtherExpences = JSON.parse(httpreq.responseText)
             let noOfVehicle = ''
             const initRow = document.getElementById("Initial-Prices");
