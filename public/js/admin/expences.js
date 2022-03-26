@@ -21,7 +21,7 @@ function loadExpences(){
                 initRow.innerHTML+='<div class="row">'+
                     '<div class="col-1"><b class="bold-name-4">Number of Vehicles</b><b class="bold">: </b>'+noOfVehicle+'</div>'+
                     '<div class="col-2"></div>'+
-                    '<div class="col-3"><b class="bold-name-4">Price (LKR)</b><b class="bold">: </b><input disabled="true" type="text" id="iCharge'+Expences[i]['ischarge_id']+'" value="'+Expences[i]['amount']+'"></div>'+
+                    '<div class="col-3"><b class="bold-name-4">Price (LKR)</b><b class="bold">: </b><input disabled="true" type="number" min="0" id="iCharge'+Expences[i]['ischarge_id']+'" value="'+Expences[i]['amount']+'"></div>'+
                     '<div class="col-4"><button id="ic'+Expences[i]['ischarge_id']+'" class="edit" onclick ="editCharge('+Expences[i]['ischarge_id']+')">Edit</button><button id="C'+Expences[i]['ischarge_id']+'"  class="save-small-deactivate" onclick ="saveCharge('+Expences[i]['ischarge_id']+')">Save</button><button id="cc'+Expences[i]['ischarge_id']+'" class="cancel-small-deactivate" onclick ="cancelCharge('+Expences[i]['ischarge_id']+')">Cancel</button></div>'+
                 '</div>'
 
@@ -38,7 +38,7 @@ function loadOtherExpences(){
     let httpreq = new XMLHttpRequest()
     httpreq.onreadystatechange = function(){
         if(httpreq.readyState == 4 && httpreq.status == 200){
-            // console.log(httpreq.responseText)
+            console.log(httpreq.responseText)
             const OtherExpences = JSON.parse(httpreq.responseText)
             let noOfVehicle = ''
             const initRow = document.getElementById("Initial-Prices");
@@ -56,7 +56,7 @@ function loadOtherExpences(){
                 
                 ExtraRow.innerHTML+= '<div class="row">'+
                     '<div class="column-1"><b class="bold-name-2">Task</b><b class="bold">: </b>'+type+'</div>'+
-                    '<div class="col-3"><b class="bold-name-2">Price (LKR)</b><b class="bold">: </b><input disabled="true" type="text" id="Other'+OtherExpences[i]['ef_id']+'" value="'+OtherExpences[i]['amount']+'"></input></div>'+
+                    '<div class="col-3"><b class="bold-name-2">Price (LKR)</b><b class="bold">: </b><input disabled="true" type="number" min="0" id="Other'+OtherExpences[i]['ef_id']+'" value="'+OtherExpences[i]['amount']+'"></input></div>'+
                     '<div class="col-4"><button id="O'+OtherExpences[i]['ef_id']+'" class="edit" onclick ="editOther('+OtherExpences[i]['ef_id']+')">Edit</button><button id="so'+OtherExpences[i]['ef_id']+'"  class="save-small-deactivate" onclick ="saveOther('+OtherExpences[i]['ef_id']+')">Save</button><button id="co'+OtherExpences[i]['ef_id']+'" class="cancel-small-deactivate" onclick ="cancelOther('+OtherExpences[i]['ef_id']+')">Cancel</button></div>'+
                 '</div>'
 
@@ -92,6 +92,10 @@ function cancelOther(id){
     document.getElementById('co'+id).classList.replace("cancel-small","cancel-small-deactivate")
     document.getElementById('Other'+id).disabled = true;
     document.getElementById('Other'+id).style.border = "none";
+    document.getElementById("Initial-Prices").innerHTML="";
+    document.getElementById("Other-charges").innerHTML="";
+    loadExpences()
+    loadOtherExpences()
 }
 
 function editCharge(id){
@@ -109,43 +113,55 @@ function cancelCharge(id){
     document.getElementById('cc'+id).classList.replace("cancel-small","cancel-small-deactivate")
     document.getElementById('iCharge'+id).disabled = true;
     document.getElementById('iCharge'+id).style.border = "none";
+    document.getElementById("Initial-Prices").innerHTML="";
+    document.getElementById("Other-charges").innerHTML="";
+    loadExpences()
+    loadOtherExpences()
 }
 
 
 function saveOther(id){
     let otherCharges = document.getElementById('Other'+id+'').value
-    let httprequest = new XMLHttpRequest();
-    httprequest.onreadystatechange = function(){
-        if (httprequest.readyState===4 && httprequest.status===200){
-            console.log(httprequest.responseText)
-            if(httprequest.responseText=="success"){
-                window.location.assign("http://localhost/project/Admin/initExpences");
-            }
-            
-        }
+    if(otherCharges<0){
+        alert("value must be greater than or equal to 0")
     }
-    let Other = [id,otherCharges]
-    var url="http://localhost/project/Admin/editOtherCharges/"+Other;
-    httprequest.open("POST",url,true)
-    httprequest.send()
+    else{
+        let httprequest = new XMLHttpRequest();
+        httprequest.onreadystatechange = function(){
+            if (httprequest.readyState===4 && httprequest.status===200){
+                console.log(httprequest.responseText)
+                if(httprequest.responseText=="success"){
+                    window.location.assign("http://localhost/project/Admin/initExpences");
+                }
+                
+            }
+        }
+        let Other = [id,otherCharges]
+        var url="http://localhost/project/Admin/editOtherCharges/"+Other;
+        httprequest.open("POST",url,true)
+        httprequest.send()
+    }
 }
 
 function saveCharge(id){
-    alert(id)
     let icharge = document.getElementById('iCharge'+id+'').value
-    alert(icharge)
-    let httprequest = new XMLHttpRequest();
-    httprequest.onreadystatechange = function(){
-        if (httprequest.readyState===4 && httprequest.status===200){
-            console.log(httprequest.responseText)
-            if(httprequest.responseText=="success"){
-                window.location.assign("http://localhost/project/Admin/initExpences");
-            }
-            
-        }
+    if(icharge<0){
+        alert("value must be greater than or equal to 0")
     }
-    let initCharge = [id,icharge]
-    var url="http://localhost/project/Admin/editInitCharges/"+initCharge;
-    httprequest.open("POST",url,true)
-    httprequest.send()
+    else{
+        let httprequest = new XMLHttpRequest();
+        httprequest.onreadystatechange = function(){
+            if (httprequest.readyState===4 && httprequest.status===200){
+                console.log(httprequest.responseText)
+                if(httprequest.responseText=="success"){
+                    window.location.assign("http://localhost/project/Admin/initExpences");
+                }
+                
+            }
+        }
+        let initCharge = [id,icharge]
+        var url="http://localhost/project/Admin/editInitCharges/"+initCharge;
+        httprequest.open("POST",url,true)
+        httprequest.send()
+    }
 }

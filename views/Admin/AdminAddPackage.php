@@ -28,17 +28,18 @@
                     </select>
                 </div>  -->
                 <div class="classes-check-outer">
+                <div class="chk-err" id="chk-err"></div>
                 <div class="classes-check" id="classes-edit"> 
                         
                     </div>
                 </div>
                 <div class="input-container">
                     <label for="training-days">Number of Training Days :</label>
-                    <input type="number" class="training-days" id="training-days">
+                    <input type="number" min="0" class="training-days" id="training-days">
                 </div>
                 <div class="input-container">
                     <label for="total-price">total-price (LKR):</label>
-                    <input type="number" class="total-price" id="total-price">
+                    <input type="number" min="0" class="total-price" id="total-price">
                 </div>
                      
             </div>
