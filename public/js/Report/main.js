@@ -55,16 +55,52 @@ function loadTable(method,period){
             console.log(httpreq.responseText);
             const data = JSON.parse(httpreq.responseText);
             // console.log(vehicleClass[1]["vehicle_class"]);
-            for(i=0;i<data.length;i++){
+            var assignStudent = [];
+            var partiStudent = [];
+
+            for(i=0;i<data[0].length;i++){
+                assignStudent[i]=0;
+                for(j=0;j<data[1].length;j++){
+                    if(data[0][i]['session_id']==data[1][j]['session_id']){
+                        assignStudent[i]=data[1][j]['assignSTcount']
+                    }
+                }
+            }
+
+            for(i=0;i<data[0].length;i++){
+                partiStudent[i]=0;
+                for(j=0;j<data[2].length;j++){
+                    if(data[0][i]['session_id']==data[2][j]['session_id']){
+                        partiStudent[i]=data[2][j]['partSTcount']
+                    }
+                }
+            }
+            
+
+            for(i=0;i<data[0].length;i++){
                 rows.innerHTML+='<div class="row">'
-                +'<div class="cel-1">'+data[i]['session_id']+'</div>'
-                +'<div class="cel-2">'+data[i]['session_title']+'</div>'
-                +'<div class="cel-3">'+data[i]['session_date']+'</div>'
-                +'<div class="cel-4">'+data[i]['session_time']+'</div>'
-                +'<div class="cel-5">'+data[i]['session_id']+'</div>'
-                +'<div class="cel-6">'+data[i]['session_id']+'</div>'
+                +'<div class="cel-1">'+data[0][i]['session_id']+'</div>'
+                +'<div class="cel-2">'+data[0][i]['session_title']+'</div>'
+                +'<div class="cel-3">'+data[0][i]['session_date']+'</div>'
+                +'<div class="cel-4">'+data[0][i]['session_time']+'</div>'
+                +'<div class="cel-5">'+assignStudent[i]+'</div>'
+                +'<div class="cel-6">'+partiStudent[i]+'</div>'
             +'</div>'
             }
+            var totalAssign=0
+            var totalPart=0
+            var avgPart=0
+
+            for(i=0;i<data[0].length;i++){
+                
+                totalAssign+=parseInt(assignStudent[i])
+                totalPart+=parseInt(partiStudent[i])
+            }
+
+            avgPart=totalPart/data[0].length;
+            console.log(totalAssign)
+            console.log(totalPart)
+            console.log(avgPart)
 
         }
     }
@@ -96,6 +132,5 @@ function filter(){
         rows.innerHTML=""
         loadTable(method,period)
     }
-    
     
 }
