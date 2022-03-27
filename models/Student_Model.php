@@ -47,6 +47,12 @@ class Student_Model extends Model{
 
     }
 
+
+    function updatePhone($phone,$studentid){
+        $result=$this->db->runQuery("UPDATE student SET contact=$phone WHERE student_id=$studentid");
+        return true;
+    }
+
 //------------------------------------->
 
     function setComplaints($description,$suggestion,$studentId)

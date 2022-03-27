@@ -159,8 +159,8 @@ class Report extends Controller{
 
     }
 
-    function loadExamParticipation(){
-        $result=$this->model->loadExamParticipation();
+    function loadExamParticipation($method,$period){
+        $result=$this->model->loadExamParticipation($method,$period);
         echo json_encode($result); 
     }
 

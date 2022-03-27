@@ -105,6 +105,16 @@ class Student extends Controller{
         }
 
     }
+
+    //phone no update 
+
+    function phoneNoUpdate($phone){
+        $studentId=$_SESSION['student_id'];
+        $value=$this->model->updatePhone($phone,$studentId);
+        echo json_encode($value);
+
+
+    }
 //----------------------->
     function makepayments(){
         if(isset($_SESSION['job_title'])){
@@ -122,7 +132,7 @@ class Student extends Controller{
     function onlinePayments($data){
         $value= explode(",",$data);
         $myval = explode("_" , $value[0]);
-        $studentId= 55;
+        $studentId= $_SESSION['student_id'];
         $result= $this->model->makeOnlinePayments($myval[0] . " " . $myval[1] ,$value[1],$studentId);
         echo json_encode($result);
         

@@ -113,6 +113,22 @@
     
     <script>
 
+        //get curruent phone no
+
+        let httprequest=new XMLHttpRequest();
+        httprequest.onreadystatechange=function(){
+            console.log(httprequest.responseText)
+            const obj=JSON.parse(httprequest.responseText)
+           console.log(obj[0].contact)
+        
+        document.getElementById("phone").value = obj[0].contact;
+        }
+        var url="http://localhost/project/Student/profileLogic";
+        httprequest.open("POST",url,true);
+        httprequest.send();
+
+        //----------------------------->
+
         function editPhone(){
             document.getElementById("phone").removeAttribute('readonly');
             document.getElementById("hidden-phone").classList.replace("row-hidden-phone","row-hidden-phone-active");
@@ -123,11 +139,12 @@
 
         function savephone(){
             var phone=document.getElementById("phone").value;
+            // var phoneno = /^\d{10}$/;
 
             if(phone.length==0){
                 document.getElementById("phone").placeholder="Password field can not be empty"; 
                 document.getElementById("phone").style.border="2px solid red";      
-            }else if(phone.length !=10){
+            }else if(phone.length !=10 ){
                 document.getElementById("phone").value="";
                 document.getElementById("phone").placeholder="Contact number not valid"; 
                 document.getElementById("phone").style.border="2px solid red";    
@@ -140,16 +157,21 @@
                     }
                 }
 
+                var url="http://localhost/project/Student/phoneNoUpdate/"+ phone;
+                httpreq.open("POST",url,true);
+                httpreq.send();
+
             }
 
         }
 
         function cancelPhone(){
-            var phone=document.getElementById("phone").value;
+            // var phone=document.getElementById("phone").value;
             document.getElementById("hidden-phone").classList.replace("row-hidden-phone-active","row-hidden-phone");
             document.getElementById("editphone").classList.replace("Edit-active","Edit");
-            document.getElementById("phone").value=phone;
+            // document.getElementById("phone").value=phone;
             document.getElementById("phone").readOnly="true";
+            window.location.reload("http://localhost/project/Student/editprofile");
         }
  
         //password change
