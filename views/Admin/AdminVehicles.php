@@ -40,7 +40,7 @@
      </div>
      <div id="pop-div2" class="popup-container2">
         <div class="conf-box2">
-            <div class="invalid-login" id="invalid-login">
+            <div class="errp" id="errp">
                 Invalid password, please try again.
             </div>
             <div class="input-container">

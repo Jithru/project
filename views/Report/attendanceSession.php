@@ -83,62 +83,7 @@ month -->
     
                     
                     <div id="table-body" class="table-body"> 
-                        <!-- <div class="row">
-                            <div class="cel-1">SE001</div>
-                            <div class="cel-2">Road Signs</div>
-                            <div class="cel-3">2021/10/10</div>
-                            <div class="cel-4">09.00am</div>
-                            <div class="cel-5">18</div>
-                            <div class="cel-6">15</div>
-                        </div>
-                        <div class="row">
-                            <div class="cel-1">SE001</div>
-                            <div class="cel-2">Road Signs</div>
-                            <div class="cel-3">2021/10/10</div>
-                            <div class="cel-4">09.00am</div>
-                            <div class="cel-5">18</div>
-                            <div class="cel-6">15</div>
-                        </div>
-                        <div class="row">
-                            <div class="cel-1">SE001</div>
-                            <div class="cel-2">Road Signs</div>
-                            <div class="cel-3">2021/10/10</div>
-                            <div class="cel-4">09.00am</div>
-                            <div class="cel-5">18</div>
-                            <div class="cel-6">15</div>
-                        </div>
-                        <div class="row">
-                            <div class="cel-1">SE001</div>
-                            <div class="cel-2">Road Signs</div>
-                            <div class="cel-3">2021/10/10</div>
-                            <div class="cel-4">09.00am</div>
-                            <div class="cel-5">18</div>
-                            <div class="cel-6">15</div>
-                        </div>
-                        <div class="row">
-                            <div class="cel-1">SE001</div>
-                            <div class="cel-2">Road Signs</div>
-                            <div class="cel-3">2021/10/10</div>
-                            <div class="cel-4">09.00am</div>
-                            <div class="cel-5">18</div>
-                            <div class="cel-6">15</div>
-                        </div>
-                        <div class="row">
-                            <div class="cel-1">SE001</div>
-                            <div class="cel-2">Road Signs</div>
-                            <div class="cel-3">2021/10/10</div>
-                            <div class="cel-4">09.00am</div>
-                            <div class="cel-5">18</div>
-                            <div class="cel-6">15</div>
-                        </div>
-                        <div class="row">
-                            <div class="cel-1">SE001</div>
-                            <div class="cel-2">Road Signs</div>
-                            <div class="cel-3">2021/10/10</div>
-                            <div class="cel-4">09.00am</div>
-                            <div class="cel-5">18</div>
-                            <div class="cel-6">15</div>
-                        </div> -->
+                        <!--     -->
                     
                     </div>
                 </div>

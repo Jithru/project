@@ -12,5 +12,7 @@ function yesDelete() {
 }
 
 function cancel2() {
+    document.getElementById("errp").classList.replace("invalid-login-true","errp");
     document.getElementById("pop-div2").classList.replace("popup-container2-active","popup-container2");
+
 }

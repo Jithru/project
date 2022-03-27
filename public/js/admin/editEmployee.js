@@ -26,7 +26,7 @@ function getDetails(){
 
             
             name.innerHTML+='<input type="text"  class="name-edit-input" id="name-edit-input"  value="'+empname+'" disabled>'
-            contact.innerHTML+='<input type="number"  class="name-edit-input" id="contact-edit-input"  value="'+employee[0].contact_no+'" disabled>'
+            contact.innerHTML+='<input type="text"  class="name-edit-input" id="contact-edit-input"  value="'+employee[0].contact_no+'" disabled>'
             add.innerHTML+='<input type="text"  class="name-edit-input" id="add-edit-input"  value="'+empAddress+'" disabled>'
             
 
@@ -78,6 +78,7 @@ function cancelContact(){
     document.getElementById("contact-cancel").classList.replace("cancel-small","cancel-small-deactivate")
     document.getElementById('contact-edit-input').disabled = true;
     document.getElementById('contact-edit-input').style.border = "none";
+    document.getElementById("err").classList.replace("invalid-login-true","err");
 
 }
 function editAdd(){
@@ -139,31 +140,40 @@ function saveContact(){
     }
     else{
         if(contact.length!=10){
+            document.getElementById("err").classList.replace("err","invalid-login-true");
+            document.getElementById("err").innerText="Please recheck the mobile number";
+            
+        }
         
-            document.getElementById("invalid-login").innerText="Please recheck the mobile number";
-            document.getElementById("invalid-login").classList.replace("invalid-login","invalid-login-true");
-        }
         else{
-            let httprequest  = new XMLHttpRequest();
-            httprequest.onreadystatechange = function(){
-            if (httprequest.readyState===4 && httprequest.status===200){
-                console.log(httprequest.responseText);
-                if(httprequest.responseText=="exist"){
-                    document.getElementById("invalid-login").innerText="The contact number you entered is already exist";
-                    document.getElementById("invalid-login").classList.replace("invalid-login","invalid-login-true");
+            var numbers = /^[0-9]+$/;
+            if(contact.match(numbers)){
+                let httprequest  = new XMLHttpRequest();
+                httprequest.onreadystatechange = function(){
+                    if (httprequest.readyState===4 && httprequest.status===200){
+                        console.log(httprequest.responseText);
+                        if(httprequest.responseText=="exist"){
+                            document.getElementById("err").innerText="The contact number you entered is already exist";
+                            document.getElementById("err").classList.replace("err","invalid-login-true");
+                        }
+                        else if(httprequest.responseText=="success"){
+                            
+                            window.location.assign("http://localhost/project/Admin/editEmployee");
+                        }
+                        
+                        
+                    }
                 }
-                else if(httprequest.responseText=="success"){
-                    
-                    window.location.assign("http://localhost/project/Admin/editEmployee");
-                }
-                
-                
-            }
-        }
 
-        var url="http://localhost/project/Admin/updateEmployeeDetails/contact/"+contact;
-        httprequest.open("POST",url,true)
-        httprequest.send()
+                var url="http://localhost/project/Admin/updateEmployeeDetails/contact/"+contact;
+                httprequest.open("POST",url,true)
+                httprequest.send()
+            }
+            else{
+                document.getElementById("err").classList.replace("err","invalid-login-true");
+                document.getElementById("err").innerText="Only numbers are allowed";
+            }
+            
         }
     }
 }
