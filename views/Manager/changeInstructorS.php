@@ -65,7 +65,7 @@
         </div>
         <div class="button-set">
             <a href="<?php echo URL?>Manager/editSession"><button class="session-buttons" name="back" id="back" >Back</button></a>
-            <button class="session-buttons"name="save" id="save">Save changes</button>
+            <!-- <button class="session-buttons"name="save" id="save">Save changes</button> -->
         </div>    
     </div>
 <script src="<?php echo URL?>public/js/manager/changeInstructorS.js"></script>

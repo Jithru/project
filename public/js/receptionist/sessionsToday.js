@@ -27,7 +27,7 @@ function todaySessions(){
                     var status = "Not Started";
                 }
 
-                row.innerHTML += '<div class="row-1"><div class="col-1"><p>'+"LSN"+session[i].session_id+
+                row.innerHTML += '<div class="row-1"><div class="col-1"><p>'+"SE_"+session[i].session_id+
                 '</p></div><div class="col-2"><p>'+title+'</p></div><div class="col-3"><p>'+
                 session[i].session_date+'</p></div><div class="col-4"><p>'+session[i].session_time+'</p></div><div class="col-5"><p>'+insName+'</p></div><div class="col-6"><p>'+status+'</p></div>';
             }   

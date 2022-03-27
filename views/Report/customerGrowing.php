@@ -71,9 +71,9 @@ month -->
                     <div class="table-head">
                         <div class="col-names">
                             <div class="col-1">Date</div>
-                            <div class="col-2">No of students registered <br>theory exams</div>
-                            <div class="col-3">No of students registered <br>for theory exams</div>
-                            <div class="col-4">No of students registered <br>for theory exams</div>
+                            <div class="col-2">No of students registered <br>for written exams</div>
+                            <div class="col-3">No of students registered <br>for trial exams</div>
+                            <div class="col-4">No of students registered <br>for further practices</div>
                             <div class="col-5">Total registerd count</div>
                         </div>
                     </div>

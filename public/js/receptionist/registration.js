@@ -92,7 +92,12 @@ function nextPage(){
     var mobile=document.getElementById("mobile").value;
     if(mobile.length!=10){
         document.getElementById("mobile").placeholder="Please recheck the mobile number"
-        document.getElementById("dateofbirth").style.border="2px solid red"
+        document.getElementById("mobile").style.border="2px solid red"
+        flag=false;
+    }
+    else if(isNaN(mobile)){
+        document.getElementById("mobile").placeholder="Please recheck the mobile number"
+        document.getElementById("mobile").style.border="2px solid red"
         flag=false;
     }
 
