@@ -98,12 +98,18 @@
     <div class="box-container" id="box-container">
         <div class="box-content">
             <div class="appear">
-                <div class="uploadArea">
-                    <input type="file" name="file" id="fileupload">
-                </div>
-                <div class="uploadButton">
-                    <button class="uploadButtn" type="submit" name="submit" onclick="uploadMe()">Upload File</button>
-                </div>
+                <form enctype="multipart/form-data" id="form_pdf">
+                    <div class="uploadArea">
+                        
+                        <input type="file" name="file" id="file">
+                    </div>
+                    <div class="uploadButton">
+                        <button class="backButton" id="back" onclick="backFile()">Back</button>
+                        <button class="uploadButtn" type="submit" name="submit" onclick="uploadMe()">Upload File</button>
+                        
+                    </div>
+                </form>
+                
             </div>
         </div>
     </div>

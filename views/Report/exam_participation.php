@@ -94,7 +94,7 @@
         </div>
     </div>
     
-    <script src="<?php echo URL?>public/js/Report/exam_participation .js"></script>
+    <script src="<?php echo URL?>public/js/Report/exam_participation.js"></script>
     
 
 </body>
