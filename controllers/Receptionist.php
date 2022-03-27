@@ -17,10 +17,27 @@ class Receptionist extends Controller{
             $this->view->render('error');
         }
     }
+    function profileLogic(){
+        $value=$this->model->getProfileDetails();   
+        echo json_encode($value);
+
+    }
     function payments(){
         if(isset($_SESSION['job_title'])){
             if($_SESSION['job_title']=='Receptionist'){
                 $this->view->render('receptionist/payments');
+            }else{
+                $this->view->render('error');
+            }
+        }
+        else{
+            $this->view->render('error');
+        }
+    }
+    function editprofile(){
+        if(isset($_SESSION['job_title'])){
+            if($_SESSION['job_title']=='Receptionist'){
+                $this->view->render('Receptionist/editprofile');
             }else{
                 $this->view->render('error');
             }
@@ -491,6 +508,26 @@ class Receptionist extends Controller{
     function loadPreSelectedStudentsS(){
         $result=$this->model->loadPreSelectedStudentsS($_SESSION['viewSessionId']);
         echo json_encode($result);
+    }
+    function imageUploading(){
+        $target_dir = $_SERVER['DOCUMENT_ROOT']."/project/public/images/profilePicsEmployee/";
+        
+        $target_file = $target_dir . basename($_FILES["photo"]["name"]);
+        // $_FILES["photo"]["name"]=$_SESSION['student_id'];
+        // $target_file = $target_dir .$_FILES["photo"]["name"];
+        $file=$_FILES["photo"]["name"];
+        $tempName=$_FILES["photo"]["tmp_name"];
+        $path = pathinfo($file);
+        $filename = $path['filename'];
+        $ext = $path['extension'];
+        $path_filename_ext = $target_dir.$filename;
+        $result=$this->model->imageUploading(basename($_FILES["photo"]["name"]),$_SESSION['employee_id']);
+        move_uploaded_file($tempName,$target_file);
+        
+        // echo $target_file;
+        // echo $tempName;
+        echo $result;
+
     }
     function getDatesOfSessionsAndSessions(){
         $result=$this->model->getDatesOfSessionsAndSessions();

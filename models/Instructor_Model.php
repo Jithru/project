@@ -11,7 +11,11 @@ class Instructor_Model extends Model{
         return $result;
 
     }
-
+    function getProfileDetails(){
+        $nic=$_SESSION['employee_id'];
+        $result=$this->db->runQuery("SELECT * from employee where employee_id = '$nic'");
+        return $result;
+    }
     function getSessions($employeeId){
         $result=$this->db->runQuery("SELECT sessions.Session_id,sessions.session_title,sessions.session_date,sessions.session_time,sessions.type FROM sessions INNER join session_conductor_assigns on session_conductor_assigns.session_id=sessions.session_id where session_conductor_assigns.conductor_id=$employeeId");
         return $result;
@@ -93,5 +97,9 @@ class Instructor_Model extends Model{
         $examResult=$this->db->runQuery("SELECT DISTINCT exams.exam_date as date from exams INNER join exam_conductor_assigns on exam_conductor_assigns.exam_id=exams.exam_id where exam_conductor_assigns.conductor_id=$instructorId");
         $result=array_merge($sessionResult,$examResult);
         return $result;
+    }
+    function imageUploading($file,$employeeId){
+        $result=$this->db->runQuery("UPDATE employee SET profile_pic='$file' WHERE employee_id=$employeeId");
+        // return $studentId;
     }
 }

@@ -45,6 +45,18 @@ class Instructor extends Controller{
             $this->view->render('error');
         }  
     }
+    function editprofile(){
+        if(isset($_SESSION['job_title'])){
+            if($_SESSION['job_title']=='Instructor'){
+                $this->view->render('Conductor/editprofile');
+            }else{
+                $this->view->render('error');
+            }
+        }
+        else{
+            $this->view->render('error');
+        }
+    }
     function sessions(){
         if(isset($_SESSION['job_title'])){
             if($_SESSION['job_title']=='Instructor'){
@@ -64,7 +76,11 @@ class Instructor extends Controller{
         echo json_encode($value);
         
     }
+    function profileLogic(){
+        $value=$this->model->getProfileDetails();   
+        echo json_encode($value);
 
+    }
  
 
     function viewExam($id=''){
@@ -231,6 +247,26 @@ class Instructor extends Controller{
         if($result==true){
             echo $sessionId;
         }
+    }
+    function imageUploading(){
+        $target_dir = $_SERVER['DOCUMENT_ROOT']."/project/public/images/profilePicsEmployee/";
+        
+        $target_file = $target_dir . basename($_FILES["photo"]["name"]);
+        // $_FILES["photo"]["name"]=$_SESSION['student_id'];
+        // $target_file = $target_dir .$_FILES["photo"]["name"];
+        $file=$_FILES["photo"]["name"];
+        $tempName=$_FILES["photo"]["tmp_name"];
+        $path = pathinfo($file);
+        $filename = $path['filename'];
+        $ext = $path['extension'];
+        $path_filename_ext = $target_dir.$filename;
+        $result=$this->model->imageUploading(basename($_FILES["photo"]["name"]),$_SESSION['employee_id']);
+        move_uploaded_file($tempName,$target_file);
+        
+        // echo $target_file;
+        // echo $tempName;
+        echo $result;
+
     }
     function getDatesOfSessionsAndSessions(){
         $result=$this->model->getDatesOfSessionsAndSessions($_SESSION['employee_id']);
