@@ -24,6 +24,7 @@
   margin-right: 20px;
   height: 30px;
 }
+
 .page-change-button-selected {
   background-color: #f2f2f2;
   padding-right: 5px;
@@ -32,6 +33,7 @@
   width: fit-content;
   border: none;
   margin-right: 20px;
+  text-decoration: underline;
   height: 30px;
   border-bottom: 2px solid black;
 }

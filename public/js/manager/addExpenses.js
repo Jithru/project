@@ -57,6 +57,10 @@ function showConfirm(){
             document.getElementById('password-mismatch').innerHTML="Confirmation is invalid";
             document.getElementById('Confirm-amount').style.border="2px solid red";
     }
+    else if(parseInt(confirm)<0){
+        document.getElementById('password-mismatch').innerHTML="Amount field can't be less than 0";
+        document.getElementById('amount').style.border="2px solid red";
+    }
     ///have to confirm this is in double format
     else if(amount!=confirm){
         document.getElementById('password-mismatch').innerHTML="Amount and confirmation doesn't match";
@@ -65,7 +69,7 @@ function showConfirm(){
     }
     else{
         document.getElementById('confirmation').classList.replace("confirmation-box","confirmation-box-active");
-    }
+    } 
 
 }
 

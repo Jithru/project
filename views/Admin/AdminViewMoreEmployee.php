@@ -52,9 +52,8 @@
                     <div class="column-1"><h4>Hiring Date</h4><h4>:</h4></div> 
                     <div class="column-2" id="Hiring-Date">2020-02-20</div>  
                 </div>
-                <div class="row">
-                    <div class="column-1"><h4>Licence-No</h4><h4>:</h4></div> 
-                    <div class="column-2" id="Licence-row">E-162049898</div>  
+                <div class="row" id="Licence-row">
+                 
                 </div>
 
             </div>

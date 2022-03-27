@@ -148,3 +148,8 @@ label{
         /* background-color: violet; */
     }
 }
+
+
+.chk-err{
+    color: #d11534;
+}
