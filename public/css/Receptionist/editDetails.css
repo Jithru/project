@@ -5,8 +5,102 @@
 body{
     font-family: sans-serif;
     min-width: 100px;
-    background-color: #f2f2f2;
+    /* background-color: #ffffff; */
 }
+.toEdit-container{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    position: fixed;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background-color: none;
+    
+}
+.toEdit-box{
+    width: 420px;
+    height: 160px;
+    margin: -520px auto auto 560px;
+    border-radius: 8px;
+    background-color: #262b2f;
+    box-shadow: 0.1rem 0.1rem 0.1rem rgb(0,0,0,0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+.theam{
+    width: 94%;
+    height: 30%;
+    /* background-color: rgb(240, 65, 65); */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+}
+.theam-head{
+    width: 42%;
+    height: 100%;
+    color: white;
+    /* background-color: #76c3f7; */
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+}
+.theam-colon{
+    width: 4%;
+    height: 100%;
+    /* background-color: #f1ee39; */
+    color: white;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+}
+.theam-area{
+    width: 54%;
+    height: 100%;
+    /* background-color: #f1b139; */
+    display: flex;
+    align-items: center;
+}
+
+input[type="text"]{
+    width: 100%;
+    height: 66%;
+    border-radius: 3px;
+    color: #262b2f;;
+    border: 1px solid #262b2f;;
+
+}
+.theam-update{
+    width: 94%;
+    height: 60px;
+    /* background-color: #f85fca; */
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+.update-button{
+    width: 90px;
+    height: 30px;
+    background-color: #0099ff;
+    border: none;
+    color: white;
+    font-weight: bold;
+    border-radius: 4px;
+    box-shadow: 0rem 0.1rem 0.1rem rgb(0,0,0,0.3);
+}
+.update-button:hover{
+    color: #0099ff;
+    background-color: white;
+    border: 2px solid #0099ff;
+}
+
+
+
+                                /* old */
+
 .edit-container{
     width: 100%;
     height: 100vh;

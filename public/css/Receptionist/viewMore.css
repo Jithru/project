@@ -59,7 +59,8 @@ h6{
     /* background-color: rgb(61, 243, 100); */
 }
 .col{
-    width: 80px;
+    /* width: 20px; */
+    width: 30px;
     height: 100%;
     /* background-color: yellow; */
     display: flex;
@@ -67,7 +68,8 @@ h6{
     justify-content: center;
 }
 .call{
-    width: 200px;
+    /* width: 200px; */
+    width: 230px;
     height: 100%;
     /* background-color: red; */
     display: flex;
@@ -75,11 +77,34 @@ h6{
 
 }
 .cell{
+    /* width: 354px; */
     width: 354px;
     height: 100%;
     /* background-color: green; */
     display: flex;
     align-items: center;
+}
+.bttn{
+    width: 60px;
+    height: 100%;
+    /* background-color: rgb(166, 241, 45); */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.editBttn{
+   width: 50px;
+   height: 26px;
+   background-color: #0892d0;
+   color: white;
+   border-radius: 2px;
+   box-shadow: 0rem 0.1rem 0.1rem rgb(0,0,0,0.3);
+   border: none;
+}
+.editBttn:hover{
+    background-color: white;
+    color: #0892d0;
+    border: 1px solid #0892d0;
 }
 /* input[type="text"]{
     width: 200px;
@@ -88,14 +113,23 @@ h6{
     border-radius: 3px;
 } */
 .allButtons{
-    width: 40%;
+    width: 32%;
     height: 50px;
     /* background-color: pink; */
     display: flex;
     align-items: center;
-    justify-content: space-evenly;
+    justify-content: space-between;
     flex-direction: row;
     margin-left: 340px;
+}
+.bttSave{
+    width: 90px;
+    height: 38px;
+    border: none;
+    border-radius: 3px;
+    background-color: #0892d0;
+    color: white;
+    font-size: 18px;
 }
 .back{
     width: 90px;

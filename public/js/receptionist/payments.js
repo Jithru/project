@@ -122,6 +122,7 @@ function addPayment(){
     document.getElementById("container-st").classList.replace("container-st-visible","container-st");
     document.getElementById("add-container").classList.replace("add-container","add-container-visible");
     document.getElementById("re-amount").style.border = "none"
+
     
     let httpreq = new XMLHttpRequest();
     httpreq.onreadystatechange = function(){
@@ -158,6 +159,27 @@ function callConfirm(){
         console.log(reAmount);
         flag=false;
     }
+    else if(reAmount<0){
+        // document.getElementById("re-amount").placeholder = "Enter valid amount"
+        document.getElementById("re-amount").style.border = "2px solid red"
+        document.getElementById("enter").innerHTML = "Enter valid amount"
+        console.log(reAmount);
+        flag=false;
+    }
+    else if(amount<0){
+        // document.getElementById("amount").placeholder = "Enter valid amount"
+        document.getElementById("amount").style.border = "2px solid red"
+        document.getElementById("enter").innerHTML = "Enter valid amount"
+        console.log(reAmount);
+        flag=false;
+    }
+    else if(amount.length==0){
+        document.getElementById("amount").placeholder = "Enter amount"
+        document.getElementById("amount").style.border = "2px solid red"
+        document.getElementById("enter").innerHTML = ""
+        console.log(reAmount);
+        flag=false;
+    }
     else if(amount!=reAmount){
         document.getElementById("enter").innerHTML = "Enter same amount!"
         document.getElementById("re-amount").style.border = "2px solid red"
@@ -174,6 +196,7 @@ function callConfirm(){
     }
 
     document.getElementById("entered-amount").innerHTML="Rs. "+amount;
+    
   
 }
 
