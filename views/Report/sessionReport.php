@@ -73,8 +73,8 @@ month -->
                             <div class="col-1">Date</div>
                             <div class="col-2">No of theory <br>sessions sheduled</div>
                             <div class="col-3">No of theory <br>sessions held</div>
-                            <div class="col-4">No of participation <br>sessions sheduled</div>
-                            <div class="col-5">No of participation <br>sessions held</div>
+                            <div class="col-4">No of practical <br>sessions sheduled</div>
+                            <div class="col-5">No of practical <br>sessions held</div>
                         
                         </div>
                     </div>

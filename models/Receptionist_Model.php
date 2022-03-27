@@ -230,6 +230,12 @@ class Receptionist_Model extends Model{
         $result=$this->db->runQuery("UPDATE exam_participation SET results='$pass' WHERE student_id='$id' AND exam_id='$exId'");
         // $exam = $this->db->runQuery("SELECT exams.exam_type FROM exams INNER JOIN exam_participation ON exam_participation.exam_id=exams.exam_id WHERE exam_participation.student_id='$id'");
         $extype = $exStatus[0]['exam_type'];
+        if($extype=='Theory'){
+            $extype="written exam passed";
+        }
+        else if($extype=='Practical'){
+            $extype="trial exam passed";
+        }
         if($pass=="Pass"){
             $result=$this->db->runQuery("UPDATE student SET student_status='$extype' WHERE student.student_id='$id'");
         }
@@ -320,19 +326,22 @@ class Receptionist_Model extends Model{
     //-----------------------------------------------------------------------part 2 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
     //examPassed
     function display_examPassed(){
-        $result=$this->db->runQuery("SELECT student.student_id,student.full_name,student.contact FROM ((student INNER JOIN exam_participation ON exam_participation.student_id=student.student_id) INNER JOIN exams ON exams.exam_id=exam_participation.exam_id) WHERE exam_participation.results='Pass' AND exams.exam_type='Theory'");
+        // $result=$this->db->runQuery("SELECT student.student_id,student.full_name,student.contact FROM ((student INNER JOIN exam_participation ON exam_participation.student_id=student.student_id) INNER JOIN exams ON exams.exam_id=exam_participation.exam_id) WHERE exam_participation.results='Pass' AND exams.exam_type='Theory'");
+        $result=$this->db->runQuery("SELECT student.student_id,student.full_name,student.contact FROM student WHERE student_status='written exam passed'");
         // $result=$this->db->runQuery("SELECT student.student_id,student.full_name,student.contact FROM student WHERE student.type='written' AND student.student_status='pass'");
         return $result;
     }
     //examFailed
     function display_examFailed(){
-        $result=$this->db->runQuery("SELECT student.student_id,student.full_name,student.contact FROM ((student INNER JOIN exam_participation ON exam_participation.student_id=student.student_id) INNER JOIN exams ON exams.exam_id=exam_participation.exam_id) WHERE exam_participation.results='Fail' AND exams.exam_type='Theory'");
+        // $result=$this->db->runQuery("SELECT student.student_id,student.full_name,student.contact FROM ((student INNER JOIN exam_participation ON exam_participation.student_id=student.student_id) INNER JOIN exams ON exams.exam_id=exam_participation.exam_id) WHERE exam_participation.results='Fail' AND exams.exam_type='Theory'");
+        $result=$this->db->runQuery("SELECT student.student_id,student.full_name,student.contact FROM student WHERE student_status='written exam failed'");
         // $result=$this->db->runQuery("SELECT student.student_id,student.full_name,student.contact FROM student WHERE student.type='written' AND student.student_status='fail'");
         return $result;
     }
     //trialPassed
     function display_trialPassed(){
-        $result=$this->db->runQuery("SELECT student.student_id,student.full_name,student.contact FROM ((exam_participation INNER JOIN student ON student.student_id=exam_participation.student_id) INNER JOIN exams ON exams.exam_id=exam_participation.exam_id) WHERE (exams.exam_type='Practical' OR exams.exam_type='Trial') AND exam_participation.results='Pass'");
+        // $result=$this->db->runQuery("SELECT student.student_id,student.full_name,student.contact FROM ((exam_participation INNER JOIN student ON student.student_id=exam_participation.student_id) INNER JOIN exams ON exams.exam_id=exam_participation.exam_id) WHERE (exams.exam_type='Practical' OR exams.exam_type='Trial') AND exam_participation.results='Pass'");
+        $result=$this->db->runQuery("SELECT student.student_id,student.full_name,student.contact FROM student WHERE student_status='trial exam passed'");
         // $result=$this->db->runQuery("SELECT student.student_id,student.full_name,student.contact FROM student WHERE student.type='trial' AND student.student_status='pass'");
         return $result;
     }

@@ -30,6 +30,8 @@
                     <div class="ava">
                         <a href="http://localhost/project/Receptionist/sessions"><button class="all" id="all">All</button></a>
                         <a href="http://localhost/project/Receptionist/sessionsToday"><button class="today">Today</button></a>
+                        <!-- <a href="<?php echo URL?>Receptionist/sessions"><button class="all" id="all">All</button></a>
+                        <a href="<?php echo URL?>Receptionist/sessionsToday"><button class="today" id="today">Today</button></a> -->
                     </div>
                     <div class="none"></div>
                 </div>

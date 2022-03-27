@@ -43,7 +43,7 @@
                             <a class="link" href="http://localhost/project/Receptionist/examFailed/"><button class="fail">Exam Failed</button></a>
                         </div>
                         <div class="cl2">
-                            <input type="text" name="search" class="search" id="search" placeholder="Search" onkeyup="searchMe(this)">
+                            <input type="text" name="search" class="search" id="search" placeholder="Search by name" onkeyup="searchMe(this)">
                         </div>
                     </div>
                 </div>
@@ -86,7 +86,7 @@
                     <div class="edit-theam">Student ID</div>
                     <div class="edti-colon">:</div>
                     <div class="edit-area">
-                        <input type="text" name="fName" id="edId">
+                        <input type="text" name="fName" id="edId" readonly="readonly">
                     </div>
                 </div>
                 <div class="edit-row">
@@ -121,7 +121,9 @@
                     <div class="edit-theam">Gender</div>
                     <div class="edti-colon">:</div>
                     <div class="edit-area">
-                        <input type="text" name="fName" id="edGen">
+                        <input type="text" name="fName" id="edGen" readonly="readonly">
+                        <!-- <input type="radio" id="edMale" name="gender">Male <input type="radio" id="edFemale" name="gender">Female -->
+
                     </div>
                 </div>
                 <div class="edit-row">
@@ -156,7 +158,7 @@
                     <div class="edit-theam">Date of Birth</div>
                     <div class="edti-colon">:</div>
                     <div class="edit-area">
-                        <input type="date" name="fName" id="edDob">
+                        <input type="date" name="fName" id="edDob" readonly="readonly">
                     </div>
                 </div>
                 <div class="edit-row">
@@ -177,7 +179,7 @@
                     <div class="edit-theam">Type</div>
                     <div class="edti-colon">:</div>
                     <div class="edit-area">
-                        <input type="text" name="fName" id="edType">
+                        <input type="text" name="fName" id="edType" readonly="readonly">
                     </div>
                 </div>
                
@@ -348,17 +350,19 @@
 
     <div class="container-st" id="container-st">
         <div class="payment-header-st">
-            <div class="whoAmI" id="whoAmI"></div>
+            <!-- <div class="whoAmI" id="whoAmI"></div> -->
+            <div class="title-st">
+                <h2>Payments</h2>
+            </div>
         </div>
+      
         <div class="view-st">
             <div class="main-st">
                 <div class="part-1-st">
                     <div class="st-prof-st">
 
                     </div>      
-                    <div class="title-st">
-                        <h2>Payments</h2>
-                    </div>
+                    
                 </div>
                 <div class="part-2-st">
                     <div class="paid-st"> 
@@ -409,14 +413,14 @@
                     <div class="first">Amount</div>
                     <div class="second">:</div>
                     <div class="third">
-                        <input type="text" name="amount" id="amount" placeholder="Rs.0">
+                        <input type="number" name="amount" id="amount" placeholder="Rs.0">
                     </div>
                 </div>
                 <div class="myRow">
                     <div class="first">Re-enter Amount</div>
                     <div class="second">:</div>
                     <div class="third">
-                        <input type="text" name="re-amount" id="re-amount" placeholder="Rs.0">
+                        <input type="number" name="re-amount" id="re-amount" placeholder="Rs.0">
                     </div>
                 </div>
             </div>
