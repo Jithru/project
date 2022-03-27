@@ -81,6 +81,7 @@ class Instructor_Model extends Model{
     }
     function setAbsent($sessionId,$studentId){
         $result=$this->db->runQuery("UPDATE session_participation SET status='absent' WHERE student_id=$studentId AND session_id=$sessionId");
+        $result=$this->db->runQuery(" DELETE FROM session_student_assigns WHERE student_id=$studentId and session_id=$sessionId");
         return true;
     }
     function setPresent($sessionId,$studentId){

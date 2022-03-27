@@ -3,7 +3,7 @@
     <div class="view">
                 <div class="left">
                     <div class="big-picture">
-                        <img src="<?php echo URL?>public/images/profpic.png" alt="big-pic" width="180" height="180">
+                        <img src="<?php echo URL?>public/images/profpic.png" alt="big-pic" id="bigPicture" width="180" height="180">
                     </div>
 
                     <div class="left-details">
@@ -28,7 +28,7 @@
 
                     </div>
                     <div class="edit-profile">
-                           <a href="<?php echo URL?>Student/editprofile"> <button class="edit-button">Edit profile</button></a>
+                           <a href="<?php echo URL?>Student/editprofile"><button class="edit-button">Edit profile</button></a>
                             
                         </div>
                     <!-- <button class="upload-pic">

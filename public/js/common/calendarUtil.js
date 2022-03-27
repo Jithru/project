@@ -127,7 +127,7 @@ httpreq2.onreadystatechange=function(){
                             }
                             var initDate=today.getFullYear()+"-"+monthval+"-"+dateval
                         document.getElementById("selectedDateContainer").value=initDate
-                        console.log(initDate)
+                        console.log("initDate",initDate)
 
 
                         let row=document.getElementById("tablerows")
@@ -163,6 +163,8 @@ httpreq2.onreadystatechange=function(){
                 });
 
                 document.getElementById("sessionBtn").addEventListener("click",function(){
+                        // document.getElementById("sessionBtn").classlist.replace("page-change-button","page-change-button-selected")
+                        // document.getElementById("examBtn").classlist.replace("page-change-button-selected","page-change-button")
                         var selectedDate=document.getElementById("selectedDateContainer").value
 
                         let row=document.getElementById("tablerows")
