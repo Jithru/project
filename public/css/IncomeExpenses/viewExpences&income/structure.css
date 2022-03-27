@@ -3,7 +3,7 @@
   position: fixed;
   justify-content: space-between;
   width: 100vw;
-  background-color: #f2f2f2;
+  /* background-color: #f2f2f2; */
   height: 100vh;
 }
 .container {

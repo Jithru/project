@@ -78,6 +78,7 @@ class User extends Controller{
         $_SESSION['nic'] = $loginData['nic'];
         $_SESSION['job_title'] = $loginData['job_title'];
         $_SESSION['name'] = str_replace("-", " ", $loginData['name']);
+        $_SESSION['profile_pic']=$loginData['profile_pic'];
         if(isset($loginData['employee_id'])){
             $_SESSION['employee_id'] = $loginData['employee_id'];
         }

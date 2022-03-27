@@ -65,7 +65,7 @@ class User_Model extends Model{
         }
         else{
             unset($result);
-            $result=$this->db->runQuery("SELECT employee.employee_id,employee.nic,employee.job_title,employee.name,employee_private.password FROM employee INNER JOIN employee_private ON employee.employee_id=employee_private.employee_id WHERE employee.nic='$username'");
+            $result=$this->db->runQuery("SELECT employee.employee_id,employee.nic,employee.job_title,employee.name,employee_private.password,profile_pic FROM employee INNER JOIN employee_private ON employee.employee_id=employee_private.employee_id WHERE employee.nic='$username'");
             if(!empty($result)){
                 if(password_verify($password,
                 $result[0]['password'] )){
@@ -79,7 +79,7 @@ class User_Model extends Model{
             }
             else{
                 unset($result);
-                $result=$this->db->runQuery("SELECT student.nic,student.init_name,student.student_id,student_private.password FROM student INNER JOIN student_private ON student.student_id=student_private.student_id WHERE student.nic='$username' ");
+                $result=$this->db->runQuery("SELECT student.nic,student.init_name,student.student_id,student_private.password,student.profile_pic FROM student INNER JOIN student_private ON student.student_id=student_private.student_id WHERE student.nic='$username' ");
                 
                 if(!empty($result)){
                     if(password_verify($password,

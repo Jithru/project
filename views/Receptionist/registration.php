@@ -7,9 +7,44 @@
     <link rel="stylesheet" href="<?php echo URL?>public/css/Receptionist/registration.css">
     <link rel="stylesheet" href="<?php echo URL?>public/css/Receptionist/registration2.css">
     <link rel="stylesheet" href="<?php echo URL?>public/css/Receptionist/reg.css">
+    <link rel="stylesheet" href="<?php echo URL?>public/css/common/backgroundAnim.css">
     <title>Lead driving school</title>
 </head>
 <body>
+<ul class="background">
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+</ul>
     <div class="container">
         <div class="reg-form" id="reg-form">
             <div class="part-1"><h2>Registration</h2></div>

@@ -1,0 +1,6 @@
+.row>.col-1,  .row>.col-4, .row>.col-5{
+    padding-left: 5%;
+}
+.col-names>.col-1{
+    padding-left: 10px;
+}

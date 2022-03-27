@@ -13,10 +13,26 @@
     <link rel="stylesheet" href="<?php echo URL?>public/css/Manager/main/structure.css">
     <link rel="stylesheet" href="<?php echo URL?>public/css/IncomeExpenses/viewExpences&income/structure.css">
     <link rel="stylesheet" href="<?php echo URL?>public/css/IncomeExpenses/viewExpences&income/tableStyle.css">
+    <link rel="stylesheet" href="<?php echo URL?>public/css/common/backgroundAnim.css">
     <title>Income</title>
 </head>
 <body>
-    
+<ul class="background">
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+</ul>
     <!--body content of the page starts here-->
     <div class="main-box">
         
