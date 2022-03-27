@@ -60,7 +60,7 @@ class Admin_Model extends Model{
                 $this->db->runQuery("INSERT INTO instructor (employee_id , instructor_license_id) VALUES ('$Emp_Id', '$licenseNumber')");
             }
             if($empType=='Teacher'){
-                $this->db->runQuery("INSERT INTO teacher (employee_id) VALUES ('$Emp_Id')");
+                $this->db->runQuery("INSERT INTO instructor (employee_id , instructor_license_id) VALUES ('$Emp_Id', '0')");
             }
 
             // sendOtp($OTP);

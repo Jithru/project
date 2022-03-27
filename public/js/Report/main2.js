@@ -54,13 +54,13 @@ function loadTable(method,period){
         if(httpreq.readyState === 4 && httpreq.status === 200){
             console.log(httpreq.responseText);
             const data = JSON.parse(httpreq.responseText);
-            for(i=0;i<data.length;i++){
+            for(i=0;i<data[0].length;i++){
                 rows.innerHTML+='<div class="row">'
-                +'<div class="col-1">'+data[i]['session_id']+'</div>'
-                +'<div class="col-2">'+data[i]['session_title']+'</div>'
-                +'<div class="col-3">'+data[i]['session_date']+'</div>'
-                +'<div class="col-4">'+data[i]['session_time']+'</div>'
-                +'<div class="col-5">'+data[i]['session_id']+'</div>'
+                +'<div class="col-1">'+data[0][i]['student_id']+'</div>'
+                +'<div class="col-2">'+data[0][i]['init_name']+'</div>'
+                +'<div class="col-3">'+data[0][i]['student_status']+'</div>'
+                +'<div class="col-4">'+data[0][i]['total_assigns']+'</div>'
+                +'<div class="col-5">'+data[1][i][0]['part']+'</div>'
             +'</div>'
             }
 
@@ -96,5 +96,12 @@ function filter(){
     }
     
     
+}
+
+function back(){
+    document.getElementById('container').classList.replace('container-print','container')
+    document.getElementById('print').classList.replace('print-deactive','print')
+    document.getElementById('downld').classList.replace('downld-active','downld')
+    document.getElementById('backk').classList.replace('backk-active','backk')
 }
 

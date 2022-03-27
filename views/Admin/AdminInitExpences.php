@@ -13,12 +13,46 @@
     <link rel="stylesheet" href="<?php echo URL?>public/css/common/sidebar.css">
     <link rel="stylesheet" href="<?php echo URL?>public/css/common/header.css">
     <link  rel="stylesheet" href="<?php echo URL?>public/css/admin/responsive_pack.css">
-    
+    <link rel="stylesheet" href="<?php echo URL?>public/css/common/backgroundAnim.css">
     <script  src="<?php echo URL?>public/js/common/header.js"></script>
     <script src="<?php echo URL?>public/js/common/sidebar.js"></script>
     <title>Lead driving school</title>
 </head>
 <body>
+<ul class="background">
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+</ul>
     <div class="box-1">
     <?php require_once APPROOT."/../views/common/header.php"; ?>
         <div class="box-2">
