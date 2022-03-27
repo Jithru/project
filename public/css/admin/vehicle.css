@@ -1,6 +1,5 @@
-.invalid-login {
-    height: 0;
-    visibility: hidden;
+.errp {
+    display: none;
   }
   
   .invalid-login-true {

@@ -1,5 +1,5 @@
 function VehicleClassesByName(){
-    const option = document.getElementById("vehicleClassByName");
+    const option = document.getElementById("vehicleClassByName"); 
     let httpreq =new XMLHttpRequest();
     httpreq.onreadystatechange = function(){
         if(httpreq.readyState === 4 && httpreq.status === 200){
@@ -28,25 +28,31 @@ VehicleClassesByName()
 function addVehicle(){
     var vehicleNo=document.getElementById("vehicle-num").value;
     var type=document.getElementById("vehicleClassByName").value;
-
-    if(false){
-        alert("j");
+    if(vehicleNo==""){
+        document.getElementById('vehicle-num').placeholder="This field can't be empty";
+        document.getElementById('vehicle-num').style.border="2px solid red";
     }
+
     else{
-        let httpreq = new XMLHttpRequest();
-        httpreq.onreadystatechange = function(){
-            if(httpreq.readyState === 4 && httpreq.status ===200){
-                if(httpreq.responseText=="successfull"){
-                    // alert("hi")
-                    window.location.assign('http://localhost/project/Admin/vehicles')
+        if(false){
+            alert("j");
+        }
+        else{
+            let httpreq = new XMLHttpRequest();
+            httpreq.onreadystatechange = function(){
+                if(httpreq.readyState === 4 && httpreq.status ===200){
+                    if(httpreq.responseText=="successfull"){
+                        // alert("hi")
+                        window.location.assign('http://localhost/project/Admin/vehicles')
+                    }
                 }
             }
+    
+            let data = [vehicleNo,type]
+            let url = "http://localhost/project/Admin/addVehiclelogic/"+data;
+            httpreq.open("post" , url ,true)
+            httpreq.send();
         }
-
-        let data = [vehicleNo,type]
-        let url = "http://localhost/project/Admin/addVehiclelogic/"+data;
-        httpreq.open("post" , url ,true)
-        httpreq.send();
     }
     
 }
