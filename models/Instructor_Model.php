@@ -75,7 +75,7 @@ class Instructor_Model extends Model{
         return $result;
     }
     function loadStudentsForSession($sessionId){
-        $result=$this->db->runQuery("SELECT student.student_id,student.init_name,student.contact,session_participation.status from ((student INNER JOIN session_participation on session_participation.student_id=student.student_id) INNER JOIN sessions on sessions.session_id=session_participation.session_id) WHERE session_participation.session_id=$sessionId AND session_participation.status='going' OR session_participation.status='absent' OR session_participation.status='present'");
+        $result=$this->db->runQuery("SELECT student.student_id,student.init_name,student.profile_pic,student.contact,session_participation.status from ((student INNER JOIN session_participation on session_participation.student_id=student.student_id) INNER JOIN sessions on sessions.session_id=session_participation.session_id) WHERE session_participation.session_id=$sessionId AND session_participation.status='going' OR session_participation.status='absent' OR session_participation.status='present'");
         // $result=$this->db->runQuery("SELECT student.student_id,student.init_name,student.contact from ((student INNER JOIN session_participation on session_participation.student_id=student.student_id) INNER JOIN sessions on sessions.session_id=session_participation.session_id) WHERE session_participation.session_id='4' AND session_participation.status='going'");
         return $result;
     }

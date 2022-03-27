@@ -443,9 +443,9 @@ class Manager_Model extends Model{
         $result=$this->db->runQuery("UPDATE employee SET profile_pic='$file' WHERE employee_id=$employeeId");
         // return $studentId;
     }
-    function getProfilePic($employeeId){
-        $result=$this->db->runQuery("SELECT profile_pic from employee WHERE employee_id=$employeeId");
-        return $result;
-    }
+    // function getProfilePic($employeeId){
+    //     $result=$this->db->runQuery("SELECT profile_pic from employee WHERE employee_id=$employeeId");
+    //     return $result;
+    // }
 
 }

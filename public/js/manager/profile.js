@@ -6,11 +6,14 @@ function profileData(){
            // console.log(row)
            console.log(httprequest.responseText)
             const obj=JSON.parse(httprequest.responseText)
-        //    console.log(obj[0].full_name)
+        //    console.log(obj[0].full_name)bigPic-Container""bigPicture
             let profilePic=document.getElementById("bigPicture")
-           
-            // profilePic.src="http://localhost/project/images/profilePicsEmployee/wallpaper-for-less-remodelideas.co.jpg"
+            
+            // let profilePicContainer=document.getElementById("bigPic-Container")
+            // profilePicContainer.innerHTML = '<img src="public/images/profpic.png" alt="big-pic" id="bigPicture" width="180" height="180">';
+            // // profilePic.src="http://localhost/project/images/profilePicsEmployee/wallpaper-for-less-remodelideas.co.jpg"
             // console.log("http://localhost/project/images/profilePicsEmployee/"+String(obj[0].profile_pic))
+            profilePic.src="http://localhost/project/public/images/profilePicsEmployee/"+String(obj[0].profile_pic)
            var gender;
            if(obj[0].gender=="m"){
                 gender="Male";
