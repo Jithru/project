@@ -28,7 +28,7 @@
 
                     </div>
                     <div class="edit-profile">
-                           <a href="<?php echo URL?>Student/editprofile"> <button class="edit-button">Edit profile</button></a>
+                           <a href="<?php echo URL?>Student/editprofile"><button class="edit-button">Edit profile</button></a>
                             
                         </div>
                     <!-- <button class="upload-pic">

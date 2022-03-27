@@ -40,6 +40,35 @@ class Manager extends Controller{
         echo json_encode($value);
 
     }
+    function editprofile(){
+        if(isset($_SESSION['job_title'])){
+            if($_SESSION['job_title']=='Manager'){
+                $this->view->render('Manager/editprofile');
+            }else{
+                $this->view->render('error');
+            }
+        }
+        else{
+            $this->view->render('error');
+        }
+    }
+    // function validate($password){
+    //     // echo $password;
+    //     $employeeId=$_SESSION['employee_id'];
+    //     $result=$this->model->checkPassword($employeeId,$password);
+    //     if($result==true){
+    //         echo "success";
+    //     }
+    // }
+
+    function updatePasswordLogic($password){
+        $employeeId=$_SESSION['employee_id'];
+        $result=$this->model->updatePassword($employeeId,$password);
+        if($result==true){
+            echo "updated";
+        }
+
+    }
 
     function addExpenses(){
         if(isset($_SESSION['job_title'])){
@@ -702,8 +731,34 @@ class Manager extends Controller{
     function rejectRequestExam($studentId,$examId){
         $result=$this->model->rejectRequestExam($studentId,$examId);
     }
+
+    function imageUploading(){
+        $target_dir = $_SERVER['DOCUMENT_ROOT']."/project/public/images/profilePicsEmployee/";
+        
+        $target_file = $target_dir . basename($_FILES["photo"]["name"]);
+        // $_FILES["photo"]["name"]=$_SESSION['student_id'];
+        // $target_file = $target_dir .$_FILES["photo"]["name"];
+        $file=$_FILES["photo"]["name"];
+        $tempName=$_FILES["photo"]["tmp_name"];
+        $path = pathinfo($file);
+        $filename = $path['filename'];
+        $ext = $path['extension'];
+        $path_filename_ext = $target_dir.$filename;
+        $result=$this->model->imageUploading(basename($_FILES["photo"]["name"]),$_SESSION['employee_id']);
+        move_uploaded_file($tempName,$target_file);
+        
+        // echo $target_file;
+        // echo $tempName;
+        echo $result;
+
+    }
     function getDatesOfSessionsAndSessions(){
         $result=$this->model->getDatesOfSessionsAndSessions();
         echo json_encode($result);
     }
+    function getProfilePic(){
+        $result=$this->model->getProfilePic($_SESSION['employee_id']);
+        $_SESSION['profile_pic']=$result[0]['profile_pic'];
+    }
+
 }

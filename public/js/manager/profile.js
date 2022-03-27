@@ -7,7 +7,10 @@ function profileData(){
            console.log(httprequest.responseText)
             const obj=JSON.parse(httprequest.responseText)
         //    console.log(obj[0].full_name)
-
+            let profilePic=document.getElementById("bigPicture")
+           
+            // profilePic.src="http://localhost/project/images/profilePicsEmployee/wallpaper-for-less-remodelideas.co.jpg"
+            // console.log("http://localhost/project/images/profilePicsEmployee/"+String(obj[0].profile_pic))
            var gender;
            if(obj[0].gender=="m"){
                 gender="Male";
