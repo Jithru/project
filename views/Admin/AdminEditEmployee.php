@@ -30,8 +30,10 @@
      </div>
      <div id="pop-div2" class="popup-container2">
         <div class="conf-box2">
-            <div class="invalid-login" id="invalid-login">
-                Invalid password, please try again.
+            <div class="er-cnt">
+                <div class="errp" id="errp">
+                    Invalid password, please try again.
+                </div>
             </div>
             <div class="input-container">
                 <label for="">Username :</label>
@@ -57,7 +59,7 @@
             <div class="title-container">
                 <h1>Edit Employee</h1> 
             </div>
-            <div class="invalid-login" id="invalid-login">
+            <div id="err" class="err" >
                             
             </div>
             <div class="details-container">

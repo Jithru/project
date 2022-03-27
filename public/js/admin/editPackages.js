@@ -1,20 +1,26 @@
 
-function savePname(){
+function savePname(){ 
     const pname = document.getElementById('package-name-edit').value
-    let httprequest = new XMLHttpRequest();
-    httprequest.onreadystatechange = function(){
-        if (httprequest.readyState===4 && httprequest.status===200){
-            console.log(httprequest.responseText)
-            if(httprequest.responseText=="success"){
-                window.location.assign("http://localhost/project/Admin/editPackages");
-            }
-            
-        }
+    if(pname==""){
+        document.getElementById('package-name-edit').placeholder="This field can't be empty";
+        document.getElementById('package-name-edit').style.border="2px solid red";
     }
-    
-    var url="http://localhost/project/Admin/editPackageName/"+pname;
-    httprequest.open("POST",url,true)
-    httprequest.send()
+    else{
+        let httprequest = new XMLHttpRequest();
+        httprequest.onreadystatechange = function(){
+            if (httprequest.readyState===4 && httprequest.status===200){
+                console.log(httprequest.responseText)
+                if(httprequest.responseText=="success"){
+                    window.location.assign("http://localhost/project/Admin/editPackages");
+                }
+                
+            }
+        }
+        
+        var url="http://localhost/project/Admin/editPackageName/"+pname;
+        httprequest.open("POST",url,true)
+        httprequest.send()
+    }
 }
 
 // function savePclass(){
@@ -47,35 +53,52 @@ function savePname(){
 
 function savePamount(){
     const pamount = document.getElementById('total-price-edit').value
-    let httprequest = new XMLHttpRequest();
-    httprequest.onreadystatechange = function(){
-        if (httprequest.readyState===4 && httprequest.status===200){
-            console.log(httprequest.responseText)
-            if(httprequest.responseText=="success"){
-                window.location.assign("http://localhost/project/Admin/editPackages");
-            }
-            
-        }
+    if(pamount==""){
+        document.getElementById('total-price-edit').style.width="60%"
+        document.getElementById('total-price-edit').placeholder="This field can't be empty";
+        document.getElementById('total-price-edit').style.border="2px solid red";
     }
-    var url="http://localhost/project/Admin/editPackagePrices/"+pamount;
-    httprequest.open("POST",url,true)
-    httprequest.send()
+    else{
+        let httprequest = new XMLHttpRequest();
+        httprequest.onreadystatechange = function(){
+            if (httprequest.readyState===4 && httprequest.status===200){
+                console.log(httprequest.responseText)
+                if(httprequest.responseText=="success"){
+                    window.location.assign("http://localhost/project/Admin/editPackages");
+                }
+                
+            }
+        }
+        var url="http://localhost/project/Admin/editPackagePrices/"+pamount;
+        httprequest.open("POST",url,true)
+        httprequest.send()
+    }
 }
+
+
+
 function savePdays(){
     const pdays = document.getElementById('training-days-edit').value
-    let httprequest = new XMLHttpRequest();
-    httprequest.onreadystatechange = function(){
-        if (httprequest.readyState===4 && httprequest.status===200){
-            console.log(httprequest.responseText)
-            if(httprequest.responseText=="success"){
-                window.location.assign("http://localhost/project/Admin/editPackages");
-            }
-            
-        }
+    if(pdays==""){
+        document.getElementById('training-days-edit').style.width="60%"
+        document.getElementById('training-days-edit').placeholder="This field can't be empty";
+        document.getElementById('training-days-edit').style.border="2px solid red";
     }
-    var url="http://localhost/project/Admin/editPackageDays/"+pdays;
-    httprequest.open("POST",url,true)
-    httprequest.send()
+    else{
+        let httprequest = new XMLHttpRequest();
+        httprequest.onreadystatechange = function(){
+            if (httprequest.readyState===4 && httprequest.status===200){
+                console.log(httprequest.responseText)
+                if(httprequest.responseText=="success"){
+                    window.location.assign("http://localhost/project/Admin/editPackages");
+                }
+                
+            }
+        }
+        var url="http://localhost/project/Admin/editPackageDays/"+pdays;
+        httprequest.open("POST",url,true)
+        httprequest.send()
+    }
 }
 
 

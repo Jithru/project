@@ -67,14 +67,26 @@
     background-color: transparent;
 }
 
+.er-cnt{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+}
 
 
-.invalid-login {
-    height: 0;
-    visibility: hidden;
+
+.err {
+    
+    display: none;
+  }
+
+  .errp{
+    
+    display: none;
   }
   
-  .invalid-login-true {
+  .invalid-login-true{
     width: 310px;
     height: 50px;
     font-size: 14px;

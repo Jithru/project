@@ -67,6 +67,14 @@ body{
 .edit-container-visible{
     visibility: visible;
 }
+
+.toEdit-container{
+    visibility: hidden;
+}
+.toEdit-container-visible{
+    visibility: visible;
+    /* position: fixed; */
+}
 /* sessions */
 /* .table-body-all{
     visibility: visible;

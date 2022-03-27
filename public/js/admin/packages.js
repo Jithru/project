@@ -60,14 +60,14 @@ function loadInitPrices(){
                 initRow.innerHTML += '<div class="row">'+
                 '<div class="col-1"><b class="bold-name-2">Vehicle Type</b><b class="bold">: </b>'+initPrices[0][i]+'</div>'+
                 '<div class="col-2"><b class="bold-name-2">Vehicle class</b><b class="bold">: </b>'+initPrices[1][i]+'</div>'+
-                '<div class="col-3"><b class="bold-name-2">Price (LKR)</b><b class="bold">: </b><input disabled="true" type="text" id="iprice'+initPrices[4][i]+'" value="'+initPrices[2][i]+'"></div>'+
+                '<div class="col-3"><b class="bold-name-2">Price (LKR)</b><b class="bold">: </b><input disabled="true" type="number" min="0" id="iprice'+initPrices[4][i]+'" value="'+initPrices[2][i]+'"></div>'+
                 '<div class="col-4"><button id="Ii'+initPrices[4][i]+'" class="edit" onclick ="editInit('+initPrices[4][i]+')">Edit</button><button id="I'+initPrices[4][i]+'"  class="save-small-deactivate" onclick ="saveInit('+initPrices[4][i]+')">Save</button><button id="ci'+initPrices[4][i]+'" class="cancel-small-deactivate" onclick ="cancelInit('+initPrices[4][i]+')">Cancel</button></div>'+
                 '</div>'
 
                 ExtraRow.innerHTML += '<div class="row">'+
                 '<div class="col-1"><b class="bold-name-2">Vehicle Type</b><b class="bold">: </b>'+initPrices[0][i]+'</div>'+
                 '<div class="col-2"><b class="bold-name-2">Vehicle class</b><b class="bold">: </b>'+initPrices[1][i]+'</div>'+
-                '<div class="col-3"><b class="bold-name-2">Price (LKR)</b><b class="bold">: </b><input disabled="true" type="text" id="eprice'+initPrices[4][i]+'" value="'+initPrices[3][i]+'"></div>'+
+                '<div class="col-3"><b class="bold-name-2">Price (LKR)</b><b class="bold">: </b><input disabled="true" type="number" min="0" id="eprice'+initPrices[4][i]+'" value="'+initPrices[3][i]+'"></div>'+
                 '<div class="col-4"><button id="Ee'+initPrices[4][i]+'" class="edit" onclick ="editExtra('+initPrices[4][i]+')">Edit</button><button id="E'+initPrices[4][i]+'"  class="save-small-deactivate" onclick ="saveExtra('+initPrices[4][i]+')">Save</button><button id="ce'+initPrices[4][i]+'" class="cancel-small-deactivate" onclick ="cancelExtra('+initPrices[4][i]+')">Cancel</button></div>'+
                 '</div>' 
 
@@ -104,6 +104,11 @@ function cancelInit(id){
     document.getElementById('ci'+id).classList.replace("cancel-small","cancel-small-deactivate")
     document.getElementById('iprice'+id).disabled = true;
     document.getElementById('iprice'+id).style.border = "none";
+    document.getElementById("Initial-Prices").innerHTML="";
+    document.getElementById("Extra-Prices").innerHTML="";
+    document.getElementById('packages').innerHTML="";
+    loadInitPrices()
+    loadPackages()
 }
 
 function editExtra(id){
@@ -121,14 +126,23 @@ function cancelExtra(id){
     document.getElementById('ce'+id).classList.replace("cancel-small","cancel-small-deactivate")
     document.getElementById('eprice'+id).disabled = true;
     document.getElementById('eprice'+id).style.border = "none";
+    document.getElementById("Initial-Prices").innerHTML="";
+    document.getElementById("Extra-Prices").innerHTML="";
+    document.getElementById('packages').innerHTML="";
+    loadInitPrices()
+    loadPackages()
 }
 
 
 function saveInit(id){
     
     let iprice = document.getElementById('iprice'+id+'').value
-    let httprequest = new XMLHttpRequest();
-    httprequest.onreadystatechange = function(){
+    if(iprice<0){
+        alert("value must be greater than or equal to 0")
+    }
+    else{
+        let httprequest = new XMLHttpRequest();
+        httprequest.onreadystatechange = function(){
         if (httprequest.readyState===4 && httprequest.status===200){
             console.log(httprequest.responseText)
             if(httprequest.responseText=="success"){
@@ -141,22 +155,28 @@ function saveInit(id){
     var url="http://localhost/project/Admin/editInitPrices/"+initPrice;
     httprequest.open("POST",url,true)
     httprequest.send()
+    }
 }
 
 function saveExtra(id){
     let iprice = document.getElementById('eprice'+id+'').value
-    let httprequest = new XMLHttpRequest();
-    httprequest.onreadystatechange = function(){
-        if (httprequest.readyState===4 && httprequest.status===200){
-            console.log(httprequest.responseText)
-            if(httprequest.responseText=="success"){
-                window.location.assign("http://localhost/project/Admin/packages");
-            }
-            
-        }
+    if(iprice<0){
+        alert("value must be greater than or equal to 0")
     }
-    let initPrice = [id,iprice]
-    var url="http://localhost/project/Admin/editExtraPrices/"+initPrice;
-    httprequest.open("POST",url,true)
-    httprequest.send()
+    else{
+        let httprequest = new XMLHttpRequest();
+        httprequest.onreadystatechange = function(){
+            if (httprequest.readyState===4 && httprequest.status===200){
+                console.log(httprequest.responseText)
+                if(httprequest.responseText=="success"){
+                    window.location.assign("http://localhost/project/Admin/packages");
+                }
+                
+            }
+        }
+        let initPrice = [id,iprice]
+        var url="http://localhost/project/Admin/editExtraPrices/"+initPrice;
+        httprequest.open("POST",url,true)
+        httprequest.send()
+    }
 }
