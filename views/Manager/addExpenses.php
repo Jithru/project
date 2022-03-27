@@ -12,10 +12,45 @@
     <link rel="stylesheet" href="<?php echo URL?>public/css/Manager/main/structure.css">
     <link rel="stylesheet" href="<?php echo URL?>public/css/Manager/addExpences/structure.css">
     <link rel="stylesheet" href="<?php echo URL?>public/css/Manager/addExpences/bodyContainer.css">
+    <link rel="stylesheet" href="<?php echo URL?>public/css/common/backgroundAnim.css">
 
     <title>Lead driving school</title>
 </head>
 <body>
+<ul class="background">
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+</ul>
     <div class="confirmation-box" id="confirmation">
         <div class="box-body">
             <div class="popup-content-box">

@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="<?php echo URL?>public/css/Report/main.css">
+    <link rel="stylesheet" href="<?php echo URL?>public/css/Report/res.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.2/html2pdf.bundle.js"></script>
     <title>Lead driving school</title>
 </head>
@@ -27,27 +28,27 @@
         <div class="selector">
             
             <div class="method-selector">
-                <label for="method-selector-button" class="method-selector-label">Select method:</label>
+                <!-- <label for="method-selector-button" class="method-selector-label">Select method:</label>
                 <select class="method-selector-select" name="method-selector" id="methodSelector" onchange="selectMethod()">
                     <optgroup>
                         <option value="Annualy">Annualy</option>
                         <option value="Weekly">Weekly</option>
                         <option value="Monthly">Monthly</option>   
                     </optgroup>
-                </select>
+                </select> -->
             </div>
 
             <div class="date-selector">
-                <label for="date-container" class="date-container-label" id="lbl">Select Week:</label>
-                <input type="number" class="date-container" name="dateContainer" id="dateContainer" value="2022" required>
+                <!-- <label for="date-container" class="date-container-label" id="lbl">Select Week:</label> -->
+                <!-- <input type="number" class="date-container" name="dateContainer" id="dateContainer" value="2022" required> -->
             </div>
             <div class="go-button-container">
-                <button class="go-button" id="go" name="go" onclick="filter()">Go</button>
+                <!-- <button class="go-button" id="go" name="go" onclick="filter()">Go</button> -->
             </div>
 
             <div class="btn">
                 <button id="print" class="print"  onclick="format()">Print</button>
-                <button id="backk" class="backk">Back</button>
+                <button id="backk" class="backk" onclick="back()">Back</button>
                 <button id="downld" class="downld">Download PDF</button>
             </div>
 
@@ -116,7 +117,7 @@
             </div>
 
             <div class="hrr"></div>
-            <div class="sumary">
+            <div class="summary">
                         <div class="total">
                             <div class="tot-col-1">
                                 <h4>Total No. of students</h4>
