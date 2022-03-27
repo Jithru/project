@@ -348,7 +348,7 @@ body{
 }
 
 .container-print > .summary > .button{
-    display: none;
+    display: none; 
     
 }
 
