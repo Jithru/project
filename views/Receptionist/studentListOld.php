@@ -8,10 +8,44 @@
     <link rel="stylesheet" href="<?php echo URL?>public/css/Admin/Mid_Box_Layout2.css">
     <link rel="stylesheet" href="<?php echo URL?>public/css/admin/Employee_Details.css">
     <link rel="stylesheet" href="<?php echo URL?>public/css/admin/buttons.css">
+    <link rel="stylesheet" href="<?php echo URL?>public/css/common/backgroundAnim.css">
     <title>List of Students</title>
 </head>
 <body>
-
+<ul class="background">
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+</ul>
 <div class="mid-box-container-1" id="mid-box-container-1">
         <div class="mid-box-container-2">
             <div class="mid-box-title-container"> 

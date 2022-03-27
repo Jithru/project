@@ -18,7 +18,7 @@
                <div class="username"><?php echo isset($_SESSION['name'])?$_SESSION['name']:"";?></div> 
                
             <div class="header-profile">
-                <img src="<?php echo URL?>public/images/profpic.png" alt="">
+                <img class="profPic" src="<?php echo URL?>public/images/<?php echo isset($_SESSION['profile_pic'])&&$_SESSION['job_title']=='student'?"profilePics":"profilePicsEmployee";?>/<?php echo isset($_SESSION['profile_pic'])?$_SESSION['profile_pic']:"profpic.png";?>" alt="">
             </div>
         </div>
 </div>

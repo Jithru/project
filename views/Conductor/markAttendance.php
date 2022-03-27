@@ -11,9 +11,44 @@
     <link rel="stylesheet" href="<?php echo URL?>public/css/Manager/main/header.css">
     <link rel="stylesheet" href="<?php echo URL?>public/css/Conductor/markAttendance/structure.css">
     <link rel="stylesheet" href="<?php echo URL?>public/css/Conductor/markAttendance/tableStyle.css">
+    <link rel="stylesheet" href="<?php echo URL?>public/css/common/backgroundAnim.css">
     <title>Attendance</title>
 </head>
 <body>
+<ul class="background">
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+</ul>
     <div class="header">
 
     <?php require_once APPROOT."/../views/common/header.php"; ?>
