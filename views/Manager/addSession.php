@@ -24,7 +24,7 @@
                     <div class="type-class">
                         <label for="type">Type:</label>
                         <select name="type" id="type">
-                        <option value="<?php echo isset($_SESSION['type'])?$_SESSION['type']:"";?>"><?php echo isset($_SESSION['type'])?$_SESSION['type']:"Type";?></option>
+                        <option value="<?php echo isset($_SESSION['type'])?$_SESSION['type']:"noValue";?>"><?php echo isset($_SESSION['type'])?$_SESSION['type']:"Type";?></option>
                             <option value="Theory">Theory</option>
                             <option value="Practical">Practical</option>
                         </select>
