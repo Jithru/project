@@ -171,6 +171,23 @@ function runnerAgent() {
         }
     }
 }
+
+function getConductorId(){
+
+    let httprequest=new XMLHttpRequest();
+    httprequest.onreadystatechange=function(){
+        if(httprequest.readyState===4 && httprequest.status===200){
+            const obj=JSON.parse(httprequest.responseText);
+            console.log(obj);
+
+        }
+    }
+
+    var url="http://localhost/project/Instructor/getConductorId";
+    httprequest.open("POST",url,true);
+    httprequest.send();
+
+}
 viewAllSession();
 // runnerAgent();
 setInterval(runnerAgent, 1000);

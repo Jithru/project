@@ -152,4 +152,14 @@ class Instructor_Model extends Model{
         $result=array_merge($sessionResult,$examResult);
         return $result;
     }
+
+    function getConductorId($employeeId){
+        $result=$this->db->runQuery("");
+        return $result;
+
+    }
+
+    function pdfUploading($file){
+        $result=$this->db->runQuery("INSERT INTO pdf (`name`) VALUES ($file)");
+    }
 }
