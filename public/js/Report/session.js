@@ -75,7 +75,7 @@ function loadTable(method,period){
             // }
             
 
-            for(i=0;i<data[0].length;i++){
+            for(i=0;i<data[1].length;i++){
                 rows.innerHTML+='<div class="row">'
                 +'<div class="col-1">'+data[0][i]['session_date']+'</div>'
                 +'<div class="col-2">'+data[0][i]['theory']+'</div>'
@@ -91,7 +91,7 @@ function loadTable(method,period){
             var prac=0
             var held_prac=0
 
-            for(i=0;i<data[0].length;i++){
+            for(i=0;i<data[1].length;i++){
                 
                 theo+=parseInt(data[0][i]['theory'])
                 held_theo+=parseInt(data[0][i]['held_theory'])

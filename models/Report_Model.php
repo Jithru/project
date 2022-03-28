@@ -214,11 +214,11 @@ class Report_Model extends Model{
             // $result[0]=$this->db->runQuery("SELECT session_date FROM sessions WHERE sessions");
             $result[0]=$this->db->runQuery("SELECT sessions. session_date, COUNT(sessions.session_id) AS theory FROM sessions WHERE sessions.type='Theory' GROUP BY sessions.session_date");
             // $result[1]=$this->db->runQuery("SELECT COUNT(type) AS theory FROM sessions WHERE sessions.type='Theory' GROUP BY sessions.session_date");
-            $result[1]=$this->db->runQuery("SELECT sessions.session_date, COUNT(held_or_not) AS held_theory FROM session_status INNER JOIN sessions ON sessions.session_id=session_status.session_id WHERE held_or_not=1 GROUP BY sessions.session_date");
+            $result[1]=$this->db->runQuery("SELECT sessions.session_date, COUNT(session_status.held_or_not) AS held_theory FROM session_status INNER JOIN sessions ON sessions.session_id=session_status.session_id WHERE held_or_not=1 GROUP BY sessions.session_date");
             // $result[2]=$this->db->runQuery("SELECT COUNT(held_or_not) AS held_theory FROM session_status INNER JOIN sessions ON sessions.session_id=session_status.session_id WHERE held_or_not=1");
             $result[2]=$this->db->runQuery("SELECT sessions.session_date, COUNT(sessions.session_id) AS practical FROM sessions WHERE sessions.type='Practical' GROUP BY sessions.session_date");
             // $result[3]=$this->db->runQuery("SELECT COUNT(type) AS practical FROM sessions WHERE sessions.type='Practical'");
-            $result[3]=$this->db->runQuery("SELECT sessions.session_date, COUNT(held_or_not) AS held_prac  FROM session_status INNER JOIN sessions ON sessions.session_id=session_status.session_id WHERE held_or_not=1 GROUP BY sessions.session_date");
+            $result[3]=$this->db->runQuery("SELECT sessions.session_date, COUNT(session_status.held_or_not) AS held_prac  FROM session_status INNER JOIN sessions ON sessions.session_id=session_status.session_id WHERE held_or_not=1 GROUP BY sessions.session_date");
             // $result[4]=$this->db->runQuery("SELECT COUNT(held_or_not) AS held_prac  FROM session_status INNER JOIN sessions ON sessions.session_id=session_status.session_id WHERE held_or_not=1");
             return $result;
         }
