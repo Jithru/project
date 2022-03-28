@@ -160,6 +160,11 @@ class Instructor_Model extends Model{
         $result=$this->db->runQuery("UPDATE employee SET profile_pic='$file' WHERE employee_id=$employeeId");
         // return $studentId;
     }
+    function pdfUploading($filename){
+        // return "hello";
+       return $this->db->runQuery("INSERT INTO `pdf_files`( `file_name`, `date`, `time`) VALUES ('$filename','2020-10-10','09:20:56')");
+        // return  true;
+    }
 
     function getPdfDetails(){
         $result=$this->db->runQuery("SELECT * FROM pdf_files");
