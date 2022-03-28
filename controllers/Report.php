@@ -184,6 +184,7 @@ class Report extends Controller{
     } 
 
     //edit
+    
     function reportSession($method,$period){
         $result=$this->model->reportSession($method,$period);
         echo json_encode($result);

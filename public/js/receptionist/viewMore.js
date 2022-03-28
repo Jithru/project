@@ -193,7 +193,7 @@ function updateMe(){
     }
     var nic=document.getElementById("edNIC").value; 
     if(nic.length==0){
-        document.getElementById("edNIC").placeholder="Address can not be empty"
+        document.getElementById("edNIC").placeholder="NIC can not be empty"
         document.getElementById("edNIC").style.border="2px solid red"
         flag=false;
     }
