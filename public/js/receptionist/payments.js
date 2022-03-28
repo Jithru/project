@@ -1,7 +1,7 @@
 var myId;
 //Payments
 function payments(id){
-    studentName(id);
+    // studentName(id);
     paid_balance(id);
     remain_balance(id);
     let httpreq = new XMLHttpRequest();
@@ -53,29 +53,29 @@ function payments(id){
     document.getElementById("container").classList.replace("container","container-hidden");
     document.getElementById("container-st").classList.replace("container-st","container-st-visible"); 
 }
-function studentName(id){
-    // alert('Hello iko');
-    let httpreq = new XMLHttpRequest();
-    httpreq.onreadystatechange = function(){
-        console.log("onreadystatechange");
-        if( httpreq.readyState === 4 && httpreq.status === 200){
-            console.log(httpreq.responseText);
-            const student = JSON.parse(httpreq.responseText);
+// function studentName(id){
+//     // alert('Hello iko');
+//     let httpreq = new XMLHttpRequest();
+//     httpreq.onreadystatechange = function(){
+//         console.log("onreadystatechange");
+//         if( httpreq.readyState === 4 && httpreq.status === 200){
+//             console.log(httpreq.responseText);
+//             const student = JSON.parse(httpreq.responseText);
 
-            var myName=student[0].full_name.replace(/_+/g, ',');
-            myName = myName.replace(/-+/g, ' ');
-            myName=myName.replace(/~+/g, '/');
+//             var myName=student[0].full_name.replace(/_+/g, ',');
+//             myName = myName.replace(/-+/g, ' ');
+//             myName=myName.replace(/~+/g, '/');
 
-            document.getElementById("whoAmI").innerHTML = myName;
-            console.log(myName);
-        }
-    }
-    let url = "http://localhost/project/Receptionist/whoAmI/"+id;
+//             document.getElementById("whoAmI").innerHTML = myName;
+//             console.log(myName);
+//         }
+//     }
+//     let url = "http://localhost/project/Receptionist/whoAmI/"+id;
     
-    httpreq.open( "POST" , url  , true);
-    httpreq.send();
+//     httpreq.open( "POST" , url  , true);
+//     httpreq.send();
 
-}
+// }
 
 //paid Amount
 function paid_balance(id){
@@ -85,8 +85,9 @@ function paid_balance(id){
         if( httpreq.readyState === 4 && httpreq.status === 200){
             console.log(httpreq.responseText);
             const student = JSON.parse(httpreq.responseText);
-
-            document.getElementById("display-paid").innerHTML = "Rs "+student['sum_price'];
+   
+            document.getElementById("display-paid").innerHTML = student['sum_price']+".00";
+            // document.getElementById("display-paid").innerHTML = student['sum_price'];
            
         }
     }
@@ -106,7 +107,8 @@ function remain_balance(id){
             console.log(httpreq.responseText);
             const student = JSON.parse(httpreq.responseText);
 
-            document.getElementById("display-remain").innerHTML = "Rs "+student[0].total_amount;
+            document.getElementById("display-remain").innerHTML = student[0].total_amount;
+            // document.getElementById("display-remain").innerHTML = student[0].total_amount;
         }
     }
     let url = "http://localhost/project/Receptionist/remain/"+id;
@@ -117,7 +119,7 @@ function remain_balance(id){
 function go_back(){
     window.location.href = "http://localhost/project/Receptionist/studentList/";
 }
-//Add Payments
+// Add Payments
 function addPayment(){
     document.getElementById("container-st").classList.replace("container-st-visible","container-st");
     document.getElementById("add-container").classList.replace("add-container","add-container-visible");
@@ -133,13 +135,48 @@ function addPayment(){
 
         }
     }
-    // let url = "http://localhost/mytry/Receptionist/storeId/"+id;
     //alert(id);
     httpreq.open( "POST" , url  , true);
     httpreq.send();
     document.getElementById("container-st").classList.replace("container-st-visible","container-st");
     
 }
+// // button hidden
+// function addPayment(){
+//     // var flag=true
+
+//     let httpreq = new XMLHttpRequest();
+//     httpreq.onreadystatechange = function(){
+//         console.log("onreadystatechange");
+//         if( httpreq.readyState === 4 && httpreq.status === 200){
+//             console.log(httpreq.responseText);
+//             const student = JSON.parse(httpreq.responseText);
+
+//             var paid = student['paid'];
+//             // var total = student['total'][0];
+//             // console.log(paid);
+//             console.log(paid);
+
+//             if(paid<0){
+//                 var flag=false;
+//                 console.log("Hi");
+//             }
+
+//         }
+//     }
+//     let url = "http://localhost/project/Receptionist/findPaid/"+myId;
+//     httpreq.open( "POST" , url  , true);
+//     httpreq.send();
+
+    
+//     if(flag==true){
+//         document.getElementById("container-st").classList.replace("container-st-visible","container-st");
+//         document.getElementById("add-container").classList.replace("add-container","add-container-visible");
+//         document.getElementById("re-amount").style.border = "none"
+//     }
+
+//     // document.getElementById("container-st").classList.replace("container-st-visible","container-st");
+// }
 
 function addPayCancel(){
     document.getElementById("add-container").classList.replace("add-container-visible","add-container");
@@ -152,7 +189,14 @@ function callConfirm(){
     var amount = document.getElementById("amount").value;
     var reAmount = document.getElementById("re-amount").value;
    
-    if(reAmount.length==0){
+    if(amount.length==0){
+        document.getElementById("amount").placeholder = "Enter amount"
+        document.getElementById("amount").style.border = "2px solid red"
+        document.getElementById("enter").innerHTML = ""
+        console.log(reAmount);
+        flag=false;
+    }
+    else if(reAmount.length==0){
         document.getElementById("re-amount").placeholder = "Re-enter amount"
         document.getElementById("re-amount").style.border = "2px solid red"
         document.getElementById("enter").innerHTML = ""
@@ -173,13 +217,7 @@ function callConfirm(){
         console.log(reAmount);
         flag=false;
     }
-    else if(amount.length==0){
-        document.getElementById("amount").placeholder = "Enter amount"
-        document.getElementById("amount").style.border = "2px solid red"
-        document.getElementById("enter").innerHTML = ""
-        console.log(reAmount);
-        flag=false;
-    }
+  
     else if(amount!=reAmount){
         document.getElementById("enter").innerHTML = "Enter same amount!"
         document.getElementById("re-amount").style.border = "2px solid red"

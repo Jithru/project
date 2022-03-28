@@ -400,12 +400,12 @@
                 </div>
                 <div class="part-2-st">
                     <div class="paid-st"> 
-                        <div class="display-st" id="payid" >Paid Amount:</div>
-                        <div class="theam-st" id="display-paid"><p></p></div>
+                        <div class="display-st" id="payid" >Paid Amount: Rs </div>
+                        <div class="theam-st" id="display-paid"></div>
                     </div>
                     <div class="remaining-st">
-                        <div class="display-st" id="remain-balance" >Total Amount:</div>
-                        <div class="theam-st" id="display-remain"><p></p></div>
+                        <div class="display-st" id="remain-balance" >Total Amount: Rs </div>
+                        <div class="theam-st" id="display-remain"></div>
                     </div>
                 </div>
                 <div class="part-3-st">
