@@ -162,7 +162,10 @@ class Instructor_Model extends Model{
     }
     function pdfUploading($filename){
         // return "hello";
-       return $this->db->runQuery("INSERT INTO `pdf_files`( `file_name`, `date`, `time`) VALUES ('$filename','2020-10-10','09:20:56')");
+        date_default_timezone_set("Asia/Colombo");
+        $crnttime=date("h:i:s");
+        $crntdate=date("y-m-d");
+       return $this->db->runQuery("INSERT INTO `pdf_files`( `file_name`, `date`, `time`) VALUES ('$filename','$crntdate','$crnttime')");
         // return  true;
     }
 
