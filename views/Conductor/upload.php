@@ -60,7 +60,7 @@
                 </div>
                 <div class="file-area">
                     <div class="scroll" id="scroll">
-                        <div class="row">
+                        <!-- <div class="row" id="row_pdf" >
                             <div class="iconDetails">
                                 <div class="icon">
                                     <img src="<?php echo URL?>public/images/icons8-pdf-80.png" alt="pdf">
@@ -83,13 +83,11 @@
                                     </div>
                                 </div>
                                 <div class="delete"><button class="delete-btn" onclick="deleteMe()">Delete</button></div>
-                        </div>
+                        </div> -->
  
-                            </div>
+                     </div>
                             
 
-                    </div>
-                    
                 </div>
             </div>
         </div>
@@ -98,9 +96,8 @@
     <div class="box-container" id="box-container">
         <div class="box-content">
             <div class="appear">
-                <form enctype="multipart/form-data" id="form_pdf">
-                    <div class="uploadArea">
-                        
+                <form enctype="multipart/form-data" id="form_pdf" onsubmit="return false">
+                    <div class="uploadArea">    
                         <input type="file" name="file" id="file">
                     </div>
                     <div class="uploadButton">
@@ -115,6 +112,6 @@
     </div>
         
     </div>
-    <script src="<?php echo URL?>public/js/instructor/upload.js"></script>
+    <script src="<?php echo URL?>public/js/Instructor/upload.js"></script>
 </body>
 </html>

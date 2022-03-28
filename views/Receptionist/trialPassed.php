@@ -3,17 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <script src="<?php echo URL?>public/js/admin/showMe.js"></script>
+   
 
-    <script src="<?php echo URL?>public/js/receptionist/trialPassed.js"></script>
-    
     <link rel="stylesheet" href="<?php echo URL?>public/css/Receptionist/viewRow.css">
-    <script src="<?php echo URL?>public/js/receptionist/viewMore.js"></script>
+    
     <link rel="stylesheet" href="<?php echo URL?>public/css/Receptionist/viewMore.css">
 
     <link rel="stylesheet" href="<?php echo URL?>public/css/Receptionist/editDetails.css">
 
-    <script src="<?php echo URL?>public/js/receptionist/payments.js"></script>
+    
     <link rel="stylesheet" href="<?php echo URL?>public/css/Receptionist/payments.css"> 
 
     <link rel="stylesheet" href="<?php echo URL?>public/css/Receptionist/boxVisible.css">
@@ -393,14 +391,14 @@
                     <div class="first">Amount</div>
                     <div class="second">:</div>
                     <div class="third">
-                        <input type="text" name="amount" id="amount" placeholder="Rs.0">
+                        <input type="number" name="amount" id="amount" placeholder="Rs.0">
                     </div>
                 </div>
                 <div class="myRow">
                     <div class="first">Re-enter Amount</div>
                     <div class="second">:</div>
                     <div class="third">
-                        <input type="text" name="re-amount" id="re-amount" placeholder="Rs.0">
+                        <input type="number" name="re-amount" id="re-amount" placeholder="Rs.0">
                     </div>
                 </div>
             </div>
@@ -430,5 +428,9 @@
         </div>
     </div>
     
+    <script src="<?php echo URL?>public/js/admin/showMe.js"></script>
+    <script src="<?php echo URL?>public/js/receptionist/trialPassed.js"></script>
+    <script src="<?php echo URL?>public/js/receptionist/viewMore.js"></script>
+    <script src="<?php echo URL?>public/js/receptionist/payments.js"></script>
 </body>
 </html>

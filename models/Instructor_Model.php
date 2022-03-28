@@ -160,4 +160,19 @@ class Instructor_Model extends Model{
         $result=$this->db->runQuery("UPDATE employee SET profile_pic='$file' WHERE employee_id=$employeeId");
         // return $studentId;
     }
+
+    function getPdfDetails(){
+        $result=$this->db->runQuery("SELECT * FROM pdf_files");
+        return $result;
+    }
+
+    function deletePdf($pdfId){
+        $pdfId=(int)$pdfId;
+        $this->db->runQuery("DELETE FROM `pdf_files` WHERE id=$pdfId");
+        return true;
+    }
+
+    // function test(){
+    //     return $this->db->runQuery("INSERT INTO `pdf_files`( `file_name`, `date`, `time`) VALUES ('hello333','2020-10-10','09:20:56')");
+    // }
 }

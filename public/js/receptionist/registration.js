@@ -184,6 +184,12 @@ function SaveData(){
         document.getElementById("issue").style.border="2px solid red"
         flag=false;
     }
+    var endDate=document.getElementById("ending").value;
+    if(endDate.length==0){
+        // document.getElementById("issue").placeholder="This field can't be empty"
+        document.getElementById("ending").style.border="2px solid red"
+        flag=false;
+    }
     if(!document.getElementById("A1").checked && !document.getElementById("A").checked && !document.getElementById("B1").checked && !document.getElementById("B").checked){
         document.getElementById("initPayment").placeholder="You haven't select a vehicle class!"
         document.getElementById("initPayment").style.border="2px solid red"

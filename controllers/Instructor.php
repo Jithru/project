@@ -275,7 +275,7 @@ class Instructor extends Controller{
 
     function pdfUploading(){
         
-        echo json_encode(var_dump($_FILES));
+        // echo json_encode(var_dump($_FILES));
         // var_dump($_FILES);
         
         $target_dir = $_SERVER['DOCUMENT_ROOT']."/project/public/pdf/";
@@ -291,14 +291,37 @@ class Instructor extends Controller{
         $filename = $path['filename'];
         $ext = $path['extension'];
         $path_filename_ext = $target_dir.$filename;
-        $result=$this->model->pdfUploading(basename($_FILES['file']["name"]));
+        // $filePath=$target_dir.randomString(8).'/'.$filename;
+        // $result=$this->model->pdfUploading(basename($_FILES["pdf"]["name"]));
         // $folder = dirname(dirname(dirname(__FILE__))).'public/pdf/'.$filename;
         move_uploaded_file($tempName,$target_file);
-        $result=$this->model->pdfUploading(basename($_FILES['file']["name"]));
+        $result=$this->model->pdfUploading($filename);
+        // $result=$this->model->test();
 
-        
-        // echo $target_file;
-        // echo $tempName;
-        // echo $result;
+        echo json_encode($result);
+    }
+
+    function getDetailsPdf(){
+        $result=$this->model->getPdfDetails();
+        echo json_encode($result);
+    }
+
+    function deletePDF($pdfId){
+        $result=$this->model->deletePdf($pdfId);
+        echo json_encode($result);
+    }
+
+    function random($n){
+        $characters='0123456789abcdefghijklmnopqrstuvwxyz';
+
+        $str= '';
+
+        for($i=0; $i<$n;$i++){
+            $index=rand(0,strlen($characters)-1);
+            $str.=$characters[$index];
+
+        }
+
+        return $str;
     }
 }
