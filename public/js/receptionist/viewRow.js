@@ -50,7 +50,6 @@ function searchMe(){
         }
     }
 }
-
 // function searchMe(){
 //     if(event.key === 'Enter'){
 //         // alert('Hello');
