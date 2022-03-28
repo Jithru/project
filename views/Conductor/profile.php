@@ -7,9 +7,44 @@
     <link rel="stylesheet" href="profile.css">
     <link rel="stylesheet" href="<?php echo URL?>public/css/student/profile.css">
     <link rel="stylesheet" href="<?php echo URL?>public/css/common/sidebar.css">
+    <link rel="stylesheet" href="<?php echo URL?>public/css/common/backgroundAnim.css">
     <title>Reciptionist</title>
 </head>
 <body>
+<ul class="background">
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+</ul>
     <div class="container">
         <div class="header">
         <?php require_once APPROOT."/../views/common/header.php"; ?>

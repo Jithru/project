@@ -6,9 +6,44 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="<?php echo URL?>public/css/Conductor/viewConductor&Vehicle&Student/viewConductor&Vehicle&Student.css">
     <link rel="stylesheet" href="<?php echo URL?>public/css/Conductor/viewConductor&Vehicle&Student/tableStyle.css">
+    <link rel="stylesheet" href="<?php echo URL?>public/css/common/backgroundAnim.css">
     <title>add vehicle</title>
 </head>
 <body>
+<ul class="background">
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+</ul>
     <div class="main-content">
         <div class="addInstructor-box">
             <div class="topic">

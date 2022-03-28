@@ -69,7 +69,7 @@ class Instructor extends Controller{
             $this->view->render('error');
         } 
     }
-
+// get session relevant to conductor Id
     function markGoingNotGoingLogic(){
         
         $value=$this->model->getTodaySession();
@@ -271,5 +271,34 @@ class Instructor extends Controller{
     function getDatesOfSessionsAndSessions(){
         $result=$this->model->getDatesOfSessionsAndSessions($_SESSION['employee_id']);
         echo json_encode($result);
+    }
+
+    function pdfUploading(){
+        
+        echo json_encode(var_dump($_FILES));
+        // var_dump($_FILES);
+        
+        $target_dir = $_SERVER['DOCUMENT_ROOT']."/project/public/pdf/";
+        
+        $target_file = $target_dir . basename($_FILES['file']["name"]);
+        // $_FILES["photo"]["name"]=$_SESSION['student_id'];
+        // $target_file = $target_dir .$_FILES["photo"]["name"];
+        $filename=$_FILES['file']['name'];
+        // $_FILES['file']['tmp_name'];
+        $tempName=$_FILES['file']["tmp_name"];
+        $size=$_FILES['file']['size'];
+        $path = pathinfo($filename);
+        $filename = $path['filename'];
+        $ext = $path['extension'];
+        $path_filename_ext = $target_dir.$filename;
+        $result=$this->model->pdfUploading(basename($_FILES['file']["name"]));
+        // $folder = dirname(dirname(dirname(__FILE__))).'public/pdf/'.$filename;
+        move_uploaded_file($tempName,$target_file);
+        $result=$this->model->pdfUploading(basename($_FILES['file']["name"]));
+
+        
+        // echo $target_file;
+        // echo $tempName;
+        // echo $result;
     }
 }

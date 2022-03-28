@@ -17,7 +17,7 @@
     <link rel="stylesheet" href="<?php echo URL?>public/css/Receptionist/payments.css"> 
 
     <link rel="stylesheet" href="<?php echo URL?>public/css/Receptionist/boxVisible.css">
-    
+    <link rel="stylesheet" href="<?php echo URL?>public/css/common/backgroundAnim.css">
     <!-- <script src="<?php echo URL?>public/js/receptionist/addPayment.js"></script> -->
     <link rel="stylesheet" href="<?php echo URL?>public/css/Receptionist/addPayment.css">
     <link rel="stylesheet" href="<?php echo URL?>public/css/Receptionist/addPayment_step2.css">
@@ -25,6 +25,40 @@
     <title>Lead driving school</title>
 </head>
 <body>
+<ul class="background">
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+</ul>
     <!-- <button class="btt" onclick="students()">Student List</button> -->
     <div class="container" id="container">
         <div class="header">
@@ -313,11 +347,11 @@
                 </div>
                 <div class="part-2-st">
                     <div class="paid-st"> 
-                        <div class="display-st" id="payid" >Paid Amount:</div>
+                        <div class="display-st" id="payid" >Paid Amount: Rs </div>
                         <div class="theam-st" id="display-paid"><p></p></div>
                     </div>
                     <div class="remaining-st">
-                        <div class="display-st" id="remain-balance" >Total Amount:</div>
+                        <div class="display-st" id="remain-balance" >Total Amount: Rs </div>
                         <div class="theam-st" id="display-remain"><p></p></div>
                     </div>
                 </div>

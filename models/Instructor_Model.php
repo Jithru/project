@@ -1,4 +1,9 @@
 <?php
+
+use LDAP\Result;
+
+use function PHPSTORM_META\type;
+
 class Instructor_Model extends Model{
     function __construct()
     {
@@ -7,9 +12,62 @@ class Instructor_Model extends Model{
 
     function getTodaySession(){
         $date=date("Y-m-d");
-        $result=$this->db->runQuery("SELECT session_id , session_title, session_date, session_time FROM sessions WHERE session_date='2021-11-18'");
+        $result=$this->db->runQuery("SELECT sessions.session_id , sessions.session_title, sessions.session_date, sessions.session_time FROM sessions INNER JOIN session_conductor_assigns ON sessions.session_id=session_conductor_assigns.session_id WHERE sessions.session_date='2021-11-18' AND session_conductor_assigns.conductor_id=8");
+        $count=$this->db->runQuery("SELECT COUNT(sessions.session_id) AS no_of_rows FROM sessions INNER JOIN session_conductor_assigns ON sessions.session_id=session_conductor_assigns.session_id WHERE sessions.session_date='2021-11-18' AND session_conductor_assigns.conductor_id=8");
+        for($i=0;$i<intval($count[0][0]);$i++){
+            $sessionId=intval($result[$i][0]);
+            $this->db->runQuery("INSERT INTO session_status (`session_id`, `conductor_id`) VALUES ($sessionId,8)");
+        }
+        
         return $result;
 
+    }
+
+    /*load stusents to session_participation table when instructor click going 
+    and must update session status for the conductor as going*/
+
+    function LoadSessions($sessionId,$conductorId){
+        $result1=$this->db->runQuery("SELECT session_student_assigns.student_id,sessions.session_id FROM sessions INNER JOIN session_student_assigns ON sessions.session_id=session_student_assigns.session_id WHERE sessions.session_id=$sessionId");
+        $count=$this->db->runQuery("SELECT count(sessions.session_id) AS no_of_rows  FROM sessions INNER JOIN session_student_assigns ON sessions.session_id=session_student_assigns.session_id WHERE sessions.session_id=$sessionId");
+        $result2=$this->db->runQuery("UPDATE session_status SET held_or_not='going' WHERE session_id=$sessionId AND conductor_id=$conductorId");
+        // return intval($count[0][0]);
+        // $hello="hello";
+        for($i=0;$i<intval($count[0][0]);$i++){
+            $studentId= intval($result1[$i][0]);
+            $sessionId=intval($result1[$i][1]);
+            
+            $result=$this->db->runQuery("INSERT INTO session_participation (`student_id`, `session_id`) VALUES ($studentId,$sessionId)");
+        }
+        return $result1;
+
+    }
+
+    //remove sessions
+
+    function removeSessions($sessionId,$conductorId){
+        $result2=$this->db->runQuery("UPDATE session_status SET held_or_not='notgoing' WHERE session_id=$sessionId AND conductor_id=$conductorId");
+
+    }
+
+    function updateStart($data){
+        date_default_timezone_set("Asia/Colombo");
+        $crnttime=date("h:i:s");
+        $data=explode(",",$data);
+        $sessionId=intval($data[0]);
+        $conductorId=intval($data[1]);
+        $result=$this->db->runQuery("UPDATE session_status SET start_time='$crnttime' WHERE session_id=$sessionId AND conductor_id=$conductorId");
+        return $result;
+        // return "UPDATE session_status SET start_time='$crnttime' WHERE session_id=$sessionId AND conductor_id=$conductorId";
+    }
+
+    function updateEnd($data){
+        date_default_timezone_set("Asia/Colombo");
+        $crnttime=date("h:i:s");
+        $data=explode(",",$data);
+        $sessionId=intval($data[0]);
+        $conductorId=intval($data[1]);
+        $result=$this->db->runQuery("UPDATE session_status SET end_time='$crnttime' WHERE session_id=$sessionId AND conductor_id=$conductorId");
+        return "UPDATE session_status SET end_time='$crnttime' WHERE session_id=$sessionId AND conductor_id=$conductorId";
     }
     function getProfileDetails(){
         $nic=$_SESSION['employee_id'];

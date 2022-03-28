@@ -7,9 +7,44 @@
     <link rel="stylesheet" href="<?php echo URL?>public/css/Receptionist/registration.css">
     <link rel="stylesheet" href="<?php echo URL?>public/css/Receptionist/registration2.css">
     <link rel="stylesheet" href="<?php echo URL?>public/css/Receptionist/reg.css">
+    <link rel="stylesheet" href="<?php echo URL?>public/css/common/backgroundAnim.css">
     <title>Lead driving school</title>
 </head>
 <body>
+<ul class="background">
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+</ul>
     <div class="container">
         <div class="reg-form" id="reg-form">
             <div class="part-1"><h2>Registration</h2></div>
@@ -61,11 +96,7 @@
                         <input type="radio" id="male" name="gender">Male <input type="radio" id="female" name="gender">Female
                     </div>
                     <div class="message-bar" id="message"></div>
-                    <div class="sub-row">
-                        <label for="dateofbirth">Date of birth</label>
-                        <div class="colen">:</div>
-                        <input type="date"  id="dateofbirth">
-                    </div>
+                    
                     <div class="sub-row">
                         <label for="nic">Identity/Passport</label>
                         <div class="colen">:</div>
@@ -75,6 +106,14 @@
                         <label for="mobile">Mobile</label>
                         <div class="colen">:</div>
                         <input type="text" placeholder="07X XXXXXXX" id="mobile">
+                    </div>
+                    <div class="sub-row">
+                        <!-- <label for="dateofbirth">Date of birth</label>
+                        <div class="colen">:</div>
+                        <input type="date"  id="dateofbirth"> -->
+                        <label for="occ">Occupation</label>
+                        <div class="colen-f2">:</div>
+                        <input type="text" id="occupation" name="occupation">
                     </div>
                 </div>
             </div>
@@ -91,11 +130,11 @@
         <div class="reg2-f2" id="reg2-f2">
             <div class="part-1-f2"><h2>Registration</h2></div>
             <div class="part-3-f2">
-                <div class="up-row-f2">
-                    <label for="occ">Occupation</label>
+                <!-- <div class="up-row-f2" id="inform"> -->
+                    <!-- <label for="occ">Occupation</label>
                     <div class="colen-f2">:</div>
-                    <input type="text" id="occupation" name="occupation">
-                </div>
+                    <input type="text" id="occupation" name="occupation"> -->
+                <!-- </div> -->
                 <div class="up-row-f2">
                         <label for="exam">Nearest exam you want to attempt</label>
                         <div class="colen-f2">:</div>

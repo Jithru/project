@@ -533,6 +533,9 @@ class Receptionist extends Controller{
         $result=$this->model->getDatesOfSessionsAndSessions();
         echo json_encode($result);
     }
-    
+    function findPaid($id){
+        $result['paid']=$this->model->findPaid($id);
+        echo json_encode($result);
+    }
     
 }

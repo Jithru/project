@@ -287,6 +287,7 @@ class Receptionist_Model extends Model{
         $paid= intval($cash[0]['sum_price'])+intval($online[0]['sum_price']);
         return $paid;
     }
+
   
     function remain($id){
         //total
@@ -299,6 +300,16 @@ class Receptionist_Model extends Model{
         // $paid= intval($cash[0]['sum_price'])+intval($online[0]['sum_price']);
         // $remain['remain'] = intval($total[0]['total'])-intval($paid[0]['sum_price']);
         return $total;
+    }
+    function findPaid($id){
+        $cash = $this->db->runQuery("SELECT SUM(amount) AS sum_price FROM cash_payment_submits INNER JOIN cash_payment ON cash_payment.cpayment_id=cash_payment_submits.cpayment_id WHERE student_id='$id'");
+        $online = $this->db->runQuery("SELECT SUM(amount) AS sum_price FROM online_payments WHERE student_id='$id'");
+
+        $paid=0;
+        $paid= intval($cash[0]['sum_price'])+intval($online[0]['sum_price']);
+        $total = $this->db->runQuery("SELECT total_amount FROM student WHERE student_id='$id'");
+        $result = intval($total[0])-$paid;
+        return $result;
     }
 
     function addPayment($id,$amount,$reciptionistId){

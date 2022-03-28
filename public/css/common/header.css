@@ -67,6 +67,10 @@
   align-items: center;
 }
 
+.profPic{
+  border-radius: 50%;
+}
+
 @media screen and (max-width: 992px) {
   .abc-header{
     width: 100vw;
@@ -123,6 +127,8 @@
     margin-top: 10px;
   }
 }
+
+
 
 @media screen and (max-width: 400px){
   .header-com-name{
