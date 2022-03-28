@@ -159,7 +159,24 @@ class Instructor_Model extends Model{
 
     }
 
-    function pdfUploading($file){
-        $result=$this->db->runQuery("INSERT INTO pdf (`name`) VALUES ($file)");
+    function pdfUploading($filename){
+        // return "hello";
+       return $this->db->runQuery("INSERT INTO `pdf_files`( `file_name`, `date`, `time`) VALUES ('$filename','2020-10-10','09:20:56')");
+        // return  true;
     }
+
+    function getPdfDetails(){
+        $result=$this->db->runQuery("SELECT * FROM pdf_files");
+        return $result;
+    }
+
+    function deletePdf($pdfId){
+        $pdfId=(int)$pdfId;
+        $this->db->runQuery("DELETE FROM `pdf_files` WHERE id=$pdfId");
+        return true;
+    }
+
+    // function test(){
+    //     return $this->db->runQuery("INSERT INTO `pdf_files`( `file_name`, `date`, `time`) VALUES ('hello333','2020-10-10','09:20:56')");
+    // }
 }

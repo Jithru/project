@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="<?php echo URL?>public/css/common/backgroundAnim.css">
     <!-- <link rel="stylesheet" href="<?php echo URL?>public/css/Conductor/viewConductor&Vehicle&Student/prompt.css"> -->
     <!-- <link rel="stylesheet" href="<?php echo URL?>public/css/Conductor/viewConductor&Vehicle&Student/boxAppear.css"> -->
-    <script src="<?php echo URL?>public/js/student/upload.js"></script>
+
     <title>Lead Driving School</title>
 </head>
 <body>
@@ -58,131 +58,6 @@
                 </div> -->
                 <div class="file-area">
                     <div class="scroll" id="scroll">
-                        <div class="row">
-                            <div class="iconDetails">
-                                <div class="icon">
-                                    <img src="<?php echo URL?>public/images/icons8-pdf-80.png" alt="pdf">
-                                </div>
-                                <div class="details">
-                                    <div class="file">
-                                        <div class="topic">File</div>
-                                        <div class="colon">:</div>
-                                        <div class="data">Road_runner.pdf</div>
-                                    </div>
-                                    <div class="date">
-                                        <div class="topic">Date</div>
-                                        <div class="colon">:</div>
-                                        <div class="data">2022.03.17</div>
-                                    </div>
-                                    <div class="time">
-                                        <div class="topic">Time</div>
-                                        <div class="colon">:</div>
-                                        <div class="data">08:54</div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="download"><button class="download-btn" onclick="downloadMe()">Download</button></div>
-                        </div>
-                        <div class="row">
-                            <div class="iconDetails">
-                                <div class="icon">
-                                    <img src="<?php echo URL?>public/images/icons8-pdf-80.png" alt="pdf">
-                                </div>
-                                <div class="details">
-                                    <div class="file">
-                                        <div class="topic">File</div>
-                                        <div class="colon">:</div>
-                                        <div class="data">Road_runner.pdf</div>
-                                    </div>
-                                    <div class="date">
-                                        <div class="topic">Date</div>
-                                        <div class="colon">:</div>
-                                        <div class="data">2022.03.17</div>
-                                    </div>
-                                    <div class="time">
-                                        <div class="topic">Time</div>
-                                        <div class="colon">:</div>
-                                        <div class="data">08:54</div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="download"><button class="download-btn">Download</button></div>
-                        </div>
-                        <div class="row">
-                            <div class="iconDetails">
-                                <div class="icon">
-                                    <img src="<?php echo URL?>public/images/icons8-pdf-80.png" alt="pdf">
-                                </div>
-                                <div class="details">
-                                    <div class="file">
-                                        <div class="topic">File</div>
-                                        <div class="colon">:</div>
-                                        <div class="data">Road_runner.pdf</div>
-                                    </div>
-                                    <div class="date">
-                                        <div class="topic">Date</div>
-                                        <div class="colon">:</div>
-                                        <div class="data">2022.03.17</div>
-                                    </div>
-                                    <div class="time">
-                                        <div class="topic">Time</div>
-                                        <div class="colon">:</div>
-                                        <div class="data">08:54</div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="download"><button class="download-btn">Download</button></div>
-                        </div>
-                        <div class="row">
-                            <div class="iconDetails">
-                                <div class="icon">
-                                    <img src="<?php echo URL?>public/images/icons8-pdf-80.png" alt="pdf">
-                                </div>
-                                <div class="details">
-                                    <div class="file">
-                                        <div class="topic">File</div>
-                                        <div class="colon">:</div>
-                                        <div class="data">Road_runner.pdf</div>
-                                    </div>
-                                    <div class="date">
-                                        <div class="topic">Date</div>
-                                        <div class="colon">:</div>
-                                        <div class="data">2022.03.17</div>
-                                    </div>
-                                    <div class="time">
-                                        <div class="topic">Time</div>
-                                        <div class="colon">:</div>
-                                        <div class="data">08:54</div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="download"><button class="download-btn">Download</button></div>
-                        </div>
-                        <div class="row">
-                            <div class="iconDetails">
-                                <div class="icon">
-                                    <img src="<?php echo URL?>public/images/icons8-pdf-80.png" alt="pdf">
-                                </div>
-                                <div class="details">
-                                    <div class="file">
-                                        <div class="topic">File</div>
-                                        <div class="colon">:</div>
-                                        <div class="data">Road_runner.pdf</div>
-                                    </div>
-                                    <div class="date">
-                                        <div class="topic">Date</div>
-                                        <div class="colon">:</div>
-                                        <div class="data">2022.03.17</div>
-                                    </div>
-                                    <div class="time">
-                                        <div class="topic">Time</div>
-                                        <div class="colon">:</div>
-                                        <div class="data">08:54</div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="download"><button class="download-btn">Download</button></div>
-                        </div>
                     </div>
                     
                 </div>
@@ -204,4 +79,5 @@
         
     </div> -->
 </body>
+<script src="<?php echo URL?>public/js/student/upload.js"></script>
 </html>
