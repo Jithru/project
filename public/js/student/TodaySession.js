@@ -95,7 +95,7 @@ function notgoing_status(objId){
         }
     }
     const data=[status,objId];
-    var url_Notgoing="http://localhost/project/Student/markGoingNotGoingLogic_NotGoing/"+data;
+    var url_Notgoing="http://localhost/project/Student/markGoingNotGoingLogic_Going/"+data;
     httprequest.open("POST",url_Notgoing,true);
     httprequest.send(); 
 }

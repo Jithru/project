@@ -14,11 +14,46 @@
     <link rel="stylesheet" href="<?php echo URL?>public/css/Manager/main/Horizontaltab.css">
     <link rel="stylesheet" href="<?php echo URL?>public/css/IncomeExpenses/viewExpences&income/structure.css">
     <link rel="stylesheet" href="<?php echo URL?>public/css/IncomeExpenses/viewExpences&income/tableStyle.css">
+    <link rel="stylesheet" href="<?php echo URL?>public/css/common/backgroundAnim.css">
     <title>Expences</title>
 </head>
 <body>
 
     
+<ul class="background">
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+</ul>
     <!--body content of the page starts here-->
     <div class="main-box">
         
@@ -29,7 +64,7 @@
                 <div class="Horizontal-tab">
                     <div class="tabContainer">
                     <a href="<?php echo URL?>IncomeExpenses/studentExpenses"><button class="page-change-button" >Expenses of Students</button></a>
-                    <button class="page-change-button" >Other Expenses<hr></button>
+                    <button class="page-change-button" >Other Expenses<hr class="hrline"></button>
                     </div>
                     
                 </div>

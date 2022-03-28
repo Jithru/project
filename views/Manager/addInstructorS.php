@@ -5,10 +5,55 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="<?php echo URL?>public/css/Manager/addConductor&Vehicle&Student/addConductor&Vehicle&Student.css">
+    <link rel="stylesheet" href="<?php echo URL?>public/css/common/backgroundAnim.css">
     <link rel="stylesheet" href="<?php echo URL?>public/css/Manager/addConductor&Vehicle&Student/tableStyle.css">
     <title>Lead driving school</title>
 </head>
 <body>
+<ul class="background">
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+</ul>
+    <div class="confirmation-box" id="confirmation">
+          <div class="box-body">
+              <div class="popup-content-box">
+                  <p id="boxMsg"></p>
+                      <div class="popup-button-set">
+                        <button class="popup-confirm" name="confirm" id="confirm-got">Got it</button>     
+                      </div>
+              </div>
+          </div>
+    </div>
     <div class="main-content">
         <div class="addInstructor-box">
             <input type="hidden" id="selectedArr" value="<?php echo isset($_SESSION['selectedInstructorList'])?$_SESSION['selectedInstructorList']:"";?>">

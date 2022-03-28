@@ -8,9 +8,44 @@
     <link rel="stylesheet" href="<?php echo URL?>public/css/Receptionist/addPayment.css">
     <link rel="stylesheet" href="<?php echo URL?>public/css/Receptionist/addPayment_step2.css">
     <link rel="stylesheet" href="<?php echo URL?>public/css/Receptionist/pay.css">
+    <link rel="stylesheet" href="<?php echo URL?>public/css/common/backgroundAnim.css">
     <title>Lead driving school</title>
 </head>
 <body>
+<ul class="background">
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+</ul>
     <div class="container-st" id="container-st">
         <div class="header-st">
             <div class="logo-st">

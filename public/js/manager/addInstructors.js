@@ -77,8 +77,23 @@ function assignInstructors(){
     let httpreq = new XMLHttpRequest();
     httpreq.onreadystatechange=function(){
         if(httpreq.readyState===4 && httpreq.status===200){
-            if(httpreq.responseText=="saved"){
+            console.log("ins:"+httpreq.responseText)
+            const obj=JSON.parse(httpreq.responseText)
+            // const obj=JSON.parse(httpreq.responseText)
+            if(obj.length==0){
                 window.location.href="http://localhost/project/Manager/addSession"
+            }else{
+                const obj=JSON.parse(httpreq.responseText)
+                var instructors=""
+                for(var i=0;i<obj.length;i++){
+                    instructors+="In_"+obj[i]+","
+                }
+                document.getElementById("confirmation").classList.replace("confirmation-box","confirmation-box-active")
+                boxMsg.innerHTML='Instructors with IDs '+instructors+' are already assigned for the near events'
+                document.getElementById("confirm-got").addEventListener("click",function(){
+                    document.getElementById("confirmation").classList.replace("confirmation-box-active","confirmation-box")
+                    window.location.href="http://localhost/project/Manager/addSession"
+                });
             }
         }
     }

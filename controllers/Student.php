@@ -105,6 +105,16 @@ class Student extends Controller{
         }
 
     }
+
+    //phone no update 
+
+    function phoneNoUpdate($phone){
+        $studentId=$_SESSION['student_id'];
+        $value=$this->model->updatePhone($phone,$studentId);
+        echo json_encode($value);
+
+
+    }
 //----------------------->
     function makepayments(){
         if(isset($_SESSION['job_title'])){
@@ -122,7 +132,7 @@ class Student extends Controller{
     function onlinePayments($data){
         $value= explode(",",$data);
         $myval = explode("_" , $value[0]);
-        $studentId= 55;
+        $studentId= $_SESSION['student_id'];
         $result= $this->model->makeOnlinePayments($myval[0] . " " . $myval[1] ,$value[1],$studentId);
         echo json_encode($result);
         
@@ -332,7 +342,7 @@ class Student extends Controller{
     }
 
     function getAvailableExams(){
-        $result=$this->model->getAllExams($_SESSION['student_id']);
+        $result=$this->model->getExams($_SESSION['student_id']);
         echo json_encode($result);
     }
     function getAllSessions(){
@@ -341,7 +351,7 @@ class Student extends Controller{
     }
 
     function getAllExams(){
-        $result=$this->model->getExams($_SESSION['student_id']);
+        $result=$this->model->getAllExams($_SESSION['student_id']);
         echo json_encode($result);
     }
     function getAllExamRequests(){
@@ -408,18 +418,22 @@ class Student extends Controller{
 
     function imageUploading(){
         $target_dir = $_SERVER['DOCUMENT_ROOT']."/project/public/images/profilePics/";
+        
         $target_file = $target_dir . basename($_FILES["photo"]["name"]);
+        // $_FILES["photo"]["name"]=$_SESSION['student_id'];
+        // $target_file = $target_dir .$_FILES["photo"]["name"];
         $file=$_FILES["photo"]["name"];
         $tempName=$_FILES["photo"]["tmp_name"];
         $path = pathinfo($file);
         $filename = $path['filename'];
         $ext = $path['extension'];
         $path_filename_ext = $target_dir.$filename;
-
+        $result=$this->model->imageUploading(basename($_FILES["photo"]["name"]),$_SESSION['student_id']);
         move_uploaded_file($tempName,$target_file);
-
-        echo $target_file;
-        echo $tempName;
+        
+        // echo $target_file;
+        // echo $tempName;
+        echo $result;
 
     }
     function getDatesOfSessionsAndSessions(){

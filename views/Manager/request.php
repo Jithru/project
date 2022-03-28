@@ -13,9 +13,44 @@
     <link rel="stylesheet" href="<?php echo URL?>public/css/Manager/requests/structure.css">
     <link rel="stylesheet" href="<?php echo URL?>public/css/Manager/requests/containers.css">
     <link rel="stylesheet" href="<?php echo URL?>public/css/Manager/requests/tableStyle.css">
+    <link rel="stylesheet" href="<?php echo URL?>public/css/common/backgroundAnim.css">
     <title>Lead driving school</title>
 </head>
 <body>
+<ul class="background">
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+</ul>
     <div class="header">
 
         <?php require_once APPROOT."/../views/common/header.php"; ?>

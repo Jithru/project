@@ -159,6 +159,11 @@ class Report extends Controller{
 
     }
 
+    function loadExamParticipation($method,$period){
+        $result=$this->model->loadExamParticipation($method,$period);
+        echo json_encode($result); 
+    }
+
     function sessionReport(){
         if(isset($_SESSION['job_title'])){
             if($_SESSION['job_title']=='Admin'||$_SESSION['job_title']=='Manager'){

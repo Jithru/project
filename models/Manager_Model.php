@@ -33,6 +33,11 @@ class Manager_Model extends Model{
             return false;
         }
     }
+    function getProfileDetails(){
+        $nic=$_SESSION['employee_id'];
+        $result=$this->db->runQuery("SELECT * from employee where employee_id = '$nic'");
+        return $result;
+    }
     function setExpenses($title,$discription,$amount,$managerId){
         date_default_timezone_set('Asia/Colombo');
         $date = date('Y-m-d H:i:s');
@@ -64,6 +69,58 @@ class Manager_Model extends Model{
         return $result;
     }
 
+    function checkSelectedInstructorsForSessions($instructorsList,$date,$time){
+        $list=array();
+        $instructors=explode(",",$instructorsList);
+        $startTime=date('H:i:s', strtotime($time. ' - '. 1 .' hours'));
+        $endTime=date('H:i:s', strtotime($time. ' + '. 1 .' hours'));
+        for($i=0;$i<count($instructors);$i++){
+            $result=$this->db->runQuery("SELECT DISTINCT session_conductor_assigns.conductor_id as conductors from session_conductor_assigns INNER JOIN sessions WHERE sessions.session_date>='$date' and sessions.session_time>='$startTime' and sessions.session_time < '$endTime' and session_conductor_assigns.conductor_id=$instructors[$i]");
+            
+            if(!empty($result[0]['conductors'])){
+                if(intval($result[0]['conductors'])==intval($instructors[$i])){
+                    array_push($list,$instructors[$i]);
+                }
+            }
+
+        }
+        
+        return $list;
+    }
+    function checkSelectedVehiclesForSessions($vehiclesList,$date,$time){
+        $list=array();
+        $vehicles=explode(",",$vehiclesList);
+        $startTime=date('H:i:s', strtotime($time. ' - '. 1 .' hours'));
+        $endTime=date('H:i:s', strtotime($time. ' + '. 1 .' hours'));
+        for($i=0;$i<count($vehicles);$i++){
+            $result=$this->db->runQuery("SELECT DISTINCT session_vehicle_assigns.vehicle_id as vehicles from session_vehicle_assigns INNER JOIN sessions WHERE sessions.session_date>='$date' and sessions.session_time>='$startTime' and sessions.session_time < '$endTime' and session_vehicle_assigns.vehicle_id='$vehicles[$i]'");
+            
+            if(!empty($result[0]['vehicles'])){
+                if(intval($result[0]['vehicles'])==intval($vehicles[$i])){
+                    array_push($list,$vehicles[$i]);
+                }
+            }
+
+        }
+        return $list;
+    }
+    function checkSelectedVehiclesForExams($vehiclesList,$date,$time){
+        $list=array();
+        $vehicles=explode(",",$vehiclesList);
+        $startTime=date('H:i:s', strtotime($time. ' - '. 1 .' hours'));
+        $endTime=date('H:i:s', strtotime($time. ' + '. 1 .' hours'));
+        for($i=0;$i<count($vehicles);$i++){
+            $result=$this->db->runQuery("SELECT DISTINCT exam_vehicle_assigns.vehicle_id as vehicles from exam_vehicle_assigns INNER JOIN exams WHERE exams.exam_date>='$date' and exams.exam_time>='$startTime' and exams.exam_time < '$endTime' and exam_vehicle_assigns.vehicle_id='$vehicles[$i]'");
+            
+            if(!empty($result[0]['vehicles'])){
+                if(intval($result[0]['vehicles'])==intval($vehicles[$i])){
+                    array_push($list,$vehicles[$i]);
+                }
+            }
+
+        }
+        return $list;
+    }
 
     //check Instructors,vehicles and students
     function checkSelectedInstructorsForExams($instructorsList,$date,$time){
@@ -203,8 +260,15 @@ class Manager_Model extends Model{
         $result=$this->db->runQuery("SELECT count(exam_student_assigns.student_id) AS total_assigns,exam_student_assigns.student_id,GROUP_CONCAT(exam_student_assigns.exam_id) AS exam_IDs,student.init_name FROM ((exam_student_assigns LEFT JOIN student on student.student_id=exam_student_assigns.student_id) LEFT JOIN exams on exams.exam_id=exam_student_assigns.exam_id) GROUP BY exam_student_assigns.student_id,student.init_name");
         return $result;
     }
-    function loadUnselectedStudents(){
-        $result=$this->db->runQuery("SELECT count(exam_student_assigns.student_id) AS total_assigns,GROUP_CONCAT(exam_student_assigns.exam_id) AS exam_IDs,student.student_id,student.init_name FROM (exam_student_assigns RIGHT OUTER JOIN student on student.student_id=exam_student_assigns.student_id) GROUP BY student.student_id,student.init_name");
+    function loadUnselectedStudents($examId){
+        $examType=$this->db->runQuery("SELECT exam_type from exams where exam_id=$examId"); 
+        $examType=$examType[0]['exam_type'];
+        if($examType=="Theory"){
+            $result=$this->db->runQuery("SELECT count(exam_student_assigns.student_id) AS total_assigns,GROUP_CONCAT(exam_student_assigns.exam_id) AS exam_IDs,student.student_id,student.init_name FROM (exam_student_assigns RIGHT OUTER JOIN student on student.student_id=exam_student_assigns.student_id) where student.student_status='written exam failed' GROUP BY student.student_id,student.init_name");
+        }else if($examType=="Practical"){
+            $result=$this->db->runQuery("SELECT count(exam_student_assigns.student_id) AS total_assigns,GROUP_CONCAT(exam_student_assigns.exam_id) AS exam_IDs,student.student_id,student.init_name FROM (exam_student_assigns RIGHT OUTER JOIN student on student.student_id=exam_student_assigns.student_id) where student.student_status='written exam passed' GROUP BY student.student_id,student.init_name");
+        }
+        
         return $result;
     }
     function addNewStudents($managerId,$studentId,$examId){
@@ -292,9 +356,16 @@ class Manager_Model extends Model{
         $result=$this->db->runQuery("SELECT count(session_student_assigns.student_id) AS total_assigns,session_student_assigns.student_id,GROUP_CONCAT(session_student_assigns.session_id) AS session_IDs,student.init_name,packages.training_days FROM ((((session_student_assigns LEFT JOIN student on student.student_id=session_student_assigns.student_id) LEFT JOIN sessions on sessions.session_id=session_student_assigns.session_id) LEFT JOIN package_assigning on package_assigning.student_id=student.student_id) LEFT JOIN packages on packages.package_id=package_assigning.package_id) GROUP BY session_student_assigns.student_id,student.init_name");
         return $result;
     }
-    function loadUnselectedStudentsS(){
+    function loadUnselectedStudentsS($sessionId){
+        $sessionType=$this->db->runQuery("SELECT type from sessions where session_id=$sessionId"); 
+        $sessionType=$sessionType[0]['type'];
+        if($sessionType=="Theory"){
+            $result=$this->db->runQuery("SELECT count(session_student_assigns.student_id) AS total_assigns,GROUP_CONCAT(session_student_assigns.session_id) AS session_IDs,student.student_id,student.init_name,packages.training_days FROM (((session_student_assigns RIGHT OUTER JOIN student on student.student_id=session_student_assigns.student_id) LEFT JOIN package_assigning on package_assigning.student_id=student.student_id) LEFT JOIN packages on packages.package_id=package_assigning.package_id) where student.student_status='written exam failed' GROUP BY student.student_id,student.init_name");
+        }else if($sessionType=="Practical"){
+            $result=$this->db->runQuery("SELECT count(session_student_assigns.student_id) AS total_assigns,GROUP_CONCAT(session_student_assigns.session_id) AS session_IDs,student.student_id,student.init_name,packages.training_days FROM (((session_student_assigns RIGHT OUTER JOIN student on student.student_id=session_student_assigns.student_id) LEFT JOIN package_assigning on package_assigning.student_id=student.student_id) LEFT JOIN packages on packages.package_id=package_assigning.package_id) where student.student_status='written exam passed' GROUP BY student.student_id,student.init_name");
+        }
         // $result=$this->db->runQuery("SELECT count(session_student_assigns.student_id) AS total_assigns,GROUP_CONCAT(session_student_assigns.session_id) AS session_IDs,student.student_id,student.init_name FROM (session_student_assigns RIGHT OUTER JOIN student on student.student_id=session_student_assigns.student_id) GROUP BY student.student_id,student.init_name");
-        $result=$this->db->runQuery("SELECT count(session_student_assigns.student_id) AS total_assigns,GROUP_CONCAT(session_student_assigns.session_id) AS session_IDs,student.student_id,student.init_name,packages.training_days FROM (((session_student_assigns RIGHT OUTER JOIN student on student.student_id=session_student_assigns.student_id) LEFT JOIN package_assigning on package_assigning.student_id=student.student_id) LEFT JOIN packages on packages.package_id=package_assigning.package_id) GROUP BY student.student_id,student.init_name");
+        //$result=$this->db->runQuery("SELECT count(session_student_assigns.student_id) AS total_assigns,GROUP_CONCAT(session_student_assigns.session_id) AS session_IDs,student.student_id,student.init_name,packages.training_days FROM (((session_student_assigns RIGHT OUTER JOIN student on student.student_id=session_student_assigns.student_id) LEFT JOIN package_assigning on package_assigning.student_id=student.student_id) LEFT JOIN packages on packages.package_id=package_assigning.package_id) GROUP BY student.student_id,student.init_name");
         return $result;
     }
     function addNewStudentsS($managerId,$studentId,$sessionId){
@@ -368,6 +439,13 @@ class Manager_Model extends Model{
         $result=array_merge($sessionResult,$examResult);
         return $result;
     }
-
+    function imageUploading($file,$employeeId){
+        $result=$this->db->runQuery("UPDATE employee SET profile_pic='$file' WHERE employee_id=$employeeId");
+        // return $studentId;
+    }
+    function getProfilePic($employeeId){
+        $result=$this->db->runQuery("SELECT profile_pic from employee WHERE employee_id=$employeeId");
+        return $result;
+    }
 
 }

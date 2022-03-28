@@ -83,8 +83,19 @@ function submitSession(){
         else{
             var monthval=today.getMonth()+1
         }
+
+        if(today.getHours()<10){
+            var hoursVal="0"+today.getHours()
+        }else{
+            var hoursVal=today.getHours()
+        }
+        if(today.getMinutes()<10){
+            var minutesVal="0"+today.getMinutes()
+        }else{
+            var minutesVal=today.getMinutes()
+        }
         var day=today.getFullYear()+"-"+monthval+"-"+dateval
-        var todaytime=today.getHours()+":"+today.getMinutes()
+        var todaytime=hoursVal+":"+minutesVal
         if(date<day){
             console.log(day)
             console.log(date)
@@ -92,6 +103,8 @@ function submitSession(){
             document.getElementById("box").classList.replace("box","box-active")
         }
         else if(date==day && time<todaytime){
+            console.log(time)
+            console.log(todaytime)
             document.getElementById("msg").innerHTML="The time you have selected was past"
             document.getElementById("box").classList.replace("box","box-active")
         }

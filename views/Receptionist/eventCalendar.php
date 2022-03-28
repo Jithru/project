@@ -16,11 +16,45 @@
     <link rel="stylesheet" href="<?php echo URL?>public/css/Manager/EventCalendar/buttons.css">
     <link rel="stylesheet" href="<?php echo URL?>public/css/Manager/main/Horizontaltab.css">
     
-    
+    <link rel="stylesheet" href="<?php echo URL?>public/css/common/backgroundAnim.css">
 
     <title>Lead driving school</title>
 </head>
 <body>
+<ul class="background">
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+</ul>
     <div class="header">
       <?php require_once APPROOT."/../views/common/header.php"; ?>
     </div>

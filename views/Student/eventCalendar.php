@@ -15,12 +15,46 @@
     <link rel="stylesheet" href="<?php echo URL?>public/css/Manager/main/structure.css">
     <link rel="stylesheet" href="<?php echo URL?>public/css/Manager/EventCalendar/buttons.css">
     <link rel="stylesheet" href="<?php echo URL?>public/css/Manager/main/Horizontaltab.css">
-    
+    <link rel="stylesheet" href="<?php echo URL?>public/css/common/backgroundAnim.css">
     
 
     <title>Event Calendar</title>
 </head>
 <body>
+<ul class="background">
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+</ul>
 <div class="confirmation-box" id="confirmation2">
           <div class="box-body">
               <div class="popup-content-box">

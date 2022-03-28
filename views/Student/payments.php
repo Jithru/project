@@ -5,9 +5,44 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="<?php echo URL?>public/css/student/payments.css">
+    <link rel="stylesheet" href="<?php echo URL?>public/css/common/backgroundAnim.css">
     <title>Lead driving school</title>
 </head>
 <body>
+<ul class="background">
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+</ul>
     <div class="container">
         <div class="header">
          <?php require_once APPROOT."/../views/common/header.php"; ?>
@@ -103,6 +138,18 @@
                         <div class="div-1-p">
                             <h2>Make Payments</h2>
                         </div>
+                        <div class="div-2-p">
+                            <div class="col-1-p">
+                                <h4>Remaining Amount(Rs.)</h4>
+                            </div>
+                            <div class="col-2-p">
+                            <h3>:</h3>
+                            </div>
+                            <div class="col-3-p">
+                                <input type="text" class="remain_val" id="remain_val"  readonly>
+                                <!-- <input type="number"  class="amount" id="amount" min=0 max=10000> -->
+                            </div>
+                        </div>
                          <div class="div-2-p">
                             <div class="col-1-p">
                                 <h4>Paying Amount(Rs.)</h4>
@@ -111,7 +158,8 @@
                             <h3>:</h3>
                             </div>
                             <div class="col-3-p">
-                                <input type="number" class="amount" id="amount" min=0 max=10000>
+                                <!-- <input type="text" class="remain_val" id="remain_val" value="1000" readonly> -->
+                                <input type="number"  class="amount" id="amount" min=0 max=10000>
                             </div>
                         </div>
    
@@ -139,12 +187,16 @@
 
             document.querySelector(".view").style.display="none";
             document.querySelector(".popup").style.display="flex";
+
+            document.getElementById("remain_val").value=localStorage.getItem("remain_val");
+
             // window.location.href='http://localhost/project/Student/makepayments';
         }
 
         function back(){
             document.querySelector(".view").style.display="flex";
-            document.querySelector(".popup").style.display="none";           
+            document.querySelector(".popup").style.display="none";   
+            window.location.reload("http://localhost/project/Student/payments");        
         }
 
         function cancelpay(){
@@ -155,10 +207,21 @@
         console.log("gateway");
         var amount=document.getElementById("amount").value;
         var ifsuccess=false;
+
+            var stringremain=localStorage.getItem("remain_val");
+            var intremain=parseInt(stringremain);
+            console.log(typeof(intremain));
+
+            // if(amount>remain){
+            //     document.getElementById("amount").placeholder="Remaining value is"+intremain;
+            //     document.getElementById("amount").style.border="2px solid red";
+
+            // }
+
         // alert (amount);
+        
 
-
-        if(amount !="" && amount>0){
+        if(amount !="" && amount>0 ){
             payhere.onCompleted = function onCompleted() {
                 console.log("111");
                 paymentSuccessfull();
@@ -185,8 +248,8 @@
                 "return_url": "http://127.0.0.1/project/Student/payments",     // Important
                 "cancel_url":" http://127.0.0.1/project/Student/payments",     // Important
                 "notify_url": "http://sample.com/notify",
-                "order_id": "ItemNo12345",
-                "items": "Door bell wireles",
+                "order_id": "student",
+                "items": "Online payments for driving school",
                 "amount": amount,
                 "currency": "LKR",
                 "first_name": "Saman",
@@ -212,6 +275,8 @@
 }
         function paymentSuccessfull(){
             var amount=document.getElementById("amount").value;
+            document.getElementById("amount").value="";
+
             console.log(amount);
             let httpreq=new XMLHttpRequest();
                 httpreq.onreadystatechange=function(){
@@ -230,15 +295,15 @@
             var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
                 var todaytime=today.getHours()+':'+today.getMinutes()+':'+today.getSeconds();
 
-                console.log(todaytime);
-                console.log(date);
-                console.log("---------------------223");
+                // console.log(todaytime);
+                // console.log(date);
+                // console.log("---------------------223");
                 var dateTime=date+"_"+todaytime;
                 const data=dateTime+","+amount;
                             console.log(data);
                 let url="http://localhost/project/Student/onlinePayments/"+data;
-                console.log(url);
-                console.log("---------------------");
+                // console.log(url);
+                // console.log("---------------------");
 
                 httpreq.open("POST",url,true);
                 httpreq.send();    
@@ -311,12 +376,18 @@
                     let remain2=totAmount-paidAmount;
                     console.log(remain2);
                     if(remain2>0){
-                        remain2LKR=remain2.toLocaleString("en-US", {style:"currency", currency:"LKR"});
+                        var remain2LKR=remain2.toLocaleString("en-US", {style:"currency", currency:"LKR"});
+                        localStorage.setItem("remain_val",remain2);
                         document.getElementById("remain").innerHTML='<div class="paid-val">'+remain2LKR+'</div>';
+                        // document.getElementById().value=remain2LKR;
       
                     }else{
                         document.getElementById("remain").innerHTML='<div class="paid-val">All Paid</div>';
                         document.getElementById("remain").style.color='green';
+                        document.getElementById("remain").style.bordercolor='red';
+                        document.getElementById("pay_online").disabled=true;
+                        document.getElementById("pay_online").style.background="grey";
+                        document.getElementById("pay_online").style.borderColor="grey";
 
                     }
                
@@ -334,18 +405,15 @@
         
         var today = new Date();
 
-var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
+    var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
     var todaytime=today.getHours()+':'+today.getMinutes()+':'+today.getSeconds();
 
-    console.log(todaytime);
-    console.log(date);
-    console.log("---------------------");
+ 
     var dateTime=date+"_"+todaytime;
     const data=dateTime+","+amount;
                 console.log(data);
     let url="http://localhost/project/Student/onlinePayments/"+data;
-    console.log(url);
-    console.log("---------------------");
+   
 
     </script>
 </body>

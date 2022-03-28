@@ -134,27 +134,64 @@ function saveTitle(){
 function saveTime(){
     var newDate=document.getElementById("dateContainer").value
     var newTime=document.getElementById("timeContainer").value
-    var today=new Date();
-        if(today.getDate()<10){
-            var dateval="0"+today.getDate()
-        }
-        else{
-            var dateval=today.getDate()
-        }
-        var day=today.getFullYear()+"-"+(today.getMonth()+1)+"-"+dateval
-        var todaytime=today.getHours()+":"+today.getMinutes()
+    // var today=new Date();
+    //     if(today.getDate()<10){
+    //         var dateval="0"+today.getDate()
+    //     }
+    //     else{
+    //         var dateval=today.getDate()
+    //     }
+    //     var day=today.getFullYear()+"-"+(today.getMonth()+1)+"-"+dateval
+    //     var todaytime=today.getHours()+":"+today.getMinutes()
 
-        if(day>newDate){
-            document.getElementById("msg").innerHTML="The time you have selected was past"
-            document.getElementById("box").classList.replace("box","box-active")
-        }
-        else if(day==newDate){
-            if(newTime<todaytime){
-                document.getElementById("msg").innerHTML="The time you have selected was past"
-                document.getElementById("box").classList.replace("box","box-active")
-            }
-        }
-        else{
+    //     if(day>newDate){
+    //         document.getElementById("msg").innerHTML="The day you have selected was past"
+    //         document.getElementById("box").classList.replace("box","box-active")
+    //     }
+    //     else if(day==newDate){
+    //         if(newTime<todaytime){
+    //             document.getElementById("msg").innerHTML="The time you have selected was past"
+    //             document.getElementById("box").classList.replace("box","box-active")
+    //         }
+    //     }
+    var today=new Date();
+    if(today.getDate()<10){
+        var dateval="0"+today.getDate()
+    }
+    else{
+        var dateval=today.getDate()
+    }
+    if((today.getMonth()+1)<10){
+        var monthval="0"+(today.getMonth()+1)
+    }
+    else{
+        var monthval=today.getMonth()+1
+    }
+
+    if(today.getHours()<10){
+        var hoursVal="0"+today.getHours()
+    }else{
+        var hoursVal=today.getHours()
+    }
+    if(today.getMinutes()<10){
+        var minutesVal="0"+today.getMinutes()
+    }else{
+        var minutesVal=today.getMinutes()
+    }
+    var day=today.getFullYear()+"-"+monthval+"-"+dateval
+    var todaytime=hoursVal+":"+minutesVal
+    if(newDate<day){
+        console.log(day)
+        console.log(date)
+        document.getElementById("msg").innerHTML="The day you have selected was past"
+        document.getElementById("box").classList.replace("box","box-active")
+    }
+    else if(newDate==day && newTime<todaytime){
+        console.log(time)
+        console.log(todaytime)
+        document.getElementById("msg").innerHTML="The time you have selected was past"
+        document.getElementById("box").classList.replace("box","box-active")
+    }else{
             let httpreq=new XMLHttpRequest()
             httpreq.onreadystatechange=function(){
                 if(httpreq.readyState===4 && httpreq.status===200){
@@ -177,16 +214,54 @@ function saveTime(){
 
 function saveDate(){
     var newDate=document.getElementById("dateContainer").value
+    var newTime=document.getElementById("timeContainer").value
+    // var today=new Date();
+    //     if(today.getDate()<10){
+    //         var dateval="0"+today.getDate()
+    //     }
+    //     else{
+    //         var dateval=today.getDate()
+    //     }
+    // var day=today.getFullYear()+"-"+(today.getMonth()+1)+"-"+dateval
+    // if(day>newDate){
+    //     document.getElementById("msg").innerHTML="The date you have selected was past"
+    //     document.getElementById("box").classList.replace("box","box-active")
     var today=new Date();
-        if(today.getDate()<10){
-            var dateval="0"+today.getDate()
-        }
-        else{
-            var dateval=today.getDate()
-        }
-    var day=today.getFullYear()+"-"+(today.getMonth()+1)+"-"+dateval
-    if(day>newDate){
-        document.getElementById("msg").innerHTML="The date you have selected was past"
+    if(today.getDate()<10){
+        var dateval="0"+today.getDate()
+    }
+    else{
+        var dateval=today.getDate()
+    }
+    if((today.getMonth()+1)<10){
+        var monthval="0"+(today.getMonth()+1)
+    }
+    else{
+        var monthval=today.getMonth()+1
+    }
+
+    if(today.getHours()<10){
+        var hoursVal="0"+today.getHours()
+    }else{
+        var hoursVal=today.getHours()
+    }
+    if(today.getMinutes()<10){
+        var minutesVal="0"+today.getMinutes()
+    }else{
+        var minutesVal=today.getMinutes()
+    }
+    var day=today.getFullYear()+"-"+monthval+"-"+dateval
+    var todaytime=hoursVal+":"+minutesVal
+    if(newDate<day){
+        console.log(day)
+        console.log(date)
+        document.getElementById("msg").innerHTML="The day you have selected was past"
+        document.getElementById("box").classList.replace("box","box-active")
+    }
+    else if(newDate==day && newTime<todaytime){
+        console.log(time)
+        console.log(todaytime)
+        document.getElementById("msg").innerHTML="The time you have selected was past"
         document.getElementById("box").classList.replace("box","box-active")
     }else{
         let httpreq=new XMLHttpRequest()
