@@ -3,15 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <script src="<?php echo URL?>public/js/admin/showMe.js"></script>
-    <script src="<?php echo URL?>public/js/receptionist/viewRow.js"></script>
+    
+   
     <link rel="stylesheet" href="<?php echo URL?>public/css/Receptionist/viewRow.css">
-    <script src="<?php echo URL?>public/js/receptionist/viewMore.js"></script>
+    
     <link rel="stylesheet" href="<?php echo URL?>public/css/Receptionist/viewMore.css">
 
     <link rel="stylesheet" href="<?php echo URL?>public/css/Receptionist/editDetails.css">
 
-    <script src="<?php echo URL?>public/js/receptionist/payments.js"></script>
+    
     <link rel="stylesheet" href="<?php echo URL?>public/css/Receptionist/payments.css">
 
     <link rel="stylesheet" href="<?php echo URL?>public/css/Receptionist/boxVisible.css"> 
@@ -400,12 +400,12 @@
                 </div>
                 <div class="part-2-st">
                     <div class="paid-st"> 
-                        <div class="display-st" id="payid" >Paid Amount:</div>
-                        <div class="theam-st" id="display-paid"><p></p></div>
+                        <div class="display-st" id="payid" >Paid Amount: Rs </div>
+                        <div class="theam-st" id="display-paid"></div>
                     </div>
                     <div class="remaining-st">
-                        <div class="display-st" id="remain-balance" >Total Amount:</div>
-                        <div class="theam-st" id="display-remain"><p></p></div>
+                        <div class="display-st" id="remain-balance" >Total Amount: Rs </div>
+                        <div class="theam-st" id="display-remain"></div>
                     </div>
                 </div>
                 <div class="part-3-st">
@@ -483,6 +483,9 @@
             </div>
         </div>
     </div>
-    
+    <script src="<?php echo URL?>public/js/admin/showMe.js"></script>
+    <script src="<?php echo URL?>public/js/receptionist/viewRow.js"></script>
+    <script src="<?php echo URL?>public/js/receptionist/viewMore.js"></script>
+    <script src="<?php echo URL?>public/js/receptionist/payments.js"></script>
 </body>
 </html>

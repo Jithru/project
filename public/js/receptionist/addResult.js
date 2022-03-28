@@ -107,8 +107,9 @@ function fail(id,exId){
 
 function changeButton(){
     // alert('Hi');
-    document.getElementsById("pass").innerHTML="Done";
-    // document.getElementsById("pass").style.visibility='hidden';
+    // document.getElementsById("pass").innerHTML="Done";
+    document.getElementsById("pass").style.visibility='hidden';
+    document.getElementsById("fail").style.visibility='hidden';
     // document.getElementById("left").disabled=true;
     // document.getElementById("right").disabled=true;
 }
@@ -173,7 +174,7 @@ function search(){
 }
 
 function search_pass(id,exId){
-    alert('search');
+    // alert('search');
     // document.getElementById("pass").property.style.background="red";
     // changeButton();
     let httpreq = new XMLHttpRequest();
@@ -188,16 +189,17 @@ function search_pass(id,exId){
     var pass="Pass";
     var send = [id,exId,pass];
     let url = "http://localhost/project/Receptionist/addPass/"+send;
+    search();
     //alert(id);
     // window.location.href = "http://localhost/project/Receptionist/addResult/";
     
     httpreq.open( "POST" , url  , true);
     httpreq.send();
-    changeButton();
-    search();
+    // changeButton();
+    
 }
 function search_fail(id,exId){
-    alert('search');
+    // alert('search');
     // alert(exId);
     let httpreq = new XMLHttpRequest();
     httpreq.onreadystatechange = function(){
@@ -211,12 +213,12 @@ function search_fail(id,exId){
     var fail = "Fail";
     var send = [id,exId,fail];
     let url = "http://localhost/project/Receptionist/addPass/"+send;
+    search();
     //alert(id);
     // window.location.href = "http://localhost/project/Receptionist/addResult/";
     
     httpreq.open( "POST" , url  , true);
     httpreq.send();
-    changeButton();
-    search();
+    // changeButton();
 }
 

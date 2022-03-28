@@ -81,7 +81,7 @@ month -->
     
                     
                     <div id="table-body" class="table-body"> 
-                        <div class="row">
+                        <!-- <div class="row">
                         <div class="col-1">2021/10.10</div>
                             <div class="col-2">50</div>
                             <div class="col-3">30</div>
@@ -103,7 +103,7 @@ month -->
                             <div class="col-3">30</div>
                             <div class="col-4">2</div>
                             <div class="col-5">82</div>
-                        </div>
+                        </div> -->
                     
                     </div>
                 </div>
@@ -120,19 +120,19 @@ month -->
                     <div class="tot-col-2">
                         <h4>:</h4>
                     </div>
-                    <div class="tot-col-3">
-                        <h5>1000</h5>
+                    <div class="tot-col-3" id="total_theory">
+                        
                     </div>
                 </div>
                 <div class="total">
                     <div class="tot-col-1">
-                        <h4>Total number of  theory sessions</h4>
+                        <h4>Number of completed theory sessions</h4>
                     </div>
                     <div class="tot-col-2">
                         <h4>:</h4>
                     </div>
-                    <div class="tot-col-3">
-                    <h5>1000</h5>
+                    <div class="tot-col-3" id="completed_theory">
+                    <!-- <h5>1000</h5> -->
                     </div>
                 </div>
                 <div class="total">
@@ -142,19 +142,19 @@ month -->
                     <div class="tot-col-2">
                         <h4>:</h4>
                     </div>
-                    <div class="tot-col-3">
-                    <h5>1000</h5>
+                    <div class="tot-col-3" id="total_practical">
+                    
                     </div>
                 </div>
                 <div class="total">
                     <div class="tot-col-1">
-                        <h4>No. of completed practical sessions</h4>
+                        <h4>Number of completed practical sessions</h4>
                     </div>
                     <div class="tot-col-2">
                         <h4>:</h4>
                     </div>
-                    <div class="tot-col-3">
-                    <h5>1000</h5>
+                    <div class="tot-col-3" id="completed_practical">
+                    
                     </div>
                 </div>
                 

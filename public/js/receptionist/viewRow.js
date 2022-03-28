@@ -23,7 +23,7 @@ function students(){
                 // <a href = "http://localhost/mytry/Receptionist/moreDetails/"></a>
             }   
         }
-    }
+    } 
 
     let url = "http://localhost/project/Receptionist/viewRow/";
 
@@ -50,7 +50,6 @@ function searchMe(){
         }
     }
 }
-
 // function searchMe(){
 //     if(event.key === 'Enter'){
 //         // alert('Hello');

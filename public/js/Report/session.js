@@ -26,9 +26,6 @@ function selectMethod(){
     // const period = document.getElementById("")
 }
 
-
-
-
 window.onload = function () {
     document.getElementById("downld")
         .addEventListener("click", () => {
@@ -54,6 +51,7 @@ function loadTable(method,period){
         if(httpreq.readyState === 4 && httpreq.status === 200){
             console.log(httpreq.responseText);
             const data = JSON.parse(httpreq.responseText);
+
             // console.log(vehicleClass[1]["vehicle_class"]);
             // var assignStudent = [];
             // var partiStudent = [];
@@ -61,7 +59,7 @@ function loadTable(method,period){
             // for(i=0;i<data[0].length;i++){
             //     assignStudent[i]=0;
             //     for(j=0;j<data[1].length;j++){
-            //         if(data[0][i]['session_id']==data[1][j]['session_id']){
+            //         if(data[0][i]['session_date']==data[1][j]['session_date']){
             //             assignStudent[i]=data[1][j]['assignSTcount']
             //         }
             //     }
@@ -77,30 +75,35 @@ function loadTable(method,period){
             // }
             
 
-            for(i=0;i<data[0].length;i++){
+            for(i=0;i<data[1].length;i++){
                 rows.innerHTML+='<div class="row">'
-                +'<div class="col-1">'+data[2][i]['session_date']+'</div>'
+                +'<div class="col-1">'+data[0][i]['session_date']+'</div>'
                 +'<div class="col-2">'+data[0][i]['theory']+'</div>'
-                +'<div class="col-3">'+data[1][i]['held']+'</div>'
-                +'<div class="col-4">'+data[0][i]['theory']+'</div>'
-                +'<div class="col-5">'+data[0][i]['theory']+'</div>'
+                +'<div class="col-3">'+data[1][i]['held_theory']+'</div>'
+                +'<div class="col-4">'+data[2][i]['practical']+'</div>'
+                +'<div class="col-5">'+data[3][i]['held_prac']+'</div>'
                 
             +'</div>'
             }
-            // var totalAssign=0
-            // var totalPart=0
-            // var avgPart=0
 
-            // for(i=0;i<data[0].length;i++){
+            var theo=0
+            var held_theo=0
+            var prac=0
+            var held_prac=0
+
+            for(i=0;i<data[1].length;i++){
                 
-            //     totalAssign+=parseInt(assignStudent[i])
-            //     totalPart+=parseInt(partiStudent[i])
-            // }
+                theo+=parseInt(data[0][i]['theory'])
+                held_theo+=parseInt(data[0][i]['held_theory'])
+                prac+=parseInt(data[0][i]['practical'])
+                held_prac+=parseInt(data[0][i]['held_prac'])
+            }
 
 
-            // document.getElementById('no-of-student').innerText=totalAssign
-            // document.getElementById('avg').innerText=avgPart
-            // document.getElementById('total').innerText=totalPart
+            document.getElementById('total_theory').innerText=theo
+            document.getElementById('completed_theory').innerText=held_theo
+            document.getElementById('total_practical').innerText=prac
+            document.getElementById('completed_practical').innerText=held_prac
 
             // avgPart=totalPart/data[0].length;
             // console.log(totalAssign)

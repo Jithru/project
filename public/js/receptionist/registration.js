@@ -171,189 +171,218 @@ function changing(){
 
 function SaveData(){
     // alert('Hello');
+    var flag=true;
+    var medi=document.getElementById("medical").value;
+    if(medi.length==0){
+        document.getElementById("medical").placeholder="This field can't be empty"
+        document.getElementById("medical").style.border="2px solid red"
+        flag=false;
+    }
+    var issDate=document.getElementById("issue").value;
+    if(issDate.length==0){
+        // document.getElementById("issue").placeholder="This field can't be empty"
+        document.getElementById("issue").style.border="2px solid red"
+        flag=false;
+    }
+    var endDate=document.getElementById("ending").value;
+    if(endDate.length==0){
+        // document.getElementById("issue").placeholder="This field can't be empty"
+        document.getElementById("ending").style.border="2px solid red"
+        flag=false;
+    }
+    if(!document.getElementById("A1").checked && !document.getElementById("A").checked && !document.getElementById("B1").checked && !document.getElementById("B").checked){
+        document.getElementById("initPayment").placeholder="You haven't select a vehicle class!"
+        document.getElementById("initPayment").style.border="2px solid red"
+        flag=false;
+    }
 
-    var initName=document.getElementById("initName").value;
-    var init=initName.replace(/\s+/g, '-');
-    var fullName=document.getElementById("fullName").value;
-    var fullN=fullName.replace(/\s+/g, '-');
-    var pmtAddress=document.getElementById("pmtAddress").value;
-    var pmtAdd=pmtAddress.replace(/,+/g, '_');
-    pmtAdd=pmtAdd.replace(/\s+/g, '-');
-    pmtAdd=pmtAdd.replace(/\/+/g, '~');
+    //
+    if(flag==true){
+        var initName=document.getElementById("initName").value;
+        var init=initName.replace(/\s+/g, '-');
+        var fullName=document.getElementById("fullName").value;
+        var fullN=fullName.replace(/\s+/g, '-');
+        var pmtAddress=document.getElementById("pmtAddress").value;
+        var pmtAdd=pmtAddress.replace(/,+/g, '_');
+        pmtAdd=pmtAdd.replace(/\s+/g, '-');
+        pmtAdd=pmtAdd.replace(/\/+/g, '~');
+        
+        var city=document.getElementById("city").value;
+        var district=document.getElementById("district").value;
+        var divSecre=document.getElementById("divSecre").value;
+        var police=document.getElementById("police").value;
+        if(document.getElementById("male").checked){
+            var gender="m"
+        }else if(document.getElementById("female").checked){
+            var gender="f"
+        }
+        var nic=document.getElementById("nic").value;
+
+        //caLculate DOB from NIC
+        if(true){
+            if(nic.length==10){
+                const d = new Date();
+                var yearvar=parseInt(nic.substr(0,2))
+                yearvar=1900+yearvar
+                console.log()
+                d.setFullYear(yearvar,00,01)
+                var datevar=nic.substr(2,3)
+                d.setDate(datevar - 1)
+                console.log(d.toISOString().slice(0, 10))
+                var dateofbirth=d.toISOString().slice(0, 10)
+                
+            }else if(nic.length==12){
+                const d = new Date();
+                var yearvar=parseInt(nic.substr(0,4))
+                d.setFullYear(yearvar,00,01)
+                d.setDate(parseInt(nic.substr(4,3)) - 1)
+                console.log(d.toISOString().slice(0, 10))
+                var dateofbirth=d.toISOString().slice(0, 10)
+            }
+
+        }
+
+
+
+        var mobile=document.getElementById("mobile").value;
+        var occupation=document.getElementById("occupation").value;
+        if(document.getElementById("written").checked){
+            var type="written"
+        }else if(document.getElementById("trial").checked){
+            var type="trial"
+        }else if(document.getElementById("license").checked){
+            var type="license"
+        }
+
+        if(type=="written"){
+            var medNo = document.getElementById("medical").value;
+            var issuDate = document.getElementById("issue").value;
+
+            var classA1=document.getElementById("A1").checked;
+            var classA=document.getElementById("A").checked;
+            var classB1=document.getElementById("B1").checked;
+            var classB=document.getElementById("B").checked;
+
+            var classArray=[]
+            if(classA1==true){
+                classArray.push("A1");
+            }if(classA==true){
+                classArray.push("A");
+            }if(classB1==true){
+                classArray.push("B1");
+            }if(classB==true){
+                classArray.push("B");
+            }
+            console.log(classA1,classA,classB1,classB);
+            console.log(classArray);
+            var packageId=document.getElementById("package-id-container").value;
+            var initialCharges=document.getElementById("initPayment").value;
+            var packagePrice=document.getElementById("package-amount-container").value;
+
+            let httpreq = new XMLHttpRequest();
+            httpreq.onreadystatechange = function(){
+            console.log("onreadystatechange");
+            if( httpreq.readyState === 4 && httpreq.status === 200){
+                console.log(httpreq.responseText);
+            }
+            }
+            data=[nic,pmtAdd,gender,dateofbirth,mobile,initialCharges,packagePrice,district,city,divSecre,police,occupation,type,init,fullN,medNo,issuDate]
+            vehicleClasses=[classA1,classA,classB1,classB]
+            var url="http://localhost/project/Receptionist/registerForWritten/"+data+"/"+vehicleClasses+"/"+packageId+"/"+classArray;
+            httpreq.open( "POST" , url  , true);
+            httpreq.send();
+
+        }else if(type=="trial"){
+            var lPermit = document.getElementById("medical").value;
+            var issue = document.getElementById("issue").value;
+            var ending = document.getElementById("ending").value;
+
+            var classA1=document.getElementById("A1").checked;
+            var classA=document.getElementById("A").checked;
+            var classB1=document.getElementById("B1").checked;
+            var classB=document.getElementById("B").checked;
+
+            var classArray=[]
+            if(classA1==true){
+                classArray.push("A1");
+            }if(classA==true){
+                classArray.push("A");
+            }if(classB1==true){
+                classArray.push("B1");
+            }if(classB==true){
+                classArray.push("B");
+            }
+            console.log(classA1,classA,classB1,classB);
+            console.log(classArray);
+
+            var packageId=document.getElementById("package-id-container").value;
+            var initialCharges=document.getElementById("initPayment").value;
+            var packagePrice=document.getElementById("package-amount-container").value;
+            //edit
+            let httpreq = new XMLHttpRequest();
+            httpreq.onreadystatechange = function(){
+            console.log("onreadystatechange");
+            if( httpreq.readyState === 4 && httpreq.status === 200){
+                console.log(httpreq.responseText);
+            }
+            }
+            data=[nic,pmtAdd,gender,dateofbirth,mobile,initialCharges,packagePrice,district,city,divSecre,police,occupation,type,init,fullN,lPermit,issue,ending]
+            vehicleClasses=[classA1,classA,classB1,classB]
+
+            var url="http://localhost/project/Receptionist/registerForTrial/"+data+"/"+vehicleClasses+"/"+packageId+"/"+classArray;
+            // var url2="http://localhost/project/Receptionist/registerForTrial/"+trial;
+            httpreq.open( "POST" , url , true);
+            httpreq.send();
+
+
+        }else if(type=="license"){
+            //Lpermit, ending date
+            var licenseNo = document.getElementById("medical").value;
+            var issue = document.getElementById("issue").value;
+            var ending = document.getElementById("ending").value;
+
+            var classA1=document.getElementById("A1").checked;
+            var classA=document.getElementById("A").checked;
+            var classB1=document.getElementById("B1").checked;
+            var classB=document.getElementById("B").checked;
+
+            var classArray=[]
+            if(classA1==true){
+                classArray.push("A1");
+            }if(classA==true){
+                classArray.push("A");
+            }if(classB1==true){
+                classArray.push("B1");
+            }if(classB==true){
+                classArray.push("B");
+            }
+            console.log(classA1,classA,classB1,classB);
+            console.log(classArray);
+
+            var packageId=document.getElementById("package-id-container").value;
+            var initialCharges=document.getElementById("initPayment").value;
+            var packagePrice=document.getElementById("package-amount-container").value;
+            //edit
+            let httpreq = new XMLHttpRequest();
+            httpreq.onreadystatechange = function(){
+            console.log("onreadystatechange");
+            if( httpreq.readyState === 4 && httpreq.status === 200){
+                console.log(httpreq.responseText);
+            }
+            }
+            data=[nic,pmtAdd,gender,dateofbirth,mobile,initialCharges,packagePrice,district,city,divSecre,police,occupation,type,init,fullN,licenseNo,issue,ending]
+            vehicleClasses=[classA1,classA,classB1,classB]
+
+            var url="http://localhost/project/Receptionist/registerForLicense/"+data+"/"+vehicleClasses+"/"+packageId+"/"+classArray;
+            // var url2="http://localhost/project/Receptionist/registerForTrial/"+trial;
+            httpreq.open( "POST" , url , true);
+            httpreq.send();
+
+        }
+        window.location.href = "http://localhost/project/Receptionist/studentList/";
+    }
+
     
-    var city=document.getElementById("city").value;
-    var district=document.getElementById("district").value;
-    var divSecre=document.getElementById("divSecre").value;
-    var police=document.getElementById("police").value;
-    if(document.getElementById("male").checked){
-        var gender="m"
-    }else if(document.getElementById("female").checked){
-        var gender="f"
-    }
-    var nic=document.getElementById("nic").value;
-
-    //caLculate DOB from NIC
-    if(true){
-        if(nic.length==10){
-            const d = new Date();
-            var yearvar=parseInt(nic.substr(0,2))
-            yearvar=1900+yearvar
-            console.log()
-            d.setFullYear(yearvar,00,01)
-            var datevar=nic.substr(2,3)
-            d.setDate(datevar - 1)
-            console.log(d.toISOString().slice(0, 10))
-            var dateofbirth=d.toISOString().slice(0, 10)
-            
-        }else if(nic.length==12){
-            const d = new Date();
-            var yearvar=parseInt(nic.substr(0,4))
-            d.setFullYear(yearvar,00,01)
-            d.setDate(parseInt(nic.substr(4,3)) - 1)
-            console.log(d.toISOString().slice(0, 10))
-            var dateofbirth=d.toISOString().slice(0, 10)
-        }
-
-    }
-
-
-
-    var mobile=document.getElementById("mobile").value;
-    var occupation=document.getElementById("occupation").value;
-    if(document.getElementById("written").checked){
-        var type="written"
-    }else if(document.getElementById("trial").checked){
-        var type="trial"
-    }else if(document.getElementById("license").checked){
-        var type="license"
-    }
-
-    if(type=="written"){
-        var medNo = document.getElementById("medical").value;
-        var issuDate = document.getElementById("issue").value;
-
-        var classA1=document.getElementById("A1").checked;
-        var classA=document.getElementById("A").checked;
-        var classB1=document.getElementById("B1").checked;
-        var classB=document.getElementById("B").checked;
-
-        var classArray=[]
-        if(classA1==true){
-            classArray.push("A1");
-        }if(classA==true){
-            classArray.push("A");
-        }if(classB1==true){
-            classArray.push("B1");
-        }if(classB==true){
-            classArray.push("B");
-        }
-        console.log(classA1,classA,classB1,classB);
-        console.log(classArray);
-        var packageId=document.getElementById("package-id-container").value;
-        var initialCharges=document.getElementById("initPayment").value;
-        var packagePrice=document.getElementById("package-amount-container").value;
-
-        let httpreq = new XMLHttpRequest();
-        httpreq.onreadystatechange = function(){
-          console.log("onreadystatechange");
-          if( httpreq.readyState === 4 && httpreq.status === 200){
-            console.log(httpreq.responseText);
-          }
-        }
-        data=[nic,pmtAdd,gender,dateofbirth,mobile,initialCharges,packagePrice,district,city,divSecre,police,occupation,type,init,fullN,medNo,issuDate]
-        vehicleClasses=[classA1,classA,classB1,classB]
-        var url="http://localhost/project/Receptionist/registerForWritten/"+data+"/"+vehicleClasses+"/"+packageId+"/"+classArray;
-        httpreq.open( "POST" , url  , true);
-        httpreq.send();
-
-    }else if(type=="trial"){
-        var lPermit = document.getElementById("medical").value;
-        var issue = document.getElementById("issue").value;
-        var ending = document.getElementById("ending").value;
-
-        var classA1=document.getElementById("A1").checked;
-        var classA=document.getElementById("A").checked;
-        var classB1=document.getElementById("B1").checked;
-        var classB=document.getElementById("B").checked;
-
-        var classArray=[]
-        if(classA1==true){
-            classArray.push("A1");
-        }if(classA==true){
-            classArray.push("A");
-        }if(classB1==true){
-            classArray.push("B1");
-        }if(classB==true){
-            classArray.push("B");
-        }
-        console.log(classA1,classA,classB1,classB);
-        console.log(classArray);
-
-        var packageId=document.getElementById("package-id-container").value;
-        var initialCharges=document.getElementById("initPayment").value;
-        var packagePrice=document.getElementById("package-amount-container").value;
-        //edit
-        let httpreq = new XMLHttpRequest();
-        httpreq.onreadystatechange = function(){
-          console.log("onreadystatechange");
-          if( httpreq.readyState === 4 && httpreq.status === 200){
-            console.log(httpreq.responseText);
-          }
-        }
-        data=[nic,pmtAdd,gender,dateofbirth,mobile,initialCharges,packagePrice,district,city,divSecre,police,occupation,type,init,fullN,lPermit,issue,ending]
-        vehicleClasses=[classA1,classA,classB1,classB]
-
-        var url="http://localhost/project/Receptionist/registerForTrial/"+data+"/"+vehicleClasses+"/"+packageId+"/"+classArray;
-        // var url2="http://localhost/project/Receptionist/registerForTrial/"+trial;
-        httpreq.open( "POST" , url , true);
-        httpreq.send();
-
-
-    }else if(type=="license"){
-        //Lpermit, ending date
-        var licenseNo = document.getElementById("medical").value;
-        var issue = document.getElementById("issue").value;
-        var ending = document.getElementById("ending").value;
-
-        var classA1=document.getElementById("A1").checked;
-        var classA=document.getElementById("A").checked;
-        var classB1=document.getElementById("B1").checked;
-        var classB=document.getElementById("B").checked;
-
-        var classArray=[]
-        if(classA1==true){
-            classArray.push("A1");
-        }if(classA==true){
-            classArray.push("A");
-        }if(classB1==true){
-            classArray.push("B1");
-        }if(classB==true){
-            classArray.push("B");
-        }
-        console.log(classA1,classA,classB1,classB);
-        console.log(classArray);
-
-        var packageId=document.getElementById("package-id-container").value;
-        var initialCharges=document.getElementById("initPayment").value;
-        var packagePrice=document.getElementById("package-amount-container").value;
-        //edit
-        let httpreq = new XMLHttpRequest();
-        httpreq.onreadystatechange = function(){
-          console.log("onreadystatechange");
-          if( httpreq.readyState === 4 && httpreq.status === 200){
-            console.log(httpreq.responseText);
-          }
-        }
-        data=[nic,pmtAdd,gender,dateofbirth,mobile,initialCharges,packagePrice,district,city,divSecre,police,occupation,type,init,fullN,licenseNo,issue,ending]
-        vehicleClasses=[classA1,classA,classB1,classB]
-
-        var url="http://localhost/project/Receptionist/registerForLicense/"+data+"/"+vehicleClasses+"/"+packageId+"/"+classArray;
-        // var url2="http://localhost/project/Receptionist/registerForTrial/"+trial;
-        httpreq.open( "POST" , url , true);
-        httpreq.send();
-
-    }
-    window.location.href = "http://localhost/project/Receptionist/studentList/";
 }
 
 function loadVehicleClasses(){

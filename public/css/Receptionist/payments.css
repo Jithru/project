@@ -22,7 +22,7 @@ body {
   width: 100%;
   height: 82px;
   margin: -752px auto auto auto;
-  background-color: #f2f2f2;
+  /* background-color: #f2f2f2; */
   display: flex;
   align-items: flex-end;
   justify-content: flex-end;
@@ -45,7 +45,7 @@ body {
   width: calc(100% - 250px);
   height: 100%;
   margin-left: 128px;
-  background-color: #f2f2f2;
+  /* background-color: #f2f2f2; */
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -102,7 +102,7 @@ body {
 .display-st{
   width: 220px;
   height: 60px;
-  background-color: #f2f2f2;
+  /* background-color: #f2f2f2; */
   border: none;
   font-size: 22px;
   color: black;
@@ -113,9 +113,10 @@ body {
   /* justify-content: center; */
 }
 .theam-st{
-  width: 75%;
+  width: 72%;
   height: 60px;
   background-color: white;
+  /* background-color: pink; */
   border: none;
   font-size: 22px;
   color: black;
@@ -127,7 +128,7 @@ body {
 }
 
 .remaining-st {
-  width: 390px;
+  width: 396px;
   height: 100%;
   display: flex;
   flex-direction: row;

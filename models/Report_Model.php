@@ -170,28 +170,22 @@ class Report_Model extends Model{
         if($method=="Annualy"){
             $startDate=$period.'-01-01';
             $endDate=date('Y-m-d', strtotime($startDate. ' + '. 12 .' months'));
-            // $cash = $this->db->runQuery("SELECT SUM(amount) AS sum_price FROM cash_payment_submits INNER JOIN cash_payment ON cash_payment.cpayment_id=cash_payment_submits.cpayment_id WHERE student_id='$id'");
 
-            // $result=$this->db->runQuery("SELECT COUNT(student_id) AS writtenStudent FROM medical_report INNER JOIN student ON student.student_id=medical_report.student_id WHERE student.arival_date>='$startDate' and student.arival_date<='$endDate'");
-
-            $result[0]=$this->db->runQuery("SELECT COUNT(type) AS theory FROM sessions WHERE (sessions.type='Theory' AND (session_date>='$startDate' AND session_date<='$endDate'))");
-            $result[1]=$this->db->runQuery("SELECT COUNT(held_or_not) AS held FROM session_status INNER JOIN sessions ON sessions.session_id=session_status.session_id WHERE held_or_not='1' AND (sessions.type='Theory' AND (session_date>='$startDate' AND session_date<='$endDate')");
-            $result[2]=$this->db->runQuery("SELECT session_date FROM sessions WHERE sessions.session_date>='$startDate' and sessions.session_date <= '$endDate'");
-            // $result[0]=$this->db->runQuery("SELECT sessions.session_id,sessions.session_title,sessions.session_date,sessions.session_time FROM sessions WHERE sessions.session_date>='$startDate' and sessions.session_date <= '$endDate'");
-            // $result[1]=$this->db->runQuery("SELECT COUNT(session_student_assigns.student_id) AS assignSTcount,sessions.session_id FROM session_student_assigns INNER JOIN sessions ON sessions.session_id =session_student_assigns.session_id WHERE sessions.session_date>='$startDate' and sessions.session_date <= '$endDate' GROUP BY sessions.session_id");
-            // $result[2]=$this->db->runQuery("SELECT COUNT(session_participation.student_id) AS partSTcount,sessions.session_id FROM session_participation INNER JOIN sessions ON sessions.session_id =session_participation.session_id WHERE sessions.session_date>='$startDate' and sessions.session_date <= '$endDate' GROUP BY sessions.session_id");
+            $result[0]=$this->db->runQuery("SELECT sessions.session_date, COUNT(sessions.session_id) AS theory FROM sessions WHERE sessions.type='Theory' sessions.session_date>='$startDate' and sessions.session_date <= '$endDate' GROUP BY sessions.session_date");
+            $result[1]=$this->db->runQuery("SELECT sessions.session_date, COUNT(held_or_not) AS held_theory FROM session_status INNER JOIN sessions ON sessions.session_id=session_status.session_id WHERE held_or_not=1 sessions.session_date>='$startDate' and sessions.session_date <= '$endDate' GROUP BY sessions.session_date");
+            $result[2]=$this->db->runQuery("SELECT sessions.session_date, COUNT(sessions.session_id) AS practical FROM sessions WHERE sessions.type='Practical' sessions.session_date>='$startDate' and sessions.session_date <= '$endDate' GROUP BY sessions.session_date");
+            $result[3]=$this->db->runQuery("SELECT sessions.session_date, COUNT(held_or_not) AS held_prac  FROM session_status INNER JOIN sessions ON sessions.session_id=session_status.session_id WHERE held_or_not=1 sessions.session_date>='$startDate' and sessions.session_date <= '$endDate' GROUP BY sessions.session_date");
             
             return $result;
         }
         else if($method=="Weekly"){
             $startDate=date('Y-m-d',strtotime($period));
             $endDate=date('Y-m-d', strtotime($startDate. ' + '. 7 .' days'));
-            $result[0]=$this->db->runQuery("SELECT COUNT(type) AS theory,session.session_date FROM sessions WHERE (sessions.type='Theory' AND (session_date>='$startDate' AND session_date<='$endDate'))");
-            $result[1]=$this->db->runQuery("SELECT COUNT(held_or_not) AS held FROM session_status INNER JOIN sessions ON sessions.session_id=session_status.session_id WHERE held_or_not=1");
 
-            // $result[0]=$this->db->runQuery("SELECT sessions.session_id,sessions.session_title,sessions.session_date,sessions.session_time FROM sessions WHERE sessions.session_date>='$startDate' and sessions.session_date <= '$endDate'");
-            // $result[1]=$this->db->runQuery("SELECT COUNT(session_student_assigns.student_id) AS assignSTcount,sessions.session_id FROM session_student_assigns INNER JOIN sessions ON sessions.session_id =session_student_assigns.session_id WHERE sessions.session_date>='$startDate' and sessions.session_date <= '$endDate' GROUP BY sessions.session_id");
-            // $result[2]=$this->db->runQuery("SELECT COUNT(session_participation.student_id) AS partSTcount,sessions.session_id FROM session_participation INNER JOIN sessions ON sessions.session_id =session_participation.session_id WHERE sessions.session_date>='$startDate' and sessions.session_date <= '$endDate' GROUP BY sessions.session_id");
+            $result[0]=$this->db->runQuery("SELECT sessions.session_date, COUNT(sessions.session_id) AS theory FROM sessions WHERE sessions.type='Theory' sessions.session_date>='$startDate' and sessions.session_date <= '$endDate' GROUP BY sessions.session_date");
+            $result[1]=$this->db->runQuery("SELECT sessions.session_date, COUNT(held_or_not) AS held_theory FROM session_status INNER JOIN sessions ON sessions.session_id=session_status.session_id WHERE held_or_not=1 sessions.session_date>='$startDate' and sessions.session_date <= '$endDate' GROUP BY sessions.session_date");
+            $result[2]=$this->db->runQuery("SELECT sessions.session_date, COUNT(sessions.session_id) AS practical FROM sessions WHERE sessions.type='Practical' sessions.session_date>='$startDate' and sessions.session_date <= '$endDate' GROUP BY sessions.session_date");
+            $result[3]=$this->db->runQuery("SELECT sessions.session_date, COUNT(held_or_not) AS held_prac  FROM session_status INNER JOIN sessions ON sessions.session_id=session_status.session_id WHERE held_or_not=1 sessions.session_date>='$startDate' and sessions.session_date <= '$endDate' GROUP BY sessions.session_date");
             
             return $result;
         }
@@ -208,23 +202,24 @@ class Report_Model extends Model{
             }
             $startDate=$period.'-01';
             $endDate=date('Y-m-d', strtotime($startDate. ' + '. $divisor .' days'));
-            $result[0]=$this->db->runQuery("SELECT COUNT(type) AS theory FROM sessions WHERE (sessions.type='Theory' AND (session_date>='$startDate' AND session_date<='$endDate'))");
-            $result[1]=$this->db->runQuery("SELECT COUNT(held_or_not) AS held FROM session_status INNER JOIN sessions ON sessions.session_id=session_status.session_id WHERE held_or_not=1");
 
-            // $result[0]=$this->db->runQuery("SELECT sessions.session_id,sessions.session_title,sessions.session_date,sessions.session_time FROM sessions WHERE sessions.session_date>='$startDate' and sessions.session_date <= '$endDate'");
-            // $result[1]=$this->db->runQuery("SELECT COUNT(session_student_assigns.student_id) AS assignSTcount,sessions.session_id FROM session_student_assigns INNER JOIN sessions ON sessions.session_id =session_student_assigns.session_id WHERE sessions.session_date>='$startDate' and sessions.session_date <= '$endDate' GROUP BY sessions.session_id");
-            // $result[2]=$this->db->runQuery("SELECT COUNT(session_participation.student_id) AS partSTcount,sessions.session_id FROM session_participation INNER JOIN sessions ON sessions.session_id =session_participation.session_id WHERE sessions.session_date>='$startDate' and sessions.session_date <= '$endDate' GROUP BY sessions.session_id");
+            $result[0]=$this->db->runQuery("SELECT sessions.session_date, COUNT(sessions.session_id) AS theory FROM sessions WHERE sessions.type='Theory' sessions.session_date>='$startDate' and sessions.session_date <= '$endDate' GROUP BY sessions.session_date");
+            $result[1]=$this->db->runQuery("SELECT sessions.session_date, COUNT(held_or_not) AS held_theory FROM session_status INNER JOIN sessions ON sessions.session_id=session_status.session_id WHERE held_or_not=1 sessions.session_date>='$startDate' and sessions.session_date <= '$endDate' GROUP BY sessions.session_date");
+            $result[2]=$this->db->runQuery("SELECT sessions.session_date, COUNT(sessions.session_id) AS practical FROM sessions WHERE sessions.type='Practical' sessions.session_date>='$startDate' and sessions.session_date <= '$endDate' GROUP BY sessions.session_date");
+            $result[3]=$this->db->runQuery("SELECT sessions.session_date, COUNT(held_or_not) AS held_prac  FROM session_status INNER JOIN sessions ON sessions.session_id=session_status.session_id WHERE held_or_not=1 sessions.session_date>='$startDate' and sessions.session_date <= '$endDate' GROUP BY sessions.session_date");
             
             return $result;
         }
         else{
-            $result[0]=$this->db->runQuery("SELECT COUNT(type) AS theory FROM sessions WHERE sessions.type='Theory'");
-            $result[1]=$this->db->runQuery("SELECT COUNT(held_or_not) AS held FROM session_status INNER JOIN sessions ON sessions.session_id=session_status.session_id WHERE held_or_not=1");
-
-            // $result[0]=$this->db->runQuery("SELECT session_id,session_title,session_date,session_time FROM sessions");
-            // $result[1]=$this->db->runQuery("SELECT COUNT(session_student_assigns.student_id) AS assignSTcount,sessions.session_id FROM session_student_assigns INNER JOIN sessions ON sessions.session_id =session_student_assigns.session_id  GROUP BY sessions.session_id");
-            // $result[2]=$this->db->runQuery("SELECT COUNT(session_participation.student_id) AS partSTcount,sessions.session_id FROM session_participation INNER JOIN sessions ON sessions.session_id =session_participation.session_id GROUP BY sessions.session_id");
-            
+            // $result[0]=$this->db->runQuery("SELECT session_date FROM sessions WHERE sessions");
+            $result[0]=$this->db->runQuery("SELECT sessions. session_date, COUNT(sessions.session_id) AS theory FROM sessions WHERE sessions.type='Theory' GROUP BY sessions.session_date");
+            // $result[1]=$this->db->runQuery("SELECT COUNT(type) AS theory FROM sessions WHERE sessions.type='Theory' GROUP BY sessions.session_date");
+            $result[1]=$this->db->runQuery("SELECT sessions.session_date, COUNT(session_status.held_or_not) AS held_theory FROM session_status INNER JOIN sessions ON sessions.session_id=session_status.session_id WHERE held_or_not=1 GROUP BY sessions.session_date");
+            // $result[2]=$this->db->runQuery("SELECT COUNT(held_or_not) AS held_theory FROM session_status INNER JOIN sessions ON sessions.session_id=session_status.session_id WHERE held_or_not=1");
+            $result[2]=$this->db->runQuery("SELECT sessions.session_date, COUNT(sessions.session_id) AS practical FROM sessions WHERE sessions.type='Practical' GROUP BY sessions.session_date");
+            // $result[3]=$this->db->runQuery("SELECT COUNT(type) AS practical FROM sessions WHERE sessions.type='Practical'");
+            $result[3]=$this->db->runQuery("SELECT sessions.session_date, COUNT(session_status.held_or_not) AS held_prac  FROM session_status INNER JOIN sessions ON sessions.session_id=session_status.session_id WHERE held_or_not=1 GROUP BY sessions.session_date");
+            // $result[4]=$this->db->runQuery("SELECT COUNT(held_or_not) AS held_prac  FROM session_status INNER JOIN sessions ON sessions.session_id=session_status.session_id WHERE held_or_not=1");
             return $result;
         }
     }
