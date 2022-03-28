@@ -391,14 +391,14 @@
                     <div class="first">Amount</div>
                     <div class="second">:</div>
                     <div class="third">
-                        <input type="text" name="amount" id="amount" placeholder="Rs.0">
+                        <input type="number" name="amount" id="amount" placeholder="Rs.0">
                     </div>
                 </div>
                 <div class="myRow">
                     <div class="first">Re-enter Amount</div>
                     <div class="second">:</div>
                     <div class="third">
-                        <input type="text" name="re-amount" id="re-amount" placeholder="Rs.0">
+                        <input type="number" name="re-amount" id="re-amount" placeholder="Rs.0">
                     </div>
                 </div>
             </div>
