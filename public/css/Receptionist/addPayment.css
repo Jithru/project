@@ -5,7 +5,7 @@
 body {
   font-family: sans-serif;
   min-width: 100px;
-  background-color: #f2f2f2;
+  /* background-color: #f2f2f2; */
 }
 .add-container { 
   width: 100%;

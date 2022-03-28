@@ -51,7 +51,7 @@ select {
   height: 100%;
   /* display: flex;
     flex-direction: column; */
-  background-color: #f2f2f2;
+  /* background-color: #f2f2f2; */
 }
 
 .part-1 {
@@ -71,7 +71,7 @@ select {
 .part-2 {
   width: 100%;
   height: 7%;
-  background-color: none;
+  /* background-color: none; */
   display: flex;
   align-items: center;
   flex-direction: row;
@@ -92,13 +92,15 @@ select {
   font-size: 20px;
   height: 26px;
   border: none;
-  background-color: none;
+  background-color: transparent;
 }
 #all{
   border-bottom: 2px solid black;
+  background-color: transparent;
 }
 #today{
   border-bottom: 2px solid black;
+  background-color: transparent;
 }
 .all:hover {
   border-bottom: 2px solid black;
