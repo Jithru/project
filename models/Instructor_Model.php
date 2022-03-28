@@ -132,8 +132,8 @@ class Instructor_Model extends Model{
     }
 
     function loadAllSessionsForToday($conductorId){
-        // $todayDate=date("Y-m-d");
-        $result=$this->db->runQuery("SELECT sessions.session_id,session_time FROM sessions INNER JOIN session_conductor_assigns on session_conductor_assigns.session_id=sessions.session_id WHERE session_conductor_assigns.conductor_id=$conductorId and sessions.session_date='2021-11-18'");
+        $todayDate=date("Y-m-d");
+        $result=$this->db->runQuery("SELECT sessions.session_id,session_time FROM sessions INNER JOIN session_conductor_assigns on session_conductor_assigns.session_id=sessions.session_id WHERE session_conductor_assigns.conductor_id=$conductorId and sessions.session_date= $todayDate");
         return $result;
     }
     function loadStudentsForSession($sessionId){
