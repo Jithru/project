@@ -72,11 +72,12 @@
                 <div class="heading-row">
                     <div class="cell">
                     <div class="headingDetails">
-                        <div class="one">Profile Pic</div>
+                        <!-- <div class="one"></div> -->
                         <div class="three">ID</div>
                         <div class="two">Name</div>
                         
                         <div class="four">Contact No</div>
+                        <!-- <div class="one"></div> -->
 
                     </div>
                     </div>

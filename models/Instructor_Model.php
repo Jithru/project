@@ -69,7 +69,11 @@ class Instructor_Model extends Model{
         $result=$this->db->runQuery("UPDATE session_status SET end_time='$crnttime' WHERE session_id=$sessionId AND conductor_id=$conductorId");
         return "UPDATE session_status SET end_time='$crnttime' WHERE session_id=$sessionId AND conductor_id=$conductorId";
     }
-
+    function getProfileDetails(){
+        $nic=$_SESSION['employee_id'];
+        $result=$this->db->runQuery("SELECT * from employee where employee_id = '$nic'");
+        return $result;
+    }
     function getSessions($employeeId){
         $result=$this->db->runQuery("SELECT sessions.Session_id,sessions.session_title,sessions.session_date,sessions.session_time,sessions.type FROM sessions INNER join session_conductor_assigns on session_conductor_assigns.session_id=sessions.session_id where session_conductor_assigns.conductor_id=$employeeId");
         return $result;
@@ -128,12 +132,12 @@ class Instructor_Model extends Model{
     }
 
     function loadAllSessionsForToday($conductorId){
-        // $todayDate=date("Y-m-d");
-        $result=$this->db->runQuery("SELECT sessions.session_id,session_time FROM sessions INNER JOIN session_conductor_assigns on session_conductor_assigns.session_id=sessions.session_id WHERE session_conductor_assigns.conductor_id=$conductorId and sessions.session_date='2021-11-18'");
+        $todayDate=date("Y-m-d");
+        $result=$this->db->runQuery("SELECT sessions.session_id,session_time FROM sessions INNER JOIN session_conductor_assigns on session_conductor_assigns.session_id=sessions.session_id WHERE session_conductor_assigns.conductor_id=$conductorId and sessions.session_date= $todayDate");
         return $result;
     }
     function loadStudentsForSession($sessionId){
-        $result=$this->db->runQuery("SELECT student.student_id,student.init_name,student.contact,session_participation.status from ((student INNER JOIN session_participation on session_participation.student_id=student.student_id) INNER JOIN sessions on sessions.session_id=session_participation.session_id) WHERE session_participation.session_id=$sessionId AND session_participation.status='going' OR session_participation.status='absent' OR session_participation.status='present'");
+        $result=$this->db->runQuery("SELECT student.student_id,student.init_name,student.profile_pic,student.contact,session_participation.status from ((student INNER JOIN session_participation on session_participation.student_id=student.student_id) INNER JOIN sessions on sessions.session_id=session_participation.session_id) WHERE session_participation.session_id=$sessionId AND session_participation.status='going' OR session_participation.status='absent' OR session_participation.status='present'");
         // $result=$this->db->runQuery("SELECT student.student_id,student.init_name,student.contact from ((student INNER JOIN session_participation on session_participation.student_id=student.student_id) INNER JOIN sessions on sessions.session_id=session_participation.session_id) WHERE session_participation.session_id='4' AND session_participation.status='going'");
         return $result;
     }
@@ -152,13 +156,10 @@ class Instructor_Model extends Model{
         $result=array_merge($sessionResult,$examResult);
         return $result;
     }
-
-    function getConductorId($employeeId){
-        $result=$this->db->runQuery("");
-        return $result;
-
+    function imageUploading($file,$employeeId){
+        $result=$this->db->runQuery("UPDATE employee SET profile_pic='$file' WHERE employee_id=$employeeId");
+        // return $studentId;
     }
-
     function pdfUploading($filename){
         // return "hello";
         date_default_timezone_set("Asia/Colombo");

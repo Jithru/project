@@ -14,6 +14,11 @@ class Receptionist_Model extends Model{
     function registerLicense(){
         
     }
+    function getProfileDetails(){
+        $nic=$_SESSION['employee_id'];
+        $result=$this->db->runQuery("SELECT * from employee where employee_id = '$nic'");
+        return $result;
+    }
     function getVehicleClasses($classA,$classAauto,$classB1,$classB,$exam){
         if($exam=="false"){
             $total=0;
@@ -430,6 +435,10 @@ class Receptionist_Model extends Model{
     function loadPreSelectedStudentsS($sessionId){
         $result=$this->db->runQuery("SELECT count(session_student_assigns.student_id) AS total_assigns,session_student_assigns.student_id,GROUP_CONCAT(session_student_assigns.session_id) AS session_IDs,student.init_name FROM ((session_student_assigns LEFT JOIN student on student.student_id=session_student_assigns.student_id) LEFT JOIN sessions on sessions.session_id=session_student_assigns.session_id) GROUP BY session_student_assigns.student_id,student.init_name");
         return $result;
+    }
+    function imageUploading($file,$employeeId){
+        $result=$this->db->runQuery("UPDATE employee SET profile_pic='$file' WHERE employee_id=$employeeId");
+        // return $studentId;
     }
     function getDatesOfSessionsAndSessions(){
         $sessionResult=$this->db->runQuery("SELECT DISTINCT sessions.session_date as date from sessions");

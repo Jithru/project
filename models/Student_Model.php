@@ -134,7 +134,7 @@ class Student_Model extends Model{
 
     function getTheoryTrailExamDetails(){
         $studentId=$_SESSION['student_id'];
-        $result=$this->db->runQuery("SELECT exam_type,exam_date,exam_time,name,results FROM exams INNER JOIN exam_participation ON exams.exam_id=exam_participation.exam_id INNER JOIN employee ON employee.employee_id= exams.employee_id WHERE exam_participation.student_id='54'");
+        $result=$this->db->runQuery("SELECT exam_type,exam_date,exam_time,name,results FROM exams INNER JOIN exam_participation ON exams.exam_id=exam_participation.exam_id INNER JOIN employee ON employee.employee_id= exams.employee_id WHERE exam_participation.student_id=$studentId");
         return $result;
 
     }

@@ -1,7 +1,7 @@
 .table {
   overflow-y: auto;
   height: 450px;
-  width: 85%;
+  width: 70%;
   background-color: #f2f2f2;
   position: relative;
   align-self: center;
@@ -48,15 +48,19 @@
 }
 .one {
   width: 15%;
+  /* background-color: aqua; */
 }
 .two {
   width: 40%;
+  /* background-color: aqua; */
 }
 .three {
   width: 20%;
+  /* background-color: aqua; */
 }
 .four {
   width: 25%;
+  /* background-color: aqua; */
 }
 .present {
   width: 90px;
@@ -97,7 +101,7 @@
 }
 .heading {
   display: flex;
-  width: 85%;
+  width: 70%;
   align-self: center;
   /* padding: 10px 10px; */
   border-radius: 5px;
@@ -112,16 +116,20 @@
 .headingDetails {
   display: flex;
   margin-left: 20px;
-  width: 70%;
+  width: 100%;
   /* background-color: #0892d0; */
-  justify-content: space-around;
+  /* background-color: #262b2f; */
+  justify-content: flex-start;
 }
 .heading-row {
-  width: 100%;
+  width: 70%;
   font-size: 15px;
   margin: 6px 5px;
   padding: 9px 0px;
   height: 50px;
   text-shadow: 5px;
+  /* justify-content: space-evenly; */
+  justify-content: flex-start;
   font-weight: 600;
+  /* background-color: #0892d0; */
 }

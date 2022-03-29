@@ -31,7 +31,7 @@ function loadStudents(sessionId){
                     rows.innerHTML+='<div class="row">'+
                     '<div class="cell">'+
                         '<div class="information">'+
-                            '<div class="one">Image</div>'+
+                            // '<div class="one">Image</div>'+
                             '<div class="three">ST_'+obj[i].student_id+'</div>'+
                             '<div class="two">'+obj[i].init_name+'</div>'+
                             '<div class="four">'+obj[i].contact+'</div>'+
@@ -46,7 +46,7 @@ function loadStudents(sessionId){
                     rows.innerHTML+='<div class="row">'+
                         '<div class="cell">'+
                             '<div class="information">'+
-                                '<div class="one">Image</div>'+
+                                // '<div class="one">Image</div>'+
                                 '<div class="three">ST_'+obj[i].student_id+'</div>'+
                                 '<div class="two">'+obj[i].init_name+'</div>'+
                                 '<div class="four">'+obj[i].contact+'</div>'+
@@ -60,7 +60,7 @@ function loadStudents(sessionId){
                     rows.innerHTML+='<div class="row">'+
                     '<div class="cell">'+
                         '<div class="information">'+
-                            '<div class="one">Image</div>'+
+                            // '<div class="one">Image</div>'+
                             '<div class="three">ST_'+obj[i].student_id+'</div>'+
                             '<div class="two">'+obj[i].init_name+'</div>'+
                             '<div class="four">'+obj[i].contact+'</div>'+

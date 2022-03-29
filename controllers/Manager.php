@@ -756,9 +756,9 @@ class Manager extends Controller{
         $result=$this->model->getDatesOfSessionsAndSessions();
         echo json_encode($result);
     }
-    function getProfilePic(){
-        $result=$this->model->getProfilePic($_SESSION['employee_id']);
-        $_SESSION['profile_pic']=$result[0]['profile_pic'];
-    }
+    // function getProfilePic(){
+    //     $result=$this->model->getProfilePic($_SESSION['employee_id']);
+    //     $_SESSION['profile_pic']=$result[0]['profile_pic'];
+    // }
 
 }

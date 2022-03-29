@@ -45,6 +45,18 @@ class Instructor extends Controller{
             $this->view->render('error');
         }  
     }
+    function editprofile(){
+        if(isset($_SESSION['job_title'])){
+            if($_SESSION['job_title']=='Instructor'){
+                $this->view->render('Conductor/editprofile');
+            }else{
+                $this->view->render('error');
+            }
+        }
+        else{
+            $this->view->render('error');
+        }
+    }
     function sessions(){
         if(isset($_SESSION['job_title'])){
             if($_SESSION['job_title']=='Instructor'){
@@ -64,41 +76,11 @@ class Instructor extends Controller{
         echo json_encode($value);
         
     }
-//load stusents to session_participation table when instructor click going
-    function clickGoing($sessionId){
-        $conductorId=8;
-        $value=$this->model->LoadSessions($sessionId,$conductorId);
+    function profileLogic(){
+        $value=$this->model->getProfileDetails();   
         echo json_encode($value);
 
     }
-
-    //delte srudents relevant to instructor and sessionsID
-
-    function clickNotGoing($sessionId){
-        $conductorId=8;
-        $value=$this->model->removeSessions($sessionId,$conductorId);
-        echo json_encode($value);      
-    }
-
-    //update start time in session_status table
-
-    function updateStartTime($data){
-        $value=$this->model->updateStart($data);
-        echo json_encode($value);
-
-    }
-
-    function updateEndTime($data){
-        $value=$this->model->updateEnd($data);
-        echo json_encode($value);       
-    }
-
-    function getConductorId(){
-        $employeeId=$_SESSION['employee_id'];
-        $value=$this->model->getConductorId($employeeId);
-        echo json_encode($value);
-    }
-
  
 
     function viewExam($id=''){
@@ -265,6 +247,26 @@ class Instructor extends Controller{
         if($result==true){
             echo $sessionId;
         }
+    }
+    function imageUploading(){
+        $target_dir = $_SERVER['DOCUMENT_ROOT']."/project/public/images/profilePicsEmployee/";
+        
+        $target_file = $target_dir . basename($_FILES["photo"]["name"]);
+        // $_FILES["photo"]["name"]=$_SESSION['student_id'];
+        // $target_file = $target_dir .$_FILES["photo"]["name"];
+        $file=$_FILES["photo"]["name"];
+        $tempName=$_FILES["photo"]["tmp_name"];
+        $path = pathinfo($file);
+        $filename = $path['filename'];
+        $ext = $path['extension'];
+        $path_filename_ext = $target_dir.$filename;
+        $result=$this->model->imageUploading(basename($_FILES["photo"]["name"]),$_SESSION['employee_id']);
+        move_uploaded_file($tempName,$target_file);
+        
+        // echo $target_file;
+        // echo $tempName;
+        echo $result;
+
     }
     function getDatesOfSessionsAndSessions(){
         $result=$this->model->getDatesOfSessionsAndSessions($_SESSION['employee_id']);

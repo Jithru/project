@@ -19,6 +19,7 @@ function editExamLoad(){
     httpreq.send()
 }
 editExamLoad()
+
 var time=""
 var date=""
 var type=""
@@ -229,6 +230,51 @@ function saveType(){
     document.getElementById("typeSaveCancel").style.display='none'
 
 }
+// function buttonDisable(){
+//     var newDate=document.getElementById("dateContainer").value
+//     var newTime=document.getElementById("timeContainer").value
+//     var today=new Date();
+//     if(today.getDate()<10){
+//         var dateval="0"+today.getDate()
+//     }
+//     else{
+//         var dateval=today.getDate()
+//     }
+//     if((today.getMonth()+1)<10){
+//         var monthval="0"+(today.getMonth()+1)
+//     }
+//     else{
+//         var monthval=today.getMonth()+1
+//     }
+
+//     if(today.getHours()<10){
+//         var hoursVal="0"+today.getHours()
+//     }else{
+//         var hoursVal=today.getHours()
+//     }
+//     if(today.getMinutes()<10){
+//         var minutesVal="0"+today.getMinutes()
+//     }else{
+//         var minutesVal=today.getMinutes()
+//     }
+//     var day=today.getFullYear()+"-"+monthval+"-"+dateval
+//     var todaytime=hoursVal+":"+minutesVal
+//     if(newDate<day){
+//         console.log(day)
+//         console.log(date)
+//         document.getElementById("add-instructor").disabled=true
+//         document.getElementById("add-participants").disabled=true
+//         document.getElementById("add-vehicle").disabled=true
+//     }
+//     else if(newDate==day && newTime<todaytime){
+//         console.log(time)
+//         console.log(todaytime)
+//         document.getElementById("add-instructor").disabled=true
+//         document.getElementById("add-participants").disabled=true
+//         document.getElementById("add-vehicle").disabled=true
+//     }
+// }
+// buttonDisable()
 function changeInstructorLoad(){
     // var id=document.getElementById("idContainer").value
     window.location.href="http://localhost/project/Manager/changeInstructor/"

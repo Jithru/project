@@ -16,6 +16,7 @@ function profileData(){
             if(obj[0].profile_pic!=null){
                 profilePic.src="http://localhost/project/public/images/profilePicsEmployee/"+String(obj[0].profile_pic)
             }
+            
            var gender;
            if(obj[0].gender=="m"){
                 gender="Male";
@@ -38,7 +39,7 @@ function profileData(){
         }
     }
 
-    var url="http://localhost/project/Receptionist/profileLogic";
+    var url="http://localhost/project/Instructor/profileLogic";
     httprequest.open("POST",url,true)
     httprequest.send()
 

@@ -59,7 +59,7 @@
                     <div class="type-class">
                         <label for="type">Type:</label>
                         <select name="type" id="type">
-                            <option value="noValue">Type</option>
+                        <option value="<?php echo isset($_SESSION['type'])?$_SESSION['type']:"noValue";?>"><?php echo isset($_SESSION['type'])?$_SESSION['type']:"Type";?></option>
                             <option value="Theory">Theory</option>
                             <option value="Practical">Practical</option>
                         </select>
@@ -83,7 +83,7 @@
                 </div>
                 
                 <div class="button-set">
-                    <a href="<?php echo URL?>Manager/eventCalendar"><button class="session-buttons" name="cancel" id="cancel" >CANCEL</button></a>
+                    <a href="<?php echo URL?>Manager/eventCalendar"><button class="session-buttons" name="cancel" id="cancel">CANCEL</button></a>
                     <button class="session-buttons"name="confirm" id="confirm" onclick="submitSession()">CONFIRM</button>
                 </div>
             </div>
